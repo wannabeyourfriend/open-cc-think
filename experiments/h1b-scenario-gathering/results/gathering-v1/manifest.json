@@ -1,0 +1,793 @@
+{
+  "schema_version": 1,
+  "experiment": "H1b-gathering-v1",
+  "selection": {
+    "seed": "signature-cot-gathering-v1-2026-07-17",
+    "method": "lowest SHA-256(seed + NUL + source_id)",
+    "provider_random_seed": null,
+    "provider_random_seed_note": "Bedrock Converse exposes no seed parameter; replicate IDs identify independent harvests.",
+    "tasks_per_scenario": 15,
+    "replicates_per_task": 3,
+    "run_id": "H1b-gathering-v1",
+    "excluded_manifest": "src/calibration/fixed-36.json",
+    "chat_excluded_categories": [
+      "coding",
+      "math",
+      "reasoning"
+    ],
+    "terminal_bench_included": false,
+    "environment_management_references": [
+      "https://github.com/harbor-framework/terminal-bench-2",
+      "https://github.com/swe-bench/SWE-bench"
+    ]
+  },
+  "sources": {
+    "math_reasoning": {
+      "name": "gsm8k-train",
+      "url": "https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/train.jsonl",
+      "sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465"
+    },
+    "complex_conversational_qa": {
+      "name": "mt-bench",
+      "url": "https://raw.githubusercontent.com/lm-sys/FastChat/main/fastchat/llm_judge/data/mt_bench/question.jsonl",
+      "sha256": "119565adbab82227089cefdb44c8d7e2cf04dc0a0ec233634c82e7d4e2a944f7"
+    },
+    "agentic_coding": {
+      "name": "signature-cot-deterministic-code-repair",
+      "path": "src/gathering/coding-fixtures.json",
+      "sha256": "78c44317356bfc66c3a6c95e785ccffb05402cce4a39a6d34ae510d26bd90399"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "gather-chat-01",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-88",
+      "turns": [
+        "Craft an intriguing opening paragraph for a fictional short story. The story should involve a character who wakes up one morning to find that they can time travel.",
+        "Summarize the story with three bullet points using only nouns and adjectives, without verbs."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "writing"
+      }
+    },
+    {
+      "task_id": "gather-chat-02",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-90",
+      "turns": [
+        "Edit the following paragraph to correct any grammatical errors:\nShe didn't remembre where is her purse, so I thinks its in the car but he's say it's on kitchen table but he are not sure, and then they asked me to looking for it, she's say, \"Can you?\", and I responds with, \"Maybe, but ain't no sure,\" and he not heard me, and, \"What?\", he asks, \"Did you found it?\".",
+        "Modify your earlier reply and eliminate the use of gendered pronouns."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "writing"
+      }
+    },
+    {
+      "task_id": "gather-chat-03",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-154",
+      "turns": [
+        "Create a lesson plan that integrates drama, mime or theater techniques into a history class. Duration: 3 class periods (each lasts for 45 minutes) for 3 days\nTopic: Opium Wars between China and Britain\nGrade level: 9-10",
+        "Provide more details for Day 1 and include three homework questions."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "humanities"
+      }
+    },
+    {
+      "task_id": "gather-chat-04",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-134",
+      "turns": [
+        "Given the following data, identify the company with the highest profit in 2021 and provide its CEO's name:\na) Company X, with CEO Amy Williams, reported $30 billion in revenue and a $3 billion profit in 2021.\nb) Company Y, led by CEO Mark Thompson, posted a $60 billion revenue and a $6 billion profit in the same year.\nc) Company Z, under CEO Sarah Johnson, announced a $20 billion revenue and a $7 billion profit in 2021.\nd) Company W, managed by CEO James Smith, revealed a $300 billion revenue with a $21 billion profit in 2021.\ne) Company V, with CEO Lisa Brown, reported a $200 billion revenue and a $25 billion profit in 2021.\nf) Company U, under CEO John White, posted a $180 billion revenue and a $20 billion profit in the same year.",
+        "Which company had the highest profit margin (profit/revenue ratio))?"
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "extraction"
+      }
+    },
+    {
+      "task_id": "gather-chat-05",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-151",
+      "turns": [
+        "Provide insights into the correlation between economic indicators such as GDP, inflation, and unemployment rates. Explain how fiscal and monetary policies affect those indicators.",
+        "Now, explain them again like I'm five."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "humanities"
+      }
+    },
+    {
+      "task_id": "gather-chat-06",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-100",
+      "turns": [
+        "Picture yourself as a 100-years-old tree in a lush forest, minding your own business, when suddenly, a bunch of deforesters shows up to chop you down. How do you feel when those guys start hacking away at you?",
+        "Come up with a proposal to convince the deforesters to stop cutting you down and other trees."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "roleplay"
+      }
+    },
+    {
+      "task_id": "gather-chat-07",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-95",
+      "turns": [
+        "Please assume the role of an English translator, tasked with correcting and enhancing spelling and language. Regardless of the language I use, you should identify it, translate it, and respond with a refined and polished version of my text in English. Your objective is to use eloquent and sophisticated expressions, while preserving the original meaning. Focus solely on providing corrections and improvements. My first request is \"衣带渐宽终不悔 为伊消得人憔悴\".",
+        "Ich verstehe nur Bahnhof"
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "roleplay"
+      }
+    },
+    {
+      "task_id": "gather-chat-08",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-144",
+      "turns": [
+        "What is the central dogma of molecular biology? What processes are involved? Who named this?",
+        "Identify and fix one incorrect fact in your previous response."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "stem"
+      }
+    },
+    {
+      "task_id": "gather-chat-09",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-82",
+      "turns": [
+        "Draft a professional email seeking your supervisor's feedback on the 'Quarterly Financial Report' you prepared. Ask specifically about the data analysis, presentation style, and the clarity of conclusions drawn. Keep the email short and to the point.",
+        "Take a moment to evaluate and critique your own response."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "writing"
+      }
+    },
+    {
+      "task_id": "gather-chat-10",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-140",
+      "turns": [
+        "Given the following records of stock prices, extract the highest and lowest closing prices for each month in the year 2022. Return the results as a CSV string, with one line allocated for each month.\nDate,Open,High,Low,Close,Volume\n2022-01-01,150.02,155.28,148.50,153.80,15678900\n2022-01-02,154.32,157.25,153.48,156.25,19874500\n2022-02-01,160.50,163.28,159.50,161.80,14326700\n2022-02-02,161.80,164.25,161.30,163.90,17689200\n2022-03-01,165.40,168.35,163.10,166.80,16253400\n2022-03-02,167.00,169.85,165.50,168.20,19568100",
+        "Do the same task again with the JSON format and round all numbers in your response to the nearest integers."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "extraction"
+      }
+    },
+    {
+      "task_id": "gather-chat-11",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-157",
+      "turns": [
+        "Describe five key principles in evaluating an argument in analytical writing.",
+        "With the listed principles, write a response in which you discuss what specific evidence is needed to evaluate the argument and explain how the evidence would weaken or strengthen the argument.\n\n===\n\nThe following is a memorandum from the advertising head of Zorblatt Animal Outlets, a chain operating thirty animal outlets globally.\n\n\"Half a decade ago, our rival Aquatic Pavilion started publicizing in Rare Pets Digest periodical. Their overall sales have been consistently growing at a rate of 3-to-5 percent each year since then. In particular, the Aquatic Pavilion outlet in Harbor Town experienced even more significant growth, securing the title of the most frequented animal store in the United States the previous year. In contrast, our two Zorblatt outlets in Harbor Town have recorded a consistent drop in sales during the same duration. It is evident that we must promptly start featuring our own advertisements in Rare Pets Digest and other popular animal publications. If we take this step, we can confidently anticipate a reversal in this recent trend of decreasing sales and return to profitability.\""
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "humanities"
+      }
+    },
+    {
+      "task_id": "gather-chat-12",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-94",
+      "turns": [
+        "Please take on the role of a relationship coach. You'll be provided with details about two individuals caught in a conflict, and your task will be to offer suggestions for resolving their issues and bridging the gap between them. This may involve advising on effective communication techniques or proposing strategies to enhance their understanding of each other's perspectives. To start, I would like you to address the following request: \"I require assistance in resolving conflicts between my spouse and me.\"",
+        "My spouse has conducted domestic violence on me but I do not want to call police to put her in legally troubled situations."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "roleplay"
+      }
+    },
+    {
+      "task_id": "gather-chat-13",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-137",
+      "turns": [
+        "Identify the named entities (people, organizations, locations) mentioned in the given news article. Please generate a JSON dictionary that lists the named entities in three separate groups based on their entity types. The key is the type of entity and the value is a list of strings.\n\nYesterday, Adamson Emerson, the CEO of Faraday, and Dieter Zetsche, the CEO of Daimler AG, announced plans to build a new Gigafactory in Berlin. The facility will be a joint venture between Faraday and Daimler, producing electric vehicles and battery packs for both companies, creating thousands of job opportunities in the region. Emerson and Zetsche stated that the strategic location of Berlin, coupled with its skilled workforce and strong infrastructure, makes it an ideal choice for expansion. The new Gigafactory aims to meet the growing demand for electric vehicles in Europe and contribute to a sustainable future. Volkswagen CEO Herbert Diess welcomed the news, saying greater collaboration will benefit the auto industry's transition to e-mobility.",
+        "Now make the JSON object shorter by replacing each value with its first letter. Please output everything in a single line without using indentation or creating new lines."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "extraction"
+      }
+    },
+    {
+      "task_id": "gather-chat-14",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-143",
+      "turns": [
+        "Photosynthesis is a vital process for life on Earth. Could you outline the two main stages of photosynthesis, including where they take place within the chloroplast, and the primary inputs and outputs for each stage?",
+        "How much energy can a tree produce through photosynthesis in its lifetime? Please provide an estimate using actual numerical values and thoroughly explain your thought process step-by-step."
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "stem"
+      }
+    },
+    {
+      "task_id": "gather-chat-15",
+      "scenario": "complex_conversational_qa",
+      "source": "mt-bench",
+      "source_id": "mt-bench-145",
+      "turns": [
+        "Describe the process and write out the balanced chemical equation for the reaction that occurs when solid calcium carbonate reacts with hydrochloric acid to form aqueous calcium chloride, carbon dioxide, and water. What type of reaction is this, and what observations might indicate that the reaction is taking place?",
+        "How can we reverse this process?"
+      ],
+      "expected_answer": null,
+      "metadata": {
+        "category": "stem"
+      }
+    },
+    {
+      "task_id": "gather-math-01",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-02951",
+      "turns": [
+        "Anna sold 36 glasses of plain lemonade for $0.75 each. If she made $16 total from selling strawberry lemonade, how much more did she make from plain lemonade than strawberry?"
+      ],
+      "expected_answer": "11",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-02",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-03364",
+      "turns": [
+        "Zane purchases 2 polo shirts from the 40% off rack at the men’s store.  The polo shirts are $50 each at the regular price.  How much did he pay for the shirts?"
+      ],
+      "expected_answer": "60",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-03",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-00448",
+      "turns": [
+        "Jar A has 28 marbles. Jar B has 12 more marbles than jar A. Jar C has twice as many marbles as jar B. How many marbles are there altogether?"
+      ],
+      "expected_answer": "148",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-04",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-00982",
+      "turns": [
+        "Frank bakes two trays of cookies per day, for 6 days. Frank eats one cookie each day to make sure they taste good. Ted comes over on the sixth day and eats 4 cookies. If each tray makes 12 cookies, how many cookies are left when Ted leaves?"
+      ],
+      "expected_answer": "134",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-05",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-01494",
+      "turns": [
+        "Micah has 7 fish in his aquarium. Kenneth has three times as many fish in his aquarium and Matthias has 15 less fish than Kenneth in his aquarium. How many fish do the boys have in total?"
+      ],
+      "expected_answer": "34",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-06",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-06914",
+      "turns": [
+        "Billy wants to watch something fun on YouTube but doesn't know what to watch.  He has the website generate 15 suggestions but, after watching each in one, he doesn't like any of them.  Billy's very picky so he does this a total of 5 times before he finally finds a video he thinks is worth watching.  He then picks the 5th show suggested on the final suggestion list.  What number of videos does Billy watch?"
+      ],
+      "expected_answer": "65",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-07",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-02096",
+      "turns": [
+        "Beth went shopping. She bought 15 more cans of peas than twice the number of cans of corn that she bought. If she bought 35 cans of peas, how many cans of corn did she buy?"
+      ],
+      "expected_answer": "10",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-08",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-00812",
+      "turns": [
+        "Tabitha and her friends were excited to go to the Christmas parade because they knew candy would be thrown to the crowd from the floats.  Tabitha caught 22 pieces of candy.  Stan caught 13 pieces.  Julie caught half the amount of candy as Tabitha caught and Carlos caught twice as much candy as Stan.  How many pieces in total did the friends catch?"
+      ],
+      "expected_answer": "72",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-09",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-05019",
+      "turns": [
+        "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?"
+      ],
+      "expected_answer": "11",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-10",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-05156",
+      "turns": [
+        "A man used to have 39 cows but last year 25 of them died and he sold 6 of them. This year the number of the cows increased by 24 and the man bought 43 more. His friend gave him 8 cows as a gift. How many cows does the man have now?"
+      ],
+      "expected_answer": "83",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-11",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-06827",
+      "turns": [
+        "At the height of cranberry season, there are 60000 cranberries in a bog. 40% are harvested by humans and another 20000 are eaten by elk. How many cranberries are left?"
+      ],
+      "expected_answer": "16000",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-12",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-02786",
+      "turns": [
+        "Tom decided to go on a trip. During this trip, he needs to cross a lake, which in one direction takes 4 hours. During this time, Tom needs an assistant to help him with the crossing. Hiring an assistant costs $10 per hour. How much would Tom have to pay for help with crossing the lake back and forth?"
+      ],
+      "expected_answer": "80",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-13",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-06044",
+      "turns": [
+        "Tom plays 9 rounds of golf.  He takes an average of 4 strokes per hole.  The par value per hole is 3.  How many strokes over par was he?"
+      ],
+      "expected_answer": "9",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-14",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-02479",
+      "turns": [
+        "The grocery store sells chips for $2 per packet and corn chips for $1.5 per packet. John would like to buy 15 packets of chips, and with the rest of the money he has left, buy as many packets of corn chips as he can. How many packets of corn chips could John buy if he has $45 for his entire purchase?"
+      ],
+      "expected_answer": "10",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-math-15",
+      "scenario": "math_reasoning",
+      "source": "gsm8k-train",
+      "source_id": "gsm8k-train-04451",
+      "turns": [
+        "Cheryl ate 7 m&m's after lunch. She ate 5 m&m's after dinner, and she gave some to her sister. If Cheryl had 25 m&m's at the beginning, how many did she give to her sister?"
+      ],
+      "expected_answer": "13",
+      "metadata": {}
+    },
+    {
+      "task_id": "gather-agentic-coding-01",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-01",
+      "turns": [
+        "Fix the off-by-one bug so integers from start through stop are both included. Inspect the workspace, apply the smallest patch, run the deterministic tests, and finish with a compact PASS or FAIL report."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-01",
+        "title": "Inclusive integer window",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "6c2901bb730e3f20c7bb7d187c2ce220929a31b0f501003a59f1faeb69f368db",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-02",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-02",
+      "turns": [
+        "Normalize a user handle by trimming surrounding whitespace and comparing case-insensitively. Inspect, patch, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-02",
+        "title": "Canonical user handle",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "e3c2306b99656b0ea06b11b3578ead380c2be6bcec2be941ad51b890c8bf3fa9",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-03",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-03",
+      "turns": [
+        "Fix unique_items so it removes duplicates without changing first-seen order. Inspect the code and tests, make one minimal patch, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-03",
+        "title": "Stable de-duplication",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "139174ee552ef5d3a81bd0f5cc8c1e89e04d6a4f681d8929826c782082ba06bd",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-04",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-04",
+      "turns": [
+        "The chunker drops the final partial chunk. Inspect the workspace, patch only the loop bound, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-04",
+        "title": "Preserve final partial chunk",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "4d4de9a9c53534dcdff29d90efdba901b2f273445d3afa5389c74bb5d2128ae0",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-05",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-05",
+      "turns": [
+        "max_retries means retries after the initial attempt, but the current helper performs too few total attempts. Inspect, patch the range, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-05",
+        "title": "Retry count semantics",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "7001063c6cf5aaaf1c6bba81699ea146b0b2590d358307da59a6afd80c48e100",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-06",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-06",
+      "turns": [
+        "Cache entries from different namespaces currently collide. Inspect the helper, include both namespace and name in the key, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-06",
+        "title": "Namespaced cache key",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "59f8d1ccd1827842b392bf7b2fc561defed93d1e32fea125df41216598938788",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-07",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-07",
+      "turns": [
+        "bool('false') is true, so the configuration parser is wrong. Accept 1, true, yes, and on case-insensitively after trimming. Inspect, patch, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-07",
+        "title": "Parse textual booleans",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "2469e9052622496b99be905b0cb8feb26b54116f1f3a2752864a10dfcbceeaf7",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-08",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-08",
+      "turns": [
+        "The clamp helper enforces only the upper bound. Inspect the function and tests, add the lower bound without changing the signature, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-08",
+        "title": "Two-sided clamp",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "6295eb1ac60dad9060f6735f5f46610c56c163d9d2a31aa905c403bb4f159314",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-09",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-09",
+      "turns": [
+        "Joining a root ending in slash with a child beginning in slash creates a double separator. Inspect, patch the return expression, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-09",
+        "title": "Join URL path segments",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "86601421366d938d6e86e8a4b4193a56caaef5164b817f83505aaabf8c6713a1",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-10",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-10",
+      "turns": [
+        "The mean helper truncates fractional results. Inspect the implementation, correct the arithmetic operator, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-10",
+        "title": "Non-truncating arithmetic mean",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "1edfca23ad3b260e0ebe387131b2890f0d6bffa163c6c549706ca24e025852cf",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-11",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-11",
+      "turns": [
+        "The duration conversion is off by a factor of ten. Inspect the source and tests, patch the multiplier, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-11",
+        "title": "Milliseconds conversion",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "946cda467cc177199fb61272e46408faee16ffa08ce96b31eba4772dfbf9b9a7",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-12",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-12",
+      "turns": [
+        "Leaderboard rows are sorted from lowest score to highest. Inspect and minimally fix the ordering, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-12",
+        "title": "Highest score first",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "7973368e9263750e989be5c01b7d5392772e22ec5c429d25afd790bbb2fc8aaa",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-13",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-13",
+      "turns": [
+        "Header fields retain surrounding spaces and fail schema matching. Inspect the parser, strip each field, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-13",
+        "title": "Whitespace-safe CSV header",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "21be137e815736ee65daf75cccaacc1ba559c48e207eae1097de10453b18309f",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-14",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-14",
+      "turns": [
+        "The validator incorrectly rejects TCP port 65535. Inspect the boundary condition, make the smallest patch, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-14",
+        "title": "Maximum valid TCP port",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "1ff091cb693d6c55508bf1d5a7d3cca37040012fce7099a33c7be0cd19600658",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    },
+    {
+      "task_id": "gather-agentic-coding-15",
+      "scenario": "agentic_coding",
+      "source": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-15",
+      "turns": [
+        "page_count drops a partially filled final page. Inspect the integer arithmetic, implement ceiling division without imports, run tests, and report PASS or FAIL."
+      ],
+      "expected_answer": "PASS",
+      "metadata": {
+        "fixture_id": "gather-agentic-coding-15",
+        "title": "Ceiling page count",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "1f55b45b4c399735e228330c3b1db8f5c1f1724766bbb350f80abdf9cdfad3bb",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      }
+    }
+  ]
+}

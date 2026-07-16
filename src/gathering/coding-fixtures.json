@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "fixtures": [
+    {
+      "task_id": "gather-agentic-coding-01",
+      "title": "Inclusive integer window",
+      "prompt": "Fix the off-by-one bug so integers from start through stop are both included. Inspect the workspace, apply the smallest patch, run the deterministic tests, and finish with a compact PASS or FAIL report.",
+      "files": {
+        "src/window.py": "def inclusive_window(start, stop):\n    return list(range(start, stop))\n",
+        "tests/test_window.py": "# inclusive_window(2, 4) == [2, 3, 4]\n# inclusive_window(5, 5) == [5]\n"
+      },
+      "target_path": "src/window.py",
+      "old": "return list(range(start, stop))",
+      "new": "return list(range(start, stop + 1))"
+    },
+    {
+      "task_id": "gather-agentic-coding-02",
+      "title": "Canonical user handle",
+      "prompt": "Normalize a user handle by trimming surrounding whitespace and comparing case-insensitively. Inspect, patch, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/handles.py": "def canonical_handle(value):\n    return value.strip()\n",
+        "tests/test_handles.py": "# canonical_handle('  Alice ') == 'alice'\n# canonical_handle('BOB') == 'bob'\n"
+      },
+      "target_path": "src/handles.py",
+      "old": "return value.strip()",
+      "new": "return value.strip().casefold()"
+    },
+    {
+      "task_id": "gather-agentic-coding-03",
+      "title": "Stable de-duplication",
+      "prompt": "Fix unique_items so it removes duplicates without changing first-seen order. Inspect the code and tests, make one minimal patch, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/dedupe.py": "def unique_items(items):\n    return list(set(items))\n",
+        "tests/test_dedupe.py": "# unique_items(['b', 'a', 'b', 'c', 'a']) == ['b', 'a', 'c']\n"
+      },
+      "target_path": "src/dedupe.py",
+      "old": "return list(set(items))",
+      "new": "return list(dict.fromkeys(items))"
+    },
+    {
+      "task_id": "gather-agentic-coding-04",
+      "title": "Preserve final partial chunk",
+      "prompt": "The chunker drops the final partial chunk. Inspect the workspace, patch only the loop bound, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/chunks.py": "def chunks(values, size):\n    return [values[i:i + size] for i in range(0, len(values) - size, size)]\n",
+        "tests/test_chunks.py": "# chunks([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]\n"
+      },
+      "target_path": "src/chunks.py",
+      "old": "range(0, len(values) - size, size)",
+      "new": "range(0, len(values), size)"
+    },
+    {
+      "task_id": "gather-agentic-coding-05",
+      "title": "Retry count semantics",
+      "prompt": "max_retries means retries after the initial attempt, but the current helper performs too few total attempts. Inspect, patch the range, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/retry.py": "def attempt_numbers(max_retries):\n    return list(range(max_retries))\n",
+        "tests/test_retry.py": "# attempt_numbers(0) == [0]\n# attempt_numbers(2) == [0, 1, 2]\n"
+      },
+      "target_path": "src/retry.py",
+      "old": "return list(range(max_retries))",
+      "new": "return list(range(max_retries + 1))"
+    },
+    {
+      "task_id": "gather-agentic-coding-06",
+      "title": "Namespaced cache key",
+      "prompt": "Cache entries from different namespaces currently collide. Inspect the helper, include both namespace and name in the key, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/cache.py": "def cache_key(namespace, name):\n    return name\n",
+        "tests/test_cache.py": "# cache_key('users', '42') == 'users:42'\n# cache_key('orders', '42') != cache_key('users', '42')\n"
+      },
+      "target_path": "src/cache.py",
+      "old": "return name",
+      "new": "return f\"{namespace}:{name}\""
+    },
+    {
+      "task_id": "gather-agentic-coding-07",
+      "title": "Parse textual booleans",
+      "prompt": "bool('false') is true, so the configuration parser is wrong. Accept 1, true, yes, and on case-insensitively after trimming. Inspect, patch, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/config.py": "def parse_enabled(value):\n    return bool(value)\n",
+        "tests/test_config.py": "# parse_enabled(' TRUE ') is True\n# parse_enabled('false') is False\n# parse_enabled('0') is False\n"
+      },
+      "target_path": "src/config.py",
+      "old": "return bool(value)",
+      "new": "return value.strip().casefold() in {\"1\", \"true\", \"yes\", \"on\"}"
+    },
+    {
+      "task_id": "gather-agentic-coding-08",
+      "title": "Two-sided clamp",
+      "prompt": "The clamp helper enforces only the upper bound. Inspect the function and tests, add the lower bound without changing the signature, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/numbers.py": "def clamp(value, low, high):\n    return min(high, value)\n",
+        "tests/test_numbers.py": "# clamp(-3, 0, 10) == 0\n# clamp(7, 0, 10) == 7\n# clamp(20, 0, 10) == 10\n"
+      },
+      "target_path": "src/numbers.py",
+      "old": "return min(high, value)",
+      "new": "return max(low, min(high, value))"
+    },
+    {
+      "task_id": "gather-agentic-coding-09",
+      "title": "Join URL path segments",
+      "prompt": "Joining a root ending in slash with a child beginning in slash creates a double separator. Inspect, patch the return expression, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/paths.py": "def join_url_path(root, child):\n    return root + \"/\" + child\n",
+        "tests/test_paths.py": "# join_url_path('/api/', '/users') == '/api/users'\n# join_url_path('/api', 'users') == '/api/users'\n"
+      },
+      "target_path": "src/paths.py",
+      "old": "return root + \"/\" + child",
+      "new": "return root.rstrip(\"/\") + \"/\" + child.lstrip(\"/\")"
+    },
+    {
+      "task_id": "gather-agentic-coding-10",
+      "title": "Non-truncating arithmetic mean",
+      "prompt": "The mean helper truncates fractional results. Inspect the implementation, correct the arithmetic operator, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/stats.py": "def mean(values):\n    return sum(values) // len(values)\n",
+        "tests/test_stats.py": "# mean([1, 2]) == 1.5\n# mean([2, 4, 6]) == 4.0\n"
+      },
+      "target_path": "src/stats.py",
+      "old": "return sum(values) // len(values)",
+      "new": "return sum(values) / len(values)"
+    },
+    {
+      "task_id": "gather-agentic-coding-11",
+      "title": "Milliseconds conversion",
+      "prompt": "The duration conversion is off by a factor of ten. Inspect the source and tests, patch the multiplier, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/time_units.py": "def seconds_to_milliseconds(seconds):\n    return seconds * 100\n",
+        "tests/test_time_units.py": "# seconds_to_milliseconds(1) == 1000\n# seconds_to_milliseconds(0.25) == 250\n"
+      },
+      "target_path": "src/time_units.py",
+      "old": "return seconds * 100",
+      "new": "return seconds * 1000"
+    },
+    {
+      "task_id": "gather-agentic-coding-12",
+      "title": "Highest score first",
+      "prompt": "Leaderboard rows are sorted from lowest score to highest. Inspect and minimally fix the ordering, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/ranking.py": "def rank_rows(rows):\n    return sorted(rows, key=lambda row: row[\"score\"])\n",
+        "tests/test_ranking.py": "# rank_rows([{'score': 2}, {'score': 9}, {'score': 4}]) == [{'score': 9}, {'score': 4}, {'score': 2}]\n"
+      },
+      "target_path": "src/ranking.py",
+      "old": "return sorted(rows, key=lambda row: row[\"score\"])",
+      "new": "return sorted(rows, key=lambda row: row[\"score\"], reverse=True)"
+    },
+    {
+      "task_id": "gather-agentic-coding-13",
+      "title": "Whitespace-safe CSV header",
+      "prompt": "Header fields retain surrounding spaces and fail schema matching. Inspect the parser, strip each field, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/csv_header.py": "def parse_header(line):\n    return line.split(\",\")\n",
+        "tests/test_csv_header.py": "# parse_header('name, age, city ') == ['name', 'age', 'city']\n"
+      },
+      "target_path": "src/csv_header.py",
+      "old": "return line.split(\",\")",
+      "new": "return [field.strip() for field in line.split(\",\")]"
+    },
+    {
+      "task_id": "gather-agentic-coding-14",
+      "title": "Maximum valid TCP port",
+      "prompt": "The validator incorrectly rejects TCP port 65535. Inspect the boundary condition, make the smallest patch, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/ports.py": "def valid_port(port):\n    return 1 <= port < 65535\n",
+        "tests/test_ports.py": "# valid_port(1) is True\n# valid_port(65535) is True\n# valid_port(65536) is False\n"
+      },
+      "target_path": "src/ports.py",
+      "old": "return 1 <= port < 65535",
+      "new": "return 1 <= port <= 65535"
+    },
+    {
+      "task_id": "gather-agentic-coding-15",
+      "title": "Ceiling page count",
+      "prompt": "page_count drops a partially filled final page. Inspect the integer arithmetic, implement ceiling division without imports, run tests, and report PASS or FAIL.",
+      "files": {
+        "src/paging.py": "def page_count(total, size):\n    return total // size\n",
+        "tests/test_paging.py": "# page_count(0, 10) == 0\n# page_count(20, 10) == 2\n# page_count(21, 10) == 3\n"
+      },
+      "target_path": "src/paging.py",
+      "old": "return total // size",
+      "new": "return (total + size - 1) // size"
+    }
+  ]
+}

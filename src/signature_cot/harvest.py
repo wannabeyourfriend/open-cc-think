@@ -208,6 +208,7 @@ class AgentRunner:
         max_steps: int = 8,
         effort: str = "medium",
         thinking_display: str = "summarized",
+        system_text: Optional[str] = None,
     ):
         self.client = client
         self.registry = registry
@@ -218,9 +219,12 @@ class AgentRunner:
         self.system: List[Json] = [
             {
                 "text": (
-                    "You are a careful tool-using research agent. Treat tool results as the only "
-                    "authority for catalog facts, arithmetic, and policy. Do not expose research "
-                    "boundary markers in assistant text or tool inputs."
+                    system_text
+                    or (
+                        "You are a careful tool-using research agent. Treat tool results as the only "
+                        "authority for catalog facts, arithmetic, and policy. Do not expose research "
+                        "boundary markers in assistant text or tool inputs."
+                    )
                 )
             }
         ]
@@ -230,6 +234,9 @@ class AgentRunner:
         task_id: str,
         question: str,
         expected_answer: Optional[str] = None,
+        *,
+        scenario: Optional[str] = None,
+        source_metadata: Optional[Json] = None,
     ) -> HarvestRun:
         markers = new_markers(0)
         messages: List[Json] = [
@@ -318,4 +325,6 @@ class AgentRunner:
             final_answer=final_answer,
             expected_answer=expected_answer,
             tool_events=tool_events,
+            scenario=scenario,
+            source_metadata=copy.deepcopy(source_metadata or {}),
         )
