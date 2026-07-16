@@ -69,6 +69,12 @@ hypotheses:
     motivation: "This is the first falsification layer needed before live metric calibration."
     parent: H1
     priority: high
+  - id: H1b
+    statement: "Repeated blind replay across complex conversational QA, math reasoning, and agentic coding yields a useful balanced corpus whose recovery-evidence distributions can be measured with exact task and decision denominators."
+    status: active
+    motivation: "The project needs substantially more scenario-diverse evidence before changing prompts or production gates."
+    parent: H1
+    priority: high
   - id: H3
     statement: "Recovery evidence varies systematically by signed decision type, with tool arguments and observation integration harder than compact final answers."
     status: pending
@@ -97,6 +103,23 @@ experiments:
   control_baseline_false_positive_rate: 0.5714
   control_best_false_positive_rate: 0.0
   total_runs: 1
+  active_run:
+    run_id: "H1b-gathering-v1"
+    hypothesis: "H1b"
+    status: "protocol-locked"
+    model: "global.anthropic.claude-sonnet-5"
+    scenarios:
+      complex_conversational_qa:
+        tasks: 15
+        replicates_per_task: 3
+      math_reasoning:
+        tasks: 15
+        replicates_per_task: 3
+      agentic_coding:
+        tasks: 15
+        replicates_per_task: 3
+    minimum_task_instances: 135
+    output: "experiments/h1b-scenario-gathering/results/gathering-v1"
   trajectory:
     - run_id: "H1a-run-001"
       hypothesis: "H1a"
