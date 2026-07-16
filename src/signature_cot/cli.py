@@ -8,6 +8,14 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
+from .calibration import (
+    DEFAULT_MANIFEST,
+    StratifiedPromptOptimizer,
+    harvest_tasks,
+    load_manifest,
+    result_dict,
+    selected_trials,
+)
 from .config import DEFAULT_ENV_FILE, ProviderConfig
 from .pipeline import ResearchPipeline
 from .prompts import DEFAULT_CANDIDATES
@@ -72,6 +80,35 @@ def build_parser() -> argparse.ArgumentParser:
     agentic.add_argument("--optimizer-rounds", type=int, default=3)
     agentic.add_argument("--no-optimize", action="store_true")
     agentic.set_defaults(handler=_agentic)
+
+    corpus = sub.add_parser(
+        "calibrate-corpus",
+        help="optimize extraction prompts on the fixed coding/math/chat corpus",
+    )
+    _common(corpus)
+    corpus.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
+    corpus.add_argument(
+        "--stage-sizes",
+        default="2,2,4",
+        help="successive-halving instance counts per scenario; remainder is validation",
+    )
+    corpus.add_argument(
+        "--limit-per-scenario",
+        type=int,
+        default=None,
+        help="bounded smoke runs only; default uses all fixed instances",
+    )
+    corpus.add_argument(
+        "--thinking-display",
+        choices=("summarized", "omitted"),
+        default="summarized",
+    )
+    corpus.add_argument(
+        "--candidates",
+        default=",".join(item.name for item in DEFAULT_CANDIDATES),
+        help="comma-separated extraction candidates; default uses the frozen full pool",
+    )
+    corpus.set_defaults(handler=_calibrate_corpus, effort="high")
     return parser
 
 
@@ -129,6 +166,7 @@ def _probe(args: argparse.Namespace) -> int:
                 "task_id": "probe-137x149",
                 "question": "Compute 137 times 149 and check it carefully.",
                 "expected_answer": "20413",
+                "required_answer_facts": ("20413",),
             },
         )(),
         optimize=False,
@@ -181,6 +219,99 @@ def _agentic(args: argparse.Namespace) -> int:
     )
     _print_result(result)
     return 0 if all(trial.metrics.valid for trial in result["selected_trials"]) else 2
+
+
+def _calibrate_corpus(args: argparse.Namespace) -> int:
+    manifest_payload, tasks = load_manifest(args.manifest)
+    if args.limit_per_scenario is not None:
+        if args.limit_per_scenario < 1:
+            raise SystemExit("--limit-per-scenario must be positive")
+        limited = []
+        for scenario in ("coding", "math", "chat"):
+            limited.extend(
+                [task for task in tasks if task.scenario == scenario][
+                    : args.limit_per_scenario
+                ]
+            )
+        tasks = limited
+    try:
+        stage_sizes = tuple(
+            int(value.strip())
+            for value in args.stage_sizes.split(",")
+            if value.strip()
+        )
+    except ValueError as exc:
+        raise SystemExit("--stage-sizes must be comma-separated integers") from exc
+    if not stage_sizes or any(value < 1 for value in stage_sizes):
+        raise SystemExit("--stage-sizes must contain positive integers")
+    candidate_names = [
+        value.strip() for value in args.candidates.split(",") if value.strip()
+    ]
+    known_candidates = {item.name: item for item in DEFAULT_CANDIDATES}
+    unknown_candidates = [name for name in candidate_names if name not in known_candidates]
+    if unknown_candidates:
+        raise SystemExit("unknown candidates: %s" % ", ".join(unknown_candidates))
+    candidates = [known_candidates[name] for name in candidate_names]
+    if len(candidates) < 2:
+        raise SystemExit("calibration requires at least two extraction candidates")
+    per_scenario = min(
+        sum(1 for task in tasks if task.scenario == scenario)
+        for scenario in ("coding", "math", "chat")
+    )
+    if sum(stage_sizes) >= per_scenario:
+        raise SystemExit(
+            "stage sizes must leave at least one held-out validation instance per scenario"
+        )
+
+    pipeline = _pipeline(args)
+    runs = harvest_tasks(
+        pipeline.client,
+        tasks,
+        max_tokens=args.harvest_max_tokens,
+        effort=args.effort,
+        thinking_display=args.thinking_display,
+    )
+    result = StratifiedPromptOptimizer(pipeline.extractor).optimize(
+        runs,
+        candidates,
+        stage_sizes=stage_sizes,
+    )
+    paths = []
+    for run in runs:
+        paths.append(
+            pipeline.writer.write(
+                run,
+                selected_trials(result, run),
+                save_signatures=args.save_signatures,
+            )
+        )
+    args.output.mkdir(parents=True, exist_ok=True)
+    result_path = args.output / "calibration-results.json"
+    manifest_meta = {
+        "path": str(args.manifest),
+        "selection": manifest_payload.get("selection"),
+        "sources": manifest_payload.get("sources"),
+        "task_count": len(tasks),
+    }
+    result_path.write_text(
+        json.dumps(result_dict(result, manifest_meta), ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    print(
+        json.dumps(
+            {
+                "model": pipeline.config.model,
+                "tasks": len(runs),
+                "winner": result.winner,
+                "validation": result.validation,
+                "result": str(result_path),
+                "atif_trajectories": [str(item["atif"]) for item in paths],
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
+    return 0 if result.validation.get("macro_valid_rate") == 1.0 else 2
 
 
 def main(argv: Optional[List[str]] = None) -> int:

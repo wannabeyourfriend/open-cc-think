@@ -52,6 +52,19 @@ class BedrockResponse:
         return found
 
     @property
+    def reasoning_summary(self) -> str:
+        """Readable provider-supplied thinking summary, distinct from full recovery."""
+
+        parts: List[str] = []
+        for block in self.content:
+            reasoning = block.get("reasoningContent") if isinstance(block, dict) else None
+            text = reasoning.get("reasoningText") if isinstance(reasoning, dict) else None
+            summary = text.get("text") if isinstance(text, dict) else None
+            if summary:
+                parts.append(str(summary))
+        return "\n".join(parts).strip()
+
+    @property
     def tool_calls(self) -> List[ToolCall]:
         calls: List[ToolCall] = []
         for block in self.content:
@@ -85,6 +98,7 @@ class HarvestStep:
     replay_tool_results: List[Json] = field(default_factory=list)
     system: List[Json] = field(default_factory=list)
     tool_config: Optional[Json] = None
+    user_message: str = ""
 
     @property
     def signature(self) -> str:
@@ -99,6 +113,11 @@ class HarvestStep:
     @property
     def signature_sha256(self) -> str:
         return hashlib.sha256(self.signature.encode("utf-8")).hexdigest() if self.signature else ""
+
+    @property
+    def provider_reasoning_summary(self) -> str:
+        response = BedrockResponse(self.assistant_content, self.stop_reason, self.usage, {})
+        return response.reasoning_summary
 
     def replay_messages(self, instruction: str) -> List[Json]:
         messages = copy.deepcopy(self.prefix_messages)
@@ -125,6 +144,8 @@ class HarvestRun:
     expected_answer: Optional[str] = None
     tool_events: List[Json] = field(default_factory=list)
     task_success: Optional[bool] = None
+    scenario: Optional[str] = None
+    source_metadata: Json = field(default_factory=dict)
 
 
 @dataclass(frozen=True)

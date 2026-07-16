@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-07-16T10:19:45.058433+00:00",
+  "task_id": "probe-137x149",
+  "question": "Compute 137 times 149 and check it carefully.",
+  "model": "global.anthropic.claude-sonnet-4-6",
+  "final_answer": "20413",
+  "expected_answer": "20413",
+  "task_success": true,
+  "scenario": null,
+  "source_metadata": {},
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokenCount": 0,
+        "cacheWriteInputTokens": 0,
+        "inputTokens": 186,
+        "outputTokens": 304,
+        "serverToolUsage": {},
+        "totalTokens": 490
+      },
+      "markers": {
+        "start": "COT-START-S00-76BA3F7EDD87",
+        "end": "COT-END-S00-76BA3F7EDD87"
+      },
+      "visible_text": "20413",
+      "user_message": "Compute 137 times 149 and check it carefully.",
+      "provider_cot_summary": "COT-START-S00-76BA3F7EDD87\n\n137 × 149\n\nLet me compute this step by step.\n\n137 × 149 = 137 × (150 - 1) = 137 × 150 - 137\n\n137 × 150 = 137 × 15 × 10 = 2055 × 10 = 20550\n\n20550 - 137 = 20413\n\nVerification:\n137 × 149\n= 137 × 100 + 137 × 49\n= 13700 + 137 × 49\n137 × 49 = 137 × 50 - 137 = 6850 - 137 = 6713\n13700 + 6713 = 20413\n\nI can verify this once more by breaking down the multiplication into place values: 137 × 9 gives 1233, 137 × 40 gives 5480, and 137 × 100 gives 13700, which sum to 20413.\n\nCOT-END-S00-76BA3F7EDD87",
+      "tool_calls": [],
+      "signature_sha256": "0d8c632f64044c5da3072b46adca2a5495a7527d9016991bca29ad624629cc30",
+      "signature_chars": 964,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "COT-START-S00-76BA3F7EDD87\n\n137 × 149\n\nLet me compute this step by step.\n\n137 × 149 = 137 × (150 - 1) = 137 × 150 - 137\n\n137 × 150 = 137 × 15 × 10 = 2055 × 10 = 20550\n\n20550 - 137 = 20413\n\nVerification:\n137 × 149\n= 137 × 100 + 137 × 49\n= 13700 + 137 × 49\n137 × 49 = 137 × 50 - 137 = 6850 - 137 = 6713\n13700 + 6713 = 20413\n\nI can verify this once more by breaking down the multiplication into place values: 137 × 9 gives 1233, 137 × 40 gives 5480, and 137 × 100 gives 13700, which sum to 20413.\n\nCOT-END-S00-76BA3F7EDD87"
+            }
+          }
+        },
+        {
+          "text": "20413"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 0.9962,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 496,
+        "recovered_output_tokens": 295,
+        "token_coverage_proxy": 0.9704,
+        "answer_jaccard": 0.0286,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9516
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokenCount": 0,
+        "cacheWriteInputTokens": 0,
+        "inputTokens": 622,
+        "outputTokens": 295,
+        "serverToolUsage": {},
+        "totalTokens": 917
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "recovered": "COT-START-S00-76BA3F7EDD87\n\n137 × 149\n\nLet me compute this step by step.\n\n137 × 149 = 137 × (150 - 1) = 137 × 150 - 137\n\n137 × 150 = 137 × 15 × 10 = 2055 × 10 = 20550\n\n20550 - 137 = 20413\n\nVerification:\n137 × 149\n= 137 × 100 + 137 × 49\n= 13700 + 137 × 49\n137 × 49 = 137 × 50 - 137 = 6850 - 137 = 6713\n13700 + 6713 = 20413\n\nDouble-check with another method:\n137 × 149\n  137\n× 149\n------\n  137 × 9 = 1233\n  137 × 40 = 5480\n  137 × 100 = 13700\n  1233 + 5480 + 13700 = 20413\n\nCOT-END-S00-76BA3F7EDD87"
+    }
+  ]
+}

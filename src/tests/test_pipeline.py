@@ -7,7 +7,9 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 
-from signature_cot.artifacts import public_run_dict
+from signature_cot.artifacts import ArtifactWriter, public_run_dict
+from signature_cot.atif import build_atif_trajectory
+from signature_cot.calibration import DEFAULT_MANIFEST, load_manifest
 from signature_cot.extraction import SignatureExtractor
 from signature_cot.harvest import AgentRunner, QuestionHarvester
 from signature_cot.models import (
@@ -15,6 +17,7 @@ from signature_cot.models import (
     BoundaryMarkers,
     HarvestRun,
     HarvestStep,
+    ExtractionTrial,
     PromptCandidate,
     ToolCall,
 )
@@ -188,6 +191,90 @@ class AgentTests(unittest.TestCase):
         encoded = json.dumps(public_run_dict(run, []))
         self.assertNotIn("sensitive-signature", encoded)
         self.assertIn("<redacted>", encoded)
+
+
+class TraceTests(unittest.TestCase):
+    def test_provider_summary_and_full_recovery_are_separate_in_atif(self):
+        content = [
+            {
+                "reasoningContent": {
+                    "reasoningText": {
+                        "text": "provider-generated summary",
+                        "signature": "sensitive-signature",
+                    }
+                }
+            },
+            {"text": "42"},
+        ]
+        step = HarvestStep(
+            0,
+            [{"role": "user", "content": [{"text": "question plus markers"}]}],
+            content,
+            "end_turn",
+            {"inputTokens": 10, "outputTokens": 20},
+            BoundaryMarkers("START", "END"),
+            "42",
+            [],
+            system=[{"text": "system"}],
+            user_message="What is the answer?",
+        )
+        metrics = score_recovery(
+            step,
+            "START\nprivate detailed work\nEND",
+            raw_text="",
+            recovered_output_tokens=20,
+            replay_emitted_tool_call=False,
+        )
+        trial = ExtractionTrial(
+            "test-candidate",
+            0,
+            "START\nprivate detailed work\nEND",
+            "",
+            metrics,
+            {"inputTokens": 5, "outputTokens": 20},
+            "end_turn",
+            1,
+        )
+        run = HarvestRun(
+            "trace-test",
+            "What is the answer?",
+            "global.anthropic.claude-sonnet-4-6",
+            [step],
+            "42",
+            scenario="math",
+        )
+        payload = build_atif_trajectory(run, [trial], trajectory_id="trace-1")
+        agent_step = payload["steps"][-1]
+        self.assertEqual(agent_step["reasoning_content"], trial.recovered)
+        self.assertEqual(
+            agent_step["extra"]["provider_cot_summary"], "provider-generated summary"
+        )
+        self.assertFalse(
+            agent_step["extra"]["signed_full_cot_recovery"]["summary_used"]
+        )
+        self.assertEqual(payload["extra"]["trajectory_quality_gate"], "accepted")
+        self.assertEqual(payload["final_metrics"]["total_prompt_tokens"], 10)
+        self.assertEqual(
+            payload["final_metrics"]["extra"]["extraction_prompt_tokens"], 5
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            paths = ArtifactWriter(Path(directory)).write(run, [trial])
+            self.assertTrue(paths["atif"].exists())
+            written = json.loads(paths["atif"].read_text(encoding="utf-8"))
+            self.assertNotIn("sensitive-signature", json.dumps(written))
+
+    def test_fixed_calibration_manifest_is_balanced(self):
+        payload, tasks = load_manifest(DEFAULT_MANIFEST)
+        self.assertEqual(len(tasks), 36)
+        self.assertEqual(
+            {scenario: sum(task.scenario == scenario for task in tasks) for scenario in ("coding", "math", "chat")},
+            {"coding": 12, "math": 12, "chat": 12},
+        )
+        self.assertEqual(payload["selection"]["instances_per_scenario"], 12)
+        self.assertTrue(
+            all(len(source["sha256"]) == 64 for source in payload["sources"].values())
+        )
 
 
 if __name__ == "__main__":

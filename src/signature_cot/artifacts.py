@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
+from .atif import build_atif_trajectory
 from .models import ExtractionTrial, HarvestRun, OptimizationResult
 
 
@@ -32,7 +33,7 @@ def _metrics_dict(trial: ExtractionTrial) -> Dict[str, Any]:
 
 def public_run_dict(run: HarvestRun, trials: Iterable[ExtractionTrial]) -> Dict[str, Any]:
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "task_id": run.task_id,
         "question": run.question,
@@ -40,6 +41,8 @@ def public_run_dict(run: HarvestRun, trials: Iterable[ExtractionTrial]) -> Dict[
         "final_answer": run.final_answer,
         "expected_answer": run.expected_answer,
         "task_success": run.task_success,
+        "scenario": run.scenario,
+        "source_metadata": run.source_metadata,
         "tool_events": run.tool_events,
         "steps": [
             {
@@ -48,6 +51,8 @@ def public_run_dict(run: HarvestRun, trials: Iterable[ExtractionTrial]) -> Dict[
                 "usage": step.usage,
                 "markers": dataclasses.asdict(step.markers),
                 "visible_text": step.visible_text,
+                "user_message": step.user_message,
+                "provider_cot_summary": step.provider_reasoning_summary,
                 "tool_calls": [dataclasses.asdict(call) for call in step.tool_calls],
                 "signature_sha256": step.signature_sha256,
                 "signature_chars": len(step.signature),
@@ -134,9 +139,18 @@ def render_markdown(
     lines.extend(["## Recovered signed reasoning", ""])
     for trial in sorted(selected_trials, key=lambda item: item.step_index):
         m = trial.metrics
+        provider_summary = run.steps[trial.step_index].provider_reasoning_summary
         lines.extend(
             [
                 "### Decision step %d" % trial.step_index,
+                "",
+                "Provider CoT summary:",
+                "",
+                "```markdown",
+                provider_summary or "<omitted or unavailable>",
+                "```",
+                "",
+                "Signed full-span recovery:",
                 "",
                 "Candidate `%s` · quality %.4f · valid `%s` · boundary `%s/%s` · "
                 "token-coverage proxy %.4f · recovered chars %d"
@@ -184,6 +198,7 @@ class ArtifactWriter:
     ) -> Dict[str, Path]:
         markdown_path = self.output_dir / (run.task_id + ".md")
         json_path = self.output_dir / (run.task_id + ".json")
+        atif_path = self.output_dir / (run.task_id + ".atif.json")
         markdown_path.write_text(
             render_markdown(run, selected_trials, optimization), encoding="utf-8"
         )
@@ -205,7 +220,11 @@ class ArtifactWriter:
                 "paired_schedule": optimization.paired_schedule,
             }
         json_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-        result = {"markdown": markdown_path, "json": json_path}
+        atif_payload = build_atif_trajectory(run, selected_trials)
+        atif_path.write_text(
+            json.dumps(atif_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        result = {"markdown": markdown_path, "json": json_path, "atif": atif_path}
         if save_signatures:
             private_dir = self.output_dir / "private"
             private_dir.mkdir(exist_ok=True)

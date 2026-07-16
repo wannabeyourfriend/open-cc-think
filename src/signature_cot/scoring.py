@@ -108,8 +108,9 @@ def score_recovery(
     start_position = round(start_at / float(length), 4) if start_hit else None
     end_position = round(end_at / float(length), 4) if end_hit else None
 
-    # Bedrock does not expose a separate thinking-token count. With display=omitted,
-    # outputTokens is a useful but explicitly labeled proxy; cap it to avoid overclaiming.
+    # Bedrock Converse exposes inclusive billed outputTokens rather than a stable full-thinking
+    # token count. This remains a deliberately labeled proxy under both summarized and omitted
+    # thinking display; cap it to avoid overclaiming.
     denominator = max(1, step.output_tokens)
     token_coverage_proxy = min(1.0, recovered_output_tokens / float(denominator))
     answer_overlap = jaccard(recovered, step.visible_text)

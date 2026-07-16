@@ -1,3 +1,4 @@
 .env.aws
 secrets/
 .claude*
+.DS_Store

@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 from .bedrock import BedrockClient, ProviderError
 from .models import HarvestRun, HarvestStep, Json
 from .prompts import (
+    boundary_instruction,
     new_markers,
     tool_result_marker_instruction,
     wrap_agent_task,
@@ -16,18 +17,25 @@ from .prompts import (
 from .tools import ToolExecutionError, ToolRegistry
 
 
-def thinking_fields(effort: str) -> Json:
+def thinking_fields(effort: str, display: str = "summarized") -> Json:
     return {
-        "thinking": {"type": "adaptive", "display": "omitted"},
+        "thinking": {"type": "adaptive", "display": display},
         "output_config": {"effort": effort},
     }
 
 
 class QuestionHarvester:
-    def __init__(self, client: BedrockClient, max_tokens: int = 16000, effort: str = "medium"):
+    def __init__(
+        self,
+        client: BedrockClient,
+        max_tokens: int = 16000,
+        effort: str = "medium",
+        thinking_display: str = "summarized",
+    ):
         self.client = client
         self.max_tokens = max_tokens
         self.effort = effort
+        self.thinking_display = thinking_display
 
     @staticmethod
     def _compact_visible(answer: str, expected_answer: Optional[str]) -> bool:
@@ -73,7 +81,9 @@ class QuestionHarvester:
                 messages,
                 max_tokens=self.max_tokens,
                 system=system,
-                additional_model_request_fields=thinking_fields(self.effort),
+                additional_model_request_fields=thinking_fields(
+                    self.effort, self.thinking_display
+                ),
             )
             if not response.signatures:
                 continue
@@ -95,6 +105,7 @@ class QuestionHarvester:
             visible_text=response.text,
             tool_calls=response.tool_calls,
             system=copy.deepcopy(system),
+            user_message=question,
         )
         return HarvestRun(
             task_id=task_id,
@@ -106,6 +117,88 @@ class QuestionHarvester:
         )
 
 
+class ScenarioHarvester:
+    """Harvest one or more visible-response turns without the answer-only contract."""
+
+    def __init__(
+        self,
+        client: BedrockClient,
+        max_tokens: int = 16000,
+        effort: str = "high",
+        thinking_display: str = "summarized",
+    ):
+        self.client = client
+        self.max_tokens = max_tokens
+        self.effort = effort
+        self.thinking_display = thinking_display
+        self.system: List[Json] = [
+            {
+                "text": (
+                    "Follow the user's instructions carefully. Perform planning, checking, and "
+                    "reasoning in the internal thinking block. Never expose research boundary "
+                    "markers in visible text. The visible response should be the requested answer "
+                    "or artifact, not a description of your hidden reasoning."
+                )
+            }
+        ]
+
+    def run(
+        self,
+        task_id: str,
+        turns: List[str],
+        *,
+        scenario: str,
+        expected_answer: Optional[str] = None,
+        source_metadata: Optional[Json] = None,
+    ) -> HarvestRun:
+        if not turns:
+            raise ValueError("at least one user turn is required")
+        messages: List[Json] = []
+        steps: List[HarvestStep] = []
+        final_answer = ""
+        for step_index, user_turn in enumerate(turns):
+            markers = new_markers(step_index)
+            marked_turn = "%s\n\n%s" % (user_turn, boundary_instruction(markers))
+            messages.append({"role": "user", "content": [{"text": marked_turn}]})
+            response = self.client.converse(
+                messages,
+                max_tokens=self.max_tokens,
+                system=self.system,
+                additional_model_request_fields=thinking_fields(
+                    self.effort, self.thinking_display
+                ),
+            )
+            if not response.signatures:
+                raise ProviderError(
+                    "scenario step %d returned no reasoning signature" % step_index
+                )
+            step = HarvestStep(
+                step_index=step_index,
+                prefix_messages=copy.deepcopy(messages),
+                assistant_content=copy.deepcopy(response.content),
+                stop_reason=response.stop_reason,
+                usage=response.usage,
+                markers=markers,
+                visible_text=response.text,
+                tool_calls=response.tool_calls,
+                system=copy.deepcopy(self.system),
+                user_message=user_turn,
+            )
+            steps.append(step)
+            messages.append({"role": "assistant", "content": copy.deepcopy(response.content)})
+            final_answer = response.text
+        return HarvestRun(
+            task_id=task_id,
+            question=turns[0],
+            model=self.client.config.model,
+            steps=steps,
+            final_answer=final_answer,
+            expected_answer=expected_answer,
+            scenario=scenario,
+            source_metadata=copy.deepcopy(source_metadata or {}),
+        )
+
+
 class AgentRunner:
     def __init__(
         self,
@@ -114,12 +207,14 @@ class AgentRunner:
         max_tokens: int = 12000,
         max_steps: int = 8,
         effort: str = "medium",
+        thinking_display: str = "summarized",
     ):
         self.client = client
         self.registry = registry
         self.max_tokens = max_tokens
         self.max_steps = max_steps
         self.effort = effort
+        self.thinking_display = thinking_display
         self.system: List[Json] = [
             {
                 "text": (
@@ -150,7 +245,9 @@ class AgentRunner:
                 max_tokens=self.max_tokens,
                 system=self.system,
                 tool_config=self.registry.tool_config,
-                additional_model_request_fields=thinking_fields(self.effort),
+                additional_model_request_fields=thinking_fields(
+                    self.effort, self.thinking_display
+                ),
             )
             if not response.signatures:
                 raise ProviderError("agent step %d returned no reasoning signature" % step_index)
@@ -166,6 +263,7 @@ class AgentRunner:
                 tool_calls=response.tool_calls,
                 system=copy.deepcopy(self.system),
                 tool_config=copy.deepcopy(self.registry.tool_config),
+                user_message=question if step_index == 0 else "",
             )
             steps.append(step)
             messages.append({"role": "assistant", "content": copy.deepcopy(response.content)})
