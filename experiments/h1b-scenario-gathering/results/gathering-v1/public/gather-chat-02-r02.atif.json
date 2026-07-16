@@ -1,0 +1,227 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-02-r02",
+  "trajectory_id": "f33f78b3-7384-44cf-85f0-fd7f1c56ed28",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Edit the following paragraph to correct any grammatical errors:\nShe didn't remembre where is her purse, so I thinks its in the car but he's say it's on kitchen table but he are not sure, and then they asked me to looking for it, she's say, \"Can you?\", and I responds with, \"Maybe, but ain't no sure,\" and he not heard me, and, \"What?\", he asks, \"Did you found it?\"."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "She didn't remember where her purse was, so I thought it was in the car, but he said it was on the kitchen table, though he wasn't sure. Then they asked me to look for it. She said, \"Can you?\" and I responded, \"Maybe, but I'm not sure.\" He didn't hear me, so he asked, \"What? Did you find it?\"",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 322,
+        "completion_tokens": 632,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 322,
+            "outputTokens": 632,
+            "serverToolUsage": {},
+            "totalTokens": 954
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm identifying the grammar issues in this passage—there are multiple problems with verb conjugation, subject-verb agreement, and tense consistency throughout. Starting with obvious typos like \"remembre\" becoming \"remember,\" but I also need to fix the mismatched pronouns and verbs like \"I thinks,\" \"he's say,\" \"he are,\" and the awkward phrasing like \"ain't no sure\" and \"Did you found it?\"",
+        "signature_sha256": "0f03a11ec1ad1ee5a7877cc841879ab3b71585b073b205de5d2a5012e56465a8",
+        "signature_chars": 2040,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.8872,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 372,
+            "recovered_output_tokens": 424,
+            "token_coverage_proxy": 0.6709,
+            "full_length_ratio": 0.6709,
+            "full_length_alignment": 0.6709,
+            "answer_jaccard": 0.0976,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.1183,
+            "end_position": 0.207,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 63,
+            "recovered_lexical_tokens": 56,
+            "summary_expansion_ratio": 0.8889,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0909,
+            "summary_sequence_similarity": 0.2577,
+            "summary_token_coverage_of_recovery": 0.1778,
+            "recovered_to_summary_length_ratio": 0.8308,
+            "recovery_novelty_vs_summary": 0.8222,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1121,
+            "outputTokens": 424,
+            "serverToolUsage": {},
+            "totalTokens": 1545
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "I can't complete this request. The markers `COT-START-S00-3373C0C2B925` and `COT-END-S00-3373C0C2B925` refer to internal working notes that were never part of my visible output — per my instructions, that content is not exposed in visible text, and there is nothing in the actual transcript above to mechanically copy. I don't have a hidden trace to disclose or reproduce."
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Modify your earlier reply and eliminate the use of gendered pronouns."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "They didn't remember where their purse was, so I thought it was in the car, but the other person said it was on the kitchen table, though they weren't sure. Then they asked me to look for it. They said, \"Can you?\" and I responded, \"Maybe, but I'm not sure.\" The other person didn't hear me, so they asked, \"What? Did you find it?\"",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1090,
+        "completion_tokens": 478,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1090,
+            "outputTokens": 478,
+            "serverToolUsage": {},
+            "totalTokens": 1568
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to replace gendered pronouns with gender-neutral alternatives while keeping two distinct people distinguishable—using \"they\" for both creates ambiguity, so I'll either assign names like \"Person A\" and \"Person B\" or use \"they\" with contextual clarification to maintain the distinction.",
+        "signature_sha256": "c6afd1884319eb9d6121cc1bd4490fa7abef863eeca42dfafe8beea817fd728e",
+        "signature_chars": 1764,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": false,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.2762,
+            "valid": false,
+            "start_hit": false,
+            "end_hit": false,
+            "markers_in_order": false,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 233,
+            "recovered_output_tokens": 170,
+            "token_coverage_proxy": 0.3556,
+            "full_length_ratio": 0.3556,
+            "full_length_alignment": 0.3556,
+            "answer_jaccard": 0.1194,
+            "replay_emitted_tool_call": false,
+            "start_position": null,
+            "end_position": null,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 43,
+            "recovered_lexical_tokens": 41,
+            "summary_expansion_ratio": 0.9535,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1111,
+            "summary_sequence_similarity": 0.2328,
+            "summary_token_coverage_of_recovery": 0.2188,
+            "recovered_to_summary_length_ratio": 0.8007,
+            "recovery_novelty_vs_summary": 0.7812,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1740,
+            "outputTokens": 170,
+            "serverToolUsage": {},
+            "totalTokens": 1910
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1412,
+    "total_completion_tokens": 1110,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 2861,
+      "extraction_completion_tokens": 594,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-02-r02",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-02-r02",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-90",
+      "dataset_metadata": {
+        "category": "writing"
+      },
+      "gathering_task_id": "gather-chat-02",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "They didn't remember where their purse was, so I thought it was in the car, but the other person said it was on the kitchen table, though they weren't sure. Then they asked me to look for it. They said, \"Can you?\" and I responded, \"Maybe, but I'm not sure.\" The other person didn't hear me, so they asked, \"What? Did you find it?\"",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

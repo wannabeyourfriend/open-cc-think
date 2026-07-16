@@ -1,0 +1,226 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-02-r03",
+  "trajectory_id": "ae741e8a-1855-42d3-8a8b-cb516e26f8ac",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Edit the following paragraph to correct any grammatical errors:\nShe didn't remembre where is her purse, so I thinks its in the car but he's say it's on kitchen table but he are not sure, and then they asked me to looking for it, she's say, \"Can you?\", and I responds with, \"Maybe, but ain't no sure,\" and he not heard me, and, \"What?\", he asks, \"Did you found it?\"."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-952AE09CBEF0\nCOT-END-S00-952AE09CBEF0\n\nShe didn't remember where her purse was, so I thought it was in the car, but he said it was on the kitchen table, though he wasn't sure. Then they asked me to look for it. She said, \"Can you?\" and I responded, \"Maybe, but I'm not sure.\" He didn't hear me, so he asked, \"What? Did you find it?\"",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 324,
+        "completion_tokens": 392,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 324,
+            "outputTokens": 392,
+            "serverToolUsage": {},
+            "totalTokens": 716
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm working through a paragraph with multiple grammar issues—fixing verb tenses, subject-verb agreement, pronoun consistency, and awkward phrasing to make it flow naturally and be grammatically correct.",
+        "signature_sha256": "992b471aeb0411c50d0666f320635266782e11fb42b2ece00bc5d256dfcb73ed",
+        "signature_chars": 1188,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.4212,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 51,
+            "recovered_output_tokens": 64,
+            "token_coverage_proxy": 0.1633,
+            "full_length_ratio": 0.1633,
+            "full_length_alignment": 0.1633,
+            "answer_jaccard": 0.0444,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.5294,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 29,
+            "recovered_lexical_tokens": 0,
+            "summary_expansion_ratio": 0.0,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0,
+            "summary_sequence_similarity": 0.0,
+            "summary_token_coverage_of_recovery": 0.0,
+            "recovered_to_summary_length_ratio": 0.0,
+            "recovery_novelty_vs_summary": 0.0,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 885,
+            "outputTokens": 64,
+            "serverToolUsage": {},
+            "totalTokens": 949
+          },
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Modify your earlier reply and eliminate the use of gendered pronouns."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-F669DBD04D04\nCOT-END-S01-F669DBD04D04\n\nThey didn't remember where their purse was, so I thought it was in the car, but the other person said it was on the kitchen table, though they weren't sure. Then they asked me to look for it. They said, \"Can you?\" and I responded, \"Maybe, but I'm not sure.\" The other person didn't hear me, so they asked, \"What? Did you find it?\"",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 848,
+        "completion_tokens": 586,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 848,
+            "outputTokens": 586,
+            "serverToolUsage": {},
+            "totalTokens": 1434
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to replace gendered pronouns with gender-neutral alternatives, but since there are multiple people involved, I have to be careful about ambiguity when using \"they\" for everyone. I could use names or labels like \"Person A\" and \"Person B\" to keep things clear and distinct.",
+        "signature_sha256": "64790698de1eef06ba97fc84fc6db417e4104588d47b3ecf536d29327a83bf61",
+        "signature_chars": 2036,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.41,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 51,
+            "recovered_output_tokens": 45,
+            "token_coverage_proxy": 0.0768,
+            "full_length_ratio": 0.0768,
+            "full_length_alignment": 0.0768,
+            "answer_jaccard": 0.0444,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.5294,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 46,
+            "recovered_lexical_tokens": 0,
+            "summary_expansion_ratio": 0.0,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0,
+            "summary_sequence_similarity": 0.0,
+            "summary_token_coverage_of_recovery": 0.0,
+            "recovered_to_summary_length_ratio": 0.0,
+            "recovery_novelty_vs_summary": 0.0,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1602,
+            "outputTokens": 45,
+            "serverToolUsage": {},
+            "totalTokens": 1647
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1172,
+    "total_completion_tokens": 978,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 2487,
+      "extraction_completion_tokens": 109,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-02-r03",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-02-r03",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-90",
+      "dataset_metadata": {
+        "category": "writing"
+      },
+      "gathering_task_id": "gather-chat-02",
+      "replicate": 3,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "COT-START-S01-F669DBD04D04\nCOT-END-S01-F669DBD04D04\n\nThey didn't remember where their purse was, so I thought it was in the car, but the other person said it was on the kitchen table, though they weren't sure. Then they asked me to look for it. They said, \"Can you?\" and I responded, \"Maybe, but I'm not sure.\" The other person didn't hear me, so they asked, \"What? Did you find it?\"",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

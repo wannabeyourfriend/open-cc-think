@@ -1,0 +1,226 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-01-r01",
+  "trajectory_id": "2f676f55-9bc7-4f68-b5f8-e4520a6b435f",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Craft an intriguing opening paragraph for a fictional short story. The story should involve a character who wakes up one morning to find that they can time travel."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "The coffee had gone cold twice before Mara noticed the second time—not because she'd let it sit too long, but because she had lived through the last ten minutes three separate times, each one ending with the same bitter, lukewarm sip. She set the mug down with a shaking hand and stared at the microwave clock, which read 7:14, then 7:14, then 7:14 again, as if the universe had gotten stuck on a single frame of film. It wasn't déjà vu. She could remember each loop distinctly: the neighbor's dog barking at 7:12, the newspaper landing on the porch with the same soft thud, the exact shade of gray light slanting through the blinds. Something had shifted overnight, some quiet fracture in the mechanism of her life, and now Tuesday morning refused to let her go—unless, she realized with a jolt of vertigo, she was the one refusing to let it go.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 243,
+        "completion_tokens": 321,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 243,
+            "outputTokens": 321,
+            "serverToolUsage": {},
+            "totalTokens": 564
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to write an opening paragraph with internal reasoning markers that won't show in the visible text.",
+        "signature_sha256": "66a8a80ec4f5517037ed40592925cb43f7f90f113a6ca14da3f23e061a478c19",
+        "signature_chars": 420,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": false,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.36,
+            "valid": false,
+            "start_hit": false,
+            "end_hit": false,
+            "markers_in_order": false,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 533,
+            "recovered_output_tokens": 426,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.3271,
+            "full_length_alignment": 0.7535,
+            "answer_jaccard": 0.0952,
+            "replay_emitted_tool_call": false,
+            "start_position": null,
+            "end_position": null,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 19,
+            "recovered_lexical_tokens": 100,
+            "summary_expansion_ratio": 5.2632,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.15,
+            "summary_sequence_similarity": 0.1887,
+            "summary_token_coverage_of_recovery": 0.1644,
+            "recovered_to_summary_length_ratio": 5.0571,
+            "recovery_novelty_vs_summary": 0.8356,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 735,
+            "outputTokens": 426,
+            "serverToolUsage": {},
+            "totalTokens": 1161
+          },
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Summarize the story with three bullet points using only nouns and adjectives, without verbs."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "- Cold coffee, repetitive Tuesday morning, unsettling déjà vu\n- Frozen microwave clock, familiar sounds, gray porch light\n- Confused woman, fractured time, uncertain time-traveler",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 699,
+        "completion_tokens": 103,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 699,
+            "outputTokens": 103,
+            "serverToolUsage": {},
+            "totalTokens": 802
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to format three bullet points using only nouns and adjectives, avoiding any verbs.",
+        "signature_sha256": "db79e91fb8b0b75c8a28d309cd80f27a583cf40f0134bfe0302bc74e91d2a42a",
+        "signature_chars": 372,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": false,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.36,
+            "valid": false,
+            "start_hit": false,
+            "end_hit": false,
+            "markers_in_order": false,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 572,
+            "recovered_output_tokens": 508,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 4.932,
+            "full_length_alignment": 0.2028,
+            "answer_jaccard": 0.0103,
+            "replay_emitted_tool_call": false,
+            "start_position": null,
+            "end_position": null,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 15,
+            "recovered_lexical_tokens": 99,
+            "summary_expansion_ratio": 6.6,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0227,
+            "summary_sequence_similarity": 0.1333,
+            "summary_token_coverage_of_recovery": 0.0267,
+            "recovered_to_summary_length_ratio": 6.4157,
+            "recovery_novelty_vs_summary": 0.9733,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 969,
+            "outputTokens": 508,
+            "serverToolUsage": {},
+            "totalTokens": 1477
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 942,
+    "total_completion_tokens": 424,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 1704,
+      "extraction_completion_tokens": 934,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-01-r01",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-01-r01",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-88",
+      "dataset_metadata": {
+        "category": "writing"
+      },
+      "gathering_task_id": "gather-chat-01",
+      "replicate": 1,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "- Cold coffee, repetitive Tuesday morning, unsettling déjà vu\n- Frozen microwave clock, familiar sounds, gray porch light\n- Confused woman, fractured time, uncertain time-traveler",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

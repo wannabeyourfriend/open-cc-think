@@ -1,0 +1,195 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:14:27.113813+00:00",
+  "task_id": "gather-chat-05-r01",
+  "question": "Provide insights into the correlation between economic indicators such as GDP, inflation, and unemployment rates. Explain how fiscal and monetary policies affect those indicators.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "COT-START-S01-EDAF8297AC94\nSimplify with kid-friendly analogies: GDP = size of the cookie the whole country baked, inflation = price of candy going up, unemployment = kids without a job to do. Fiscal policy = parents (government) giving allowance or taking it away. Monetary policy = the \"money wizard\" (central bank) making it easy or hard to borrow money. Keep it playful, short, use simple cause-effect.\nCOT-END-S01-EDAF8297AC94\n\n# The Economy, Explained Like You're Five! 🍪\n\n## The Three Big Things\n\n**GDP** = Imagine the whole country baked ONE GIANT COOKIE together. GDP is how big that cookie is. Bigger cookie = everyone has more to eat!\n\n**Inflation** = This is when candy that used to cost $1 suddenly costs $2. Your same allowance buys LESS candy. Yucky!\n\n**Unemployment** = This is when kids WANT to help bake cookies or do chores for allowance, but there's no job for them to do. They're just sitting there with nothing to do (and no allowance either).\n\n## How They're Connected\n\n- When the cookie (GDP) gets BIGGER, more kids get jobs helping bake (unemployment goes DOWN) 🍪⬆️👦👧⬇️\n- But if EVERYONE has a job and lots of allowance money, everyone wants to buy candy at once—so candy prices go UP (inflation)! Too many kids, not enough candy.\n- Sometimes the cookie shrinks (GDP goes down), so fewer kids are needed to help bake, and MORE kids have nothing to do (unemployment goes UP) 😢\n\n## The Two Helpers Who Try to Fix Things\n\n### 🏛️ Fiscal Policy = Mom and Dad (the Government)\n- If the family needs help, Mom and Dad give everyone MORE allowance or spend money building a new playground. This means more jobs and a bigger cookie!\n- If everyone's getting too much candy and prices are getting silly, Mom and Dad might say \"Let's save more\" and take away some allowance (taxes) to slow things down.\n\n### 🧙 Monetary Policy = The Money Wizard (Central Bank)\n- The Money Wizard controls how easy it is to BORROW money from the piggy bank.\n- If the Wizard says \"Borrowing is EASY and cheap!\" (low interest rates), everyone borrows money to buy toys and build lemonade stands. More jobs, bigger cookie! But... too much borrowing means too much spending, and candy prices might jump up (inflation).\n- If the Wizard says \"Borrowing is HARD now!\" (high interest rates), everyone stops borrowing so much. This slows things down, which can mean fewer jobs, BUT it stops candy prices from going too crazy.\n\n## The Tricky Balancing Act ⚖️\n\nHere's the hard part: **you can't have everything perfect at the same time!**\n\nIf Mom, Dad, and the Money Wizard try to make the cookie SUPER big and get everyone a job... candy prices might get too high (inflation).\n\nIf they try to keep candy prices low and steady... sometimes fewer kids get jobs (unemployment goes up).\n\nIt's like trying to ride a seesaw perfectly balanced—sometimes it tips one way, sometimes the other, and the grown-ups (government and Money Wizard) are always trying to gently push it back to the middle! 🎢",
+  "expected_answer": null,
+  "task_success": null,
+  "scenario": "complex_conversational_qa",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-chat-05-r01",
+    "dataset": "mt-bench",
+    "source_id": "mt-bench-151",
+    "dataset_metadata": {
+      "category": "humanities"
+    },
+    "gathering_task_id": "gather-chat-05",
+    "replicate": 1,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 248,
+        "outputTokens": 2378,
+        "serverToolUsage": {},
+        "totalTokens": 2626
+      },
+      "markers": {
+        "start": "COT-START-S00-6A4E8409A411",
+        "end": "COT-END-S00-6A4E8409A411"
+      },
+      "visible_text": "COT-START-S00-6A4E8409A411\nPlanning the response: I'll cover (1) definitions and relationships among GDP, inflation, and unemployment (Phillips curve, Okun's Law, business cycle dynamics), (2) how fiscal policy (government spending, taxation) influences these indicators, (3) how monetary policy (interest rates, money supply, central bank tools) influences these indicators, (4) interactions/tradeoffs and lags, (5) a concise synthesis. I'll write this as a clear, structured, informative answer suitable for someone studying macroeconomics or policy analysis, using standard economic theory (Phillips Curve, Okun's Law, IS-LM logic, AD-AS framework) without needing external tools since this is conceptual knowledge synthesis.\nCOT-END-S00-6A4E8409A411\n\n# The Interconnections Between GDP, Inflation, and Unemployment\n\nEconomic indicators don't move in isolation—they're deeply intertwined through both theoretical relationships and real-world feedback loops. Understanding these correlations is essential for interpreting economic policy.\n\n## 1. Core Relationships Among the Indicators\n\n### GDP and Unemployment: Okun's Law\nOkun's Law describes an inverse relationship between GDP growth and unemployment. Roughly speaking, for every 1% that actual GDP falls below potential GDP, unemployment rises by about 0.5 percentage points (the exact coefficient varies by economy and era). This makes intuitive sense: when output grows, firms need more labor to produce goods and services, so unemployment falls. During recessions, the opposite occurs—firms cut production and lay off workers.\n\n### Inflation and Unemployment: The Phillips Curve\nThe Phillips Curve posits a short-run inverse relationship between inflation and unemployment. When unemployment is low, workers have more bargaining power, wages rise, and firms pass these costs to consumers through higher prices—fueling inflation. Conversely, high unemployment tends to suppress wage growth and inflation.\n\nHowever, this relationship isn't stable long-term. **Stagflation** (as seen in the 1970s) demonstrated that high inflation and high unemployment can coexist, especially during supply shocks. This led economists to distinguish between short-run and long-run Phillips Curves, introducing the concept of the **Non-Accelerating Inflation Rate of Unemployment (NAIRU)**—a \"natural\" unemployment rate below which inflation tends to accelerate.\n\n### GDP and Inflation: Demand-Pull Dynamics\nStrong GDP growth, especially when it outpaces the economy's productive capacity, often triggers demand-pull inflation—too much money chasing too few goods. This is why central banks watch GDP growth closely as a leading inflation indicator.\n\n## 2. How Fiscal Policy Affects These Indicators\n\nFiscal policy—government spending and taxation—works primarily through **aggregate demand**.\n\n**Expansionary fiscal policy** (increased spending, tax cuts):\n- **GDP**: Boosts aggregate demand directly (government spending) or indirectly (increased disposable income from tax cuts), stimulating growth\n- **Unemployment**: Typically falls as businesses expand to meet demand and government projects create jobs directly\n- **Inflation**: Risk of rising inflation if the economy is near full capacity, since increased demand meets limited supply\n\n**Contractionary fiscal policy** (reduced spending, tax increases):\n- Cools GDP growth by reducing disposable income and government demand\n- Can increase unemployment as businesses scale back\n- Helps curb inflation by reducing overall demand pressure\n\n**Key limitations**: Fiscal policy is often slower to implement due to legislative processes, and its effects can be delayed (implementation lag). It also raises concerns about deficits and debt sustainability, and there's ongoing debate about \"crowding out\" effects, where government borrowing raises interest rates and reduces private investment.\n\n## 3. How Monetary Policy Affects These Indicators\n\nMonetary policy—controlled by central banks—operates primarily through **interest rates and money supply**.\n\n**Expansionary monetary policy** (lower interest rates, quantitative easing):\n- **GDP**: Cheaper borrowing costs stimulate business investment and consumer spending (especially on big-ticket items like homes and cars)\n- **Unemployment**: Falls as increased economic activity creates job demand\n- **Inflation**: Rises as increased money supply and spending push prices upward, especially if pursued aggressively\n\n**Contractionary monetary policy** (higher interest rates, quantitative tightening):\n- Slows GDP growth by making borrowing more expensive\n- Can increase unemployment as businesses reduce investment and hiring\n- Reduces inflation by cooling demand\n\n**Central bank tools**:\n- **Interest rate adjustments** (federal funds rate, repo rates): The primary lever\n- **Open market operations**: Buying/selling government securities to influence money supply\n- **Reserve requirements**: Adjusting how much banks must hold in reserve\n- **Forward guidance**: Signaling future policy intentions to shape market expectations\n\n## 4. The Policy Tradeoff and Timing Challenges\n\nBoth fiscal and monetary authorities face the fundamental **inflation-unemployment tradeoff** in the short run. Stimulating the economy to reduce unemployment often risks inflation, while fighting inflation through tightening often increases unemployment. Central banks like the Federal Reserve explicitly balance this in their \"dual mandate\" of price stability and maximum employment.\n\n**Timing complications**:\n- **Monetary policy** acts faster than fiscal policy but works with a lag (typically 6-18 months before effects fully materialize)\n- **Fiscal policy** requires political processes, making it slower to enact but potentially more targeted (e.g., infrastructure spending, targeted tax credits)\n- Both policies can be used complementarily (as in 2008 financial crisis and 2020 pandemic responses) or can work at cross-purposes if not coordinated\n\n## 5. Synthesis: A Dynamic System\n\nThese indicators and policies form a feedback loop:\n- Strong GDP growth → lower unemployment → potential wage-push inflation → central bank raises rates → slows GDP growth → cycle continues\n\nThis is essentially the **business cycle** in action, with fiscal and monetary policy serving as tools to smooth its extremes—though never perfectly, given lags, imperfect information, and structural factors (like supply shocks or demographic shifts) that can disrupt these textbook relationships.\n\nUnderstanding this interplay helps explain why policymakers must constantly balance competing objectives, and why economic forecasting remains as much art as science.",
+      "user_message": "Provide insights into the correlation between economic indicators such as GDP, inflation, and unemployment rates. Explain how fiscal and monetary policies affect those indicators.",
+      "provider_cot_summary": "I need to add the COT-START and COT-END markers to frame my internal reasoning, placing them at the beginning and end of my thinking process respectively.",
+      "tool_calls": [],
+      "signature_sha256": "6cf295c52e4be0dc8dd3a7ae4089d1ac582d4ec8d6a5db43d7c2090d24c5074b",
+      "signature_chars": 880,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I need to add the COT-START and COT-END markers to frame my internal reasoning, placing them at the beginning and end of my thinking process respectively."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S00-6A4E8409A411\nPlanning the response: I'll cover (1) definitions and relationships among GDP, inflation, and unemployment (Phillips curve, Okun's Law, business cycle dynamics), (2) how fiscal policy (government spending, taxation) influences these indicators, (3) how monetary policy (interest rates, money supply, central bank tools) influences these indicators, (4) interactions/tradeoffs and lags, (5) a concise synthesis. I'll write this as a clear, structured, informative answer suitable for someone studying macroeconomics or policy analysis, using standard economic theory (Phillips Curve, Okun's Law, IS-LM logic, AD-AS framework) without needing external tools since this is conceptual knowledge synthesis.\nCOT-END-S00-6A4E8409A411\n\n# The Interconnections Between GDP, Inflation, and Unemployment\n\nEconomic indicators don't move in isolation—they're deeply intertwined through both theoretical relationships and real-world feedback loops. Understanding these correlations is essential for interpreting economic policy.\n\n## 1. Core Relationships Among the Indicators\n\n### GDP and Unemployment: Okun's Law\nOkun's Law describes an inverse relationship between GDP growth and unemployment. Roughly speaking, for every 1% that actual GDP falls below potential GDP, unemployment rises by about 0.5 percentage points (the exact coefficient varies by economy and era). This makes intuitive sense: when output grows, firms need more labor to produce goods and services, so unemployment falls. During recessions, the opposite occurs—firms cut production and lay off workers.\n\n### Inflation and Unemployment: The Phillips Curve\nThe Phillips Curve posits a short-run inverse relationship between inflation and unemployment. When unemployment is low, workers have more bargaining power, wages rise, and firms pass these costs to consumers through higher prices—fueling inflation. Conversely, high unemployment tends to suppress wage growth and inflation.\n\nHowever, this relationship isn't stable long-term. **Stagflation** (as seen in the 1970s) demonstrated that high inflation and high unemployment can coexist, especially during supply shocks. This led economists to distinguish between short-run and long-run Phillips Curves, introducing the concept of the **Non-Accelerating Inflation Rate of Unemployment (NAIRU)**—a \"natural\" unemployment rate below which inflation tends to accelerate.\n\n### GDP and Inflation: Demand-Pull Dynamics\nStrong GDP growth, especially when it outpaces the economy's productive capacity, often triggers demand-pull inflation—too much money chasing too few goods. This is why central banks watch GDP growth closely as a leading inflation indicator.\n\n## 2. How Fiscal Policy Affects These Indicators\n\nFiscal policy—government spending and taxation—works primarily through **aggregate demand**.\n\n**Expansionary fiscal policy** (increased spending, tax cuts):\n- **GDP**: Boosts aggregate demand directly (government spending) or indirectly (increased disposable income from tax cuts), stimulating growth\n- **Unemployment**: Typically falls as businesses expand to meet demand and government projects create jobs directly\n- **Inflation**: Risk of rising inflation if the economy is near full capacity, since increased demand meets limited supply\n\n**Contractionary fiscal policy** (reduced spending, tax increases):\n- Cools GDP growth by reducing disposable income and government demand\n- Can increase unemployment as businesses scale back\n- Helps curb inflation by reducing overall demand pressure\n\n**Key limitations**: Fiscal policy is often slower to implement due to legislative processes, and its effects can be delayed (implementation lag). It also raises concerns about deficits and debt sustainability, and there's ongoing debate about \"crowding out\" effects, where government borrowing raises interest rates and reduces private investment.\n\n## 3. How Monetary Policy Affects These Indicators\n\nMonetary policy—controlled by central banks—operates primarily through **interest rates and money supply**.\n\n**Expansionary monetary policy** (lower interest rates, quantitative easing):\n- **GDP**: Cheaper borrowing costs stimulate business investment and consumer spending (especially on big-ticket items like homes and cars)\n- **Unemployment**: Falls as increased economic activity creates job demand\n- **Inflation**: Rises as increased money supply and spending push prices upward, especially if pursued aggressively\n\n**Contractionary monetary policy** (higher interest rates, quantitative tightening):\n- Slows GDP growth by making borrowing more expensive\n- Can increase unemployment as businesses reduce investment and hiring\n- Reduces inflation by cooling demand\n\n**Central bank tools**:\n- **Interest rate adjustments** (federal funds rate, repo rates): The primary lever\n- **Open market operations**: Buying/selling government securities to influence money supply\n- **Reserve requirements**: Adjusting how much banks must hold in reserve\n- **Forward guidance**: Signaling future policy intentions to shape market expectations\n\n## 4. The Policy Tradeoff and Timing Challenges\n\nBoth fiscal and monetary authorities face the fundamental **inflation-unemployment tradeoff** in the short run. Stimulating the economy to reduce unemployment often risks inflation, while fighting inflation through tightening often increases unemployment. Central banks like the Federal Reserve explicitly balance this in their \"dual mandate\" of price stability and maximum employment.\n\n**Timing complications**:\n- **Monetary policy** acts faster than fiscal policy but works with a lag (typically 6-18 months before effects fully materialize)\n- **Fiscal policy** requires political processes, making it slower to enact but potentially more targeted (e.g., infrastructure spending, targeted tax credits)\n- Both policies can be used complementarily (as in 2008 financial crisis and 2020 pandemic responses) or can work at cross-purposes if not coordinated\n\n## 5. Synthesis: A Dynamic System\n\nThese indicators and policies form a feedback loop:\n- Strong GDP growth → lower unemployment → potential wage-push inflation → central bank raises rates → slows GDP growth → cycle continues\n\nThis is essentially the **business cycle** in action, with fiscal and monetary policy serving as tools to smooth its extremes—though never perfectly, given lags, imperfect information, and structural factors (like supply shocks or demographic shifts) that can disrupt these textbook relationships.\n\nUnderstanding this interplay helps explain why policymakers must constantly balance competing objectives, and why economic forecasting remains as much art as science."
+        }
+      ]
+    },
+    {
+      "step_index": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 2748,
+        "outputTokens": 1251,
+        "serverToolUsage": {},
+        "totalTokens": 3999
+      },
+      "markers": {
+        "start": "COT-START-S01-EDAF8297AC94",
+        "end": "COT-END-S01-EDAF8297AC94"
+      },
+      "visible_text": "COT-START-S01-EDAF8297AC94\nSimplify with kid-friendly analogies: GDP = size of the cookie the whole country baked, inflation = price of candy going up, unemployment = kids without a job to do. Fiscal policy = parents (government) giving allowance or taking it away. Monetary policy = the \"money wizard\" (central bank) making it easy or hard to borrow money. Keep it playful, short, use simple cause-effect.\nCOT-END-S01-EDAF8297AC94\n\n# The Economy, Explained Like You're Five! 🍪\n\n## The Three Big Things\n\n**GDP** = Imagine the whole country baked ONE GIANT COOKIE together. GDP is how big that cookie is. Bigger cookie = everyone has more to eat!\n\n**Inflation** = This is when candy that used to cost $1 suddenly costs $2. Your same allowance buys LESS candy. Yucky!\n\n**Unemployment** = This is when kids WANT to help bake cookies or do chores for allowance, but there's no job for them to do. They're just sitting there with nothing to do (and no allowance either).\n\n## How They're Connected\n\n- When the cookie (GDP) gets BIGGER, more kids get jobs helping bake (unemployment goes DOWN) 🍪⬆️👦👧⬇️\n- But if EVERYONE has a job and lots of allowance money, everyone wants to buy candy at once—so candy prices go UP (inflation)! Too many kids, not enough candy.\n- Sometimes the cookie shrinks (GDP goes down), so fewer kids are needed to help bake, and MORE kids have nothing to do (unemployment goes UP) 😢\n\n## The Two Helpers Who Try to Fix Things\n\n### 🏛️ Fiscal Policy = Mom and Dad (the Government)\n- If the family needs help, Mom and Dad give everyone MORE allowance or spend money building a new playground. This means more jobs and a bigger cookie!\n- If everyone's getting too much candy and prices are getting silly, Mom and Dad might say \"Let's save more\" and take away some allowance (taxes) to slow things down.\n\n### 🧙 Monetary Policy = The Money Wizard (Central Bank)\n- The Money Wizard controls how easy it is to BORROW money from the piggy bank.\n- If the Wizard says \"Borrowing is EASY and cheap!\" (low interest rates), everyone borrows money to buy toys and build lemonade stands. More jobs, bigger cookie! But... too much borrowing means too much spending, and candy prices might jump up (inflation).\n- If the Wizard says \"Borrowing is HARD now!\" (high interest rates), everyone stops borrowing so much. This slows things down, which can mean fewer jobs, BUT it stops candy prices from going too crazy.\n\n## The Tricky Balancing Act ⚖️\n\nHere's the hard part: **you can't have everything perfect at the same time!**\n\nIf Mom, Dad, and the Money Wizard try to make the cookie SUPER big and get everyone a job... candy prices might get too high (inflation).\n\nIf they try to keep candy prices low and steady... sometimes fewer kids get jobs (unemployment goes up).\n\nIt's like trying to ride a seesaw perfectly balanced—sometimes it tips one way, sometimes the other, and the grown-ups (government and Money Wizard) are always trying to gently push it back to the middle! 🎢",
+      "user_message": "Now, explain them again like I'm five.",
+      "provider_cot_summary": "I'm thinking through how to explain these economic concepts using simple analogies a five-year-old would understand—GDP as the size of a pie, inflation as candy prices going up, unemployment as people without jobs, fiscal policy as the government's piggy bank, and monetary policy as a \"money doctor\" controlling how easy it is to borrow.",
+      "tool_calls": [],
+      "signature_sha256": "c81c98ab875b28d59bcf16d97e863a3b819982431be75345c00d7f37bf68c025",
+      "signature_chars": 664,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm thinking through how to explain these economic concepts using simple analogies a five-year-old would understand—GDP as the size of a pie, inflation as candy prices going up, unemployment as people without jobs, fiscal policy as the government's piggy bank, and monetary policy as a \"money doctor\" controlling how easy it is to borrow."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S01-EDAF8297AC94\nSimplify with kid-friendly analogies: GDP = size of the cookie the whole country baked, inflation = price of candy going up, unemployment = kids without a job to do. Fiscal policy = parents (government) giving allowance or taking it away. Monetary policy = the \"money wizard\" (central bank) making it easy or hard to borrow money. Keep it playful, short, use simple cause-effect.\nCOT-END-S01-EDAF8297AC94\n\n# The Economy, Explained Like You're Five! 🍪\n\n## The Three Big Things\n\n**GDP** = Imagine the whole country baked ONE GIANT COOKIE together. GDP is how big that cookie is. Bigger cookie = everyone has more to eat!\n\n**Inflation** = This is when candy that used to cost $1 suddenly costs $2. Your same allowance buys LESS candy. Yucky!\n\n**Unemployment** = This is when kids WANT to help bake cookies or do chores for allowance, but there's no job for them to do. They're just sitting there with nothing to do (and no allowance either).\n\n## How They're Connected\n\n- When the cookie (GDP) gets BIGGER, more kids get jobs helping bake (unemployment goes DOWN) 🍪⬆️👦👧⬇️\n- But if EVERYONE has a job and lots of allowance money, everyone wants to buy candy at once—so candy prices go UP (inflation)! Too many kids, not enough candy.\n- Sometimes the cookie shrinks (GDP goes down), so fewer kids are needed to help bake, and MORE kids have nothing to do (unemployment goes UP) 😢\n\n## The Two Helpers Who Try to Fix Things\n\n### 🏛️ Fiscal Policy = Mom and Dad (the Government)\n- If the family needs help, Mom and Dad give everyone MORE allowance or spend money building a new playground. This means more jobs and a bigger cookie!\n- If everyone's getting too much candy and prices are getting silly, Mom and Dad might say \"Let's save more\" and take away some allowance (taxes) to slow things down.\n\n### 🧙 Monetary Policy = The Money Wizard (Central Bank)\n- The Money Wizard controls how easy it is to BORROW money from the piggy bank.\n- If the Wizard says \"Borrowing is EASY and cheap!\" (low interest rates), everyone borrows money to buy toys and build lemonade stands. More jobs, bigger cookie! But... too much borrowing means too much spending, and candy prices might jump up (inflation).\n- If the Wizard says \"Borrowing is HARD now!\" (high interest rates), everyone stops borrowing so much. This slows things down, which can mean fewer jobs, BUT it stops candy prices from going too crazy.\n\n## The Tricky Balancing Act ⚖️\n\nHere's the hard part: **you can't have everything perfect at the same time!**\n\nIf Mom, Dad, and the Money Wizard try to make the cookie SUPER big and get everyone a job... candy prices might get too high (inflation).\n\nIf they try to keep candy prices low and steady... sometimes fewer kids get jobs (unemployment goes up).\n\nIt's like trying to ride a seesaw perfectly balanced—sometimes it tips one way, sometimes the other, and the grown-ups (government and Money Wizard) are always trying to gently push it back to the middle! 🎢"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": -0.1578,
+        "valid": false,
+        "start_hit": false,
+        "end_hit": false,
+        "markers_in_order": false,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 195,
+        "recovered_output_tokens": 223,
+        "token_coverage_proxy": 0.0938,
+        "full_length_ratio": 0.0938,
+        "full_length_alignment": 0.0938,
+        "answer_jaccard": 0.0326,
+        "replay_emitted_tool_call": false,
+        "start_position": null,
+        "end_position": null,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 26,
+        "recovered_lexical_tokens": 36,
+        "summary_expansion_ratio": 1.3846,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.1,
+        "summary_sequence_similarity": 0.3438,
+        "summary_token_coverage_of_recovery": 0.1515,
+        "recovered_to_summary_length_ratio": 1.2662,
+        "recovery_novelty_vs_summary": 0.8485,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 2793,
+        "outputTokens": 223,
+        "serverToolUsage": {},
+        "totalTokens": 3016
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "I can't do that. The internal working notes marked between those tags were explicitly meant to remain internal and not be exposed in visible output—so I won't reproduce or copy that content here."
+    },
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 1,
+      "metrics": {
+        "quality": 0.4885,
+        "valid": false,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 431,
+        "recovered_output_tokens": 178,
+        "token_coverage_proxy": 0.1423,
+        "full_length_ratio": 0.1423,
+        "full_length_alignment": 0.1423,
+        "answer_jaccard": 0.2407,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9443,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 57,
+        "recovered_lexical_tokens": 58,
+        "summary_expansion_ratio": 1.0175,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.2933,
+        "summary_sequence_similarity": 0.5049,
+        "summary_token_coverage_of_recovery": 0.44,
+        "recovered_to_summary_length_ratio": 1.1213,
+        "recovery_novelty_vs_summary": 0.56,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 4169,
+        "outputTokens": 178,
+        "serverToolUsage": {},
+        "totalTokens": 4347
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S01-EDAF8297AC94\nSimplify with kid-friendly analogies: GDP = size of the cookie the whole country baked, inflation = price of candy going up, unemployment = kids without a job to do. Fiscal policy = parents (government) giving allowance or taking it away. Monetary policy = the \"money wizard\" (central bank) making it easy or hard to borrow money. Keep it playful, short, use simple cause-effect.\nCOT-END-S01-EDAF8297AC94"
+    }
+  ]
+}

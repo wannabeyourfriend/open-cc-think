@@ -1,0 +1,176 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-04-r02",
+  "trajectory_id": "c66092d3-61c2-4b1b-a704-f6b9f16a2bcc",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Given the following data, identify the company with the highest profit in 2021 and provide its CEO's name:\na) Company X, with CEO Amy Williams, reported $30 billion in revenue and a $3 billion profit in 2021.\nb) Company Y, led by CEO Mark Thompson, posted a $60 billion revenue and a $6 billion profit in the same year.\nc) Company Z, under CEO Sarah Johnson, announced a $20 billion revenue and a $7 billion profit in 2021.\nd) Company W, managed by CEO James Smith, revealed a $300 billion revenue with a $21 billion profit in 2021.\ne) Company V, with CEO Lisa Brown, reported a $200 billion revenue and a $25 billion profit in 2021.\nf) Company U, under CEO John White, posted a $180 billion revenue and a $20 billion profit in the same year."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-176B911BD450\nComparing profits: X=$3B, Y=$6B, Z=$7B, W=$21B, V=$25B, U=$20B.\nHighest profit is Company V with $25 billion.\nCEO of Company V is Lisa Brown.\nCOT-END-S00-176B911BD450\n\nThe company with the highest profit in 2021 is **Company V**, with a profit of $25 billion. Its CEO is **Lisa Brown**.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 482,
+        "completion_tokens": 159,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 482,
+            "outputTokens": 159,
+            "serverToolUsage": {},
+            "totalTokens": 641
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": null
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Which company had the highest profit margin (profit/revenue ratio))?"
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-D95E0BD7DD1F\nCalculating profit margins (profit/revenue):\n- X: 3/30 = 10%\n- Y: 6/60 = 10%\n- Z: 7/20 = 35%\n- W: 21/300 = 7%\n- V: 25/200 = 12.5%\n- U: 20/180 ≈ 11.1%\n\nHighest margin: Company Z at 35%.\nCOT-END-S01-D95E0BD7DD1F\n\n**Company Z** had the highest profit margin, at **35%** (a $7 billion profit on $20 billion in revenue), led by CEO Sarah Johnson.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 778,
+        "completion_tokens": 317,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 778,
+            "outputTokens": 317,
+            "serverToolUsage": {},
+            "totalTokens": 1095
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "Now I'm calculating the profit margins for each option by dividing profit by cost, and Z stands out significantly at 35% compared to the others which range from 7% to 12.5%.",
+        "signature_sha256": "35d6d4ba3da29e1d598005c435c1cdaf198c07a40e804ed13eddb2f17975e949",
+        "signature_chars": 480,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.4601,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 236,
+            "recovered_output_tokens": 171,
+            "token_coverage_proxy": 0.5394,
+            "full_length_ratio": 0.5394,
+            "full_length_alignment": 0.5394,
+            "answer_jaccard": 0.7556,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.8983,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 32,
+            "recovered_lexical_tokens": 41,
+            "summary_expansion_ratio": 1.2812,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1321,
+            "summary_sequence_similarity": 0.2809,
+            "summary_token_coverage_of_recovery": 0.2188,
+            "recovered_to_summary_length_ratio": 1.0578,
+            "recovery_novelty_vs_summary": 0.7812,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1269,
+            "outputTokens": 171,
+            "serverToolUsage": {},
+            "totalTokens": 1440
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1260,
+    "total_completion_tokens": 476,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 1269,
+      "extraction_completion_tokens": 171,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-04-r02",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-04-r02",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-134",
+      "dataset_metadata": {
+        "category": "extraction"
+      },
+      "gathering_task_id": "gather-chat-04",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "COT-START-S01-D95E0BD7DD1F\nCalculating profit margins (profit/revenue):\n- X: 3/30 = 10%\n- Y: 6/60 = 10%\n- Z: 7/20 = 35%\n- W: 21/300 = 7%\n- V: 25/200 = 12.5%\n- U: 20/180 ≈ 11.1%\n\nHighest margin: Company Z at 35%.\nCOT-END-S01-D95E0BD7DD1F\n\n**Company Z** had the highest profit margin, at **35%** (a $7 billion profit on $20 billion in revenue), led by CEO Sarah Johnson.",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-01-r03",
+  "trajectory_id": "9cc949f2-dbf6-423d-b450-489b62b84bcf",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Craft an intriguing opening paragraph for a fictional short story. The story should involve a character who wakes up one morning to find that they can time travel."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-8A068B23B812\nThe user wants a compelling opening paragraph for a short story about someone who discovers they can time travel upon waking. I should craft something atmospheric, hook the reader, establish voice/character, and hint at the time travel discovery in an intriguing way—perhaps through a small, uncanny detail rather than stating it outright, to build curiosity. I'll aim for vivid sensory details, a touch of mystery, and a strong narrative voice. Let me draft a few options mentally and pick the strongest, then refine word choice and rhythm.\n\nDraft: Start with mundane morning routine, then a jarring anomaly—like the coffee is still hot from yesterday, or the newspaper date is wrong, or a scar disappears. Build tension with concrete sensory imagery and end on a note of unease/wonder to propel the reader forward.\nCOT-END-S00-8A068B23B812\n\nThe first sign was the coffee—still steaming in the mug from yesterday morning, though Mara distinctly remembered washing that cup and setting it in the drying rack twelve hours ago. She stood barefoot on the cold kitchen tile, staring at the rising curl of steam, at the exact water ring it had left on the counter the day before, at the newspaper open to Tuesday's crossword when she was certain, absolutely certain, that today was Wednesday. Her hands trembled as she touched the mug's handle, half expecting it to dissolve like a dream, but it was solid, real, impossibly warm. It was only when she glanced at the clock—7:14, the same red digits she'd watched blink past just before falling asleep—that the floor seemed to tilt beneath her, and she understood, with a lurch of vertigo and something dangerously close to delight, that she had somehow slipped backward through the seam of the world, and that nothing about today, or any day after, would ever be simple again.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 237,
+        "completion_tokens": 647,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 237,
+            "outputTokens": 647,
+            "serverToolUsage": {},
+            "totalTokens": 884
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to craft an engaging opening paragraph for a time travel story that hooks the reader with the disorientation of suddenly gaining this ability upon waking.",
+        "signature_sha256": "a2fcfadfcdb0dfadaafc8da51259d4e4d4b9fd6573cc9b656db8a59857d4ff74",
+        "signature_chars": 420,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.5325,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 868,
+            "recovered_output_tokens": 311,
+            "token_coverage_proxy": 0.4807,
+            "full_length_ratio": 0.4807,
+            "full_length_alignment": 0.4807,
+            "answer_jaccard": 0.522,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.9724,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 27,
+            "recovered_lexical_tokens": 137,
+            "summary_expansion_ratio": 5.0741,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1491,
+            "summary_sequence_similarity": 0.1189,
+            "summary_token_coverage_of_recovery": 0.1619,
+            "recovered_to_summary_length_ratio": 5.0621,
+            "recovery_novelty_vs_summary": 0.8381,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1049,
+            "outputTokens": 311,
+            "serverToolUsage": {},
+            "totalTokens": 1360
+          },
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Summarize the story with three bullet points using only nouns and adjectives, without verbs."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-EA16A99CFBA2\nNeed to create three bullet points summarizing the paragraph, using only nouns and adjectives, no verbs (including no gerunds/participles acting as verbs, though participles as adjectives could be borderline—better avoid). Keep phrases noun-phrase style.\nCOT-END-S01-EA16A99CFBA2\n\n- Steaming coffee, warm mug, impossible morning\n- Mara, barefoot, trembling hands, wide eyes\n- Time travel, vertiginous discovery, uncertain future",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1023,
+        "completion_tokens": 220,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1023,
+            "outputTokens": 220,
+            "serverToolUsage": {},
+            "totalTokens": 1243
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to format the summary as three bullet points using only nouns and adjectives, avoiding any verbs.",
+        "signature_sha256": "f1fca67c433ea3ee0a6ad5f7b28217d447f597a9514cafbfd15c9ee15b8bbaa0",
+        "signature_chars": 404,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.6,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 306,
+            "recovered_output_tokens": 236,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.0727,
+            "full_length_alignment": 0.9322,
+            "answer_jaccard": 0.6415,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.9216,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 18,
+            "recovered_lexical_tokens": 37,
+            "summary_expansion_ratio": 2.0556,
+            "summary_ngram_containment": 0.0714,
+            "summary_jaccard": 0.3158,
+            "summary_sequence_similarity": 0.4134,
+            "summary_token_coverage_of_recovery": 0.375,
+            "recovered_to_summary_length_ratio": 2.4423,
+            "recovery_novelty_vs_summary": 0.625,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1414,
+            "outputTokens": 236,
+            "serverToolUsage": {},
+            "totalTokens": 1650
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1260,
+    "total_completion_tokens": 867,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 2463,
+      "extraction_completion_tokens": 547,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-01-r03",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-01-r03",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-88",
+      "dataset_metadata": {
+        "category": "writing"
+      },
+      "gathering_task_id": "gather-chat-01",
+      "replicate": 3,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "COT-START-S01-EA16A99CFBA2\nNeed to create three bullet points summarizing the paragraph, using only nouns and adjectives, no verbs (including no gerunds/participles acting as verbs, though participles as adjectives could be borderline—better avoid). Keep phrases noun-phrase style.\nCOT-END-S01-EA16A99CFBA2\n\n- Steaming coffee, warm mug, impossible morning\n- Mara, barefoot, trembling hands, wide eyes\n- Time travel, vertiginous discovery, uncertain future",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}
