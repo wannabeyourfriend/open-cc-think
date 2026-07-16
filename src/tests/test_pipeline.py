@@ -16,7 +16,7 @@ from signature_cot.bedrock import BedrockClient
 from signature_cot.calibration import DEFAULT_MANIFEST, load_manifest
 from signature_cot.config import ProviderConfig
 from signature_cot.extraction import SignatureExtractor
-from signature_cot.harvest import AgentRunner, QuestionHarvester
+from signature_cot.harvest import AgentRunner, QuestionHarvester, ScenarioHarvester
 from signature_cot.models import (
     BedrockResponse,
     BoundaryMarkers,
@@ -284,6 +284,25 @@ class ReplayTests(unittest.TestCase):
 
 
 class AgentTests(unittest.TestCase):
+    def test_gathering_can_retain_an_unsigned_censored_turn(self):
+        response = BedrockResponse(
+            content=[{"text": "direct answer"}],
+            stop_reason="end_turn",
+            usage={"outputTokens": 3},
+            raw={},
+        )
+        run = ScenarioHarvester(
+            FakeClient([response]),
+            require_signatures=False,
+        ).run(
+            "censored",
+            ["simple question"],
+            scenario="complex_conversational_qa",
+        )
+        self.assertEqual(len(run.steps), 1)
+        self.assertEqual(run.steps[0].signature, "")
+        self.assertEqual(run.final_answer, "direct answer")
+
     def test_terminal_tool_ends_on_the_signed_action(self):
         response = BedrockResponse(
             content=[

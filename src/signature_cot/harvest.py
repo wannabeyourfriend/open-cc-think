@@ -127,11 +127,13 @@ class ScenarioHarvester:
         max_tokens: int = 16000,
         effort: str = "high",
         thinking_display: str = "summarized",
+        require_signatures: bool = True,
     ):
         self.client = client
         self.max_tokens = max_tokens
         self.effort = effort
         self.thinking_display = thinking_display
+        self.require_signatures = require_signatures
         self.system: List[Json] = [
             {
                 "text": (
@@ -169,7 +171,7 @@ class ScenarioHarvester:
                     self.effort, self.thinking_display
                 ),
             )
-            if not response.signatures:
+            if self.require_signatures and not response.signatures:
                 raise ProviderError(
                     "scenario step %d returned no reasoning signature" % step_index
                 )
@@ -211,6 +213,7 @@ class AgentRunner:
         thinking_display: str = "summarized",
         system_text: Optional[str] = None,
         terminal_tool_names: Optional[Sequence[str]] = None,
+        require_signatures: bool = True,
     ):
         self.client = client
         self.registry = registry
@@ -219,6 +222,7 @@ class AgentRunner:
         self.effort = effort
         self.thinking_display = thinking_display
         self.terminal_tool_names = set(terminal_tool_names or ())
+        self.require_signatures = require_signatures
         self.system: List[Json] = [
             {
                 "text": (
@@ -259,7 +263,7 @@ class AgentRunner:
                     self.effort, self.thinking_display
                 ),
             )
-            if not response.signatures:
+            if self.require_signatures and not response.signatures:
                 raise ProviderError(
                     "agent step %d returned no reasoning signature "
                     "(stop_reason=%s tool_calls=%s text_chars=%d summary_chars=%d)"

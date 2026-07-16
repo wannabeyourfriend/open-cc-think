@@ -237,6 +237,7 @@ def harvest_instance(
             thinking_display="summarized",
             system_text=CODING_SYSTEM,
             terminal_tool_names=("apply_patch",),
+            require_signatures=False,
         ).run(
             instance_id,
             task.turns[0],
@@ -255,6 +256,7 @@ def harvest_instance(
         max_tokens=max_tokens,
         effort=effort,
         thinking_display="summarized",
+        require_signatures=False,
     ).run(
         instance_id,
         turns,
@@ -284,15 +286,16 @@ def extract_instance(
         for trial in trials
         if trial.candidate == candidate_name
     }
-    for step in run.steps:
+    signed_steps = [step for step in run.steps if step.signature]
+    for step in signed_steps:
         if step.step_index in by_step:
             continue
         trial = extractor.recover(step, candidate)
         trials.append(trial)
         by_step[step.step_index] = trial
         checkpoint_trials(checkpoint_path, trials)
-    selected = [by_step[step.step_index] for step in run.steps]
-    if len(selected) != len(run.steps):
+    selected = [by_step[step.step_index] for step in signed_steps]
+    if len(selected) != len(signed_steps):
         raise RuntimeError("not every signed decision has an extraction")
     return selected
 
@@ -315,7 +318,9 @@ def completed_record(
         "replicate": replicate,
         "attempts": attempts,
         "task_success": run.task_success,
-        "signed_decisions": len(run.steps),
+        "original_decisions": len(run.steps),
+        "signed_decisions": sum(bool(step.signature) for step in run.steps),
+        "unsigned_decisions": sum(not step.signature for step in run.steps),
         "valid_decisions": sum(trial.metrics.valid for trial in trials),
         "strong_decisions": sum(trial.metrics.strong_recovery for trial in trials),
         "near_duplicate_decisions": sum(
@@ -403,6 +408,9 @@ def summarize(progress: Json, tasks: Sequence[GatheringTask], replicates: int) -
             "expected_instances": len(scenario_tasks) * replicates,
             "complete_instances": len(rows),
             "signed_decisions": decisions,
+            "unsigned_decisions": sum(
+                int(row.get("unsigned_decisions", 0)) for row in rows
+            ),
             "valid_decisions": sum(int(row.get("valid_decisions", 0)) for row in rows),
             "strong_decisions": sum(
                 int(row.get("strong_decisions", 0)) for row in rows
@@ -449,6 +457,9 @@ def summarize(progress: Json, tasks: Sequence[GatheringTask], replicates: int) -
         ),
         "signed_decisions": sum(
             int(row.get("signed_decisions", 0)) for row in complete
+        ),
+        "unsigned_decisions": sum(
+            int(row.get("unsigned_decisions", 0)) for row in complete
         ),
         "valid_decisions": sum(
             int(row.get("valid_decisions", 0)) for row in complete
@@ -566,6 +577,13 @@ def run(args: argparse.Namespace) -> int:
                 print(json.dumps(summary, ensure_ascii=False, indent=2))
                 return 0 if summary["complete"] else 2
             attempts = int(previous.get("attempts", 0))
+            if (
+                previous.get("status") == "failed"
+                and "no reasoning signature" in str(previous.get("error", ""))
+            ):
+                # Harness v1 initially treated adaptive-thinking omission as a provider
+                # failure. It is now retained as an explicit censored observation.
+                attempts = 0
             while attempts < args.max_attempts:
                 attempts += 1
                 processed += 1

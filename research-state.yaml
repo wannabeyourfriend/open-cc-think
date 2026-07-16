@@ -106,7 +106,7 @@ experiments:
   active_run:
     run_id: "H1b-gathering-v1"
     hypothesis: "H1b"
-    status: "running"
+    status: "restarting-censored-aware"
     model: "global.anthropic.claude-sonnet-5"
     scenarios:
       complex_conversational_qa:

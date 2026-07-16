@@ -28,3 +28,7 @@ the task loop reproducible on macOS and ensures the model cannot execute arbitra
 
 The manifest records both reference URLs, but `terminal_bench_included` remains false. Terminal-Bench
 2 stays reserved for held-out production evaluation.
+
+Sonnet 5 adaptive thinking may legitimately omit a reasoning block on a low-complexity decision.
+Such a turn is retained as an unsigned, censored observation. Only signed steps are replayed; the
+full trajectory remains quarantined in ATIF when any original decision lacks a strong recovery.

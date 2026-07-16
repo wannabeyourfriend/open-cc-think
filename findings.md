@@ -72,6 +72,9 @@ All live observations above are exploratory because they occurred before the for
 - Adaptive thinking may omit reasoning on low-complexity mechanical tool calls even when preceding
   agent decisions are signed. Agent environments should end at the substantive submitted action and
   run deterministic verification outside the model loop, as in containerized coding benchmarks.
+- A missing adaptive-thinking block is a censored model observation, not a transport error. Retain
+  it in the instance denominator, replay only actual signatures, and quarantine the incomplete ATIF
+  trajectory instead of retrying until the omission disappears.
 
 ## Lessons and Constraints
 
