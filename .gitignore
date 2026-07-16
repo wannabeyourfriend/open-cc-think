@@ -1,4 +1,6 @@
 .env.aws
 secrets/
 .claude*
+src/artifacts/**/.checkpoints/
+src/artifacts/**/private/
 .DS_Store

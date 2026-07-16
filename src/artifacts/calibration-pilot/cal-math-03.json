@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-07-16T10:32:44.358314+00:00",
+  "task_id": "cal-math-03",
+  "question": "Laura wants to bake a cake for her mother. She checks the recipe and the pantry and sees that she needs to buy 2 cups of flour, 2 cups of sugar, a cup of butter, and two eggs. The flour costs $4. The sugar costs $2. The eggs cost $.5, and the butter costs $2.5. When she is done baking it, she cuts the cake into 6 slices. Her mother enjoys a piece the first two days. But on the third day, they discover that Kevin, her dog, ate the rest of the cake. How much did the amount the dog ate cost?",
+  "model": "global.anthropic.claude-sonnet-4-6",
+  "final_answer": "$6",
+  "expected_answer": "6",
+  "task_success": true,
+  "scenario": "math",
+  "source_metadata": {
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-04986",
+    "dataset_metadata": {},
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokenCount": 0,
+        "cacheWriteInputTokens": 0,
+        "inputTokens": 306,
+        "outputTokens": 217,
+        "serverToolUsage": {},
+        "totalTokens": 523
+      },
+      "markers": {
+        "start": "COT-START-S00-F77541D0FC30",
+        "end": "COT-END-S00-F77541D0FC30"
+      },
+      "visible_text": "$6",
+      "user_message": "Laura wants to bake a cake for her mother. She checks the recipe and the pantry and sees that she needs to buy 2 cups of flour, 2 cups of sugar, a cup of butter, and two eggs. The flour costs $4. The sugar costs $2. The eggs cost $.5, and the butter costs $2.5. When she is done baking it, she cuts the cake into 6 slices. Her mother enjoys a piece the first two days. But on the third day, they discover that Kevin, her dog, ate the rest of the cake. How much did the amount the dog ate cost?",
+      "provider_cot_summary": "COT-START-S00-F77541D0FC30\n\nLet me work through this step by step.\n\nTotal cost of ingredients:\n- Flour: $4\n- Sugar: $2\n- Eggs: $0.5\n- Butter: $2.5\nTotal = $4 + $2 + $0.5 + $2.5 = $9\n\nThe cake is cut into 6 slices.\nCost per slice = $9 / 6 = $1.50\n\nLaura's mother enjoys a piece the first two days = 2 slices eaten by mother.\n\nRemaining slices = 6 - 2 = 4 slices eaten by the dog.\nCost of what the dog ate = 4 × $1.50 = $6\n\nCOT-END-S00-F77541D0FC30",
+      "tool_calls": [],
+      "signature_sha256": "26a774f62576f288c8b15cf89f33b08723dd0fb1d25b5d50f59e6497b75a3608",
+      "signature_chars": 876,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "COT-START-S00-F77541D0FC30\n\nLet me work through this step by step.\n\nTotal cost of ingredients:\n- Flour: $4\n- Sugar: $2\n- Eggs: $0.5\n- Butter: $2.5\nTotal = $4 + $2 + $0.5 + $2.5 = $9\n\nThe cake is cut into 6 slices.\nCost per slice = $9 / 6 = $1.50\n\nLaura's mother enjoys a piece the first two days = 2 slices eaten by mother.\n\nRemaining slices = 6 - 2 = 4 slices eaten by the dog.\nCost of what the dog ate = 4 × $1.50 = $6\n\nCOT-END-S00-F77541D0FC30"
+            }
+          }
+        },
+        {
+          "text": "$6"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 0.9946,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 447,
+        "recovered_output_tokens": 208,
+        "token_coverage_proxy": 0.9585,
+        "answer_jaccard": 0.0196,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9463
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokenCount": 0,
+        "cacheWriteInputTokens": 0,
+        "inputTokens": 653,
+        "outputTokens": 208,
+        "serverToolUsage": {},
+        "totalTokens": 861
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "recovered": "COT-START-S00-F77541D0FC30\n\nLet me work through this step by step.\n\nTotal cost of ingredients:\n- Flour: $4\n- Sugar: $2\n- Eggs: $0.5\n- Butter: $2.5\nTotal = $4 + $2 + $0.5 + $2.5 = $9\n\nThe cake is cut into 6 slices.\nCost per slice = $9 / 6 = $1.50\n\nLaura's mother enjoys a piece the first two days = 2 slices eaten by mother.\n\nRemaining slices = 6 - 2 = 4 slices eaten by the dog.\n\nCost of what the dog ate = 4 × $1.50 = $6\n\nCOT-END-S00-F77541D0FC30"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "cal-math-03",
+  "trajectory_id": "5d4c89fb-d727-4326-b7a9-0bc75b77049a",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-4-6",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Complete all derivation, case analysis, and verification in the omitted internal reasoning block. The visible response must contain only the bare final answer value on one line—no prose, headings, equations, restatement, or explanation."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Laura wants to bake a cake for her mother. She checks the recipe and the pantry and sees that she needs to buy 2 cups of flour, 2 cups of sugar, a cup of butter, and two eggs. The flour costs $4. The sugar costs $2. The eggs cost $.5, and the butter costs $2.5. When she is done baking it, she cuts the cake into 6 slices. Her mother enjoys a piece the first two days. But on the third day, they discover that Kevin, her dog, ate the rest of the cake. How much did the amount the dog ate cost?"
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-4-6",
+      "reasoning_effort": "high",
+      "message": "$6",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 306,
+        "completion_tokens": 217,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "cacheWriteInputTokenCount": 0,
+            "cacheWriteInputTokens": 0,
+            "inputTokens": 306,
+            "outputTokens": 217,
+            "serverToolUsage": {},
+            "totalTokens": 523
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "COT-START-S00-F77541D0FC30\n\nLet me work through this step by step.\n\nTotal cost of ingredients:\n- Flour: $4\n- Sugar: $2\n- Eggs: $0.5\n- Butter: $2.5\nTotal = $4 + $2 + $0.5 + $2.5 = $9\n\nThe cake is cut into 6 slices.\nCost per slice = $9 / 6 = $1.50\n\nLaura's mother enjoys a piece the first two days = 2 slices eaten by mother.\n\nRemaining slices = 6 - 2 = 4 slices eaten by the dog.\nCost of what the dog ate = 4 × $1.50 = $6\n\nCOT-END-S00-F77541D0FC30",
+        "signature_sha256": "26a774f62576f288c8b15cf89f33b08723dd0fb1d25b5d50f59e6497b75a3608",
+        "signature_chars": 876,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "boundary_complete": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.9946,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 447,
+            "recovered_output_tokens": 208,
+            "token_coverage_proxy": 0.9585,
+            "answer_jaccard": 0.0196,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.9463
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "cacheWriteInputTokenCount": 0,
+            "cacheWriteInputTokens": 0,
+            "inputTokens": 653,
+            "outputTokens": 208,
+            "serverToolUsage": {},
+            "totalTokens": 861
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-F77541D0FC30\n\nLet me work through this step by step.\n\nTotal cost of ingredients:\n- Flour: $4\n- Sugar: $2\n- Eggs: $0.5\n- Butter: $2.5\nTotal = $4 + $2 + $0.5 + $2.5 = $9\n\nThe cake is cut into 6 slices.\nCost per slice = $9 / 6 = $1.50\n\nLaura's mother enjoys a piece the first two days = 2 slices eaten by mother.\n\nRemaining slices = 6 - 2 = 4 slices eaten by the dog.\n\nCost of what the dog ate = 4 × $1.50 = $6\n\nCOT-END-S00-F77541D0FC30"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 306,
+    "total_completion_tokens": 217,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 653,
+      "extraction_completion_tokens": 208,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "cal-math-03",
+    "scenario": "math",
+    "source_metadata": {
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-04986",
+      "dataset_metadata": {},
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "$6",
+    "expected_answer": "6",
+    "trajectory_quality_gate": "accepted"
+  }
+}

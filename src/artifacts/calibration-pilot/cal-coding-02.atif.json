@@ -1,0 +1,122 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "cal-coding-02",
+  "trajectory_id": "e9210f0c-417f-4879-a014-2ec296aa1191",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-4-6",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Complete the following Python function. Return the complete function implementation as code, with no discussion outside the code block.\n\n\n\ndef flip_case(string: str) -> str:\n    \"\"\" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\n    >>> flip_case('Hello')\n    'hELLO'\n    \"\"\"\n"
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-4-6",
+      "reasoning_effort": "high",
+      "message": "```python\ndef flip_case(string: str) -> str:\n    \"\"\" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\n    >>> flip_case('Hello')\n    'hELLO'\n    \"\"\"\n    return string.swapcase()\n```",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 220,
+        "completion_tokens": 122,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "cacheWriteInputTokenCount": 0,
+            "cacheWriteInputTokens": 0,
+            "inputTokens": 220,
+            "outputTokens": 122,
+            "serverToolUsage": {},
+            "totalTokens": 342
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "COT-START-S00-B016361E37D6\n\nSimple string swapcase implementation.\n\nCOT-END-S00-B016361E37D6",
+        "signature_sha256": "8a04808e333d06e4050dfe5e66c43fc7727896b13bd03379553ad3239d7dea24",
+        "signature_chars": 400,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "boundary_complete": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.9233,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 92,
+            "recovered_output_tokens": 50,
+            "token_coverage_proxy": 0.4098,
+            "answer_jaccard": 0.0417,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.7391
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "cacheWriteInputTokenCount": 0,
+            "cacheWriteInputTokens": 0,
+            "inputTokens": 472,
+            "outputTokens": 50,
+            "serverToolUsage": {},
+            "totalTokens": 522
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-B016361E37D6\n\nSimple string swapcase implementation.\n\nCOT-END-S00-B016361E37D6"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 220,
+    "total_completion_tokens": 122,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 472,
+      "extraction_completion_tokens": 50,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "cal-coding-02",
+    "scenario": "coding",
+    "source_metadata": {
+      "dataset": "human-eval",
+      "source_id": "HumanEval/27",
+      "dataset_metadata": {
+        "entry_point": "flip_case"
+      },
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "```python\ndef flip_case(string: str) -> str:\n    \"\"\" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\n    >>> flip_case('Hello')\n    'hELLO'\n    \"\"\"\n    return string.swapcase()\n```",
+    "expected_answer": null,
+    "trajectory_quality_gate": "accepted"
+  }
+}

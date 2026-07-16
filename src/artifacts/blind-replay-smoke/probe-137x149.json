@@ -1,0 +1,98 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T10:46:41.592516+00:00",
+  "task_id": "probe-137x149",
+  "question": "Compute 137 times 149 and check it carefully.",
+  "model": "global.anthropic.claude-sonnet-4-6",
+  "final_answer": "20413",
+  "expected_answer": "20413",
+  "task_success": true,
+  "scenario": null,
+  "source_metadata": {},
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokenCount": 0,
+        "cacheWriteInputTokens": 0,
+        "inputTokens": 186,
+        "outputTokens": 234,
+        "serverToolUsage": {},
+        "totalTokens": 420
+      },
+      "markers": {
+        "start": "COT-START-S00-9B16DC1D5689",
+        "end": "COT-END-S00-9B16DC1D5689"
+      },
+      "visible_text": "20413",
+      "user_message": "Compute 137 times 149 and check it carefully.",
+      "provider_cot_summary": "COT-START-S00-9B16DC1D5689\n\n137 × 149\n\nLet me compute this step by step.\n\n137 × 149 = 137 × (150 - 1) = 137 × 150 - 137\n\n137 × 150 = 137 × 15 × 10 = 2055 × 10 = 20550\n\n20550 - 137 = 20413\n\nVerification:\n137 × 149\n= 100 × 149 + 37 × 149\n= 14900 + 37 × 149\n= 14900 + 5513 = 20413\n\nBoth approaches confirm the answer is 20413.\n\nCOT-END-S00-9B16DC1D5689",
+      "tool_calls": [],
+      "signature_sha256": "24b08dc738cf68dadd4f4972e25797d052083c07363e6ed42c0848c878a6fed5",
+      "signature_chars": 792,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "COT-START-S00-9B16DC1D5689\n\n137 × 149\n\nLet me compute this step by step.\n\n137 × 149 = 137 × (150 - 1) = 137 × 150 - 137\n\n137 × 150 = 137 × 15 × 10 = 2055 × 10 = 20550\n\n20550 - 137 = 20413\n\nVerification:\n137 × 149\n= 100 × 149 + 37 × 149\n= 14900 + 37 × 149\n= 14900 + 5513 = 20413\n\nBoth approaches confirm the answer is 20413.\n\nCOT-END-S00-9B16DC1D5689"
+            }
+          }
+        },
+        {
+          "text": "20413"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 0.645,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 373,
+        "recovered_output_tokens": 225,
+        "token_coverage_proxy": 0.9615,
+        "answer_jaccard": 0.0345,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9357,
+        "summary_comparison_available": true,
+        "summary_jaccard": 0.75,
+        "summary_sequence_similarity": 0.8733,
+        "summary_token_coverage_of_recovery": 0.8889,
+        "recovered_to_summary_length_ratio": 1.0761,
+        "recovery_novelty_vs_summary": 0.1111,
+        "summary_contains_canaries": true,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": true,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "cacheWriteInputTokenCount": 0,
+        "cacheWriteInputTokens": 0,
+        "inputTokens": 552,
+        "outputTokens": 225,
+        "serverToolUsage": {},
+        "totalTokens": 777
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-9B16DC1D5689\n\n137 × 149\n\nLet me compute this step by step.\n\n137 × 149 = 137 × (150 - 1) = 137 × 150 - 137\n\n137 × 150 = 137 × 15 × 10 = 2055 × 10 = 20550\n\n20550 - 137 = 20413\n\nVerification:\n137 × 149\n= 100 × 149 + 37 × 149\n= 14900 + 37 × 149\n\n37 × 149 = 37 × 150 - 37 = 5550 - 37 = 5513\n\n14900 + 5513 = 20413\n\nBoth methods give 20413.\n\nCOT-END-S00-9B16DC1D5689"
+    }
+  ]
+}

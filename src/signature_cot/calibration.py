@@ -13,8 +13,16 @@ from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from .bedrock import BedrockClient
 from .extraction import SignatureExtractor
-from .harvest import QuestionHarvester, ScenarioHarvester
-from .models import ExtractionTrial, HarvestRun, Json, PromptCandidate
+from .harvest import ScenarioHarvester
+from .models import (
+    BoundaryMarkers,
+    ExtractionTrial,
+    HarvestRun,
+    HarvestStep,
+    Json,
+    PromptCandidate,
+    ToolCall,
+)
 
 
 DEFAULT_MANIFEST = Path(__file__).resolve().parents[1] / "calibration" / "fixed-36.json"
@@ -76,6 +84,57 @@ def load_manifest(path: Path = DEFAULT_MANIFEST) -> Tuple[Json, List[Calibration
     return payload, tasks
 
 
+def _checkpoint_payload(run: HarvestRun) -> Json:
+    """Private restart state. This contains raw replayable signatures."""
+
+    return {"schema_version": 1, "run": dataclasses.asdict(run)}
+
+
+def _run_from_checkpoint(path: Path) -> HarvestRun:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    row = payload["run"]
+    steps: List[HarvestStep] = []
+    for step in row["steps"]:
+        steps.append(
+            HarvestStep(
+                step_index=int(step["step_index"]),
+                prefix_messages=step["prefix_messages"],
+                assistant_content=step["assistant_content"],
+                stop_reason=str(step["stop_reason"]),
+                usage=step["usage"],
+                markers=BoundaryMarkers(**step["markers"]),
+                visible_text=str(step["visible_text"]),
+                tool_calls=[ToolCall(**call) for call in step["tool_calls"]],
+                replay_tool_results=step.get("replay_tool_results", []),
+                system=step.get("system", []),
+                tool_config=step.get("tool_config"),
+                user_message=str(step.get("user_message", "")),
+            )
+        )
+    return HarvestRun(
+        task_id=str(row["task_id"]),
+        question=str(row["question"]),
+        model=str(row["model"]),
+        steps=steps,
+        final_answer=str(row["final_answer"]),
+        expected_answer=row.get("expected_answer"),
+        tool_events=row.get("tool_events", []),
+        task_success=row.get("task_success"),
+        scenario=row.get("scenario"),
+        source_metadata=row.get("source_metadata", {}),
+    )
+
+
+def _write_checkpoint(path: Path, run: HarvestRun) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(".tmp")
+    temporary.write_text(
+        json.dumps(_checkpoint_payload(run), ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
 def harvest_tasks(
     client: BedrockClient,
     tasks: Sequence[CalibrationTask],
@@ -83,13 +142,8 @@ def harvest_tasks(
     max_tokens: int,
     effort: str,
     thinking_display: str,
+    checkpoint_dir: Optional[Path] = None,
 ) -> List[HarvestRun]:
-    answer_harvester = QuestionHarvester(
-        client,
-        max_tokens=max_tokens,
-        effort=effort,
-        thinking_display=thinking_display,
-    )
     scenario_harvester = ScenarioHarvester(
         client,
         max_tokens=max_tokens,
@@ -98,6 +152,26 @@ def harvest_tasks(
     )
     runs: List[HarvestRun] = []
     for index, task in enumerate(tasks, start=1):
+        checkpoint_path = (
+            checkpoint_dir / (task.task_id + ".json") if checkpoint_dir else None
+        )
+        if checkpoint_path is not None and checkpoint_path.exists():
+            run = _run_from_checkpoint(checkpoint_path)
+            if run.model != client.config.model:
+                raise ValueError(
+                    "checkpoint model mismatch for %s: %s != %s"
+                    % (task.task_id, run.model, client.config.model)
+                )
+            if run.source_metadata.get("source_id") != task.source_id:
+                raise ValueError("checkpoint source mismatch for %s" % task.task_id)
+            print(
+                "resume %d/%d %s (%s)"
+                % (index, len(tasks), task.task_id, task.scenario),
+                file=sys.stderr,
+                flush=True,
+            )
+            runs.append(run)
+            continue
         print(
             "harvest %d/%d %s (%s)" % (index, len(tasks), task.task_id, task.scenario),
             file=sys.stderr,
@@ -110,23 +184,22 @@ def harvest_tasks(
             "reasoning_effort": effort,
             "thinking_display": thinking_display,
         }
+        turns = list(task.turns)
         if task.scenario == "math":
-            run = answer_harvester.run(
-                task.task_id, task.turns[0], task.expected_answer
-            )
-            run.scenario = task.scenario
-            run.source_metadata = source_metadata
+            turns[0] += "\n\nReturn only the final numeric answer in the visible response."
+        run = scenario_harvester.run(
+            task.task_id,
+            turns,
+            scenario=task.scenario,
+            expected_answer=task.expected_answer,
+            source_metadata=source_metadata,
+        )
+        if task.scenario == "math":
             run.task_success = bool(
                 task.expected_answer and task.expected_answer in run.final_answer
             )
-        else:
-            run = scenario_harvester.run(
-                task.task_id,
-                list(task.turns),
-                scenario=task.scenario,
-                expected_answer=task.expected_answer,
-                source_metadata=source_metadata,
-            )
+        if checkpoint_path is not None:
+            _write_checkpoint(checkpoint_path, run)
         runs.append(run)
     return runs
 
@@ -160,6 +233,14 @@ class StratifiedPromptOptimizer:
                 all(trial.metrics.valid for trial in task_trials)
                 for task_trials in task_rows
             ]
+            strongs = [
+                all(trial.metrics.strong_recovery for trial in task_trials)
+                for task_trials in task_rows
+            ]
+            near_duplicates = [
+                any(trial.metrics.summary_near_duplicate for trial in task_trials)
+                for task_trials in task_rows
+            ]
             coverages = [
                 statistics.mean(trial.metrics.token_coverage_proxy for trial in task_trials)
                 for task_trials in task_rows
@@ -169,12 +250,30 @@ class StratifiedPromptOptimizer:
                 "tasks": len(task_rows),
                 "mean_quality": statistics.mean(qualities) if qualities else -1.0,
                 "valid_rate": sum(valids) / float(len(valids)) if valids else 0.0,
+                "strong_recovery_rate": (
+                    sum(strongs) / float(len(strongs)) if strongs else 0.0
+                ),
+                "summary_near_duplicate_rate": (
+                    sum(near_duplicates) / float(len(near_duplicates))
+                    if near_duplicates
+                    else 0.0
+                ),
                 "mean_coverage_proxy": statistics.mean(coverages) if coverages else 0.0,
             }
 
         observed = [row for row in scenario_rows.values() if row["tasks"]]
         macro_quality = statistics.mean(row["mean_quality"] for row in observed) if observed else -1.0
         macro_valid = statistics.mean(row["valid_rate"] for row in observed) if observed else 0.0
+        macro_strong = (
+            statistics.mean(row["strong_recovery_rate"] for row in observed)
+            if observed
+            else 0.0
+        )
+        macro_near_duplicate = (
+            statistics.mean(row["summary_near_duplicate_rate"] for row in observed)
+            if observed
+            else 0.0
+        )
         macro_coverage = (
             statistics.mean(row["mean_coverage_proxy"] for row in observed)
             if observed
@@ -208,16 +307,20 @@ class StratifiedPromptOptimizer:
         robust_score = (
             macro_quality
             + 0.15 * macro_valid
+            + 0.40 * macro_strong
             + 0.05 * both_canary_rate
             - 0.20 * spread
             - 0.10 * refusal_rate
             - 0.20 * leakage_rate
+            - 0.30 * macro_near_duplicate
         )
         return {
             "candidate": name,
             "robust_score": round(robust_score, 4),
             "macro_quality": round(macro_quality, 4),
             "macro_valid_rate": round(macro_valid, 4),
+            "macro_strong_recovery_rate": round(macro_strong, 4),
+            "macro_summary_near_duplicate_rate": round(macro_near_duplicate, 4),
             "both_canary_rate": round(both_canary_rate, 4),
             "macro_coverage_proxy": round(macro_coverage, 4),
             "quality_std": round(spread, 4),
@@ -291,6 +394,7 @@ class StratifiedPromptOptimizer:
             ranked = sorted(
                 (self._aggregate(candidate.name, trials) for candidate in active),
                 key=lambda row: (
+                    row["macro_strong_recovery_rate"],
                     row["robust_score"],
                     row["macro_valid_rate"],
                     row["macro_quality"],
@@ -324,6 +428,7 @@ class StratifiedPromptOptimizer:
         full_ranking = sorted(
             (self._aggregate(candidate.name, trials) for candidate in candidates),
             key=lambda row: (
+                row["macro_strong_recovery_rate"],
                 row["robust_score"],
                 row["macro_valid_rate"],
                 row["macro_quality"],
@@ -360,7 +465,15 @@ def selected_trials(
                 "winner %s was not evaluated on %s step %d"
                 % (result.winner, run.task_id, step.step_index)
             )
-        selected.append(max(step_matches, key=lambda trial: trial.metrics.quality))
+        selected.append(
+            max(
+                step_matches,
+                key=lambda trial: (
+                    trial.metrics.strong_recovery,
+                    trial.metrics.quality,
+                ),
+            )
+        )
     return selected
 
 
@@ -382,8 +495,8 @@ def result_dict(result: CorpusOptimizationResult, manifest_metadata: Json) -> Js
                 "metrics": dataclasses.asdict(item.extraction.metrics),
                 "usage": item.extraction.usage,
                 "rounds": item.extraction.rounds,
+                "provider_summary_blinded": item.extraction.provider_summary_blinded,
             }
             for item in result.trials
         ],
     }
-

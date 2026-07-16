@@ -84,7 +84,13 @@ def _trial_map(trials: Iterable[ExtractionTrial]) -> Dict[int, ExtractionTrial]:
     selected: Dict[int, ExtractionTrial] = {}
     for trial in trials:
         existing = selected.get(trial.step_index)
-        if existing is None or trial.metrics.quality > existing.metrics.quality:
+        if existing is None or (
+            trial.metrics.strong_recovery,
+            trial.metrics.quality,
+        ) > (
+            existing.metrics.strong_recovery,
+            existing.metrics.quality,
+        ):
             selected[trial.step_index] = trial
     return selected
 
@@ -137,17 +143,25 @@ def build_atif_trajectory(
                 "method": "signed_reasoning_replay",
                 "candidate": trial.candidate,
                 "valid": trial.metrics.valid,
+                "strong_recovery": trial.metrics.strong_recovery,
                 "boundary_complete": bool(
                     trial.metrics.start_hit
                     and trial.metrics.end_hit
                     and trial.metrics.markers_in_order
                 ),
-                "summary_used": False,
+                "provider_summary_present": bool(
+                    harvest_step.provider_reasoning_summary
+                ),
+                "provider_summary_blinded_in_replay": trial.provider_summary_blinded,
+                "summary_used": bool(
+                    harvest_step.provider_reasoning_summary
+                    and not trial.provider_summary_blinded
+                ),
                 "metrics": dataclasses.asdict(trial.metrics),
                 "usage": trial.usage,
                 "rounds": trial.rounds,
             }
-            if trial.metrics.valid:
+            if trial.metrics.strong_recovery:
                 reasoning_content = trial.recovered
         agent_step: Json = {
             "step_id": next_id,
@@ -186,7 +200,7 @@ def build_atif_trajectory(
     )
     all_recovered = bool(run.steps) and all(
         selected.get(step.step_index) is not None
-        and selected[step.step_index].metrics.valid
+        and selected[step.step_index].metrics.strong_recovery
         for step in run.steps
     )
     tools = _tool_definitions(run)
@@ -222,6 +236,7 @@ def build_atif_trajectory(
                 "extraction_completion_tokens": extraction_output,
                 "original_decision_steps": len(run.steps),
                 "all_decisions_recovered": all_recovered,
+                "all_decisions_strong_recovery": all_recovered,
                 "task_success": run.task_success,
             },
         },
@@ -275,4 +290,3 @@ def validate_atif_trajectory(payload: Json) -> None:
                         "observation source_call_id %r is not a tool call in step %d"
                         % (source_id, index)
                     )
-

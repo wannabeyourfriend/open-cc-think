@@ -1,0 +1,120 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "cal-math-01",
+  "trajectory_id": "49424dea-2b46-446d-b1eb-ea93966ab7b4",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-4-6",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Complete all derivation, case analysis, and verification in the omitted internal reasoning block. The visible response must contain only the bare final answer value on one line—no prose, headings, equations, restatement, or explanation."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Liz's basketball team is down by 20 points in the final quarter of their game.  Liz goes on a shooting spree, sinking 5 free throw shots, 3 three-pointers, and 4 other jump shots.  The other team only scores 10 points that quarter, and none of Liz's teammates manage to score any points.  How much does Liz's team lose by at the end of the game?"
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-4-6",
+      "reasoning_effort": "high",
+      "message": "8",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 272,
+        "completion_tokens": 222,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "cacheWriteInputTokenCount": 0,
+            "cacheWriteInputTokens": 0,
+            "inputTokens": 272,
+            "outputTokens": 222,
+            "serverToolUsage": {},
+            "totalTokens": 494
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "COT-START-S00-AA094F746B7E\n\nLet me calculate Liz's points:\n- 5 free throw shots = 5 × 1 = 5 points\n- 3 three-pointers = 3 × 3 = 9 points\n- 4 jump shots = 4 × 2 = 8 points\nTotal for Liz = 5 + 9 + 8 = 22 points\n\nStarting deficit: -20 points\nLiz's team scores: 22 points\nOther team scores: 10 points\n\nChange in deficit: 22 - 10 = 12 points improvement\nFinal deficit: 20 - 12 = 8 points\n\nSo Liz's team still loses by 8 points despite their scoring efforts.\n\nCOT-END-S00-AA094F746B7E",
+        "signature_sha256": "9aafea9c8ff5e6a173c3fb6ef98887044b186f33731c59c4588dda100c998042",
+        "signature_chars": 868,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "boundary_complete": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.9953,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 439,
+            "recovered_output_tokens": 214,
+            "token_coverage_proxy": 0.964,
+            "answer_jaccard": 0.025,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.9453
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "cacheWriteInputTokenCount": 0,
+            "cacheWriteInputTokens": 0,
+            "inputTokens": 624,
+            "outputTokens": 214,
+            "serverToolUsage": {},
+            "totalTokens": 838
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-AA094F746B7E\n\nLet me calculate Liz's points:\n- 5 free throw shots = 5 × 1 = 5 points\n- 3 three-pointers = 3 × 3 = 9 points\n- 4 jump shots = 4 × 2 = 8 points\nTotal for Liz = 5 + 9 + 8 = 22 points\n\nStarting deficit: -20 points\nLiz's team scores: 22 points\nOther team scores: 10 points\n\nChange in deficit: 22 - 10 = 12 points improvement\nFinal deficit: 20 - 12 = 8 points\n\nLiz's team loses by 8 points.\n\nCOT-END-S00-AA094F746B7E"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 272,
+    "total_completion_tokens": 222,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 624,
+      "extraction_completion_tokens": 214,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "cal-math-01",
+    "scenario": "math",
+    "source_metadata": {
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-04007",
+      "dataset_metadata": {},
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "8",
+    "expected_answer": "8",
+    "trajectory_quality_gate": "accepted"
+  }
+}

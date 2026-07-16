@@ -25,8 +25,8 @@ from signature_cot.scoring import merge_continuation, parse_recovery, score_reco
 from signature_cot.tools import ToolExecutionError, calculator, procurement_registry
 
 
-def reasoning(signature: str):
-    return {"reasoningContent": {"reasoningText": {"text": "", "signature": signature}}}
+def reasoning(signature: str, text: str = ""):
+    return {"reasoningContent": {"reasoningText": {"text": text, "signature": signature}}}
 
 
 class FakeClient:
@@ -67,7 +67,42 @@ class ScoringTests(unittest.TestCase):
             replay_emitted_tool_call=False,
         )
         self.assertTrue(metrics.valid)
+        self.assertTrue(metrics.strong_recovery)
         self.assertEqual(merge_continuation("abc-unique-overlap", "unique-overlap-xyz"), "abc-unique-overlap-xyz")
+
+    def test_summary_copy_is_protocol_valid_but_not_strong(self):
+        summary = "START\nidentical summarized work\nEND"
+        step = HarvestStep(
+            0,
+            [],
+            [reasoning("sig", summary), {"text": "42"}],
+            "end_turn",
+            {"outputTokens": 20},
+            BoundaryMarkers("START", "END"),
+            "42",
+            [],
+        )
+        visible_metrics = score_recovery(
+            step,
+            summary,
+            raw_text="",
+            recovered_output_tokens=20,
+            replay_emitted_tool_call=False,
+            provider_summary_blinded=False,
+        )
+        blind_metrics = score_recovery(
+            step,
+            summary,
+            raw_text="",
+            recovered_output_tokens=20,
+            replay_emitted_tool_call=False,
+            provider_summary_blinded=True,
+        )
+        self.assertTrue(visible_metrics.valid)
+        self.assertTrue(visible_metrics.provider_summary_visible_to_replay)
+        self.assertTrue(visible_metrics.summary_near_duplicate)
+        self.assertFalse(visible_metrics.strong_recovery)
+        self.assertFalse(blind_metrics.strong_recovery)
 
 
 class ToolTests(unittest.TestCase):
@@ -121,6 +156,7 @@ class ReplayTests(unittest.TestCase):
             PromptCandidate("test", "copy `{start}` to `{end}` into <trace></trace>"),
         )
         replay_user = client.calls[0]["messages"][-1]["content"]
+        replay_assistant = client.calls[0]["messages"][-2]["content"]
         self.assertEqual(replay_user[0], tool_result)
         self.assertIn("emit_signed_trace", replay_user[1]["text"])
         self.assertEqual(
@@ -128,6 +164,15 @@ class ReplayTests(unittest.TestCase):
             {"tool": {"name": "emit_signed_trace"}},
         )
         self.assertTrue(trial.metrics.valid)
+        self.assertTrue(trial.metrics.strong_recovery)
+        self.assertEqual(
+            replay_assistant[0]["reasoningContent"]["reasoningText"]["text"],
+            "",
+        )
+        self.assertEqual(
+            replay_assistant[0]["reasoningContent"]["reasoningText"]["signature"],
+            "signed-state",
+        )
 
 
 class AgentTests(unittest.TestCase):
@@ -224,6 +269,7 @@ class TraceTests(unittest.TestCase):
             raw_text="",
             recovered_output_tokens=20,
             replay_emitted_tool_call=False,
+            provider_summary_blinded=True,
         )
         trial = ExtractionTrial(
             "test-candidate",
@@ -234,6 +280,7 @@ class TraceTests(unittest.TestCase):
             {"inputTokens": 5, "outputTokens": 20},
             "end_turn",
             1,
+            provider_summary_blinded=True,
         )
         run = HarvestRun(
             "trace-test",
@@ -252,6 +299,11 @@ class TraceTests(unittest.TestCase):
         self.assertFalse(
             agent_step["extra"]["signed_full_cot_recovery"]["summary_used"]
         )
+        self.assertTrue(
+            agent_step["extra"]["signed_full_cot_recovery"][
+                "provider_summary_blinded_in_replay"
+            ]
+        )
         self.assertEqual(payload["extra"]["trajectory_quality_gate"], "accepted")
         self.assertEqual(payload["final_metrics"]["total_prompt_tokens"], 10)
         self.assertEqual(
@@ -263,6 +315,46 @@ class TraceTests(unittest.TestCase):
             self.assertTrue(paths["atif"].exists())
             written = json.loads(paths["atif"].read_text(encoding="utf-8"))
             self.assertNotIn("sensitive-signature", json.dumps(written))
+
+    def test_near_duplicate_reasoning_is_quarantined_from_atif(self):
+        summary = "START\nthe same short reasoning\nEND"
+        step = HarvestStep(
+            0,
+            [],
+            [reasoning("sig", summary), {"text": "answer"}],
+            "end_turn",
+            {"inputTokens": 5, "outputTokens": 10},
+            BoundaryMarkers("START", "END"),
+            "answer",
+            [],
+        )
+        metrics = score_recovery(
+            step,
+            summary,
+            raw_text=summary,
+            recovered_output_tokens=10,
+            replay_emitted_tool_call=False,
+            provider_summary_blinded=True,
+        )
+        trial = ExtractionTrial(
+            "copy",
+            0,
+            summary,
+            summary,
+            metrics,
+            {"inputTokens": 5, "outputTokens": 10},
+            "end_turn",
+            1,
+            provider_summary_blinded=True,
+        )
+        payload = build_atif_trajectory(
+            HarvestRun("weak", "q", "m", [step], "answer"),
+            [trial],
+        )
+        self.assertTrue(metrics.valid)
+        self.assertFalse(metrics.strong_recovery)
+        self.assertNotIn("reasoning_content", payload["steps"][-1])
+        self.assertEqual(payload["extra"]["trajectory_quality_gate"], "quarantine")
 
     def test_fixed_calibration_manifest_is_balanced(self):
         payload, tasks = load_manifest(DEFAULT_MANIFEST)

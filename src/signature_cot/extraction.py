@@ -23,10 +23,12 @@ class SignatureExtractor:
         client: BedrockClient,
         max_tokens: int = 8192,
         continuation_limit: int = 2,
+        blind_provider_summary: bool = True,
     ):
         self.client = client
         self.max_tokens = max_tokens
         self.continuation_limit = continuation_limit
+        self.blind_provider_summary = blind_provider_summary
 
     @staticmethod
     def _trace_tool_config(step: HarvestStep) -> Optional[Dict[str, object]]:
@@ -91,7 +93,10 @@ class SignatureExtractor:
                     "continue the task.\n\n" + instruction
                 )
             response = self.client.converse(
-                step.replay_messages(instruction),
+                step.replay_messages(
+                    instruction,
+                    blind_provider_summary=self.blind_provider_summary,
+                ),
                 max_tokens=self.max_tokens,
                 system=step.system,
                 tool_config=self._trace_tool_config(step),
@@ -120,6 +125,7 @@ class SignatureExtractor:
             raw_text=raw_text,
             recovered_output_tokens=total_output_tokens,
             replay_emitted_tool_call=emitted_tool_call,
+            provider_summary_blinded=self.blind_provider_summary,
         )
         return ExtractionTrial(
             candidate=candidate.name,
@@ -130,6 +136,7 @@ class SignatureExtractor:
             usage=usage,
             stop_reason=stop_reason,
             rounds=rounds,
+            provider_summary_blinded=self.blind_provider_summary,
         )
 
 
@@ -148,15 +155,27 @@ class PromptOptimizer:
         selected = [trial for trial in trials if trial.candidate == name]
         qualities = [trial.metrics.quality for trial in selected]
         valid_rate = sum(1 for trial in selected if trial.metrics.valid) / float(max(1, len(selected)))
+        strong_rate = sum(
+            1 for trial in selected if trial.metrics.strong_recovery
+        ) / float(max(1, len(selected)))
+        near_duplicate_rate = sum(
+            1 for trial in selected if trial.metrics.summary_near_duplicate
+        ) / float(max(1, len(selected)))
         mean = statistics.mean(qualities) if qualities else -1.0
         spread = statistics.pstdev(qualities) if len(qualities) > 1 else 0.0
-        robust_score = min(1.0, mean - 0.25 * spread + 0.10 * valid_rate)
+        robust_score = min(
+            1.0,
+            mean - 0.25 * spread + 0.10 * valid_rate + 0.30 * strong_rate
+            - 0.25 * near_duplicate_rate,
+        )
         return {
             "candidate": name,
             "robust_score": round(robust_score, 4),
             "mean_quality": round(mean, 4),
             "quality_std": round(spread, 4),
             "valid_rate": round(valid_rate, 4),
+            "strong_recovery_rate": round(strong_rate, 4),
+            "summary_near_duplicate_rate": round(near_duplicate_rate, 4),
             "trials": len(selected),
             "mean_coverage_proxy": round(
                 statistics.mean(t.metrics.token_coverage_proxy for t in selected), 4
@@ -185,7 +204,12 @@ class PromptOptimizer:
 
             ranked = sorted(
                 (self._aggregate(candidate.name, trials) for candidate in active),
-                key=lambda row: (row["robust_score"], row["valid_rate"], row["mean_quality"]),
+                key=lambda row: (
+                    row["strong_recovery_rate"],
+                    row["robust_score"],
+                    row["valid_rate"],
+                    row["mean_quality"],
+                ),
                 reverse=True,
             )
             keep = max(1, int(math.ceil(len(active) / 2.0)))
@@ -196,7 +220,12 @@ class PromptOptimizer:
 
         full_ranking = sorted(
             (self._aggregate(candidate.name, trials) for candidate in candidates),
-            key=lambda row: (row["robust_score"], row["valid_rate"], row["mean_quality"]),
+            key=lambda row: (
+                row["strong_recovery_rate"],
+                row["robust_score"],
+                row["valid_rate"],
+                row["mean_quality"],
+            ),
             reverse=True,
         )
         return OptimizationResult(

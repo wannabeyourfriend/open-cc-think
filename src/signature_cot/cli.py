@@ -142,6 +142,9 @@ def _print_result(result: dict) -> None:
                 "task_success": run.task_success,
                 "steps": len(run.steps),
                 "valid_extractions": sum(1 for trial in selected if trial.metrics.valid),
+                "strong_extractions": sum(
+                    1 for trial in selected if trial.metrics.strong_recovery
+                ),
                 "artifacts": paths,
             },
             ensure_ascii=False,
@@ -173,7 +176,7 @@ def _probe(args: argparse.Namespace) -> int:
         save_signatures=args.save_signatures,
     )
     _print_result(result)
-    return 0 if result["selected_trials"][0].metrics.valid else 2
+    return 0 if result["selected_trials"][0].metrics.strong_recovery else 2
 
 
 def _reproduce(args: argparse.Namespace) -> int:
@@ -192,7 +195,7 @@ def _reproduce(args: argparse.Namespace) -> int:
     for result in results:
         _print_result(result)
     return 0 if all(
-        all(trial.metrics.valid for trial in result["selected_trials"])
+        all(trial.metrics.strong_recovery for trial in result["selected_trials"])
         for result in results
     ) else 2
 
@@ -218,7 +221,9 @@ def _agentic(args: argparse.Namespace) -> int:
         save_signatures=args.save_signatures,
     )
     _print_result(result)
-    return 0 if all(trial.metrics.valid for trial in result["selected_trials"]) else 2
+    return 0 if all(
+        trial.metrics.strong_recovery for trial in result["selected_trials"]
+    ) else 2
 
 
 def _calibrate_corpus(args: argparse.Namespace) -> int:
@@ -270,6 +275,7 @@ def _calibrate_corpus(args: argparse.Namespace) -> int:
         max_tokens=args.harvest_max_tokens,
         effort=args.effort,
         thinking_display=args.thinking_display,
+        checkpoint_dir=args.output / ".checkpoints",
     )
     result = StratifiedPromptOptimizer(pipeline.extractor).optimize(
         runs,
@@ -311,7 +317,7 @@ def _calibrate_corpus(args: argparse.Namespace) -> int:
             indent=2,
         )
     )
-    return 0 if result.validation.get("macro_valid_rate") == 1.0 else 2
+    return 0 if result.validation.get("macro_strong_recovery_rate") == 1.0 else 2
 
 
 def main(argv: Optional[List[str]] = None) -> int:

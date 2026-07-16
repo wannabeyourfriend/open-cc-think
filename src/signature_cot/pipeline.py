@@ -54,7 +54,15 @@ class ResearchPipeline:
                 if trial.candidate == candidate.name and trial.step_index == step.step_index
             ]
             if matches:
-                selected.append(max(matches, key=lambda trial: trial.metrics.quality))
+                selected.append(
+                    max(
+                        matches,
+                        key=lambda trial: (
+                            trial.metrics.strong_recovery,
+                            trial.metrics.quality,
+                        ),
+                    )
+                )
             else:
                 selected.append(self.extractor.recover(step, candidate))
         return selected

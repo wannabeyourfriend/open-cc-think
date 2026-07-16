@@ -119,9 +119,25 @@ class HarvestStep:
         response = BedrockResponse(self.assistant_content, self.stop_reason, self.usage, {})
         return response.reasoning_summary
 
-    def replay_messages(self, instruction: str) -> List[Json]:
+    def replay_messages(
+        self,
+        instruction: str,
+        *,
+        blind_provider_summary: bool = False,
+    ) -> List[Json]:
         messages = copy.deepcopy(self.prefix_messages)
-        messages.append({"role": "assistant", "content": copy.deepcopy(self.assistant_content)})
+        assistant_content = copy.deepcopy(self.assistant_content)
+        if blind_provider_summary:
+            for block in assistant_content:
+                reasoning = block.get("reasoningContent") if isinstance(block, dict) else None
+                reasoning_text = (
+                    reasoning.get("reasoningText") if isinstance(reasoning, dict) else None
+                )
+                if isinstance(reasoning_text, dict) and "text" in reasoning_text:
+                    # Keep the opaque signature and exact block structure, but remove the
+                    # readable provider summary so the extractor cannot merely copy it.
+                    reasoning_text["text"] = ""
+        messages.append({"role": "assistant", "content": assistant_content})
         content = copy.deepcopy(self.replay_tool_results)
         content.append({"text": instruction})
         messages.append({"role": "user", "content": content})
@@ -183,6 +199,16 @@ class ExtractionMetrics:
     replay_emitted_tool_call: bool
     start_position: Optional[float]
     end_position: Optional[float]
+    summary_comparison_available: bool
+    summary_jaccard: float
+    summary_sequence_similarity: float
+    summary_token_coverage_of_recovery: float
+    recovered_to_summary_length_ratio: Optional[float]
+    recovery_novelty_vs_summary: float
+    summary_contains_canaries: bool
+    provider_summary_visible_to_replay: bool
+    summary_near_duplicate: bool
+    strong_recovery: bool
 
 
 @dataclass
@@ -195,6 +221,7 @@ class ExtractionTrial:
     usage: Json
     stop_reason: str
     rounds: int
+    provider_summary_blinded: bool = False
 
 
 @dataclass

@@ -33,7 +33,7 @@ def _metrics_dict(trial: ExtractionTrial) -> Dict[str, Any]:
 
 def public_run_dict(run: HarvestRun, trials: Iterable[ExtractionTrial]) -> Dict[str, Any]:
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "task_id": run.task_id,
         "question": run.question,
@@ -68,6 +68,7 @@ def public_run_dict(run: HarvestRun, trials: Iterable[ExtractionTrial]) -> Dict[
                 "usage": trial.usage,
                 "stop_reason": trial.stop_reason,
                 "rounds": trial.rounds,
+                "provider_summary_blinded": trial.provider_summary_blinded,
                 "recovered": trial.recovered,
             }
             for trial in trials
@@ -152,12 +153,16 @@ def render_markdown(
                 "",
                 "Signed full-span recovery:",
                 "",
-                "Candidate `%s` · quality %.4f · valid `%s` · boundary `%s/%s` · "
+                "Candidate `%s` · quality %.4f · protocol-valid `%s` · strong `%s` · "
+                "summary blinded `%s` · summary near-duplicate `%s` · boundary `%s/%s` · "
                 "token-coverage proxy %.4f · recovered chars %d"
                 % (
                     trial.candidate,
                     m.quality,
                     m.valid,
+                    m.strong_recovery,
+                    trial.provider_summary_blinded,
+                    m.summary_near_duplicate,
                     m.start_hit,
                     m.end_hit,
                     m.token_coverage_proxy,
