@@ -39,6 +39,12 @@ reconstruction can otherwise game the metric.
   - `strong_recovery=true` under current metric.
 - Sonnet 5 rejects explicit temperature during replay; transport now retries once without it and
   caches that provider capability.
+- H1a deterministic falsification:
+  - all 9 preregistered checks passed;
+  - current `strong_recovery` accepted 4/7 negative controls;
+  - a hard conjunction of exact ordered anchors, plausible full-token ratio, summary expansion, and
+    low n-gram containment accepted the one complete trace and 0/7 negatives;
+  - this is controlled separability, not a live error-rate estimate.
 
 All live observations above are exploratory because they occurred before the formal protocol.
 
@@ -52,6 +58,10 @@ All live observations above are exploratory because they occurred before the for
   visible summary and close to the provider-billed original-output token count.
 - Surface novelty supports a non-copy claim but cannot establish provenance. Planted hidden content
   anchors and negative controls are the next highest-value measurement upgrade.
+- Capping token coverage at 1.0 hides overlong failures: the padded-summary control received maximum
+  coverage and quality. A log-symmetric alignment score penalizes both too-short and too-long traces.
+- Sequence similarity can be defeated by padding, while contiguous summary n-gram containment still
+  identifies the embedded verbatim summary.
 
 ## Lessons and Constraints
 
@@ -59,6 +69,7 @@ All live observations above are exploratory because they occurred before the for
 - Never pool v1/v2 pre-blinding artifacts with v3 blind rows.
 - Keep task correctness separate from recovery evidence.
 - Do not optimize raw length, canary rate, or a single LLM-judge score.
+- Do not promote H1a thresholds to the production gate before provider-backed anchor calibration.
 - Separate extraction candidates from refusal/summary-only controls.
 - Freeze metric thresholds on M0 before prompt selection; freeze prompts before held-out evaluation.
 - Signatures remain replayable sensitive state and must stay out of public artifacts and git.

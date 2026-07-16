@@ -21,6 +21,13 @@ Json = Dict[str, Any]
 CANARY = re.compile(r"\bCOT-(START|END)-[A-Z0-9-]+\b")
 
 
+def _display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def _markers(summary: str, recovered: str, explicit: Optional[Json] = None) -> Tuple[str, str]:
     if explicit:
         return str(explicit.get("start", "")), str(explicit.get("end", ""))
@@ -81,7 +88,7 @@ def _row(
         end_marker=end,
     )
     return {
-        "artifact": str(path.relative_to(ROOT)),
+        "artifact": _display_path(path),
         "task_id": task_id,
         "step_index": step_index,
         "candidate": candidate,

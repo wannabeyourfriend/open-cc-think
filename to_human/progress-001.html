@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signed CoT Recovery — Autoresearch Progress 001</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0 auto; max-width: 1080px; padding: 28px;
+      background: #0d1117; color: #e6edf3;
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header { padding: 44px 0 28px; border-bottom: 1px solid #30363d; }
+    h1 { margin: 0 0 8px; font-size: 38px; letter-spacing: -0.03em; }
+    h2 { margin-top: 44px; padding-bottom: 8px; border-bottom: 1px solid #30363d; }
+    h3 { margin: 0 0 8px; color: #58a6ff; }
+    p, li { color: #c9d1d9; }
+    code { color: #a5d6ff; }
+    .subtitle { max-width: 850px; color: #8b949e; font-size: 19px; }
+    .meta { color: #8b949e; font-size: 14px; }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px; margin: 26px 0;
+    }
+    .stat, .card, .chart {
+      background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+      padding: 20px;
+    }
+    .stat { text-align: center; }
+    .value { color: #3fb950; font-size: 34px; font-weight: 750; }
+    .bad { color: #f85149; }
+    .label { color: #8b949e; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+    .warning {
+      margin: 22px 0; padding: 16px 18px; border-left: 4px solid #d29922;
+      background: #2b210d; color: #e3b341;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #30363d; }
+    th { color: #8b949e; font-size: 12px; text-transform: uppercase; }
+    .pass { color: #3fb950; font-weight: 650; }
+    .fail { color: #f85149; font-weight: 650; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border: 1px solid #238636;
+      border-radius: 999px; color: #3fb950; font-size: 12px;
+    }
+    .next { background: #0c2d4a; border-color: #1f6feb; }
+    footer { margin-top: 52px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; }
+    @media (max-width: 700px) { body { padding: 18px; } h1 { font-size: 30px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="badge">Autoresearch · Progress 001</div>
+    <h1>Recovery metrics need falsification, not just canaries</h1>
+    <p class="subtitle">
+      A first controlled experiment shows that the current production gate accepts padded,
+      reordered, corrupted, and freshly reconstructed traces. A hard-gated evidence vector catches
+      all frozen controls without claiming access to ground-truth plaintext.
+    </p>
+    <p class="meta">2026-07-17 · H1a · 1 confirmatory experiment · 14 regression tests</p>
+  </header>
+
+  <div class="warning">
+    Claim ceiling: “strong signature-backed full-span recovery candidate.” Without an independent
+    provider-plaintext channel, no result in this report is ground-truth or “true” CoT.
+  </div>
+
+  <section>
+    <div class="grid">
+      <div class="stat">
+        <div class="value">9/9</div>
+        <div class="label">Preregistered checks passed</div>
+      </div>
+      <div class="stat">
+        <div class="value bad">4/7</div>
+        <div class="label">Old-gate negative false positives</div>
+      </div>
+      <div class="stat">
+        <div class="value">0/7</div>
+        <div class="label">New diagnostic false positives</div>
+      </div>
+      <div class="stat">
+        <div class="value">14/14</div>
+        <div class="label">Regression tests passed</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The key result</h2>
+    <div class="chart">
+      <svg viewBox="0 0 820 330" width="100%" role="img"
+           aria-label="Synthetic control false-positive rate dropped from 57.1 percent to zero">
+        <rect width="820" height="330" rx="8" fill="#161b22"/>
+        <text x="410" y="30" fill="#f0f6fc" text-anchor="middle" font-size="17"
+              font-weight="700">Synthetic control false-positive rate (lower is better)</text>
+        <line x1="90" y1="270" x2="750" y2="270" stroke="#484f58"/>
+        <line x1="90" y1="70" x2="90" y2="270" stroke="#484f58"/>
+        <line x1="90" y1="170" x2="750" y2="170" stroke="#30363d" stroke-dasharray="5"/>
+        <text x="78" y="274" fill="#8b949e" text-anchor="end" font-size="12">0%</text>
+        <text x="78" y="174" fill="#8b949e" text-anchor="end" font-size="12">50%</text>
+        <text x="78" y="74" fill="#8b949e" text-anchor="end" font-size="12">100%</text>
+        <rect x="190" y="156" width="170" height="114" rx="5" fill="#f85149"/>
+        <text x="275" y="145" fill="#f85149" text-anchor="middle" font-size="22"
+              font-weight="700">57.1%</text>
+        <text x="275" y="295" fill="#c9d1d9" text-anchor="middle" font-size="14">Current gate</text>
+        <rect x="470" y="266" width="170" height="4" rx="2" fill="#3fb950"/>
+        <text x="555" y="250" fill="#3fb950" text-anchor="middle" font-size="22"
+              font-weight="700">0%</text>
+        <text x="555" y="295" fill="#c9d1d9" text-anchor="middle" font-size="14">H1a diagnostic</text>
+      </svg>
+    </div>
+    <p>
+      This is controlled separability on one positive and seven deliberately constructed negatives,
+      not a live population estimate. The production gate remains unchanged until provider-backed
+      anchor calibration.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why the old metric fails</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Length overflow was rewarded</h3>
+        <p>
+          The old token proxy caps at 1.0. A padded summary almost three times the known trace length
+          therefore received maximum coverage and quality. Log-symmetric alignment scored it 0.338.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Padding defeats global similarity</h3>
+        <p>
+          Irrelevant fluent text lowers sequence similarity and raises novelty. Contiguous summary
+          5-gram containment remained 1.0 and exposed the embedded copy.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Length cannot detect corruption</h3>
+        <p>
+          Reordered and corrupted traces both had perfect length alignment. Exact ordered content
+          anchors caught the failures, providing an independent fidelity channel.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Frozen-case decision table</h2>
+    <table>
+      <thead>
+        <tr><th>Case</th><th>Expected</th><th>Old gate</th><th>Decisive H1a signal</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Exact full trace</td><td>Positive</td><td class="pass">Pass</td><td>6/6 anchors, alignment 1.0</td></tr>
+        <tr><td>Partial prefix</td><td>Negative</td><td class="pass">Reject</td><td>Missing end; ratio 0.361</td></tr>
+        <tr><td>Summary copy</td><td>Negative</td><td class="pass">Reject</td><td>5-gram containment 1.0</td></tr>
+        <tr><td>Padded summary</td><td>Negative</td><td class="fail">False pass</td><td>Containment 1.0; ratio 2.958</td></tr>
+        <tr><td>Boundary only</td><td>Negative</td><td class="pass">Reject</td><td>0 anchors; 0 expansion</td></tr>
+        <tr><td>Reordered anchors</td><td>Negative</td><td class="fail">False pass</td><td>Anchor order false</td></tr>
+        <tr><td>Corrupted anchor</td><td>Negative</td><td class="fail">False pass</td><td>Recall 0.833; corruption 0.167</td></tr>
+        <tr><td>Fresh solution</td><td>Negative</td><td class="fail">False pass</td><td>0 anchors; ratio 0.264</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Exploratory live feasibility signal</h2>
+    <div class="card">
+      <h3>Open-reasoning digit-palindrome task</h3>
+      <p>
+        The fresh Sonnet 5 run answered 62 correctly. Recovery used 2,508 extraction output tokens
+        versus 2,469 billed harvest output tokens. With the frozen lexical proxy, recovery contains
+        1,206 units versus 377 in the provider summary (3.199× expansion), while summary 5-gram
+        containment is only 0.0161. Both boundaries were in order, the summary was blinded, and no
+        leakage or refusal occurred.
+      </p>
+      <p>
+        This row predates preregistration and is shown only to establish feasibility. It is not a
+        recovery-rate estimate.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Current research direction</h2>
+    <div class="card next">
+      <h3>DEEPEN H1 before optimizing prompts</h3>
+      <ol>
+        <li>Build provider-backed multi-anchor probes across short, medium, and long reasoning.</li>
+        <li>Estimate control false positives and calibrate plausible token-length bands.</li>
+        <li>Freeze metric v1, then separate prompt candidates from refusal/summary controls.</li>
+        <li>Run paired prompt optimization on the fixed coding/math/chat development signatures.</li>
+        <li>Collect held-out agent decisions by tool selection, arguments, integration, and synthesis.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    Generated by the autoresearch two-loop program. Public report contains no replayable signatures.
+  </footer>
+</body>
+</html>

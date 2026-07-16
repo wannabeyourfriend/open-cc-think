@@ -63,6 +63,12 @@ hypotheses:
     motivation: "Prompt wording changes recovery behavior, but one-off best scores are selection-biased."
     parent: null
     priority: high
+  - id: H1a
+    statement: "Deterministic full-length alignment, summary n-gram containment, and ordered content-anchor fidelity separate a known complete trace from frozen padding, truncation, corruption, reordering, and fresh-solution controls."
+    status: supported
+    motivation: "This is the first falsification layer needed before live metric calibration."
+    parent: H1
+    priority: high
   - id: H3
     statement: "Recovery evidence varies systematically by signed decision type, with tool arguments and observation integration harder than compact final answers."
     status: pending
@@ -88,8 +94,19 @@ experiments:
   interim_proxy_metric: "scenario-macro strong_recovery_rate"
   baseline_value: null
   best_value: null
-  total_runs: 0
-  trajectory: []
+  control_baseline_false_positive_rate: 0.5714
+  control_best_false_positive_rate: 0.0
+  total_runs: 1
+  trajectory:
+    - run_id: "H1a-run-001"
+      hypothesis: "H1a"
+      metric_name: "synthetic_control_false_positive_rate"
+      metric_value: 0.0
+      baseline: 0.5714
+      delta: -0.5714
+      wall_time_min: 0.02
+      change_summary: "Added log-symmetric full-length alignment, summary n-gram containment, and ordered content-anchor scoring."
+      timestamp: "2026-07-17"
 
 outer_loop:
   cycle: 0

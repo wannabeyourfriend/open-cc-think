@@ -195,11 +195,17 @@ class ExtractionMetrics:
     recovered_chars: int
     recovered_output_tokens: int
     token_coverage_proxy: float
+    full_length_ratio: float
+    full_length_alignment: float
     answer_jaccard: float
     replay_emitted_tool_call: bool
     start_position: Optional[float]
     end_position: Optional[float]
     summary_comparison_available: bool
+    summary_lexical_tokens: int
+    recovered_lexical_tokens: int
+    summary_expansion_ratio: Optional[float]
+    summary_ngram_containment: float
     summary_jaccard: float
     summary_sequence_similarity: float
     summary_token_coverage_of_recovery: float

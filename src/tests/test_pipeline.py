@@ -26,7 +26,12 @@ from signature_cot.models import (
     PromptCandidate,
     ToolCall,
 )
-from signature_cot.scoring import merge_continuation, parse_recovery, score_recovery
+from signature_cot.scoring import (
+    merge_continuation,
+    parse_recovery,
+    score_content_anchors,
+    score_recovery,
+)
 from signature_cot.tools import ToolExecutionError, calculator, procurement_registry
 
 
@@ -149,6 +154,57 @@ class ScoringTests(unittest.TestCase):
         self.assertTrue(visible_metrics.summary_near_duplicate)
         self.assertFalse(visible_metrics.strong_recovery)
         self.assertFalse(blind_metrics.strong_recovery)
+
+    def test_length_and_containment_diagnostics_detect_padded_summary(self):
+        summary = "START\ncount the valid cases and divide by all cases\nEND"
+        padded = (
+            "START\ncount the valid cases and divide by all cases\n"
+            + " ".join("unrelated-padding-%d" % index for index in range(30))
+            + "\nEND"
+        )
+        step = HarvestStep(
+            0,
+            [],
+            [reasoning("sig", summary), {"text": "42"}],
+            "end_turn",
+            {"outputTokens": 100},
+            BoundaryMarkers("START", "END"),
+            "42",
+            [],
+        )
+        metrics = score_recovery(
+            step,
+            padded,
+            raw_text=padded,
+            recovered_output_tokens=120,
+            replay_emitted_tool_call=False,
+            provider_summary_blinded=True,
+        )
+        self.assertEqual(metrics.full_length_ratio, 1.2)
+        self.assertAlmostEqual(metrics.full_length_alignment, 1 / 1.2, places=4)
+        self.assertGreater(metrics.summary_expansion_ratio, 4.0)
+        self.assertEqual(metrics.summary_ngram_containment, 1.0)
+
+    def test_content_anchor_fidelity_detects_order_and_corruption(self):
+        expected = (
+            "COT-ANCHOR-A1-111",
+            "COT-ANCHOR-A2-222",
+            "COT-ANCHOR-A3-333",
+        )
+        exact = score_content_anchors(expected, "\n".join(expected))
+        reordered = score_content_anchors(
+            expected,
+            "\n".join((expected[0], expected[2], expected[1])),
+        )
+        corrupted = score_content_anchors(
+            expected,
+            "\n".join((expected[0], "COT-ANCHOR-A2-BAD", expected[2])),
+        )
+        self.assertEqual(exact["recall"], 1.0)
+        self.assertTrue(exact["ordered"])
+        self.assertFalse(reordered["ordered"])
+        self.assertLess(corrupted["recall"], 1.0)
+        self.assertGreater(corrupted["corruption_rate"], 0.0)
 
 
 class ToolTests(unittest.TestCase):

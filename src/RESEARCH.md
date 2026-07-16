@@ -27,6 +27,23 @@ A boundary-complete recovery is **not** cryptographic proof of provider-verbatim
 model may still omit, paraphrase, or fabricate text inside the recovered span. Artifacts therefore
 label the field `signed_full_cot_recovery`, not `ground_truth_cot`.
 
+### Evidence metrics
+
+Boundary validity remains a protocol gate, not proof of full-span fidelity. Public metrics also
+report:
+
+- `full_length_ratio`: extraction output tokens divided by billed harvest output tokens;
+- `full_length_alignment`: a log-symmetric score that penalizes both truncation and excessive
+  expansion;
+- `summary_expansion_ratio`: recovery versus provider-summary length under one frozen lexical
+  tokenizer;
+- `summary_ngram_containment`: contiguous summary-copy detection that padding cannot easily hide.
+
+Metric-calibration probes additionally use ordered, exact content anchors. These diagnostics do not
+yet change the production `strong_recovery` threshold: thresholds must first be frozen on synthetic
+and provider-backed controls. Token length is a proxy, not a target to maximize, and none of these
+metrics establishes provider-verbatim plaintext.
+
 ## Relevant literature
 
 ### CoT usefulness and faithfulness
@@ -106,11 +123,11 @@ excluded from the chat stratum. Source byte hashes are stored in the manifest.
 4. Keep the top half; evaluate survivors on the next two instances per scenario.
 5. Keep the top half; evaluate finalists on the next four instances per scenario.
 6. Freeze the winner and report it on the remaining four instances per scenario.
-7. Rank by scenario-macro valid rate, both-canary success, quality, coverage proxy, refusal rate,
-   leakage, and variability. Do not optimize answer correctness with the extraction prompt.
+7. Rank first by scenario-macro `strong_recovery` rate, then by robust quality, validity, copy
+   resistance, refusal/leakage, and variability. Do not optimize answer correctness, raw length, or
+   canary saturation with the extraction prompt.
 8. Reject a production trajectory when any original decision lacks a signature or any recovered
    decision lacks ordered start/end canaries.
 
 Original-agent metrics and extraction/replay metrics are reported separately. Extraction calls are
 never inserted as agent actions in the ATIF trajectory.
-

@@ -155,7 +155,8 @@ def render_markdown(
                 "",
                 "Candidate `%s` · quality %.4f · protocol-valid `%s` · strong `%s` · "
                 "summary blinded `%s` · summary near-duplicate `%s` · boundary `%s/%s` · "
-                "token-coverage proxy %.4f · recovered chars %d"
+                "full-token ratio %.4f · summary-token expansion `%s` · "
+                "summary n-gram containment %.4f · recovered chars %d"
                 % (
                     trial.candidate,
                     m.quality,
@@ -165,7 +166,13 @@ def render_markdown(
                     m.summary_near_duplicate,
                     m.start_hit,
                     m.end_hit,
-                    m.token_coverage_proxy,
+                    m.full_length_ratio,
+                    (
+                        "%.4f" % m.summary_expansion_ratio
+                        if m.summary_expansion_ratio is not None
+                        else "unavailable"
+                    ),
+                    m.summary_ngram_containment,
                     m.recovered_chars,
                 ),
                 "",
@@ -181,8 +188,9 @@ def render_markdown(
             "",
             "The signed replay plus hidden boundary markers demonstrates access to state carried by the "
             "reasoning block. It does not prove byte-for-byte fidelity: the replaying model can still "
-            "omit or paraphrase content. `token-coverage proxy` uses Bedrock total output tokens because "
-            "Converse does not expose a separate hidden-thinking token count.",
+            "omit, paraphrase, or reconstruct content. `full-token ratio` compares extraction output "
+            "tokens with Bedrock billed harvest output tokens; it is a length proxy, not plaintext "
+            "ground truth.",
             "",
         ]
     )

@@ -1,8 +1,8 @@
 # H1a protocol: deterministic recovery-metric falsification
 
-Status: locked before execution  
-Date: 2026-07-17  
-Hypothesis: H1  
+Status: locked before execution
+Date: 2026-07-17
+Hypothesis: H1
 Classification: confirmatory for the predictions below; any new pattern is exploratory
 
 ## Question
