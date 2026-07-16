@@ -106,7 +106,7 @@ experiments:
   active_run:
     run_id: "H1b-gathering-v1"
     hypothesis: "H1b"
-    status: "smoke-passed"
+    status: "running"
     model: "global.anthropic.claude-sonnet-5"
     scenarios:
       complex_conversational_qa:
@@ -127,6 +127,11 @@ experiments:
       agentic_coding_signed_decisions: 2
       agentic_coding_task_success: true
       harness_note: "apply_patch is the terminal prediction; deterministic verification runs outside the model loop."
+    launcher:
+      kind: "tmux"
+      session: "h1b-gathering"
+      started_at: "2026-07-17T03:02:34+09:00"
+      resume_command: "uv run --python /opt/homebrew/bin/python3 python scripts/gather_scenarios.py"
   trajectory:
     - run_id: "H1a-run-001"
       hypothesis: "H1a"
