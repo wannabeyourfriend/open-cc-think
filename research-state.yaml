@@ -1,0 +1,107 @@
+project:
+  title: "Evidence-Graded Signature-Backed CoT Recovery"
+  question: "When does signed-state replay yield a boundary-complete, summary-distinct, stable, useful recovery candidate, and which extraction prompts maximize that evidence across scenarios?"
+  status: active
+  started: "2026-07-17"
+  domain: "chain-of-thought monitorability and agent-trace evaluation"
+  claim_ceiling: "signature-backed full-span recovery candidate; not ground-truth CoT"
+
+literature:
+  key_papers:
+    - id: "aws-converse-reasoning"
+      title: "Inference using the Converse API"
+      authors: "Amazon Web Services"
+      year: 2026
+      relevance: "Defines reasoningContent signatures and unchanged-prefix continuity."
+    - id: "anthropic-extended-thinking"
+      title: "Extended thinking"
+      authors: "Anthropic"
+      year: 2026
+      relevance: "Distinguishes billed full-thinking tokens from visible summaries and documents display/signature behavior."
+    - id: "lanham2023faithfulness"
+      title: "Measuring Faithfulness in Chain-of-Thought Reasoning"
+      authors: "Lanham et al."
+      year: 2023
+      relevance: "Motivates defense-in-depth interventions instead of a single faithfulness proxy."
+    - id: "turpin2023unfaithful"
+      title: "Language Models Don't Always Say What They Think"
+      authors: "Turpin et al."
+      year: 2023
+      relevance: "Shows plausible CoT can rationalize hidden causal influences."
+    - id: "korbak2025monitorability"
+      title: "Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety"
+      authors: "Korbak et al."
+      year: 2025
+      relevance: "Frames monitorability as useful but fragile and imperfect."
+    - id: "emmons2025pragmatic"
+      title: "A Pragmatic Way to Measure Chain-of-Thought Monitorability"
+      authors: "Emmons et al."
+      year: 2025
+      relevance: "Provides coverage and legibility proxies with explicit limitations."
+  open_problems:
+    - "No independent plaintext channel exists for validating complete Claude internal working."
+    - "Boundary canaries are near-saturated and do not distinguish original text from reconstruction."
+    - "Raw length and LLM judges can reward verbosity rather than provenance or completeness."
+    - "Prompt search and held-out agent-trace evaluation are not yet cleanly separated."
+  evidence_gaps:
+    - "No planted multi-anchor fidelity suite beyond two boundary markers."
+    - "No frozen false-positive control set for metric calibration."
+    - "No replay-replicate stability measurement on the same signature."
+    - "No balanced agentic batch stratified by signed decision type."
+    - "No task-clustered confidence intervals or cross-model replication."
+
+hypotheses:
+  - id: H1
+    statement: "A hard-gated evidence vector combining anchor fidelity, token-length alignment, copy resistance, controls, stability, and functional coverage will reject summary expansion and fresh reconstruction more reliably than the current canary-plus-overlap metric."
+    status: active
+    motivation: "The current checked-in audit is 0/14 strong, while one new live run is strong; a falsifiable metric must explain the difference without rewarding verbosity."
+    parent: null
+    priority: high
+  - id: H2
+    statement: "Paired scenario-macro successive halving over retrieval-oriented prompts will improve held-out strong-recovery rate without increasing control false positives."
+    status: pending
+    motivation: "Prompt wording changes recovery behavior, but one-off best scores are selection-biased."
+    parent: null
+    priority: high
+  - id: H3
+    statement: "Recovery evidence varies systematically by signed decision type, with tool arguments and observation integration harder than compact final answers."
+    status: pending
+    motivation: "Pooling decisions hides the exact agent behaviors needed for useful trajectories."
+    parent: null
+    priority: high
+  - id: H4
+    statement: "Successful blind replays of one signature reproduce distinctive details absent from the provider summary more consistently than unsigned and summary-only controls."
+    status: pending
+    motivation: "Repeatability of new details is supporting evidence against unconstrained reconstruction."
+    parent: H1
+    priority: medium
+  - id: H5
+    statement: "Provider-side omitted-summary harvests and locally blinded summarized harvests have comparable recovery evidence distributions after controlling for task and effort."
+    status: pending
+    motivation: "The provider documents identical signature behavior across display modes, but population-level recovery equivalence is untested."
+    parent: H1
+    priority: medium
+
+experiments:
+  metric_version: "v0.1-design"
+  proxy_metric: "Lexicographic: control false-positive rate, scenario-macro E4 pass rate, worst-scenario E4 pass rate, clustered lower confidence bound, token-length alignment/stability, then cost."
+  interim_proxy_metric: "scenario-macro strong_recovery_rate"
+  baseline_value: null
+  best_value: null
+  total_runs: 0
+  trajectory: []
+
+outer_loop:
+  cycle: 0
+  last_direction: null
+  last_reflection: "Bootstrap in progress."
+
+workspace:
+  program: "RESEARCH_PROGRAM.md"
+  findings: "findings.md"
+  log: "research-log.md"
+  literature_dir: "literature/"
+  data_dir: "data/"
+  experiments_dir: "experiments/"
+  to_human_dir: "to_human/"
+  paper_dir: "paper/"
