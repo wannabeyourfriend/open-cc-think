@@ -1,15 +1,20 @@
 from __future__ import annotations
 
 import copy
+import io
 import json
 import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch
+from urllib.error import HTTPError
 
 from signature_cot.artifacts import ArtifactWriter, public_run_dict
 from signature_cot.atif import build_atif_trajectory
+from signature_cot.bedrock import BedrockClient
 from signature_cot.calibration import DEFAULT_MANIFEST, load_manifest
+from signature_cot.config import ProviderConfig
 from signature_cot.extraction import SignatureExtractor
 from signature_cot.harvest import AgentRunner, QuestionHarvester
 from signature_cot.models import (
@@ -40,6 +45,47 @@ class FakeClient:
         if not self.responses:
             raise AssertionError("unexpected fake provider call")
         return self.responses.pop(0)
+
+
+class BedrockTransportTests(unittest.TestCase):
+    def test_retries_without_deprecated_temperature_and_caches_capability(self):
+        payload = json.dumps(
+            {
+                "output": {"message": {"content": [{"text": "ok"}]}},
+                "stopReason": "end_turn",
+                "usage": {"outputTokens": 1},
+            }
+        ).encode()
+        deprecated = HTTPError(
+            "https://bedrock.invalid",
+            400,
+            "Bad Request",
+            {},
+            io.BytesIO(
+                b'{"message":"The model returned the following errors: '
+                b'`temperature` is deprecated for this model."}'
+            ),
+        )
+        client = BedrockClient(
+            ProviderConfig("secret", "global.anthropic.claude-sonnet-5")
+        )
+
+        with patch(
+            "signature_cot.bedrock.urllib.request.urlopen",
+            side_effect=[deprecated, io.BytesIO(payload), io.BytesIO(payload)],
+        ) as urlopen:
+            first = client.converse([], max_tokens=10, temperature=0.0)
+            second = client.converse([], max_tokens=10, temperature=0.0)
+
+        requests = [
+            json.loads(call.args[0].data.decode("utf-8"))
+            for call in urlopen.call_args_list
+        ]
+        self.assertEqual(first.text, "ok")
+        self.assertEqual(second.text, "ok")
+        self.assertEqual(requests[0]["inferenceConfig"]["temperature"], 0.0)
+        self.assertNotIn("temperature", requests[1]["inferenceConfig"])
+        self.assertNotIn("temperature", requests[2]["inferenceConfig"])
 
 
 class ScoringTests(unittest.TestCase):
