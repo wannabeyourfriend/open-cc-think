@@ -63,8 +63,6 @@ def _safe_eval(node: ast.AST) -> float:
         return _safe_eval(node.body)
     if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
         return node.value
-    if isinstance(node, ast.Num):  # Python 3.9 compatibility
-        return node.n
     if isinstance(node, ast.UnaryOp) and type(node.op) in _UNARY:
         return _UNARY[type(node.op)](_safe_eval(node.operand))
     if isinstance(node, ast.BinOp) and type(node.op) in _BINARY:
@@ -153,4 +151,3 @@ def procurement_registry() -> ToolRegistry:
             ),
         ]
     )
-
