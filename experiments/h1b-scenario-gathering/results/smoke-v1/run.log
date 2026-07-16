@@ -1,0 +1,11 @@
+2026-07-16T17:55:19.634200+00:00 start model=global.anthropic.claude-sonnet-5 tasks=3 replicates=1 credential_configured=true
+2026-07-16T17:55:19.634581+00:00 instance start id=gather-chat-01-r01 scenario=complex_conversational_qa attempt=1
+2026-07-16T17:55:41.368504+00:00 instance complete id=gather-chat-01-r01 decisions=2 task_success=None
+2026-07-16T17:55:41.370124+00:00 instance start id=gather-math-01-r01 scenario=math_reasoning attempt=1
+2026-07-16T17:55:47.546402+00:00 instance complete id=gather-math-01-r01 decisions=1 task_success=True
+2026-07-16T17:55:47.547847+00:00 instance start id=gather-agentic-coding-01-r01 scenario=agentic_coding attempt=1
+2026-07-16T17:55:58.279118+00:00 instance failed id=gather-agentic-coding-01-r01 error=ProviderError: agent step 2 returned no reasoning signature
+2026-07-16T17:55:58.281714+00:00 instance start id=gather-agentic-coding-01-r01 scenario=agentic_coding attempt=2
+2026-07-16T17:56:09.484782+00:00 instance failed id=gather-agentic-coding-01-r01 error=ProviderError: agent step 2 returned no reasoning signature
+2026-07-16T17:56:09.486978+00:00 instance start id=gather-agentic-coding-01-r01 scenario=agentic_coding attempt=3
+2026-07-16T17:56:20.080305+00:00 instance failed id=gather-agentic-coding-01-r01 error=ProviderError: agent step 2 returned no reasoning signature

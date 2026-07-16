@@ -48,8 +48,9 @@ DEFAULT_OUTPUT = (
 DEFAULT_MANIFEST = DEFAULT_OUTPUT / "manifest.json"
 CODING_SYSTEM = (
     "You are a careful code-repair agent operating only on an isolated in-memory workspace. "
-    "Inspect the relevant source and tests, apply the smallest justified patch, and run the "
-    "deterministic tests before finishing. Treat tool results as authoritative. Never expose "
+    "Inspect the relevant source and tests before calling apply_patch exactly once. apply_patch is "
+    "the terminal submission action and automatically runs the deterministic verifier. Do not "
+    "finish with plain assistant text. Treat tool results as authoritative. Never expose "
     "research boundary markers in visible text or tool inputs. You have no shell, network, or "
     "host-filesystem access."
 )
@@ -235,6 +236,7 @@ def harvest_instance(
             effort=effort,
             thinking_display="summarized",
             system_text=CODING_SYSTEM,
+            terminal_tool_names=("apply_patch",),
         ).run(
             instance_id,
             task.turns[0],

@@ -45,6 +45,13 @@ reconstruction can otherwise game the metric.
   - a hard conjunction of exact ordered anchors, plausible full-token ratio, summary expansion, and
     low n-gram containment accepted the one complete trace and 0/7 negatives;
   - this is controlled separability, not a live error-rate estimate.
+- H1b live smoke:
+  - conversational QA completed two signed turns and math completed one signed, correct-answer turn;
+  - simple agentic coding produced signatures for inspection and patch decisions but repeatedly
+    omitted reasoning on a mechanical `run_tests` call;
+  - moving deterministic verification outside the model loop and treating `apply_patch` as the
+    terminal prediction produced a complete two-decision trajectory with task success and 2/2
+    protocol-valid, summary-distinct recoveries.
 
 All live observations above are exploratory because they occurred before the formal protocol.
 
@@ -62,6 +69,9 @@ All live observations above are exploratory because they occurred before the for
   coverage and quality. A log-symmetric alignment score penalizes both too-short and too-long traces.
 - Sequence similarity can be defeated by padding, while contiguous summary n-gram containment still
   identifies the embedded verbatim summary.
+- Adaptive thinking may omit reasoning on low-complexity mechanical tool calls even when preceding
+  agent decisions are signed. Agent environments should end at the substantive submitted action and
+  run deterministic verification outside the model loop, as in containerized coding benchmarks.
 
 ## Lessons and Constraints
 
@@ -74,6 +84,8 @@ All live observations above are exploratory because they occurred before the for
 - Freeze metric thresholds on M0 before prompt selection; freeze prompts before held-out evaluation.
 - Signatures remain replayable sensitive state and must stay out of public artifacts and git.
 - Terminal-Bench 2.0 remains production held-out and cannot enter calibration.
+- Keep agent predictions and verifier outcomes separate; never manufacture a signed decision for a
+  deterministic verifier step that the provider returned unsigned.
 
 ## Open Questions
 

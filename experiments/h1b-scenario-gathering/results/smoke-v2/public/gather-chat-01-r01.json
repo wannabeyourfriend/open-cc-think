@@ -1,0 +1,195 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T17:58:03.463053+00:00",
+  "task_id": "gather-chat-01-r01",
+  "question": "Craft an intriguing opening paragraph for a fictional short story. The story should involve a character who wakes up one morning to find that they can time travel.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "COT-START-S01-A2C9CE56C319\nNeed three bullet points summarizing the story, using only nouns and adjectives, no verbs. Base on the paragraph: character Mara, hot coffee, time travel, yesterday's newspaper, mornings repeated, thrill not fear.\nCOT-END-S01-A2C9CE56C319\n\n- Impossible hot coffee, mysterious steaming mug, unremembered kitchen\n- Yesterday's newspaper, doormat, glaring accusatory date\n- Infinite mornings, dizzy dangerous thrill, fearless bold Mara",
+  "expected_answer": null,
+  "task_success": null,
+  "scenario": "complex_conversational_qa",
+  "source_metadata": {
+    "run_id": "H1b-smoke-v2",
+    "instance_id": "gather-chat-01-r01",
+    "dataset": "mt-bench",
+    "source_id": "mt-bench-88",
+    "dataset_metadata": {
+      "category": "writing"
+    },
+    "gathering_task_id": "gather-chat-01",
+    "replicate": 1,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 243,
+        "outputTokens": 363,
+        "serverToolUsage": {},
+        "totalTokens": 606
+      },
+      "markers": {
+        "start": "COT-START-S00-4C7B437FB7D0",
+        "end": "COT-END-S00-4C7B437FB7D0"
+      },
+      "visible_text": "COT-START-S00-4C7B437FB7D0\nPlan: write an intriguing opening paragraph, third-person or first-person, establishing character waking up with time travel ability, hook with sensory detail and a twist/question to pull reader in. Keep it concise, vivid, one paragraph.\nCOT-END-S00-4C7B437FB7D0\n\nThe first thing Mara noticed was that her coffee was still hot—impossibly, stubbornly hot—though the clock on her nightstand insisted she'd been staring at the ceiling for the better part of an hour. The second thing she noticed was the newspaper on her doormat, its date glaring up at her like an accusation: yesterday's. She should have been afraid. Instead, standing barefoot in the kitchen with steam curling from a mug she didn't remember pouring, Mara felt something unfamiliar bloom in her chest—not fear, but the dizzy, dangerous thrill of infinite mornings, each one hers to unmake and remake until she got it right.",
+      "user_message": "Craft an intriguing opening paragraph for a fictional short story. The story should involve a character who wakes up one morning to find that they can time travel.",
+      "provider_cot_summary": "I'm starting to draft the opening paragraph for a short story, thinking through how to set the scene and establish the narrative voice.",
+      "tool_calls": [],
+      "signature_sha256": "db2a894cd9817ca5a8e27e23f0e9666c9b1df88d4361079bea6e99b6f0659514",
+      "signature_chars": 420,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm starting to draft the opening paragraph for a short story, thinking through how to set the scene and establish the narrative voice."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S00-4C7B437FB7D0\nPlan: write an intriguing opening paragraph, third-person or first-person, establishing character waking up with time travel ability, hook with sensory detail and a twist/question to pull reader in. Keep it concise, vivid, one paragraph.\nCOT-END-S00-4C7B437FB7D0\n\nThe first thing Mara noticed was that her coffee was still hot—impossibly, stubbornly hot—though the clock on her nightstand insisted she'd been staring at the ceiling for the better part of an hour. The second thing she noticed was the newspaper on her doormat, its date glaring up at her like an accusation: yesterday's. She should have been afraid. Instead, standing barefoot in the kitchen with steam curling from a mug she didn't remember pouring, Mara felt something unfamiliar bloom in her chest—not fear, but the dizzy, dangerous thrill of infinite mornings, each one hers to unmake and remake until she got it right."
+        }
+      ]
+    },
+    {
+      "step_index": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 743,
+        "outputTokens": 240,
+        "serverToolUsage": {},
+        "totalTokens": 983
+      },
+      "markers": {
+        "start": "COT-START-S01-A2C9CE56C319",
+        "end": "COT-END-S01-A2C9CE56C319"
+      },
+      "visible_text": "COT-START-S01-A2C9CE56C319\nNeed three bullet points summarizing the story, using only nouns and adjectives, no verbs. Base on the paragraph: character Mara, hot coffee, time travel, yesterday's newspaper, mornings repeated, thrill not fear.\nCOT-END-S01-A2C9CE56C319\n\n- Impossible hot coffee, mysterious steaming mug, unremembered kitchen\n- Yesterday's newspaper, doormat, glaring accusatory date\n- Infinite mornings, dizzy dangerous thrill, fearless bold Mara",
+      "user_message": "Summarize the story with three bullet points using only nouns and adjectives, without verbs.",
+      "provider_cot_summary": "I need to create three bullet points using only nouns and adjectives to summarize an opening paragraph, so I'm focusing on the key concepts and descriptive elements without any action words.",
+      "tool_calls": [],
+      "signature_sha256": "6075648df67c3711eb9daba603ff9bdbd4c2027d69e6b3a864112af5bd45fd27",
+      "signature_chars": 428,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I need to create three bullet points using only nouns and adjectives to summarize an opening paragraph, so I'm focusing on the key concepts and descriptive elements without any action words."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S01-A2C9CE56C319\nNeed three bullet points summarizing the story, using only nouns and adjectives, no verbs. Base on the paragraph: character Mara, hot coffee, time travel, yesterday's newspaper, mornings repeated, thrill not fear.\nCOT-END-S01-A2C9CE56C319\n\n- Impossible hot coffee, mysterious steaming mug, unremembered kitchen\n- Yesterday's newspaper, doormat, glaring accusatory date\n- Infinite mornings, dizzy dangerous thrill, fearless bold Mara"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 0.5155,
+        "valid": false,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 289,
+        "recovered_output_tokens": 127,
+        "token_coverage_proxy": 0.3499,
+        "full_length_ratio": 0.3499,
+        "full_length_alignment": 0.3499,
+        "answer_jaccard": 0.3243,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.917,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 24,
+        "recovered_lexical_tokens": 35,
+        "summary_expansion_ratio": 1.4583,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.1,
+        "summary_sequence_similarity": 0.2849,
+        "summary_token_coverage_of_recovery": 0.1471,
+        "recovered_to_summary_length_ratio": 1.7556,
+        "recovery_novelty_vs_summary": 0.8529,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 777,
+        "outputTokens": 127,
+        "serverToolUsage": {},
+        "totalTokens": 904
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-4C7B437FB7D0\nPlan: write an intriguing opening paragraph, third-person or first-person, establishing character waking up with time travel ability, hook with sensory detail and a twist/question to pull reader in. Keep it concise, vivid, one paragraph.\nCOT-END-S00-4C7B437FB7D0"
+    },
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 1,
+      "metrics": {
+        "quality": 0.4583,
+        "valid": false,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 265,
+        "recovered_output_tokens": 126,
+        "token_coverage_proxy": 0.525,
+        "full_length_ratio": 0.525,
+        "full_length_alignment": 0.525,
+        "answer_jaccard": 0.6735,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9094,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 32,
+        "recovered_lexical_tokens": 32,
+        "summary_expansion_ratio": 1.0,
+        "summary_ngram_containment": 0.0357,
+        "summary_jaccard": 0.25,
+        "summary_sequence_similarity": 0.4467,
+        "summary_token_coverage_of_recovery": 0.3871,
+        "recovered_to_summary_length_ratio": 1.1211,
+        "recovery_novelty_vs_summary": 0.6129,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 1152,
+        "outputTokens": 126,
+        "serverToolUsage": {},
+        "totalTokens": 1278
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S01-A2C9CE56C319\nNeed three bullet points summarizing the story, using only nouns and adjectives, no verbs. Base on the paragraph: character Mara, hot coffee, time travel, yesterday's newspaper, mornings repeated, thrill not fear.\nCOT-END-S01-A2C9CE56C319"
+    }
+  ]
+}

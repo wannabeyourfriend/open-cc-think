@@ -12,7 +12,9 @@ tasks as gathering data.
 - Task instructions, environment state, oracle repair, and tests are logically separate.
 - Every environment has a content fingerprint and is reset before each instance.
 - The oracle repair is validated before live model collection.
-- Agent and verifier outcomes remain separate: visible final text does not override test results.
+- Agent and verifier outcomes remain separate: `apply_patch` is the terminal prediction action, and
+  the deterministic verifier runs outside any subsequent model decision. Visible text does not
+  override test results.
 - Environment capabilities are explicit. The H1b coding environment has zero GPUs, no internet,
   no host filesystem, no shell, and a bounded eight-step agent loop.
 - Build/run logs and final evaluation records are stored separately and remain restartable.

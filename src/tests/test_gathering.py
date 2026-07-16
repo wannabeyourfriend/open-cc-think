@@ -25,20 +25,20 @@ class CodingGatheringTests(unittest.TestCase):
                 }
             )
             self.assertTrue(result["applied"])
-            self.assertTrue(workspace.run_tests({})["passed"])
+            self.assertTrue(result["verifier"]["passed"])
             self.assertTrue(workspace.task_success)
 
     def test_wrong_patch_does_not_pass(self):
         fixture = next(iter(load_coding_fixtures().values()))
         workspace = CodingWorkspace(fixture)
-        workspace.apply_patch(
+        result = workspace.apply_patch(
             {
                 "path": fixture.target_path,
                 "old": fixture.old,
                 "new": "return []",
             }
         )
-        self.assertFalse(workspace.run_tests({})["passed"])
+        self.assertFalse(result["verifier"]["passed"])
         self.assertFalse(workspace.task_success)
 
     def test_manifest_requires_fifteen_tasks_in_every_scenario(self):

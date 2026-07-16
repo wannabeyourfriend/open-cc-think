@@ -1,0 +1,4 @@
+2026-07-16T17:59:03.725724+00:00 start model=global.anthropic.claude-sonnet-5 tasks=1 replicates=1 credential_configured=true
+2026-07-16T17:59:03.726110+00:00 instance start id=gather-agentic-coding-01-r01 scenario=agentic_coding attempt=1
+2026-07-16T17:59:15.466715+00:00 instance failed id=gather-agentic-coding-01-r01 error=ProviderError: agent step 2 returned no reasoning signature (stop_reason=tool_use tool_calls=run_tests text_chars=81 summary_chars=0)
+2026-07-16T17:59:15.468588+00:00 finish complete_instances=0 expected_instances=1 complete=False

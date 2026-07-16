@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "experiment": "H1b-gathering-v1",
+  "run_id": "H1b-smoke-v4",
+  "created_at": "2026-07-16T18:00:04.505184+00:00",
+  "updated_at": "2026-07-16T18:00:19.865328+00:00",
+  "manifest": "/Users/admin/Codebase/open-cc-think/experiments/h1b-scenario-gathering/results/gathering-v1/manifest.json",
+  "manifest_sha256": "3dc0ae12cb82d8c3e6182bb822963c62e50bbc6c5ffab48f0fe008feb3d8a8f3",
+  "model": "global.anthropic.claude-sonnet-5",
+  "required": {
+    "tasks": 1,
+    "replicates_per_task": 1,
+    "task_instances": 1
+  },
+  "instances": {
+    "gather-agentic-coding-01-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:00:19.863169+00:00",
+      "task_id": "gather-agentic-coding-01",
+      "source_id": "gather-agentic-coding-01",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "signed_decisions": 2,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 245,
+      "extraction_output_tokens": 167,
+      "full_length_ratios": [
+        0.7838,
+        0.597
+      ],
+      "full_length_alignments": [
+        0.7838,
+        0.597
+      ],
+      "summary_expansion_ratios": [
+        0.4444,
+        0.4545
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-01-r01.md",
+        "json": "public/gather-agentic-coding-01-r01.json",
+        "atif": "public/gather-agentic-coding-01-r01.atif.json"
+      }
+    }
+  }
+}

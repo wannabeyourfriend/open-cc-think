@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import copy
-from typing import Any, Dict, List, Optional
+import json
+from typing import Any, Dict, List, Optional, Sequence
 
 from .bedrock import BedrockClient, ProviderError
 from .models import HarvestRun, HarvestStep, Json
@@ -209,6 +210,7 @@ class AgentRunner:
         effort: str = "medium",
         thinking_display: str = "summarized",
         system_text: Optional[str] = None,
+        terminal_tool_names: Optional[Sequence[str]] = None,
     ):
         self.client = client
         self.registry = registry
@@ -216,6 +218,7 @@ class AgentRunner:
         self.max_steps = max_steps
         self.effort = effort
         self.thinking_display = thinking_display
+        self.terminal_tool_names = set(terminal_tool_names or ())
         self.system: List[Json] = [
             {
                 "text": (
@@ -257,7 +260,17 @@ class AgentRunner:
                 ),
             )
             if not response.signatures:
-                raise ProviderError("agent step %d returned no reasoning signature" % step_index)
+                raise ProviderError(
+                    "agent step %d returned no reasoning signature "
+                    "(stop_reason=%s tool_calls=%s text_chars=%d summary_chars=%d)"
+                    % (
+                        step_index,
+                        response.stop_reason,
+                        ",".join(call.name for call in response.tool_calls) or "none",
+                        len(response.text),
+                        len(response.reasoning_summary),
+                    )
+                )
 
             step = HarvestStep(
                 step_index=step_index,
@@ -280,6 +293,7 @@ class AgentRunner:
                 break
 
             tool_result_blocks: List[Json] = []
+            terminal_results: List[Json] = []
             for call in response.tool_calls:
                 status = "success"
                 try:
@@ -306,10 +320,25 @@ class AgentRunner:
                         "status": status,
                     }
                 )
+                if call.name in self.terminal_tool_names:
+                    terminal_results.append(
+                        {
+                            "name": call.name,
+                            "status": status,
+                            "result": result,
+                        }
+                    )
 
             # Replaying a signed tool-use turn requires valid toolResult blocks. The
             # extraction prompt is later appended to this exact structural bridge.
             step.replay_tool_results = copy.deepcopy(tool_result_blocks)
+            if terminal_results:
+                final_answer = json.dumps(
+                    terminal_results[-1]["result"],
+                    ensure_ascii=False,
+                    sort_keys=True,
+                )
+                break
             markers = new_markers(step_index + 1)
             next_content = copy.deepcopy(tool_result_blocks)
             next_content.append({"text": tool_result_marker_instruction(markers)})

@@ -106,7 +106,7 @@ experiments:
   active_run:
     run_id: "H1b-gathering-v1"
     hypothesis: "H1b"
-    status: "protocol-locked"
+    status: "smoke-passed"
     model: "global.anthropic.claude-sonnet-5"
     scenarios:
       complex_conversational_qa:
@@ -120,6 +120,13 @@ experiments:
         replicates_per_task: 3
     minimum_task_instances: 135
     output: "experiments/h1b-scenario-gathering/results/gathering-v1"
+    smoke:
+      conversational_qa_signed_decisions: 2
+      math_signed_decisions: 1
+      math_task_success: true
+      agentic_coding_signed_decisions: 2
+      agentic_coding_task_success: true
+      harness_note: "apply_patch is the terminal prediction; deterministic verification runs outside the model loop."
   trajectory:
     - run_id: "H1a-run-001"
       hypothesis: "H1a"

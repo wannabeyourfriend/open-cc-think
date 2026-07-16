@@ -194,10 +194,12 @@ class CodingWorkspace:
             )
         self.files[path] = self.files[path].replace(old, new, 1)
         self.patch_count += 1
+        verifier = self.run_tests({})
         return {
             "applied": True,
             "path": path,
             "patch_count": self.patch_count,
+            "verifier": verifier,
         }
 
     def run_tests(self, _: Json) -> Json:
@@ -259,7 +261,7 @@ class CodingWorkspace:
                 ),
                 LocalTool(
                     "apply_patch",
-                    "Replace one exact text occurrence in one isolated workspace file.",
+                    "Submit one exact replacement. This terminates the task and runs the verifier automatically.",
                     {
                         "type": "object",
                         "properties": {
@@ -274,7 +276,7 @@ class CodingWorkspace:
                 ),
                 LocalTool(
                     "run_tests",
-                    "Run deterministic checks for the isolated repair fixture.",
+                    "Inspect current deterministic verifier status without terminating the task.",
                     {"type": "object", "properties": {}, "additionalProperties": False},
                     self.run_tests,
                 ),

@@ -32,7 +32,13 @@ from signature_cot.scoring import (
     score_content_anchors,
     score_recovery,
 )
-from signature_cot.tools import ToolExecutionError, calculator, procurement_registry
+from signature_cot.tools import (
+    LocalTool,
+    ToolExecutionError,
+    ToolRegistry,
+    calculator,
+    procurement_registry,
+)
 
 
 def reasoning(signature: str, text: str = ""):
@@ -278,6 +284,50 @@ class ReplayTests(unittest.TestCase):
 
 
 class AgentTests(unittest.TestCase):
+    def test_terminal_tool_ends_on_the_signed_action(self):
+        response = BedrockResponse(
+            content=[
+                reasoning("sig-terminal"),
+                {
+                    "toolUse": {
+                        "toolUseId": "finish-1",
+                        "name": "submit_result",
+                        "input": {"status": "PASS"},
+                    }
+                },
+            ],
+            stop_reason="tool_use",
+            usage={"outputTokens": 12},
+            raw={},
+        )
+        registry = ToolRegistry(
+            [
+                LocalTool(
+                    "submit_result",
+                    "finish",
+                    {
+                        "type": "object",
+                        "properties": {"status": {"type": "string"}},
+                        "required": ["status"],
+                    },
+                    lambda arguments: {
+                        "verified_status": arguments["status"],
+                        "accepted": True,
+                    },
+                )
+            ]
+        )
+        client = FakeClient([response])
+        run = AgentRunner(
+            client,
+            registry,
+            terminal_tool_names=("submit_result",),
+        ).run("terminal", "finish with the tool")
+        self.assertEqual(len(run.steps), 1)
+        self.assertEqual(len(client.calls), 1)
+        self.assertIn('"verified_status": "PASS"', run.final_answer)
+        self.assertTrue(run.steps[0].replay_tool_results)
+
     def test_agent_records_signed_tool_and_final_steps(self):
         first = BedrockResponse(
             content=[
