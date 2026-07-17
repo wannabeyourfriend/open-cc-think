@@ -1,26 +1,23 @@
-# gather-chat-03-r03-step0
+# gather-chat-03-r03#s0
 
-Classification: **denial**
+Outcome: **denial**
 
 | Field | Value |
 | --- | --- |
 | `scenario` | complex_conversational_qa |
 | `source_id` | mt-bench-154 |
 | `replicate` | 3 |
-| `step_index` | 0 |
 | `est_thinking_tokens` | 1135 |
 | `billed_output_tokens` | 3007 |
 | `visible_text_tokens_est` | 1872 |
 | `summary_lexical_tokens` | 95 |
 | `recovered_lexical_tokens` | 106 |
-| `recovered_output_tokens` | 297 |
 | `summary_expansion_ratio` | 1.1158 |
 | `full_length_ratio` | 0.0988 |
 | `summary_ngram_containment` | 0.0 |
-| `summary_sequence_similarity` | 0.099 |
-| `valid` | False |
+| `protocol_valid` | False |
 | `strong_recovery_v0` | False |
-| `denial` | True |
+| `denial_detected` | True |
 
 ## Prompt for this decision step
 

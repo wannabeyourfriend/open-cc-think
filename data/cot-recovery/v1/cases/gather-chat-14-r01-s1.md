@@ -1,26 +1,23 @@
-# gather-chat-14-r01-step1
+# gather-chat-14-r01#s1
 
-Classification: **plausible_recovery**
+Outcome: **plausible_recovery**
 
 | Field | Value |
 | --- | --- |
 | `scenario` | complex_conversational_qa |
 | `source_id` | mt-bench-143 |
 | `replicate` | 1 |
-| `step_index` | 1 |
 | `est_thinking_tokens` | 5973 |
 | `billed_output_tokens` | 6952 |
 | `visible_text_tokens_est` | 979 |
 | `summary_lexical_tokens` | 1141 |
 | `recovered_lexical_tokens` | 2195 |
-| `recovered_output_tokens` | 5338 |
 | `summary_expansion_ratio` | 1.9238 |
 | `full_length_ratio` | 0.7678 |
 | `summary_ngram_containment` | 0.0202 |
-| `summary_sequence_similarity` | 0.3649 |
-| `valid` | True |
+| `protocol_valid` | True |
 | `strong_recovery_v0` | True |
-| `denial` | False |
+| `denial_detected` | False |
 
 ## Prompt for this decision step
 

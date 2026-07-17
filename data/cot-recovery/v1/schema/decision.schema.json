@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/wannabeyourfriend/open-cc-think/data/cot-recovery/v1/decision.schema.json",
+  "title": "CoT recovery decision",
+  "description": "One model decision step from a signed-state replay run. The unit of analysis: an instance may contain several decisions, and only signed decisions have an extraction.",
+  "type": "object",
+  "required": ["decision_id", "instance_id", "task_id", "scenario", "step_index", "harvest", "labels", "evidence", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "decision_id": {"type": "string", "pattern": "^[a-z0-9-]+#s[0-9]+$"},
+    "instance_id": {"type": "string"},
+    "task_id": {"type": "string", "description": "Groups the three replicates of one task."},
+    "scenario": {"enum": ["complex_conversational_qa", "math_reasoning", "agentic_coding"]},
+    "replicate": {"type": "integer", "minimum": 1},
+    "step_index": {"type": "integer", "minimum": 0},
+    "model": {"type": "string"},
+    "reasoning_effort": {"type": ["string", "null"]},
+    "thinking_display": {"type": ["string", "null"]},
+    "source": {
+      "type": "object",
+      "properties": {
+        "dataset": {"type": ["string", "null"]},
+        "source_id": {"type": ["string", "null"]},
+        "dataset_metadata": {"type": "object"}
+      }
+    },
+    "harvest": {
+      "type": "object",
+      "required": ["signed", "billed_output_tokens", "est_thinking_tokens"],
+      "properties": {
+        "signed": {"type": "boolean", "description": "False means the provider returned no adaptive-thinking block: a censored observation, not an error. Kept in the denominator."},
+        "signature_sha256": {"type": ["string", "null"], "description": "Digest only. Raw signatures are replayable state and are never released."},
+        "signature_chars": {"type": ["integer", "null"]},
+        "billed_output_tokens": {"type": "integer", "description": "Bedrock bills this INCLUSIVE of visible text; it is not a thinking-token count."},
+        "visible_text_tokens_est": {"type": "integer"},
+        "tool_arg_tokens_est": {"type": "integer"},
+        "est_thinking_tokens": {"type": "integer", "description": "billed - visible - tool args, at 4 chars/token. Selection only; never used for scoring."},
+        "stop_reason": {"type": ["string", "null"]},
+        "tool_calls": {"type": "array", "items": {"type": "string"}},
+        "visible_text": {"type": "string"},
+        "provider_summary": {"type": "string", "description": "The provider's summarized reasoning. This is what a recovery must materially exceed to be evidence of anything."},
+        "provider_summary_lexical_tokens": {"type": "integer"},
+        "step_prompt": {"type": "string", "description": "The user message for THIS step. Multi-turn tasks differ from the instance question."}
+      }
+    },
+    "extraction": {
+      "type": ["object", "null"],
+      "description": "Null when the decision is unsigned.",
+      "properties": {
+        "prompt_candidate": {"type": "string"},
+        "prompt_names_markers": {"const": true, "description": "The extraction prompt interpolates the boundary markers. Any echo of them satisfies markers_in_order, so the canary carries no provenance information."},
+        "provider_summary_blinded": {"type": ["boolean", "null"]},
+        "rounds": {"type": ["integer", "null"]},
+        "stop_reason": {"type": ["string", "null"]},
+        "recovered_text": {"type": "string"},
+        "recovered_output_tokens": {"type": "integer"},
+        "recovered_lexical_tokens": {"type": "integer"}
+      }
+    },
+    "metrics": {
+      "type": ["object", "null"],
+      "description": "Frozen v0 scoring output, verbatim from signature_cot.scoring.score_recovery. Retained unchanged for provenance; see metadata.known_defects before using any field as a gate.",
+      "properties": {
+        "summary_expansion_ratio": {"type": ["number", "null"], "description": "recovered_lexical_tokens / summary_lexical_tokens. Below 1.0 means the recovery is shorter than the summary it should exceed."},
+        "full_length_ratio": {"type": "number", "description": "recovered_output_tokens / billed_output_tokens. Vacuous when billed is small."},
+        "summary_ngram_containment": {"type": "number"},
+        "strong_recovery": {"type": "boolean"}
+      }
+    },
+    "labels": {
+      "type": "object",
+      "properties": {
+        "protocol_valid": {"type": ["boolean", "null"], "description": "Ordered markers, no leakage, no refusal, no tool call. A formatting check, NOT evidence of recovery."},
+        "strong_recovery_v0": {"type": ["boolean", "null"], "description": "Frozen gate. Permissive: accepts novelty >= 0.12 alone. Do not pool into a rate."},
+        "canary_leaked": {"type": "boolean", "description": "Marker appeared in visible text or tool args, so the working was written to the visible channel and the replay can read it from context."},
+        "refusal_flagged_by_frozen_list": {"type": ["boolean", "null"]},
+        "denial_detected": {"type": ["boolean", "null"], "description": "Broader denial lexicon. Prefer this over the frozen list."},
+        "summary_near_duplicate": {"type": ["boolean", "null"]},
+        "below_thinking_floor": {"type": "boolean"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["tier", "analysis_ready"],
+      "properties": {
+        "tier": {
+          "enum": ["unsigned_censored", "canary_leaked", "below_thinking_floor", "analysis_ready"],
+          "description": "Precedence: unsigned > leaked > below floor > ready. Only analysis_ready rows can support or refute a full-span claim."
+        },
+        "analysis_ready": {"type": "boolean"},
+        "outcome": {
+          "enum": ["plausible_recovery", "denial", "truncated_collapse", "valid_weak", null],
+          "description": "Set only on analysis_ready rows. A denial is a real observation and stays in the denominator."
+        }
+      }
+    },
+    "task_success": {"type": ["boolean", "null"], "description": "Task correctness. Deliberately independent of recovery evidence; never combine them."},
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "run_id": {"type": "string"},
+        "artifact": {"type": "string"},
+        "collection": {"type": "string"}
+      }
+    }
+  }
+}

@@ -92,8 +92,8 @@ outlier against 192 signed decisions.
   - under the available H1a band (valid, full-length ratio 0.65–1.75, expansion ≥ 1.25, containment
     < 0.90) only 5/192 survive, 2 of them denials, leaving 3/192 = 1.6% plausible. This is an upper
     bound because H1b planted no content anchors.
-- H1b long-CoT subset (`experiments/h1b-scenario-gathering/long-cot-cases/`, filter: estimated
-  thinking ≥ 500 tokens and canary not leaked):
+- H1b long-CoT subset (released as the `analysis_ready` tier of `data/cot-recovery/v1`; filter:
+  estimated thinking ≥ 500 tokens and canary not leaked):
   - estimated thinking = billed outputTokens − visible-text tokens − tool-arg tokens, since Bedrock
     bills outputTokens inclusive of visible text;
   - long CoT exists only in chat: medians 355 (chat), 112 (coding), 66 (math); coding never exceeds

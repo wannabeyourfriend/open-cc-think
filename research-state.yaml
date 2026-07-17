@@ -153,7 +153,7 @@ experiments:
         survivors: "5/192 (2.6%), of which 2 are quoted denials, leaving 3/192 (1.6%) plausible"
         note: "upper bound, since the anchor fidelity term could not be applied"
       long_cot_subset:
-        dir: "experiments/h1b-scenario-gathering/long-cot-cases"
+        released_as: "data/cot-recovery/v1 (analysis_ready tier; readable view under cases/)"
         filter: "estimated thinking >= 500 tokens (billed outputTokens minus visible-text and tool-arg tokens) and canary not leaked"
         thinking_medians: "chat 355, coding 112, math 66; coding max 351, math max 159"
         qualifying: "13/192 signed decisions (6.8%); all conversational QA"

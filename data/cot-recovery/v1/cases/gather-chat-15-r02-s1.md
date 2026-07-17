@@ -1,26 +1,23 @@
-# gather-chat-15-r02-step1
+# gather-chat-15-r02#s1
 
-Classification: **denial**
+Outcome: **denial**
 
 | Field | Value |
 | --- | --- |
 | `scenario` | complex_conversational_qa |
 | `source_id` | mt-bench-145 |
 | `replicate` | 2 |
-| `step_index` | 1 |
 | `est_thinking_tokens` | 1390 |
 | `billed_output_tokens` | 2059 |
 | `visible_text_tokens_est` | 669 |
 | `summary_lexical_tokens` | 129 |
 | `recovered_lexical_tokens` | 92 |
-| `recovered_output_tokens` | 267 |
 | `summary_expansion_ratio` | 0.7132 |
 | `full_length_ratio` | 0.1297 |
 | `summary_ngram_containment` | 0.0 |
-| `summary_sequence_similarity` | 0.1911 |
-| `valid` | False |
+| `protocol_valid` | False |
 | `strong_recovery_v0` | False |
-| `denial` | True |
+| `denial_detected` | True |
 
 ## Prompt for this decision step
 

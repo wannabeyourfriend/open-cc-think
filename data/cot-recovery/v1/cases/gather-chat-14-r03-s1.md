@@ -1,26 +1,23 @@
-# gather-chat-14-r03-step1
+# gather-chat-14-r03#s1
 
-Classification: **invalid_truncated**
+Outcome: **truncated_collapse**
 
 | Field | Value |
 | --- | --- |
 | `scenario` | complex_conversational_qa |
 | `source_id` | mt-bench-143 |
 | `replicate` | 3 |
-| `step_index` | 1 |
 | `est_thinking_tokens` | 5069 |
 | `billed_output_tokens` | 6149 |
 | `visible_text_tokens_est` | 1080 |
 | `summary_lexical_tokens` | 1030 |
 | `recovered_lexical_tokens` | 96 |
-| `recovered_output_tokens` | 562 |
 | `summary_expansion_ratio` | 0.0932 |
 | `full_length_ratio` | 0.0914 |
 | `summary_ngram_containment` | 0.0 |
-| `summary_sequence_similarity` | 0.0591 |
-| `valid` | False |
+| `protocol_valid` | False |
 | `strong_recovery_v0` | False |
-| `denial` | False |
+| `denial_detected` | False |
 
 ## Prompt for this decision step
 
