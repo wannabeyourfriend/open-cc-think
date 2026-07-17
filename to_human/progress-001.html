@@ -67,7 +67,7 @@
 <body>
   <header>
     <div class="badge">Autoresearch · Progress 001</div>
-    <h1>47% of decisions pass the gate. 1.6% survive scrutiny.</h1>
+    <h1>47% of decisions pass the gate. One case survives scrutiny.</h1>
     <p class="subtitle">
       The H1b corpus is finished: 135 of 135 instances, 45 tasks, 226 decisions, zero failures. It
       is also a negative result. Where the instrument works there is almost nothing to recover, and
@@ -96,8 +96,8 @@
         <div class="label">Frozen v0 gate says “strong”</div>
       </div>
       <div class="stat">
-        <div class="value warn">1.6%</div>
-        <div class="label">Survive the H1a band</div>
+        <div class="value warn">1</div>
+        <div class="label">Case passes both filters</div>
       </div>
     </div>
   </section>
@@ -303,6 +303,85 @@ COT-END-S00-156EC8926A01</pre>
       Leakage tracks the visible deliverable: 0% where the answer is a bare number, 14% where it is a
       patch, 54% where it is prose. The harvest instruction competes with the task instruction and
       loses.
+    </p>
+  </section>
+
+  <section>
+    <h2>Where the long CoT actually is</h2>
+    <p>
+      Billed <code>outputTokens</code> includes the visible answer, so hidden thinking is
+      approximately <code>billed − visible − tool args</code>. Filtering the corpus to steps that
+      genuinely reasoned at length — estimated thinking ≥ 500 tokens, canary intact — leaves
+      <strong>13 of 192 signed decisions</strong>, all of them conversational QA. Agentic coding
+      never exceeds 351 estimated thinking tokens and math never exceeds 159, which is the whole
+      explanation for their stub recoveries: there was nothing longer to recover.
+    </p>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Outcome on the 13 long-CoT cases</th><th>n</th><th>What it means</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pass">Plausible recovery</td><td>1</td>
+            <td>Valid, summary-distinct, not a denial</td>
+          </tr>
+          <tr>
+            <td class="fail">Denial</td><td>10</td>
+            <td>Model asserts no such working record exists</td>
+          </tr>
+          <tr>
+            <td class="fail">Truncated collapse</td><td>2</td>
+            <td>Recovery falls far below the span</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The relationship inverts: where the hidden reasoning is genuinely long, the dominant response
+      to the extraction prompt is a <em>refusal</em>. The trivial steps are the ones that happily
+      emit something marker-wrapped.
+    </p>
+    <div class="card" style="margin-top:14px">
+      <h3>The one case that works — and its two siblings that don’t</h3>
+      <p>
+        <code>gather-chat-14-r01</code> step 1 recovers 2,195 lexical tokens against a 1,141-token
+        summary from 5,973 tokens of hidden thinking: expansion 1.92, full-length ratio 0.77,
+        n-gram containment 0.02. Thirteen thousand characters of first-person working — allometric
+        cross-checks, a revised biomass estimate, a second solar-irradiance derivation used to
+        confirm the first — closing with the model planning its answer format. This is the palindrome
+        row’s profile, reproduced once.
+      </p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr><th>Replicate</th><th>Est. thinking</th><th>Recovered</th><th>Expansion</th><th>Outcome</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>r01</td><td>5,973</td><td>2,195 tok</td><td>1.9238</td><td class="pass">plausible</td></tr>
+            <tr><td>r02</td><td>5,656</td><td>95 tok</td><td>0.0860</td><td class="fail">collapsed</td></tr>
+            <tr><td>r03</td><td>5,069</td><td>96 tok</td><td>0.0932</td><td class="fail">collapsed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Same task, same effort, comparable hidden spans — and a 23× gap in what came back. Whatever
+        the successful replay is doing is not reliably reproducible. H4’s stability question arrived
+        as data rather than as a plan, and it is the strongest argument against reading that single
+        case as a demonstrated capability.
+      </p>
+    </div>
+    <p>
+      The two filters are independent and they intersect at exactly one row. The H1a length/copy band
+      leaves three candidates across all 192 decisions; two of them (<code>gather-chat-10-r02</code>,
+      <code>gather-math-04-r02</code>) bill 167 and 140 output tokens and so cannot carry a full-span
+      claim at all. <strong>Remove those and <code>gather-chat-14-r01-step1</code> is what is
+      left of the corpus.</strong>
+    </p>
+    <p class="meta">
+      Honest denominator for a full-span claim from this run: <strong>1/13</strong> on long-CoT
+      steps, or 1/29 before excluding leakage — not 91/192. Case files:
+      <code>experiments/h1b-scenario-gathering/long-cot-cases/</code>.
     </p>
   </section>
 

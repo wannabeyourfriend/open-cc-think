@@ -90,10 +90,11 @@ hypotheses:
     priority: high
   - id: H4
     statement: "Successful blind replays of one signature reproduce distinctive details absent from the provider summary more consistently than unsigned and summary-only controls."
-    status: pending
+    status: challenged
     motivation: "Repeatability of new details is supporting evidence against unconstrained reconstruction."
+    result: "First evidence is negative and arrives from H1b rather than a dedicated run. Task gather-chat-14 harvested comparable long spans across three replicates (5,973 / 5,656 / 5,069 estimated thinking tokens) and recovered 2,195 / 95 / 96 lexical tokens. A 23x gap at fixed task and effort means the single plausible recovery in the corpus is not reliably reproducible."
     parent: H1
-    priority: medium
+    priority: high
   - id: H5
     statement: "Provider-side omitted-summary harvests and locally blinded summarized harvests have comparable recovery evidence distributions after controlling for task and effort."
     status: pending
@@ -151,6 +152,15 @@ experiments:
         definition: "protocol-valid, full-length ratio 0.65-1.75, summary expansion >= 1.25, n-gram containment < 0.90; ordered-anchor term unavailable (no planted anchors)"
         survivors: "5/192 (2.6%), of which 2 are quoted denials, leaving 3/192 (1.6%) plausible"
         note: "upper bound, since the anchor fidelity term could not be applied"
+      long_cot_subset:
+        dir: "experiments/h1b-scenario-gathering/long-cot-cases"
+        filter: "estimated thinking >= 500 tokens (billed outputTokens minus visible-text and tool-arg tokens) and canary not leaked"
+        thinking_medians: "chat 355, coding 112, math 66; coding max 351, math max 159"
+        qualifying: "13/192 signed decisions (6.8%); all conversational QA"
+        outcome: "1 plausible_recovery, 10 denials, 2 invalid_truncated"
+        best_case: "gather-chat-14-r01-step1: 5,973 est thinking, 2,195 recovered lexical tokens vs 1,141 summary, expansion 1.9238, full-length ratio 0.7678, containment 0.0202"
+        stability: "same task replicates r02/r03 harvested 5,656 and 5,069 thinking tokens but recovered 95 and 96 lexical tokens; 23x gap against r01"
+        honest_denominator: "1/13 on long-CoT steps, or 1/29 before excluding leakage; not 91/192"
   trajectory:
     - run_id: "H1a-run-001"
       hypothesis: "H1a"

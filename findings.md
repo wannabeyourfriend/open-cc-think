@@ -92,6 +92,21 @@ outlier against 192 signed decisions.
   - under the available H1a band (valid, full-length ratio 0.65–1.75, expansion ≥ 1.25, containment
     < 0.90) only 5/192 survive, 2 of them denials, leaving 3/192 = 1.6% plausible. This is an upper
     bound because H1b planted no content anchors.
+- H1b long-CoT subset (`experiments/h1b-scenario-gathering/long-cot-cases/`, filter: estimated
+  thinking ≥ 500 tokens and canary not leaked):
+  - estimated thinking = billed outputTokens − visible-text tokens − tool-arg tokens, since Bedrock
+    bills outputTokens inclusive of visible text;
+  - long CoT exists only in chat: medians 355 (chat), 112 (coding), 66 (math); coding never exceeds
+    351 and math never exceeds 159, which is why their recoveries are 6- and 12-token stubs;
+  - 29/192 chat steps clear 500 estimated thinking tokens; 16 of those leaked, leaving 13 qualifying
+    cases (6.8% of signed decisions);
+  - on that subset: 1 plausible recovery, 10 denials, 2 truncated collapses. Where hidden reasoning
+    is genuinely long, the dominant response to extraction is a denial that the record exists;
+  - the one plausible case is `gather-chat-14-r01-step1`: 5,973 estimated thinking tokens, 2,195
+    recovered lexical tokens against a 1,141-token summary, expansion 1.9238, full-length ratio
+    0.7678, containment 0.0202 — the same profile as the exploratory palindrome row;
+  - its two sibling replicates on the same task and effort harvested comparable spans (5,656 and
+    5,069) and recovered 95 and 96 lexical tokens, a 23× gap. H4 stability fails at n=3.
 
 All live observations above are exploratory because they occurred before the formal protocol; the
 H1b collection is prospective observational, and its downstream patterns remain exploratory.
