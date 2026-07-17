@@ -71,8 +71,15 @@ hypotheses:
     priority: high
   - id: H1b
     statement: "Repeated blind replay across complex conversational QA, math reasoning, and agentic coding yields a useful balanced corpus whose recovery-evidence distributions can be measured with exact task and decision denominators."
-    status: active
+    status: refuted
     motivation: "The project needs substantially more scenario-diverse evidence before changing prompts or production gates."
+    result: "Collection succeeded (135/135 instances, 45/45 tasks, 226 decisions with exact denominators) but the corpus is not useful: the boundary canary is satisfiable by echo because the extraction prompt names it, the scenarios that clear the gate bill too few thinking tokens to carry a full-span claim, and the scenario with substantial thinking loses 54% of decisions to canary leakage. The measured 47.4% v0 strong rate is an instrument artifact."
+    parent: H1
+    priority: high
+  - id: H1c
+    statement: "Hidden content anchors that the extraction prompt never names, planted in steps selected for substantial observed billed thinking, separate signature-backed state recovery from re-derivation and summary expansion."
+    status: pending
+    motivation: "H1b showed the boundary canary measures harvest instruction-following, not replay provenance, and that low-thinking steps make the full-length ratio vacuous. Both must be fixed before any recovery rate is meaningful."
     parent: H1
     priority: high
   - id: H3
@@ -102,36 +109,48 @@ experiments:
   best_value: null
   control_baseline_false_positive_rate: 0.5714
   control_best_false_positive_rate: 0.0
-  total_runs: 1
-  active_run:
-    run_id: "H1b-gathering-v1"
-    hypothesis: "H1b"
-    status: "running-censored-aware"
-    model: "global.anthropic.claude-sonnet-5"
-    scenarios:
-      complex_conversational_qa:
-        tasks: 15
-        replicates_per_task: 3
-      math_reasoning:
-        tasks: 15
-        replicates_per_task: 3
-      agentic_coding:
-        tasks: 15
-        replicates_per_task: 3
-    minimum_task_instances: 135
-    output: "experiments/h1b-scenario-gathering/results/gathering-v1"
-    smoke:
-      conversational_qa_signed_decisions: 2
-      math_signed_decisions: 1
-      math_task_success: true
-      agentic_coding_signed_decisions: 2
-      agentic_coding_task_success: true
-      harness_note: "apply_patch is the terminal prediction; deterministic verification runs outside the model loop."
-    launcher:
-      kind: "tmux"
-      session: "h1b-gathering"
-      started_at: "2026-07-17T03:02:34+09:00"
-      resume_command: "uv run --python /opt/homebrew/bin/python3 python scripts/gather_scenarios.py"
+  total_runs: 2
+  active_run: null
+  completed_runs:
+    - run_id: "H1b-gathering-v1"
+      hypothesis: "H1b"
+      status: "complete"
+      verdict: "corpus unusable for H1 as designed; see experiments/h1b-scenario-gathering/analysis.md"
+      model: "global.anthropic.claude-sonnet-5"
+      output: "experiments/h1b-scenario-gathering/results/gathering-v1"
+      wall_time_min: 53
+      collection:
+        task_instances_complete: 135
+        task_instances_expected: 135
+        failed_instances: 0
+        tasks_with_required_replicates: 45
+        decisions_observed: 226
+        signed_decisions: 192
+        unsigned_censored_decisions: 34
+        unsigned_share: 0.1504
+        harvest_output_tokens: 134951
+        extraction_output_tokens: 37543
+        math_task_success: "44/45"
+        agentic_coding_task_success: "36/45"
+      v0_gate_scoring:
+        valid_decisions: 110
+        strong_decisions: 91
+        strong_rate_over_signed: 0.4740
+        scenario_macro_strong_rate: 0.5422
+        per_scenario_strong:
+          complex_conversational_qa: "11/76"
+          math_reasoning: "35/39"
+          agentic_coding: "45/77"
+      invalidating_defects:
+        canary_echo: "Extraction prompts interpolate the marker strings, so markers_in_order is satisfiable by echo; 9/91 strong rows are denials quoting the markers."
+        refusal_detector_undercount: "REFUSAL_MARKERS flagged 18 refusals and missed 10 more."
+        nothing_to_recover: "Median billed output per signed step: math 67, coding 151, chat 844 tokens. Math strong rows are re-derivations of one-step GSM8K arithmetic."
+        canary_leakage: "Chat leaked the canary into visible text on 41/76 decisions across 14/15 tasks; coding 11/77; math 0/39."
+        length_contradiction: "82/91 strong rows have summary expansion below 1.25 (medians 0.45-0.89, i.e. shorter than the summary); 32/91 have full-length ratio below 0.65."
+      h1a_band_reanalysis:
+        definition: "protocol-valid, full-length ratio 0.65-1.75, summary expansion >= 1.25, n-gram containment < 0.90; ordered-anchor term unavailable (no planted anchors)"
+        survivors: "5/192 (2.6%), of which 2 are quoted denials, leaving 3/192 (1.6%) plausible"
+        note: "upper bound, since the anchor fidelity term could not be applied"
   trajectory:
     - run_id: "H1a-run-001"
       hypothesis: "H1a"
@@ -142,11 +161,21 @@ experiments:
       wall_time_min: 0.02
       change_summary: "Added log-symmetric full-length alignment, summary n-gram containment, and ordered content-anchor scoring."
       timestamp: "2026-07-17"
+    - run_id: "H1b-gathering-v1"
+      hypothesis: "H1b"
+      metric_name: "scenario_macro_strong_recovery_rate"
+      metric_value: 0.5422
+      baseline: null
+      delta: null
+      wall_time_min: 53
+      change_summary: "Completed the 45-task, 135-instance balanced collection. The interim proxy reads 0.5422 but is not reportable: under the H1a diagnostic band only 5/192 decisions survive, 2 of which are denials quoting the canary."
+      interpretation: "instrument-limited; do not treat as a recovery rate"
+      timestamp: "2026-07-17"
 
 outer_loop:
-  cycle: 0
-  last_direction: null
-  last_reflection: "Bootstrap in progress."
+  cycle: 1
+  last_direction: "DEEPEN H1 via H1c: hidden content anchors the extraction prompt never names, on steps selected for substantial observed billed thinking."
+  last_reflection: "H1b delivered its corpus and refuted its own usefulness. Three defects are design errors rather than bad luck: the boundary canary is named in the extraction prompt, so it can only measure harvest instruction-following; task difficulty was chosen by dataset label, so the scenarios that pass the gate bill 67-151 thinking tokens and their recoveries are re-derivations; and the one scenario with real thinking puts the harvest instruction in competition with a prose deliverable, leaking the canary on 54% of decisions. The v0 gate's 47.4% strong rate reproduces exactly the fresh-reconstruction false positive H1a predicted. Adding scenarios or optimizing prompts against this instrument would compound the error, so H2 stays blocked until anchors and a thinking-token floor exist."
 
 workspace:
   program: "RESEARCH_PROGRAM.md"
