@@ -41,3 +41,6 @@ venv/
 .vscode/
 .idea/
 *.swp
+
+# H1c launcher/runtime output (regenerated per run; progress.json is the resume state)
+experiments/h1c-long-cot/results/*/launcher.out

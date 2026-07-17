@@ -65,7 +65,49 @@ class CodingGatheringTests(unittest.TestCase):
             path = Path(directory) / "manifest.json"
             path.write_text(json.dumps(payload), encoding="utf-8")
             _, loaded = load_gathering_manifest(path)
-        self.assertEqual(len(loaded), 45)
+        self.assertEqual(len(loaded), 15 * len(SCENARIOS))
+
+    def _write(self, directory, tasks, selection=None):
+        payload = {"schema_version": 1, "tasks": tasks}
+        if selection is not None:
+            payload["selection"] = selection
+        path = Path(directory) / "manifest.json"
+        path.write_text(json.dumps(payload), encoding="utf-8")
+        return path
+
+    def _tasks(self, scenario, count):
+        return [
+            {
+                "task_id": "%s-%02d" % (scenario, index),
+                "scenario": scenario,
+                "source": "fixture",
+                "source_id": "%s-source-%02d" % (scenario, index),
+                "turns": ["question"],
+                "expected_answer": None,
+                "metadata": {},
+            }
+            for index in range(count)
+        ]
+
+    def test_manifest_may_declare_a_single_scenario(self):
+        # H1c runs fermi_estimation alone; a manifest is not required to cover every scenario.
+        with tempfile.TemporaryDirectory() as directory:
+            path = self._write(directory, self._tasks("fermi_estimation", 20))
+            _, loaded = load_gathering_manifest(path)
+        self.assertEqual(len(loaded), 20)
+        self.assertTrue(all(task.scenario == "fermi_estimation" for task in loaded))
+
+    def test_declared_scenario_below_fifteen_tasks_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = self._write(directory, self._tasks("fermi_estimation", 14))
+            with self.assertRaises(ValueError):
+                load_gathering_manifest(path)
+
+    def test_manifest_without_tasks_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = self._write(directory, [])
+            with self.assertRaises(ValueError):
+                load_gathering_manifest(path)
 
 
 if __name__ == "__main__":

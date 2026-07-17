@@ -26,6 +26,10 @@ SCENARIOS = (
     "complex_conversational_qa",
     "math_reasoning",
     "agentic_coding",
+    # H1c. Open-ended Fermi estimation, the only shape measured to induce >2.5k hidden thinking
+    # tokens; competition math and terse Fermi questions both bill under 500. Runs through the
+    # ScenarioHarvester path with no answer-only contract, since that contract suppresses thinking.
+    "fermi_estimation",
 )
 DEFAULT_CODING_FIXTURES = (
     Path(__file__).resolve().parents[1] / "gathering" / "coding-fixtures.json"
@@ -102,10 +106,15 @@ def load_gathering_manifest(path: Path) -> Tuple[Json, List[GatheringTask]]:
         counts[task.scenario] += 1
         task_ids.add(task.task_id)
         source_ids.add(source_key)
-    if any(counts[scenario] < 15 for scenario in SCENARIOS):
-        raise ValueError("gathering manifest must contain at least 15 tasks per scenario")
+    # Each scenario a manifest declares must carry a usable number of tasks, but a manifest is not
+    # required to cover every scenario: H1b pairs three scenarios, H1c deliberately runs one.
+    present = [scenario for scenario in SCENARIOS if counts[scenario]]
+    if not present:
+        raise ValueError("gathering manifest declares no tasks")
+    if any(counts[scenario] < 15 for scenario in present):
+        raise ValueError("gathering manifest must contain at least 15 tasks per declared scenario")
     declared = payload.get("selection", {}).get("tasks_per_scenario")
-    if declared is not None and any(counts[scenario] != int(declared) for scenario in SCENARIOS):
+    if declared is not None and any(counts[scenario] != int(declared) for scenario in present):
         raise ValueError("manifest task counts do not match selection metadata")
     return payload, tasks
 
