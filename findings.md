@@ -85,6 +85,10 @@ outlier against 192 signed decisions.
   - length contradiction: 82/91 strong rows have summary expansion below 1.25 (medians 0.562
     coding, 0.447 math, 0.889 chat — shorter than the summary), and 32/91 have full-length ratio
     below 0.65;
+  - extract/summary expansion over all signed decisions is 1.207 median for chat (47% at or above
+    1.25), 0.483 for math (82% below 1.0), and 0.500 for coding (88% below 1.0). Only chat expands
+    at all, and chat is the scenario lost to leakage. The median coding recovery is a six-token
+    stub ("Let me inspect the workspace first.") against a fifteen-token summary, scored strong;
   - under the available H1a band (valid, full-length ratio 0.65–1.75, expansion ≥ 1.25, containment
     < 0.90) only 5/192 survive, 2 of them denials, leaving 3/192 = 1.6% plausible. This is an upper
     bound because H1b planted no content anchors.

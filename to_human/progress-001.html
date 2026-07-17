@@ -226,7 +226,7 @@
   </section>
 
   <section>
-    <h2>What a “strong” math recovery actually looks like</h2>
+    <h2>What a “strong” recovery actually looks like</h2>
     <div class="card">
       <p class="meta">
         <code>gather-math-01-r01</code> · billed 59 output tokens · full-length ratio 1.1017 ·
@@ -240,6 +240,25 @@ COT-END-S00-C07A088D8867</pre>
       <p>
         Nothing in that span is unavailable to a model holding the question and the visible answer
         <code>11</code>. The markers came from the prompt. This row is counted in the 89.7%.
+      </p>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <p class="meta">
+        <code>gather-agentic-coding-01-r02</code> step 0 · 6 lexical tokens recovered against a
+        24-token summary · expansion 0.25 · <code>strong_recovery: true</code>
+      </p>
+      <pre>COT-START-S00-156EC8926A01
+Let me inspect the workspace first.
+COT-END-S00-156EC8926A01</pre>
+      <p>The provider summary for that same step — longer, and strictly more informative:</p>
+      <blockquote>
+        “I’m starting by examining the workspace structure, looking at the window module and its
+        test file to understand what I’m working with.”
+      </blockquote>
+      <p>
+        This is the median agentic-coding “recovery”: a one-line stub, 6 lexical tokens against a
+        15-token summary. It clears the gate because <code>distinct_from_summary</code> accepts
+        novelty ≥ 0.12, and different wording is enough. Forty-five such rows make up the 58.4%.
       </p>
     </div>
   </section>

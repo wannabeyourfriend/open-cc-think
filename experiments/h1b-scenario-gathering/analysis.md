@@ -89,6 +89,33 @@ prose, so the harvest instruction competes with the task instruction.
 
 ## Defect 4: the length evidence contradicts full-span recovery
 
+Extract-to-summary expansion (`recovered_lexical_tokens / summary_lexical_tokens`) over all signed
+decisions with a summary available:
+
+| Scenario | Mean | Median | p25–p75 | ≥ 1.25 | < 1.0 | Median extract vs summary tokens |
+| --- | --- | --- | --- | --- | --- | --- |
+| complex_conversational_qa | 1.629 | 1.207 | 0.44–2.09 | 36 (47%) | 33 (43%) | 46 vs 34 |
+| math_reasoning | 0.610 | 0.483 | 0.40–0.70 | 2 (5%) | 32 (82%) | 12 vs 26 |
+| agentic_coding | 0.498 | 0.500 | 0.21–0.63 | 4 (5%) | 68 (88%) | 6 vs 15 |
+
+Conversational QA is the only scenario whose extraction exceeds the provider summary at all, and it
+is the scenario lost to leakage. In math and agentic coding the median recovery is roughly *half the
+summary*, which is the opposite of the signature the claim requires.
+
+The agentic-coding median is not a shortfall but a stub. `gather-agentic-coding-01-r02` step 0
+recovers six lexical tokens:
+
+```
+COT-START-S00-156EC8926A01
+Let me inspect the workspace first.
+COT-END-S00-156EC8926A01
+```
+
+against a provider summary that is longer and strictly more informative: "I'm starting by examining
+the workspace structure, looking at the window module and its test file to understand what I'm
+working with." That row is scored `strong_recovery=true`. Forty-five rows of this kind constitute
+agentic coding's 58.4%.
+
 Of the 91 v0-strong rows:
 
 - 82 have `summary_expansion_ratio` below 1.25, with per-scenario medians of 0.562 (coding), 0.447
