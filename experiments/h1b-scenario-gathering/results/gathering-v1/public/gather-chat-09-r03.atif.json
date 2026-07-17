@@ -1,0 +1,176 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-09-r03",
+  "trajectory_id": "a4c7ff3d-85ad-4621-892c-787e525e7cc5",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Draft a professional email seeking your supervisor's feedback on the 'Quarterly Financial Report' you prepared. Ask specifically about the data analysis, presentation style, and the clarity of conclusions drawn. Keep the email short and to the point."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-81257D5C1B77\nDrafting a short, professional email requesting feedback on three specific areas.\nCOT-END-S00-81257D5C1B77\n\n**Subject: Feedback Requested – Quarterly Financial Report**\n\nHi [Supervisor's Name],\n\nI've completed the Quarterly Financial Report and would appreciate your feedback when you have a moment.\n\nSpecifically, I'd value your thoughts on:\n\n- **Data analysis** – accuracy and depth of the figures presented\n- **Presentation style** – clarity and overall visual layout\n- **Conclusions** – whether they are clearly articulated and well-supported\n\nPlease let me know if any revisions are needed. Happy to discuss further if helpful.\n\nThank you for your time.\n\nBest regards,\n[Your Name]",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 275,
+        "completion_tokens": 266,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 275,
+            "outputTokens": 266,
+            "serverToolUsage": {},
+            "totalTokens": 541
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": null
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Take a moment to evaluate and critique your own response."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-70BF65681CB6\nReviewing the email for completeness, tone, and practical effectiveness.\nCOT-END-S01-70BF65681CB6\n\n**Self-Evaluation:**\n\n**Strengths:**\n- Concise and respects the supervisor's time, as requested\n- Clearly organizes the three feedback areas (data analysis, presentation, conclusions) in an easy-to-scan bulleted format\n- Professional, polite tone throughout\n- Ends with an open invitation for discussion, which encourages engagement\n\n**Areas for Improvement:**\n1. **Missing attachment reference** – The email doesn't mention that the report is attached or where to find it, which could cause confusion.\n2. **No timeframe** – There's no indication of when feedback is needed (e.g., \"by Friday\" or \"before the team meeting\"), which could lead to delays.\n3. **Lacks context** – A brief one-line mention of the report's purpose or reporting period (e.g., \"Q3 2024\") would help the supervisor recall specifics faster, especially if they handle multiple reports.\n4. **Subject line could be sharper** – Adding the quarter/date (e.g., \"Feedback Requested – Q3 2024 Financial Report\") would improve searchability and context at a glance.\n\n**Suggested Refinement:**\nI would revise the email to include the attachment note, a specific feedback deadline, and the reporting period in the subject line to make it more actionable and complete while still maintaining brevity.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 666,
+        "completion_tokens": 681,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 666,
+            "outputTokens": 681,
+            "serverToolUsage": {},
+            "totalTokens": 1347
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm reviewing the draft email and noticing some gaps—I should mention attaching the report, add a specific deadline for feedback to help my supervisor prioritize, make the subject line more concrete, and include a clear call-to-action with a timeframe. I could also strengthen it by expressing openness to revisions.",
+        "signature_sha256": "5e42ebc98c35a73168b2c7d462fbb9d3aa461238a4e00613ca0b753d4b4f4d19",
+        "signature_chars": 1076,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.4834,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 124,
+            "recovered_output_tokens": 70,
+            "token_coverage_proxy": 0.1028,
+            "full_length_ratio": 0.1028,
+            "full_length_alignment": 0.1028,
+            "answer_jaccard": 0.0827,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.8065,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 51,
+            "recovered_lexical_tokens": 9,
+            "summary_expansion_ratio": 0.1765,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1064,
+            "summary_sequence_similarity": 0.2629,
+            "summary_token_coverage_of_recovery": 0.5556,
+            "recovered_to_summary_length_ratio": 0.2278,
+            "recovery_novelty_vs_summary": 0.4444,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1515,
+            "outputTokens": 70,
+            "serverToolUsage": {},
+            "totalTokens": 1585
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 941,
+    "total_completion_tokens": 947,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 1515,
+      "extraction_completion_tokens": 70,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-09-r03",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-09-r03",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-82",
+      "dataset_metadata": {
+        "category": "writing"
+      },
+      "gathering_task_id": "gather-chat-09",
+      "replicate": 3,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "COT-START-S01-70BF65681CB6\nReviewing the email for completeness, tone, and practical effectiveness.\nCOT-END-S01-70BF65681CB6\n\n**Self-Evaluation:**\n\n**Strengths:**\n- Concise and respects the supervisor's time, as requested\n- Clearly organizes the three feedback areas (data analysis, presentation, conclusions) in an easy-to-scan bulleted format\n- Professional, polite tone throughout\n- Ends with an open invitation for discussion, which encourages engagement\n\n**Areas for Improvement:**\n1. **Missing attachment reference** – The email doesn't mention that the report is attached or where to find it, which could cause confusion.\n2. **No timeframe** – There's no indication of when feedback is needed (e.g., \"by Friday\" or \"before the team meeting\"), which could lead to delays.\n3. **Lacks context** – A brief one-line mention of the report's purpose or reporting period (e.g., \"Q3 2024\") would help the supervisor recall specifics faster, especially if they handle multiple reports.\n4. **Subject line could be sharper** – Adding the quarter/date (e.g., \"Feedback Requested – Q3 2024 Financial Report\") would improve searchability and context at a glance.\n\n**Suggested Refinement:**\nI would revise the email to include the attachment note, a specific feedback deadline, and the reporting period in the subject line to make it more actionable and complete while still maintaining brevity.",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

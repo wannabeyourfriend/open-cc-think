@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:41:11.425572+00:00",
+  "task_id": "gather-math-06-r02",
+  "question": "Billy wants to watch something fun on YouTube but doesn't know what to watch.  He has the website generate 15 suggestions but, after watching each in one, he doesn't like any of them.  Billy's very picky so he does this a total of 5 times before he finally finds a video he thinks is worth watching.  He then picks the 5th show suggested on the final suggestion list.  What number of videos does Billy watch?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "65",
+  "expected_answer": "65",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-06-r02",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-06914",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-06",
+    "replicate": 2,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 342,
+        "outputTokens": 110,
+        "serverToolUsage": {},
+        "totalTokens": 452
+      },
+      "markers": {
+        "start": "COT-START-S00-1E5035B979B8",
+        "end": "COT-END-S00-1E5035B979B8"
+      },
+      "visible_text": "65",
+      "user_message": "Billy wants to watch something fun on YouTube but doesn't know what to watch.  He has the website generate 15 suggestions but, after watching each in one, he doesn't like any of them.  Billy's very picky so he does this a total of 5 times before he finally finds a video he thinks is worth watching.  He then picks the 5th show suggested on the final suggestion list.  What number of videos does Billy watch?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "So he watches 15 videos in each of the first four rounds, then in the fifth round he only watches 5 videos, giving him a total of 65 videos watched.",
+      "tool_calls": [],
+      "signature_sha256": "5febc9c9cdda050017ecbe8db0e440272ee089b0fb9b9126592fbfbd04626fe2",
+      "signature_chars": 580,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "So he watches 15 videos in each of the first four rounds, then in the fifth round he only watches 5 videos, giving him a total of 65 videos watched."
+            }
+          }
+        },
+        {
+          "text": "65"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 217,
+        "recovered_output_tokens": 116,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.0545,
+        "full_length_alignment": 0.9483,
+        "answer_jaccard": 0.0357,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.8894,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 30,
+        "recovered_lexical_tokens": 33,
+        "summary_expansion_ratio": 1.1,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.3611,
+        "summary_sequence_similarity": 0.4423,
+        "summary_token_coverage_of_recovery": 0.5,
+        "recovered_to_summary_length_ratio": 1.1081,
+        "recovery_novelty_vs_summary": 0.5,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 619,
+        "outputTokens": 116,
+        "serverToolUsage": {},
+        "totalTokens": 735
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-1E5035B979B8\n4 rounds of 15 videos he watches all (didn't like any = watched all 15 each time?), then 5th round he picks 5th video, watching only 5 videos.\n\nTotal = 15*4 + 5 = 65\nCOT-END-S00-1E5035B979B8"
+    }
+  ]
+}

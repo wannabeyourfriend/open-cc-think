@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:43:49.093813+00:00",
+  "task_id": "gather-math-13-r02",
+  "question": "Tom plays 9 rounds of golf.  He takes an average of 4 strokes per hole.  The par value per hole is 3.  How many strokes over par was he?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "9",
+  "expected_answer": "9",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-13-r02",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-06044",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-13",
+    "replicate": 2,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 264,
+        "outputTokens": 28,
+        "serverToolUsage": {},
+        "totalTokens": 292
+      },
+      "markers": {
+        "start": "COT-START-S00-666132E5CD3C",
+        "end": "COT-END-S00-666132E5CD3C"
+      },
+      "visible_text": "9",
+      "user_message": "Tom plays 9 rounds of golf.  He takes an average of 4 strokes per hole.  The par value per hole is 3.  How many strokes over par was he?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "I'm calculating the golf score: 9 holes at 4 strokes each gives 36 total strokes, with a par of 27, putting me 9 over par.",
+      "tool_calls": [],
+      "signature_sha256": "f9cf44a05c8f0a473fe53804af71b222f8d958aafc16bef15711c8c43f93cffb",
+      "signature_chars": 336,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm calculating the golf score: 9 holes at 4 strokes each gives 36 total strokes, with a par of 27, putting me 9 over par."
+            }
+          }
+        },
+        {
+          "text": "9"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 87,
+        "recovered_output_tokens": 94,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 3.3571,
+        "full_length_alignment": 0.2979,
+        "answer_jaccard": 0.1,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.7241,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 26,
+        "recovered_lexical_tokens": 10,
+        "summary_expansion_ratio": 0.3846,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.28,
+        "summary_sequence_similarity": 0.293,
+        "summary_token_coverage_of_recovery": 0.875,
+        "recovered_to_summary_length_ratio": 0.2869,
+        "recovery_novelty_vs_summary": 0.125,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 460,
+        "outputTokens": 94,
+        "serverToolUsage": {},
+        "totalTokens": 554
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-666132E5CD3C\nStrokes: 9*4=36, par:9*3=27, over=9\nCOT-END-S00-666132E5CD3C"
+    }
+  ]
+}

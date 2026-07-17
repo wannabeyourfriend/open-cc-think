@@ -1,0 +1,53 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:39:31.620477+00:00",
+  "task_id": "gather-math-01-r02",
+  "question": "Anna sold 36 glasses of plain lemonade for $0.75 each. If she made $16 total from selling strawberry lemonade, how much more did she make from plain lemonade than strawberry?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "11",
+  "expected_answer": "11",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-01-r02",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-02951",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-01",
+    "replicate": 2,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 276,
+        "outputTokens": 3,
+        "serverToolUsage": {},
+        "totalTokens": 279
+      },
+      "markers": {
+        "start": "COT-START-S00-FEA07B949C6E",
+        "end": "COT-END-S00-FEA07B949C6E"
+      },
+      "visible_text": "11",
+      "user_message": "Anna sold 36 glasses of plain lemonade for $0.75 each. If she made $16 total from selling strawberry lemonade, how much more did she make from plain lemonade than strawberry?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "",
+      "tool_calls": [],
+      "signature_sha256": "",
+      "signature_chars": 0,
+      "assistant_content": [
+        {
+          "text": "11"
+        }
+      ]
+    }
+  ],
+  "extractions": []
+}

@@ -1,0 +1,6034 @@
+{
+  "schema_version": 1,
+  "experiment": "H1b-gathering-v1",
+  "run_id": "H1b-gathering-v1",
+  "created_at": "2026-07-16T18:02:34.455945+00:00",
+  "updated_at": "2026-07-16T18:55:45.003998+00:00",
+  "manifest": "/Users/admin/Codebase/open-cc-think/experiments/h1b-scenario-gathering/results/gathering-v1/manifest.json",
+  "manifest_sha256": "3dc0ae12cb82d8c3e6182bb822963c62e50bbc6c5ffab48f0fe008feb3d8a8f3",
+  "model": "global.anthropic.claude-sonnet-5",
+  "required": {
+    "tasks": 45,
+    "replicates_per_task": 3,
+    "task_instances": 135
+  },
+  "instances": {
+    "gather-chat-01-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:03:05.725495+00:00",
+      "task_id": "gather-chat-01",
+      "source_id": "mt-bench-88",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 424,
+      "extraction_output_tokens": 934,
+      "full_length_ratios": [
+        1.3271,
+        4.932
+      ],
+      "full_length_alignments": [
+        0.7535,
+        0.2028
+      ],
+      "summary_expansion_ratios": [
+        5.2632,
+        6.6
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-01-r01.md",
+        "json": "public/gather-chat-01-r01.json",
+        "atif": "public/gather-chat-01-r01.atif.json"
+      }
+    },
+    "gather-chat-01-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:03:30.514232+00:00",
+      "task_id": "gather-chat-01",
+      "source_id": "mt-bench-88",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 358,
+      "extraction_output_tokens": 587,
+      "full_length_ratios": [
+        1.249,
+        2.6907
+      ],
+      "full_length_alignments": [
+        0.8006,
+        0.3716
+      ],
+      "summary_expansion_ratios": [
+        2.0909,
+        2.3333
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-01-r02.md",
+        "json": "public/gather-chat-01-r02.json",
+        "atif": "public/gather-chat-01-r02.atif.json"
+      }
+    },
+    "gather-chat-01-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:03:59.178098+00:00",
+      "task_id": "gather-chat-01",
+      "source_id": "mt-bench-88",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 867,
+      "extraction_output_tokens": 547,
+      "full_length_ratios": [
+        0.4807,
+        1.0727
+      ],
+      "full_length_alignments": [
+        0.4807,
+        0.9322
+      ],
+      "summary_expansion_ratios": [
+        5.0741,
+        2.0556
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0714
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-01-r03.md",
+        "json": "public/gather-chat-01-r03.json",
+        "atif": "public/gather-chat-01-r03.atif.json"
+      }
+    },
+    "gather-chat-02-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:04:22.293536+00:00",
+      "task_id": "gather-chat-02",
+      "source_id": "mt-bench-90",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 1196,
+      "extraction_output_tokens": 175,
+      "full_length_ratios": [
+        0.115,
+        0.1636
+      ],
+      "full_length_alignments": [
+        0.115,
+        0.1636
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.2586
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-02-r01.md",
+        "json": "public/gather-chat-02-r01.json",
+        "atif": "public/gather-chat-02-r01.atif.json"
+      }
+    },
+    "gather-chat-02-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:04:49.434448+00:00",
+      "task_id": "gather-chat-02",
+      "source_id": "mt-bench-90",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 1110,
+      "extraction_output_tokens": 594,
+      "full_length_ratios": [
+        0.6709,
+        0.3556
+      ],
+      "full_length_alignments": [
+        0.6709,
+        0.3556
+      ],
+      "summary_expansion_ratios": [
+        0.8889,
+        0.9535
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-02-r02.md",
+        "json": "public/gather-chat-02-r02.json",
+        "atif": "public/gather-chat-02-r02.atif.json"
+      }
+    },
+    "gather-chat-02-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:05:09.827114+00:00",
+      "task_id": "gather-chat-02",
+      "source_id": "mt-bench-90",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 978,
+      "extraction_output_tokens": 109,
+      "full_length_ratios": [
+        0.1633,
+        0.0768
+      ],
+      "full_length_alignments": [
+        0.1633,
+        0.0768
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.0
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-02-r03.md",
+        "json": "public/gather-chat-02-r03.json",
+        "atif": "public/gather-chat-02-r03.atif.json"
+      }
+    },
+    "gather-chat-03-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:06:22.972608+00:00",
+      "task_id": "gather-chat-03",
+      "source_id": "mt-bench-154",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 2,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 5049,
+      "extraction_output_tokens": 646,
+      "full_length_ratios": [
+        0.1572,
+        0.0937
+      ],
+      "full_length_alignments": [
+        0.1572,
+        0.0937
+      ],
+      "summary_expansion_ratios": [
+        0.824,
+        1.4762
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-03-r01.md",
+        "json": "public/gather-chat-03-r01.json",
+        "atif": "public/gather-chat-03-r01.atif.json"
+      }
+    },
+    "gather-chat-03-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:07:40.625473+00:00",
+      "task_id": "gather-chat-03",
+      "source_id": "mt-bench-154",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 5572,
+      "extraction_output_tokens": 590,
+      "full_length_ratios": [
+        0.0505,
+        0.1799
+      ],
+      "full_length_alignments": [
+        0.0505,
+        0.1799
+      ],
+      "summary_expansion_ratios": [
+        0.6032,
+        1.2037
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-03-r02.md",
+        "json": "public/gather-chat-03-r02.json",
+        "atif": "public/gather-chat-03-r02.atif.json"
+      }
+    },
+    "gather-chat-03-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:08:52.865696+00:00",
+      "task_id": "gather-chat-03",
+      "source_id": "mt-bench-154",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "signed_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 2,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 4925,
+      "extraction_output_tokens": 642,
+      "full_length_ratios": [
+        0.0988,
+        0.1799
+      ],
+      "full_length_alignments": [
+        0.0988,
+        0.1799
+      ],
+      "summary_expansion_ratios": [
+        1.1158,
+        1.7667
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-03-r03.md",
+        "json": "public/gather-chat-03-r03.json",
+        "atif": "public/gather-chat-03-r03.atif.json"
+      }
+    },
+    "gather-chat-04-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:12:59.412924+00:00",
+      "task_id": "gather-chat-04",
+      "source_id": "mt-bench-134",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 435,
+      "extraction_output_tokens": 167,
+      "full_length_ratios": [
+        0.5335
+      ],
+      "full_length_alignments": [
+        0.5335
+      ],
+      "summary_expansion_ratios": [
+        1.3125
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-04-r01.md",
+        "json": "public/gather-chat-04-r01.json",
+        "atif": "public/gather-chat-04-r01.atif.json"
+      }
+    },
+    "gather-chat-04-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:13:14.454780+00:00",
+      "task_id": "gather-chat-04",
+      "source_id": "mt-bench-134",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 476,
+      "extraction_output_tokens": 171,
+      "full_length_ratios": [
+        0.5394
+      ],
+      "full_length_alignments": [
+        0.5394
+      ],
+      "summary_expansion_ratios": [
+        1.2812
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-04-r02.md",
+        "json": "public/gather-chat-04-r02.json",
+        "atif": "public/gather-chat-04-r02.atif.json"
+      }
+    },
+    "gather-chat-04-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:13:31.028391+00:00",
+      "task_id": "gather-chat-04",
+      "source_id": "mt-bench-134",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 455,
+      "extraction_output_tokens": 191,
+      "full_length_ratios": [
+        0.6564
+      ],
+      "full_length_alignments": [
+        0.6564
+      ],
+      "summary_expansion_ratios": [
+        1.2812
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-04-r03.md",
+        "json": "public/gather-chat-04-r03.json",
+        "atif": "public/gather-chat-04-r03.atif.json"
+      }
+    },
+    "gather-chat-05-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:14:27.117460+00:00",
+      "task_id": "gather-chat-05",
+      "source_id": "mt-bench-151",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 3629,
+      "extraction_output_tokens": 401,
+      "full_length_ratios": [
+        0.0938,
+        0.1423
+      ],
+      "full_length_alignments": [
+        0.0938,
+        0.1423
+      ],
+      "summary_expansion_ratios": [
+        1.3846,
+        1.0175
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-05-r01.md",
+        "json": "public/gather-chat-05-r01.json",
+        "atif": "public/gather-chat-05-r01.atif.json"
+      }
+    },
+    "gather-chat-05-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:15:17.018783+00:00",
+      "task_id": "gather-chat-05",
+      "source_id": "mt-bench-151",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 3395,
+      "extraction_output_tokens": 461,
+      "full_length_ratios": [
+        0.2213
+      ],
+      "full_length_alignments": [
+        0.2213
+      ],
+      "summary_expansion_ratios": [
+        4.6
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-05-r02.md",
+        "json": "public/gather-chat-05-r02.json",
+        "atif": "public/gather-chat-05-r02.atif.json"
+      }
+    },
+    "gather-chat-05-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:16:10.950356+00:00",
+      "task_id": "gather-chat-05",
+      "source_id": "mt-bench-151",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 2,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 2988,
+      "extraction_output_tokens": 1026,
+      "full_length_ratios": [
+        0.3296,
+        0.3663
+      ],
+      "full_length_alignments": [
+        0.3296,
+        0.3663
+      ],
+      "summary_expansion_ratios": [
+        1.9167,
+        4.5789
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-05-r03.md",
+        "json": "public/gather-chat-05-r03.json",
+        "atif": "public/gather-chat-05-r03.atif.json"
+      }
+    },
+    "gather-chat-06-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:16:56.757945+00:00",
+      "task_id": "gather-chat-06",
+      "source_id": "mt-bench-100",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 1983,
+      "extraction_output_tokens": 587,
+      "full_length_ratios": [
+        0.3239,
+        0.2751
+      ],
+      "full_length_alignments": [
+        0.3239,
+        0.2751
+      ],
+      "summary_expansion_ratios": [
+        1.8947,
+        2.25
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-06-r01.md",
+        "json": "public/gather-chat-06-r01.json",
+        "atif": "public/gather-chat-06-r01.atif.json"
+      }
+    },
+    "gather-chat-06-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:17:43.035414+00:00",
+      "task_id": "gather-chat-06",
+      "source_id": "mt-bench-100",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 1895,
+      "extraction_output_tokens": 812,
+      "full_length_ratios": [
+        0.3128,
+        0.5035
+      ],
+      "full_length_alignments": [
+        0.3128,
+        0.5035
+      ],
+      "summary_expansion_ratios": [
+        3.2083,
+        2.4857
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0645
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-06-r02.md",
+        "json": "public/gather-chat-06-r02.json",
+        "atif": "public/gather-chat-06-r02.atif.json"
+      }
+    },
+    "gather-chat-06-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:18:29.347253+00:00",
+      "task_id": "gather-chat-06",
+      "source_id": "mt-bench-100",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 1912,
+      "extraction_output_tokens": 699,
+      "full_length_ratios": [
+        0.3949,
+        0.3454
+      ],
+      "full_length_alignments": [
+        0.3949,
+        0.3454
+      ],
+      "summary_expansion_ratios": [
+        0.8222,
+        1.4815
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-06-r03.md",
+        "json": "public/gather-chat-06-r03.json",
+        "atif": "public/gather-chat-06-r03.atif.json"
+      }
+    },
+    "gather-chat-07-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:18:52.922220+00:00",
+      "task_id": "gather-chat-07",
+      "source_id": "mt-bench-95",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 603,
+      "extraction_output_tokens": 560,
+      "full_length_ratios": [
+        0.1424,
+        1.973
+      ],
+      "full_length_alignments": [
+        0.1424,
+        0.5068
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.0
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-07-r01.md",
+        "json": "public/gather-chat-07-r01.json",
+        "atif": "public/gather-chat-07-r01.atif.json"
+      }
+    },
+    "gather-chat-07-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:19:23.390698+00:00",
+      "task_id": "gather-chat-07",
+      "source_id": "mt-bench-95",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 556,
+      "extraction_output_tokens": 1078,
+      "full_length_ratios": [
+        1.9159,
+        1.9731
+      ],
+      "full_length_alignments": [
+        0.5219,
+        0.5068
+      ],
+      "summary_expansion_ratios": [
+        0.6047,
+        3.0
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-07-r02.md",
+        "json": "public/gather-chat-07-r02.json",
+        "atif": "public/gather-chat-07-r02.atif.json"
+      }
+    },
+    "gather-chat-07-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:19:51.100285+00:00",
+      "task_id": "gather-chat-07",
+      "source_id": "mt-bench-95",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 1343,
+      "extraction_output_tokens": 257,
+      "full_length_ratios": [
+        0.1711,
+        0.2242
+      ],
+      "full_length_alignments": [
+        0.1711,
+        0.2242
+      ],
+      "summary_expansion_ratios": [
+        0.4194,
+        1.2105
+      ],
+      "summary_ngram_containments": [
+        0.0225,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-07-r03.md",
+        "json": "public/gather-chat-07-r03.json",
+        "atif": "public/gather-chat-07-r03.atif.json"
+      }
+    },
+    "gather-chat-08-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:21:26.073085+00:00",
+      "task_id": "gather-chat-08",
+      "source_id": "mt-bench-144",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 7565,
+      "extraction_output_tokens": 379,
+      "full_length_ratios": [
+        0.0931,
+        0.0447
+      ],
+      "full_length_alignments": [
+        0.0931,
+        0.0447
+      ],
+      "summary_expansion_ratios": [
+        0.3191,
+        0.0726
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-08-r01.md",
+        "json": "public/gather-chat-08-r01.json",
+        "atif": "public/gather-chat-08-r01.atif.json"
+      }
+    },
+    "gather-chat-08-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:22:51.980469+00:00",
+      "task_id": "gather-chat-08",
+      "source_id": "mt-bench-144",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 7070,
+      "extraction_output_tokens": 219,
+      "full_length_ratios": [
+        0.0941,
+        0.023
+      ],
+      "full_length_alignments": [
+        0.0941,
+        0.023
+      ],
+      "summary_expansion_ratios": [
+        1.1538,
+        0.0825
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-08-r02.md",
+        "json": "public/gather-chat-08-r02.json",
+        "atif": "public/gather-chat-08-r02.atif.json"
+      }
+    },
+    "gather-chat-08-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:24:01.158494+00:00",
+      "task_id": "gather-chat-08",
+      "source_id": "mt-bench-144",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 5803,
+      "extraction_output_tokens": 203,
+      "full_length_ratios": [
+        0.0401
+      ],
+      "full_length_alignments": [
+        0.0401
+      ],
+      "summary_expansion_ratios": [
+        0.0807
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-08-r03.md",
+        "json": "public/gather-chat-08-r03.json",
+        "atif": "public/gather-chat-08-r03.atif.json"
+      }
+    },
+    "gather-chat-09-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:24:18.287800+00:00",
+      "task_id": "gather-chat-09",
+      "source_id": "mt-bench-82",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 855,
+      "extraction_output_tokens": 78,
+      "full_length_ratios": [
+        0.1388
+      ],
+      "full_length_alignments": [
+        0.1388
+      ],
+      "summary_expansion_ratios": [
+        0.55
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-09-r01.md",
+        "json": "public/gather-chat-09-r01.json",
+        "atif": "public/gather-chat-09-r01.atif.json"
+      }
+    },
+    "gather-chat-09-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:24:40.367083+00:00",
+      "task_id": "gather-chat-09",
+      "source_id": "mt-bench-82",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 1272,
+      "extraction_output_tokens": 117,
+      "full_length_ratios": [
+        0.127
+      ],
+      "full_length_alignments": [
+        0.127
+      ],
+      "summary_expansion_ratios": [
+        0.1806
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-09-r02.md",
+        "json": "public/gather-chat-09-r02.json",
+        "atif": "public/gather-chat-09-r02.atif.json"
+      }
+    },
+    "gather-chat-09-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:24:59.043423+00:00",
+      "task_id": "gather-chat-09",
+      "source_id": "mt-bench-82",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 947,
+      "extraction_output_tokens": 70,
+      "full_length_ratios": [
+        0.1028
+      ],
+      "full_length_alignments": [
+        0.1028
+      ],
+      "summary_expansion_ratios": [
+        0.1765
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-09-r03.md",
+        "json": "public/gather-chat-09-r03.json",
+        "atif": "public/gather-chat-09-r03.atif.json"
+      }
+    },
+    "gather-chat-10-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:25:13.515241+00:00",
+      "task_id": "gather-chat-10",
+      "source_id": "mt-bench-140",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 644,
+      "extraction_output_tokens": 204,
+      "full_length_ratios": [
+        0.5087
+      ],
+      "full_length_alignments": [
+        0.5087
+      ],
+      "summary_expansion_ratios": [
+        4.1429
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-10-r01.md",
+        "json": "public/gather-chat-10-r01.json",
+        "atif": "public/gather-chat-10-r01.atif.json"
+      }
+    },
+    "gather-chat-10-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:25:32.747759+00:00",
+      "task_id": "gather-chat-10",
+      "source_id": "mt-bench-140",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 342,
+      "extraction_output_tokens": 461,
+      "full_length_ratios": [
+        0.9461,
+        1.7314
+      ],
+      "full_length_alignments": [
+        0.9461,
+        0.5776
+      ],
+      "summary_expansion_ratios": [
+        1.6,
+        0.8095
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-10-r02.md",
+        "json": "public/gather-chat-10-r02.json",
+        "atif": "public/gather-chat-10-r02.atif.json"
+      }
+    },
+    "gather-chat-10-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:25:50.086128+00:00",
+      "task_id": "gather-chat-10",
+      "source_id": "mt-bench-140",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 402,
+      "extraction_output_tokens": 264,
+      "full_length_ratios": [
+        0.7804,
+        0.516
+      ],
+      "full_length_alignments": [
+        0.7804,
+        0.516
+      ],
+      "summary_expansion_ratios": [
+        1.1429,
+        0.439
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-10-r03.md",
+        "json": "public/gather-chat-10-r03.json",
+        "atif": "public/gather-chat-10-r03.atif.json"
+      }
+    },
+    "gather-chat-11-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:26:34.076947+00:00",
+      "task_id": "gather-chat-11",
+      "source_id": "mt-bench-157",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 2445,
+      "extraction_output_tokens": 622,
+      "full_length_ratios": [
+        0.4529,
+        0.173
+      ],
+      "full_length_alignments": [
+        0.4529,
+        0.173
+      ],
+      "summary_expansion_ratios": [
+        3.8462,
+        4.0741
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-11-r01.md",
+        "json": "public/gather-chat-11-r01.json",
+        "atif": "public/gather-chat-11-r01.atif.json"
+      }
+    },
+    "gather-chat-11-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:27:41.118884+00:00",
+      "task_id": "gather-chat-11",
+      "source_id": "mt-bench-157",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 4713,
+      "extraction_output_tokens": 904,
+      "full_length_ratios": [
+        0.4664,
+        0.1052
+      ],
+      "full_length_alignments": [
+        0.4664,
+        0.1052
+      ],
+      "summary_expansion_ratios": [
+        8.2308,
+        0.3857
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0099
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-11-r02.md",
+        "json": "public/gather-chat-11-r02.json",
+        "atif": "public/gather-chat-11-r02.atif.json"
+      }
+    },
+    "gather-chat-11-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:28:29.714421+00:00",
+      "task_id": "gather-chat-11",
+      "source_id": "mt-bench-157",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 2,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 2703,
+      "extraction_output_tokens": 685,
+      "full_length_ratios": [
+        0.3929,
+        0.1954
+      ],
+      "full_length_alignments": [
+        0.3929,
+        0.1954
+      ],
+      "summary_expansion_ratios": [
+        1.275,
+        2.0
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-11-r03.md",
+        "json": "public/gather-chat-11-r03.json",
+        "atif": "public/gather-chat-11-r03.atif.json"
+      }
+    },
+    "gather-chat-12-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:29:15.059787+00:00",
+      "task_id": "gather-chat-12",
+      "source_id": "mt-bench-94",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 1778,
+      "extraction_output_tokens": 873,
+      "full_length_ratios": [
+        1.0031,
+        0.2037
+      ],
+      "full_length_alignments": [
+        0.9969,
+        0.2037
+      ],
+      "summary_expansion_ratios": [
+        2.7,
+        1.9111
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-12-r01.md",
+        "json": "public/gather-chat-12-r01.json",
+        "atif": "public/gather-chat-12-r01.atif.json"
+      }
+    },
+    "gather-chat-12-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:30:08.681713+00:00",
+      "task_id": "gather-chat-12",
+      "source_id": "mt-bench-94",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 2781,
+      "extraction_output_tokens": 841,
+      "full_length_ratios": [
+        0.4196,
+        0.2427
+      ],
+      "full_length_alignments": [
+        0.4196,
+        0.2427
+      ],
+      "summary_expansion_ratios": [
+        3.3333,
+        0.685
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-12-r02.md",
+        "json": "public/gather-chat-12-r02.json",
+        "atif": "public/gather-chat-12-r02.atif.json"
+      }
+    },
+    "gather-chat-12-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:30:57.468782+00:00",
+      "task_id": "gather-chat-12",
+      "source_id": "mt-bench-94",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 2559,
+      "extraction_output_tokens": 657,
+      "full_length_ratios": [
+        0.2593,
+        0.2549
+      ],
+      "full_length_alignments": [
+        0.2593,
+        0.2549
+      ],
+      "summary_expansion_ratios": [
+        2.5652,
+        0.8519
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-12-r03.md",
+        "json": "public/gather-chat-12-r03.json",
+        "atif": "public/gather-chat-12-r03.atif.json"
+      }
+    },
+    "gather-chat-13-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:31:16.950969+00:00",
+      "task_id": "gather-chat-13",
+      "source_id": "mt-bench-137",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 315,
+      "extraction_output_tokens": 463,
+      "full_length_ratios": [
+        1.64,
+        1.3579
+      ],
+      "full_length_alignments": [
+        0.6098,
+        0.7364
+      ],
+      "summary_expansion_ratios": [
+        1.4444,
+        1.2143
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-13-r01.md",
+        "json": "public/gather-chat-13-r01.json",
+        "atif": "public/gather-chat-13-r01.atif.json"
+      }
+    },
+    "gather-chat-13-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:31:25.277561+00:00",
+      "task_id": "gather-chat-13",
+      "source_id": "mt-bench-137",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 0,
+      "unsigned_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 431,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-13-r02.md",
+        "json": "public/gather-chat-13-r02.json",
+        "atif": "public/gather-chat-13-r02.atif.json"
+      }
+    },
+    "gather-chat-13-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:31:36.460597+00:00",
+      "task_id": "gather-chat-13",
+      "source_id": "mt-bench-137",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 259,
+      "extraction_output_tokens": 59,
+      "full_length_ratios": [
+        0.3907
+      ],
+      "full_length_alignments": [
+        0.3907
+      ],
+      "summary_expansion_ratios": [
+        0.2941
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-13-r03.md",
+        "json": "public/gather-chat-13-r03.json",
+        "atif": "public/gather-chat-13-r03.atif.json"
+      }
+    },
+    "gather-chat-14-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:33:49.903276+00:00",
+      "task_id": "gather-chat-14",
+      "source_id": "mt-bench-143",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 8182,
+      "extraction_output_tokens": 5338,
+      "full_length_ratios": [
+        0.7678
+      ],
+      "full_length_alignments": [
+        0.7678
+      ],
+      "summary_expansion_ratios": [
+        1.9238
+      ],
+      "summary_ngram_containments": [
+        0.0202
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-14-r01.md",
+        "json": "public/gather-chat-14-r01.json",
+        "atif": "public/gather-chat-14-r01.atif.json"
+      }
+    },
+    "gather-chat-14-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:35:28.825292+00:00",
+      "task_id": "gather-chat-14",
+      "source_id": "mt-bench-143",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 7980,
+      "extraction_output_tokens": 1151,
+      "full_length_ratios": [
+        0.4,
+        0.1033
+      ],
+      "full_length_alignments": [
+        0.4,
+        0.1033
+      ],
+      "summary_expansion_ratios": [
+        1.92,
+        0.086
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-14-r02.md",
+        "json": "public/gather-chat-14-r02.json",
+        "atif": "public/gather-chat-14-r02.atif.json"
+      }
+    },
+    "gather-chat-14-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:37:11.079754+00:00",
+      "task_id": "gather-chat-14",
+      "source_id": "mt-bench-143",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 7376,
+      "extraction_output_tokens": 730,
+      "full_length_ratios": [
+        0.1369,
+        0.0914
+      ],
+      "full_length_alignments": [
+        0.1369,
+        0.0914
+      ],
+      "summary_expansion_ratios": [
+        4.7,
+        0.0932
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-14-r03.md",
+        "json": "public/gather-chat-14-r03.json",
+        "atif": "public/gather-chat-14-r03.atif.json"
+      }
+    },
+    "gather-chat-15-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:37:57.126414+00:00",
+      "task_id": "gather-chat-15",
+      "source_id": "mt-bench-145",
+      "scenario": "complex_conversational_qa",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 3561,
+      "extraction_output_tokens": 292,
+      "full_length_ratios": [
+        0.0803,
+        0.0827
+      ],
+      "full_length_alignments": [
+        0.0803,
+        0.0827
+      ],
+      "summary_expansion_ratios": [
+        0.4815,
+        0.4667
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0076
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-15-r01.md",
+        "json": "public/gather-chat-15-r01.json",
+        "atif": "public/gather-chat-15-r01.atif.json"
+      }
+    },
+    "gather-chat-15-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:38:41.198640+00:00",
+      "task_id": "gather-chat-15",
+      "source_id": "mt-bench-145",
+      "scenario": "complex_conversational_qa",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 3005,
+      "extraction_output_tokens": 351,
+      "full_length_ratios": [
+        0.0888,
+        0.1297
+      ],
+      "full_length_alignments": [
+        0.0888,
+        0.1297
+      ],
+      "summary_expansion_ratios": [
+        0.2759,
+        0.7132
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-15-r02.md",
+        "json": "public/gather-chat-15-r02.json",
+        "atif": "public/gather-chat-15-r02.atif.json"
+      }
+    },
+    "gather-chat-15-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:22.584591+00:00",
+      "task_id": "gather-chat-15",
+      "source_id": "mt-bench-145",
+      "scenario": "complex_conversational_qa",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 3411,
+      "extraction_output_tokens": 239,
+      "full_length_ratios": [
+        0.0895
+      ],
+      "full_length_alignments": [
+        0.0895
+      ],
+      "summary_expansion_ratios": [
+        0.3363
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-chat-15-r03.md",
+        "json": "public/gather-chat-15-r03.json",
+        "atif": "public/gather-chat-15-r03.atif.json"
+      }
+    },
+    "gather-math-01-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:29.195229+00:00",
+      "task_id": "gather-math-01",
+      "source_id": "gsm8k-train-02951",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 59,
+      "extraction_output_tokens": 65,
+      "full_length_ratios": [
+        1.1017
+      ],
+      "full_length_alignments": [
+        0.9077
+      ],
+      "summary_expansion_ratios": [
+        0.4118
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-01-r01.md",
+        "json": "public/gather-math-01-r01.json",
+        "atif": "public/gather-math-01-r01.atif.json"
+      }
+    },
+    "gather-math-01-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:31.622164+00:00",
+      "task_id": "gather-math-01",
+      "source_id": "gsm8k-train-02951",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 0,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 3,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-01-r02.md",
+        "json": "public/gather-math-01-r02.json",
+        "atif": "public/gather-math-01-r02.atif.json"
+      }
+    },
+    "gather-math-01-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:39.744150+00:00",
+      "task_id": "gather-math-01",
+      "source_id": "gsm8k-train-02951",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 63,
+      "extraction_output_tokens": 69,
+      "full_length_ratios": [
+        1.0952
+      ],
+      "full_length_alignments": [
+        0.913
+      ],
+      "summary_expansion_ratios": [
+        0.4118
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-01-r03.md",
+        "json": "public/gather-math-01-r03.json",
+        "atif": "public/gather-math-01-r03.atif.json"
+      }
+    },
+    "gather-math-02-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:43.545623+00:00",
+      "task_id": "gather-math-02",
+      "source_id": "gsm8k-train-03364",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 0,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 3,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-02-r01.md",
+        "json": "public/gather-math-02-r01.json",
+        "atif": "public/gather-math-02-r01.atif.json"
+      }
+    },
+    "gather-math-02-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:46.397674+00:00",
+      "task_id": "gather-math-02",
+      "source_id": "gsm8k-train-03364",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 0,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 3,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-02-r02.md",
+        "json": "public/gather-math-02-r02.json",
+        "atif": "public/gather-math-02-r02.atif.json"
+      }
+    },
+    "gather-math-02-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:39:53.549175+00:00",
+      "task_id": "gather-math-02",
+      "source_id": "gsm8k-train-03364",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 31,
+      "extraction_output_tokens": 120,
+      "full_length_ratios": [
+        3.871
+      ],
+      "full_length_alignments": [
+        0.2583
+      ],
+      "summary_expansion_ratios": [
+        0.5714
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-02-r03.md",
+        "json": "public/gather-math-02-r03.json",
+        "atif": "public/gather-math-02-r03.atif.json"
+      }
+    },
+    "gather-math-03-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:00.279711+00:00",
+      "task_id": "gather-math-03",
+      "source_id": "gsm8k-train-00448",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 20,
+      "extraction_output_tokens": 78,
+      "full_length_ratios": [
+        3.9
+      ],
+      "full_length_alignments": [
+        0.2564
+      ],
+      "summary_expansion_ratios": [
+        0.3636
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-03-r01.md",
+        "json": "public/gather-math-03-r01.json",
+        "atif": "public/gather-math-03-r01.atif.json"
+      }
+    },
+    "gather-math-03-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:09.879632+00:00",
+      "task_id": "gather-math-03",
+      "source_id": "gsm8k-train-00448",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 20,
+      "extraction_output_tokens": 254,
+      "full_length_ratios": [
+        12.7
+      ],
+      "full_length_alignments": [
+        0.0787
+      ],
+      "summary_expansion_ratios": [
+        1.2273
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-03-r02.md",
+        "json": "public/gather-math-03-r02.json",
+        "atif": "public/gather-math-03-r02.atif.json"
+      }
+    },
+    "gather-math-03-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:12.518964+00:00",
+      "task_id": "gather-math-03",
+      "source_id": "gsm8k-train-00448",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 0,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 3,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-03-r03.md",
+        "json": "public/gather-math-03-r03.json",
+        "atif": "public/gather-math-03-r03.atif.json"
+      }
+    },
+    "gather-math-04-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:20.196655+00:00",
+      "task_id": "gather-math-04",
+      "source_id": "gsm8k-train-00982",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 127,
+      "extraction_output_tokens": 133,
+      "full_length_ratios": [
+        1.0472
+      ],
+      "full_length_alignments": [
+        0.9549
+      ],
+      "summary_expansion_ratios": [
+        1.16
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-04-r01.md",
+        "json": "public/gather-math-04-r01.json",
+        "atif": "public/gather-math-04-r01.atif.json"
+      }
+    },
+    "gather-math-04-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:27.314631+00:00",
+      "task_id": "gather-math-04",
+      "source_id": "gsm8k-train-00982",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 140,
+      "extraction_output_tokens": 146,
+      "full_length_ratios": [
+        1.0429
+      ],
+      "full_length_alignments": [
+        0.9589
+      ],
+      "summary_expansion_ratios": [
+        1.48
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-04-r02.md",
+        "json": "public/gather-math-04-r02.json",
+        "atif": "public/gather-math-04-r02.atif.json"
+      }
+    },
+    "gather-math-04-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:34.602130+00:00",
+      "task_id": "gather-math-04",
+      "source_id": "gsm8k-train-00982",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 94,
+      "extraction_output_tokens": 100,
+      "full_length_ratios": [
+        1.0638
+      ],
+      "full_length_alignments": [
+        0.94
+      ],
+      "summary_expansion_ratios": [
+        0.4468
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-04-r03.md",
+        "json": "public/gather-math-04-r03.json",
+        "atif": "public/gather-math-04-r03.atif.json"
+      }
+    },
+    "gather-math-05-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:41.389821+00:00",
+      "task_id": "gather-math-05",
+      "source_id": "gsm8k-train-01494",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 68,
+      "extraction_output_tokens": 74,
+      "full_length_ratios": [
+        1.0882
+      ],
+      "full_length_alignments": [
+        0.9189
+      ],
+      "summary_expansion_ratios": [
+        0.4
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-05-r01.md",
+        "json": "public/gather-math-05-r01.json",
+        "atif": "public/gather-math-05-r01.atif.json"
+      }
+    },
+    "gather-math-05-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:47.842056+00:00",
+      "task_id": "gather-math-05",
+      "source_id": "gsm8k-train-01494",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 40,
+      "extraction_output_tokens": 79,
+      "full_length_ratios": [
+        1.975
+      ],
+      "full_length_alignments": [
+        0.5063
+      ],
+      "summary_expansion_ratios": [
+        0.5
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-05-r02.md",
+        "json": "public/gather-math-05-r02.json",
+        "atif": "public/gather-math-05-r02.atif.json"
+      }
+    },
+    "gather-math-05-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:40:55.214558+00:00",
+      "task_id": "gather-math-05",
+      "source_id": "gsm8k-train-01494",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 39,
+      "extraction_output_tokens": 112,
+      "full_length_ratios": [
+        2.8718
+      ],
+      "full_length_alignments": [
+        0.3482
+      ],
+      "summary_expansion_ratios": [
+        0.5455
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-05-r03.md",
+        "json": "public/gather-math-05-r03.json",
+        "atif": "public/gather-math-05-r03.atif.json"
+      }
+    },
+    "gather-math-06-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:02.205380+00:00",
+      "task_id": "gather-math-06",
+      "source_id": "gsm8k-train-06914",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 74,
+      "extraction_output_tokens": 80,
+      "full_length_ratios": [
+        1.0811
+      ],
+      "full_length_alignments": [
+        0.925
+      ],
+      "summary_expansion_ratios": [
+        0.4828
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-06-r01.md",
+        "json": "public/gather-math-06-r01.json",
+        "atif": "public/gather-math-06-r01.atif.json"
+      }
+    },
+    "gather-math-06-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:11.426862+00:00",
+      "task_id": "gather-math-06",
+      "source_id": "gsm8k-train-06914",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 110,
+      "extraction_output_tokens": 116,
+      "full_length_ratios": [
+        1.0545
+      ],
+      "full_length_alignments": [
+        0.9483
+      ],
+      "summary_expansion_ratios": [
+        1.1
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-06-r02.md",
+        "json": "public/gather-math-06-r02.json",
+        "atif": "public/gather-math-06-r02.atif.json"
+      }
+    },
+    "gather-math-06-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:18.676435+00:00",
+      "task_id": "gather-math-06",
+      "source_id": "gsm8k-train-06914",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 67,
+      "extraction_output_tokens": 108,
+      "full_length_ratios": [
+        1.6119
+      ],
+      "full_length_alignments": [
+        0.6204
+      ],
+      "summary_expansion_ratios": [
+        0.5333
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-06-r03.md",
+        "json": "public/gather-math-06-r03.json",
+        "atif": "public/gather-math-06-r03.atif.json"
+      }
+    },
+    "gather-math-07-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:28.546460+00:00",
+      "task_id": "gather-math-07",
+      "source_id": "gsm8k-train-02096",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 29,
+      "extraction_output_tokens": 290,
+      "full_length_ratios": [
+        10.0
+      ],
+      "full_length_alignments": [
+        0.1
+      ],
+      "summary_expansion_ratios": [
+        0.6842
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-07-r01.md",
+        "json": "public/gather-math-07-r01.json",
+        "atif": "public/gather-math-07-r01.atif.json"
+      }
+    },
+    "gather-math-07-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:35.459620+00:00",
+      "task_id": "gather-math-07",
+      "source_id": "gsm8k-train-02096",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 59,
+      "extraction_output_tokens": 65,
+      "full_length_ratios": [
+        1.1017
+      ],
+      "full_length_alignments": [
+        0.9077
+      ],
+      "summary_expansion_ratios": [
+        0.2
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-07-r02.md",
+        "json": "public/gather-math-07-r02.json",
+        "atif": "public/gather-math-07-r02.atif.json"
+      }
+    },
+    "gather-math-07-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:42.220705+00:00",
+      "task_id": "gather-math-07",
+      "source_id": "gsm8k-train-02096",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 52,
+      "extraction_output_tokens": 58,
+      "full_length_ratios": [
+        1.1154
+      ],
+      "full_length_alignments": [
+        0.8966
+      ],
+      "summary_expansion_ratios": [
+        0.2
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-07-r03.md",
+        "json": "public/gather-math-07-r03.json",
+        "atif": "public/gather-math-07-r03.atif.json"
+      }
+    },
+    "gather-math-08-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:48.475487+00:00",
+      "task_id": "gather-math-08",
+      "source_id": "gsm8k-train-00812",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 43,
+      "extraction_output_tokens": 87,
+      "full_length_ratios": [
+        2.0233
+      ],
+      "full_length_alignments": [
+        0.4943
+      ],
+      "summary_expansion_ratios": [
+        0.5385
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-08-r01.md",
+        "json": "public/gather-math-08-r01.json",
+        "atif": "public/gather-math-08-r01.atif.json"
+      }
+    },
+    "gather-math-08-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:41:55.121595+00:00",
+      "task_id": "gather-math-08",
+      "source_id": "gsm8k-train-00812",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 36,
+      "extraction_output_tokens": 80,
+      "full_length_ratios": [
+        2.2222
+      ],
+      "full_length_alignments": [
+        0.45
+      ],
+      "summary_expansion_ratios": [
+        0.4167
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-08-r02.md",
+        "json": "public/gather-math-08-r02.json",
+        "atif": "public/gather-math-08-r02.atif.json"
+      }
+    },
+    "gather-math-08-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:04.734421+00:00",
+      "task_id": "gather-math-08",
+      "source_id": "gsm8k-train-00812",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 44,
+      "extraction_output_tokens": 297,
+      "full_length_ratios": [
+        6.75
+      ],
+      "full_length_alignments": [
+        0.1481
+      ],
+      "summary_expansion_ratios": [
+        2.1538
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-08-r03.md",
+        "json": "public/gather-math-08-r03.json",
+        "atif": "public/gather-math-08-r03.atif.json"
+      }
+    },
+    "gather-math-09-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:13.958248+00:00",
+      "task_id": "gather-math-09",
+      "source_id": "gsm8k-train-05019",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 133,
+      "extraction_output_tokens": 149,
+      "full_length_ratios": [
+        1.1203
+      ],
+      "full_length_alignments": [
+        0.8926
+      ],
+      "summary_expansion_ratios": [
+        0.9636
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-09-r01.md",
+        "json": "public/gather-math-09-r01.json",
+        "atif": "public/gather-math-09-r01.atif.json"
+      }
+    },
+    "gather-math-09-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:24.619944+00:00",
+      "task_id": "gather-math-09",
+      "source_id": "gsm8k-train-05019",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 160,
+      "extraction_output_tokens": 203,
+      "full_length_ratios": [
+        1.2688
+      ],
+      "full_length_alignments": [
+        0.7882
+      ],
+      "summary_expansion_ratios": [
+        1.0154
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-09-r02.md",
+        "json": "public/gather-math-09-r02.json",
+        "atif": "public/gather-math-09-r02.atif.json"
+      }
+    },
+    "gather-math-09-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:35.370716+00:00",
+      "task_id": "gather-math-09",
+      "source_id": "gsm8k-train-05019",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 142,
+      "extraction_output_tokens": 181,
+      "full_length_ratios": [
+        1.2746
+      ],
+      "full_length_alignments": [
+        0.7845
+      ],
+      "summary_expansion_ratios": [
+        1.1961
+      ],
+      "summary_ngram_containments": [
+        0.0213
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-09-r03.md",
+        "json": "public/gather-math-09-r03.json",
+        "atif": "public/gather-math-09-r03.atif.json"
+      }
+    },
+    "gather-math-10-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:42.142831+00:00",
+      "task_id": "gather-math-10",
+      "source_id": "gsm8k-train-05156",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 71,
+      "extraction_output_tokens": 110,
+      "full_length_ratios": [
+        1.5493
+      ],
+      "full_length_alignments": [
+        0.6455
+      ],
+      "summary_expansion_ratios": [
+        0.7778
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-10-r01.md",
+        "json": "public/gather-math-10-r01.json",
+        "atif": "public/gather-math-10-r01.atif.json"
+      }
+    },
+    "gather-math-10-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:49.964769+00:00",
+      "task_id": "gather-math-10",
+      "source_id": "gsm8k-train-05156",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 89,
+      "extraction_output_tokens": 95,
+      "full_length_ratios": [
+        1.0674
+      ],
+      "full_length_alignments": [
+        0.9368
+      ],
+      "summary_expansion_ratios": [
+        0.425
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-10-r02.md",
+        "json": "public/gather-math-10-r02.json",
+        "atif": "public/gather-math-10-r02.atif.json"
+      }
+    },
+    "gather-math-10-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:42:57.284327+00:00",
+      "task_id": "gather-math-10",
+      "source_id": "gsm8k-train-05156",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 87,
+      "extraction_output_tokens": 93,
+      "full_length_ratios": [
+        1.069
+      ],
+      "full_length_alignments": [
+        0.9355
+      ],
+      "summary_expansion_ratios": [
+        0.4359
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-10-r03.md",
+        "json": "public/gather-math-10-r03.json",
+        "atif": "public/gather-math-10-r03.atif.json"
+      }
+    },
+    "gather-math-11-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:03.916858+00:00",
+      "task_id": "gather-math-11",
+      "source_id": "gsm8k-train-06827",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 96,
+      "extraction_output_tokens": 101,
+      "full_length_ratios": [
+        1.0521
+      ],
+      "full_length_alignments": [
+        0.9505
+      ],
+      "summary_expansion_ratios": [
+        0.5
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-11-r01.md",
+        "json": "public/gather-math-11-r01.json",
+        "atif": "public/gather-math-11-r01.atif.json"
+      }
+    },
+    "gather-math-11-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:10.548841+00:00",
+      "task_id": "gather-math-11",
+      "source_id": "gsm8k-train-06827",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 64,
+      "extraction_output_tokens": 69,
+      "full_length_ratios": [
+        1.0781
+      ],
+      "full_length_alignments": [
+        0.9275
+      ],
+      "summary_expansion_ratios": [
+        0.2667
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-11-r02.md",
+        "json": "public/gather-math-11-r02.json",
+        "atif": "public/gather-math-11-r02.atif.json"
+      }
+    },
+    "gather-math-11-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:17.478665+00:00",
+      "task_id": "gather-math-11",
+      "source_id": "gsm8k-train-06827",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 71,
+      "extraction_output_tokens": 76,
+      "full_length_ratios": [
+        1.0704
+      ],
+      "full_length_alignments": [
+        0.9342
+      ],
+      "summary_expansion_ratios": [
+        0.3
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-11-r03.md",
+        "json": "public/gather-math-11-r03.json",
+        "atif": "public/gather-math-11-r03.atif.json"
+      }
+    },
+    "gather-math-12-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:21.139481+00:00",
+      "task_id": "gather-math-12",
+      "source_id": "gsm8k-train-02786",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 0,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 78,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-12-r01.md",
+        "json": "public/gather-math-12-r01.json",
+        "atif": "public/gather-math-12-r01.atif.json"
+      }
+    },
+    "gather-math-12-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:26.633950+00:00",
+      "task_id": "gather-math-12",
+      "source_id": "gsm8k-train-02786",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 0,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 87,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-12-r02.md",
+        "json": "public/gather-math-12-r02.json",
+        "atif": "public/gather-math-12-r02.atif.json"
+      }
+    },
+    "gather-math-12-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:33.428988+00:00",
+      "task_id": "gather-math-12",
+      "source_id": "gsm8k-train-02786",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 70,
+      "extraction_output_tokens": 76,
+      "full_length_ratios": [
+        1.0857
+      ],
+      "full_length_alignments": [
+        0.9211
+      ],
+      "summary_expansion_ratios": [
+        0.7
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-12-r03.md",
+        "json": "public/gather-math-12-r03.json",
+        "atif": "public/gather-math-12-r03.atif.json"
+      }
+    },
+    "gather-math-13-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:40.741336+00:00",
+      "task_id": "gather-math-13",
+      "source_id": "gsm8k-train-06044",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 80,
+      "extraction_output_tokens": 86,
+      "full_length_ratios": [
+        1.075
+      ],
+      "full_length_alignments": [
+        0.9302
+      ],
+      "summary_expansion_ratios": [
+        0.4815
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-13-r01.md",
+        "json": "public/gather-math-13-r01.json",
+        "atif": "public/gather-math-13-r01.atif.json"
+      }
+    },
+    "gather-math-13-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:49.095004+00:00",
+      "task_id": "gather-math-13",
+      "source_id": "gsm8k-train-06044",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 28,
+      "extraction_output_tokens": 94,
+      "full_length_ratios": [
+        3.3571
+      ],
+      "full_length_alignments": [
+        0.2979
+      ],
+      "summary_expansion_ratios": [
+        0.3846
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-13-r02.md",
+        "json": "public/gather-math-13-r02.json",
+        "atif": "public/gather-math-13-r02.atif.json"
+      }
+    },
+    "gather-math-13-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:43:56.162720+00:00",
+      "task_id": "gather-math-13",
+      "source_id": "gsm8k-train-06044",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 79,
+      "extraction_output_tokens": 85,
+      "full_length_ratios": [
+        1.0759
+      ],
+      "full_length_alignments": [
+        0.9294
+      ],
+      "summary_expansion_ratios": [
+        0.5556
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-13-r03.md",
+        "json": "public/gather-math-13-r03.json",
+        "atif": "public/gather-math-13-r03.atif.json"
+      }
+    },
+    "gather-math-14-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:03.256655+00:00",
+      "task_id": "gather-math-14",
+      "source_id": "gsm8k-train-02479",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 70,
+      "extraction_output_tokens": 76,
+      "full_length_ratios": [
+        1.0857
+      ],
+      "full_length_alignments": [
+        0.9211
+      ],
+      "summary_expansion_ratios": [
+        0.5
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-14-r01.md",
+        "json": "public/gather-math-14-r01.json",
+        "atif": "public/gather-math-14-r01.atif.json"
+      }
+    },
+    "gather-math-14-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:09.895061+00:00",
+      "task_id": "gather-math-14",
+      "source_id": "gsm8k-train-02479",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 69,
+      "extraction_output_tokens": 75,
+      "full_length_ratios": [
+        1.087
+      ],
+      "full_length_alignments": [
+        0.92
+      ],
+      "summary_expansion_ratios": [
+        0.2667
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-14-r02.md",
+        "json": "public/gather-math-14-r02.json",
+        "atif": "public/gather-math-14-r02.atif.json"
+      }
+    },
+    "gather-math-14-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:17.052930+00:00",
+      "task_id": "gather-math-14",
+      "source_id": "gsm8k-train-02479",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 61,
+      "extraction_output_tokens": 67,
+      "full_length_ratios": [
+        1.0984
+      ],
+      "full_length_alignments": [
+        0.9104
+      ],
+      "summary_expansion_ratios": [
+        0.2667
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-14-r03.md",
+        "json": "public/gather-math-14-r03.json",
+        "atif": "public/gather-math-14-r03.atif.json"
+      }
+    },
+    "gather-math-15-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:24.531829+00:00",
+      "task_id": "gather-math-15",
+      "source_id": "gsm8k-train-04451",
+      "scenario": "math_reasoning",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 51,
+      "extraction_output_tokens": 57,
+      "full_length_ratios": [
+        1.1176
+      ],
+      "full_length_alignments": [
+        0.8947
+      ],
+      "summary_expansion_ratios": [
+        0.4
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-15-r01.md",
+        "json": "public/gather-math-15-r01.json",
+        "atif": "public/gather-math-15-r01.atif.json"
+      }
+    },
+    "gather-math-15-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:30.680265+00:00",
+      "task_id": "gather-math-15",
+      "source_id": "gsm8k-train-04451",
+      "scenario": "math_reasoning",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 53,
+      "extraction_output_tokens": 59,
+      "full_length_ratios": [
+        1.1132
+      ],
+      "full_length_alignments": [
+        0.8983
+      ],
+      "summary_expansion_ratios": [
+        0.4
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-15-r02.md",
+        "json": "public/gather-math-15-r02.json",
+        "atif": "public/gather-math-15-r02.atif.json"
+      }
+    },
+    "gather-math-15-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:36.785650+00:00",
+      "task_id": "gather-math-15",
+      "source_id": "gsm8k-train-04451",
+      "scenario": "math_reasoning",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 53,
+      "extraction_output_tokens": 59,
+      "full_length_ratios": [
+        1.1132
+      ],
+      "full_length_alignments": [
+        0.8983
+      ],
+      "summary_expansion_ratios": [
+        0.1333
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/gather-math-15-r03.md",
+        "json": "public/gather-math-15-r03.json",
+        "atif": "public/gather-math-15-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-01-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:44:46.111086+00:00",
+      "task_id": "gather-agentic-coding-01",
+      "source_id": "gather-agentic-coding-01",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 0,
+      "unsigned_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 355,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "list_files",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-01-r01.md",
+        "json": "public/gather-agentic-coding-01-r01.json",
+        "atif": "public/gather-agentic-coding-01-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-01-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:45:12.353260+00:00",
+      "task_id": "gather-agentic-coding-01",
+      "source_id": "gather-agentic-coding-01",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 3,
+      "signed_decisions": 3,
+      "unsigned_decisions": 0,
+      "valid_decisions": 3,
+      "strong_decisions": 3,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 644,
+      "extraction_output_tokens": 237,
+      "full_length_ratios": [
+        0.2382,
+        0.4932,
+        0.4972
+      ],
+      "full_length_alignments": [
+        0.2382,
+        0.4932,
+        0.4972
+      ],
+      "summary_expansion_ratios": [
+        0.25,
+        0.5,
+        0.5625
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "list_files",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 2,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-01-r02.md",
+        "json": "public/gather-agentic-coding-01-r02.json",
+        "atif": "public/gather-agentic-coding-01-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-01-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:45:27.405787+00:00",
+      "task_id": "gather-agentic-coding-01",
+      "source_id": "gather-agentic-coding-01",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 251,
+      "extraction_output_tokens": 152,
+      "full_length_ratios": [
+        0.6154,
+        0.597
+      ],
+      "full_length_alignments": [
+        0.6154,
+        0.597
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.4545
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-01-r03.md",
+        "json": "public/gather-agentic-coding-01-r03.json",
+        "atif": "public/gather-agentic-coding-01-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-02-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:45:43.055141+00:00",
+      "task_id": "gather-agentic-coding-02",
+      "source_id": "gather-agentic-coding-02",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 267,
+      "extraction_output_tokens": 169,
+      "full_length_ratios": [
+        0.6724,
+        0.6026
+      ],
+      "full_length_alignments": [
+        0.6724,
+        0.6026
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.7273
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-02-r01.md",
+        "json": "public/gather-agentic-coding-02-r01.json",
+        "atif": "public/gather-agentic-coding-02-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-02-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:45:58.002930+00:00",
+      "task_id": "gather-agentic-coding-02",
+      "source_id": "gather-agentic-coding-02",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 272,
+      "extraction_output_tokens": 171,
+      "full_length_ratios": [
+        0.7436,
+        0.5419
+      ],
+      "full_length_alignments": [
+        0.7436,
+        0.5419
+      ],
+      "summary_expansion_ratios": [
+        0.5,
+        0.6667
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-02-r02.md",
+        "json": "public/gather-agentic-coding-02-r02.json",
+        "atif": "public/gather-agentic-coding-02-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-02-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:46:13.180498+00:00",
+      "task_id": "gather-agentic-coding-02",
+      "source_id": "gather-agentic-coding-02",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 262,
+      "extraction_output_tokens": 157,
+      "full_length_ratios": [
+        0.6552,
+        0.5548
+      ],
+      "full_length_alignments": [
+        0.6552,
+        0.5548
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.3571
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-02-r03.md",
+        "json": "public/gather-agentic-coding-02-r03.json",
+        "atif": "public/gather-agentic-coding-02-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-03-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:46:28.922095+00:00",
+      "task_id": "gather-agentic-coding-03",
+      "source_id": "gather-agentic-coding-03",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 398,
+      "extraction_output_tokens": 172,
+      "full_length_ratios": [
+        0.5329,
+        0.3699
+      ],
+      "full_length_alignments": [
+        0.5329,
+        0.3699
+      ],
+      "summary_expansion_ratios": [
+        0.9,
+        0.5333
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-03-r01.md",
+        "json": "public/gather-agentic-coding-03-r01.json",
+        "atif": "public/gather-agentic-coding-03-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-03-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:46:37.211801+00:00",
+      "task_id": "gather-agentic-coding-03",
+      "source_id": "gather-agentic-coding-03",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 0,
+      "unsigned_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 409,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-03-r02.md",
+        "json": "public/gather-agentic-coding-03-r02.json",
+        "atif": "public/gather-agentic-coding-03-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-03-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:46:51.581819+00:00",
+      "task_id": "gather-agentic-coding-03",
+      "source_id": "gather-agentic-coding-03",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 311,
+      "extraction_output_tokens": 157,
+      "full_length_ratios": [
+        0.6198,
+        0.4316
+      ],
+      "full_length_alignments": [
+        0.6198,
+        0.4316
+      ],
+      "summary_expansion_ratios": [
+        0.5,
+        0.5455
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-03-r03.md",
+        "json": "public/gather-agentic-coding-03-r03.json",
+        "atif": "public/gather-agentic-coding-03-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-04-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:47:08.053484+00:00",
+      "task_id": "gather-agentic-coding-04",
+      "source_id": "gather-agentic-coding-04",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 346,
+      "extraction_output_tokens": 228,
+      "full_length_ratios": [
+        0.7025,
+        0.6356
+      ],
+      "full_length_alignments": [
+        0.7025,
+        0.6356
+      ],
+      "summary_expansion_ratios": [
+        0.6,
+        1.2759
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.04
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-04-r01.md",
+        "json": "public/gather-agentic-coding-04-r01.json",
+        "atif": "public/gather-agentic-coding-04-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-04-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:47:22.943420+00:00",
+      "task_id": "gather-agentic-coding-04",
+      "source_id": "gather-agentic-coding-04",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 371,
+      "extraction_output_tokens": 198,
+      "full_length_ratios": [
+        0.6513,
+        0.4521
+      ],
+      "full_length_alignments": [
+        0.6513,
+        0.4521
+      ],
+      "summary_expansion_ratios": [
+        1.0769,
+        0.6818
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-04-r02.md",
+        "json": "public/gather-agentic-coding-04-r02.json",
+        "atif": "public/gather-agentic-coding-04-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-04-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:47:37.531864+00:00",
+      "task_id": "gather-agentic-coding-04",
+      "source_id": "gather-agentic-coding-04",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 312,
+      "extraction_output_tokens": 196,
+      "full_length_ratios": [
+        0.75,
+        0.5521
+      ],
+      "full_length_alignments": [
+        0.75,
+        0.5521
+      ],
+      "summary_expansion_ratios": [
+        0.625,
+        0.8214
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.1667
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-04-r03.md",
+        "json": "public/gather-agentic-coding-04-r03.json",
+        "atif": "public/gather-agentic-coding-04-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-05-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:47:51.527698+00:00",
+      "task_id": "gather-agentic-coding-05",
+      "source_id": "gather-agentic-coding-05",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 262,
+      "extraction_output_tokens": 166,
+      "full_length_ratios": [
+        0.5913,
+        0.6667
+      ],
+      "full_length_alignments": [
+        0.5913,
+        0.6667
+      ],
+      "summary_expansion_ratios": [
+        0.2667,
+        0.5
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-05-r01.md",
+        "json": "public/gather-agentic-coding-05-r01.json",
+        "atif": "public/gather-agentic-coding-05-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-05-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:48:07.631902+00:00",
+      "task_id": "gather-agentic-coding-05",
+      "source_id": "gather-agentic-coding-05",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 272,
+      "extraction_output_tokens": 191,
+      "full_length_ratios": [
+        0.7759,
+        0.6474
+      ],
+      "full_length_alignments": [
+        0.7759,
+        0.6474
+      ],
+      "summary_expansion_ratios": [
+        0.5,
+        0.4375
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-05-r02.md",
+        "json": "public/gather-agentic-coding-05-r02.json",
+        "atif": "public/gather-agentic-coding-05-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-05-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:48:21.729428+00:00",
+      "task_id": "gather-agentic-coding-05",
+      "source_id": "gather-agentic-coding-05",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 262,
+      "extraction_output_tokens": 168,
+      "full_length_ratios": [
+        0.6983,
+        0.5959
+      ],
+      "full_length_alignments": [
+        0.6983,
+        0.5959
+      ],
+      "summary_expansion_ratios": [
+        0.2857,
+        0.5263
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-05-r03.md",
+        "json": "public/gather-agentic-coding-05-r03.json",
+        "atif": "public/gather-agentic-coding-05-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-06-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:48:39.101263+00:00",
+      "task_id": "gather-agentic-coding-06",
+      "source_id": "gather-agentic-coding-06",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 1,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 270,
+      "extraction_output_tokens": 142,
+      "full_length_ratios": [
+        0.5812,
+        0.4837
+      ],
+      "full_length_alignments": [
+        0.5812,
+        0.4837
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.6
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-06-r01.md",
+        "json": "public/gather-agentic-coding-06-r01.json",
+        "atif": "public/gather-agentic-coding-06-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-06-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:48:47.226201+00:00",
+      "task_id": "gather-agentic-coding-06",
+      "source_id": "gather-agentic-coding-06",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 0,
+      "unsigned_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 349,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-06-r02.md",
+        "json": "public/gather-agentic-coding-06-r02.json",
+        "atif": "public/gather-agentic-coding-06-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-06-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:49:01.083959+00:00",
+      "task_id": "gather-agentic-coding-06",
+      "source_id": "gather-agentic-coding-06",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 1,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 269,
+      "extraction_output_tokens": 156,
+      "full_length_ratios": [
+        0.6207,
+        0.549
+      ],
+      "full_length_alignments": [
+        0.6207,
+        0.549
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.6
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-06-r03.md",
+        "json": "public/gather-agentic-coding-06-r03.json",
+        "atif": "public/gather-agentic-coding-06-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-07-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:49:11.495503+00:00",
+      "task_id": "gather-agentic-coding-07",
+      "source_id": "gather-agentic-coding-07",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 298,
+      "extraction_output_tokens": 77,
+      "full_length_ratios": [
+        0.5833
+      ],
+      "full_length_alignments": [
+        0.5833
+      ],
+      "summary_expansion_ratios": [
+        0.5
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-07-r01.md",
+        "json": "public/gather-agentic-coding-07-r01.json",
+        "atif": "public/gather-agentic-coding-07-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-07-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:49:25.012848+00:00",
+      "task_id": "gather-agentic-coding-07",
+      "source_id": "gather-agentic-coding-07",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 473,
+      "extraction_output_tokens": 96,
+      "full_length_ratios": [
+        0.5363
+      ],
+      "full_length_alignments": [
+        0.5363
+      ],
+      "summary_expansion_ratios": [
+        0.5238
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-07-r02.md",
+        "json": "public/gather-agentic-coding-07-r02.json",
+        "atif": "public/gather-agentic-coding-07-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-07-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:49:42.221862+00:00",
+      "task_id": "gather-agentic-coding-07",
+      "source_id": "gather-agentic-coding-07",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": false,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 551,
+      "extraction_output_tokens": 296,
+      "full_length_ratios": [
+        0.3609,
+        0.6152
+      ],
+      "full_length_alignments": [
+        0.3609,
+        0.6152
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        1.8571
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-07-r03.md",
+        "json": "public/gather-agentic-coding-07-r03.json",
+        "atif": "public/gather-agentic-coding-07-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-08-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:49:50.203178+00:00",
+      "task_id": "gather-agentic-coding-08",
+      "source_id": "gather-agentic-coding-08",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 0,
+      "unsigned_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 381,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-08-r01.md",
+        "json": "public/gather-agentic-coding-08-r01.json",
+        "atif": "public/gather-agentic-coding-08-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-08-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:50:05.642835+00:00",
+      "task_id": "gather-agentic-coding-08",
+      "source_id": "gather-agentic-coding-08",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 310,
+      "extraction_output_tokens": 188,
+      "full_length_ratios": [
+        0.6341,
+        0.5882
+      ],
+      "full_length_alignments": [
+        0.6341,
+        0.5882
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.7586
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-08-r02.md",
+        "json": "public/gather-agentic-coding-08-r02.json",
+        "atif": "public/gather-agentic-coding-08-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-08-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:50:20.644518+00:00",
+      "task_id": "gather-agentic-coding-08",
+      "source_id": "gather-agentic-coding-08",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 1,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 276,
+      "extraction_output_tokens": 159,
+      "full_length_ratios": [
+        0.6393,
+        0.526
+      ],
+      "full_length_alignments": [
+        0.6393,
+        0.526
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.6
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-08-r03.md",
+        "json": "public/gather-agentic-coding-08-r03.json",
+        "atif": "public/gather-agentic-coding-08-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-09-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:50:35.670671+00:00",
+      "task_id": "gather-agentic-coding-09",
+      "source_id": "gather-agentic-coding-09",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 273,
+      "extraction_output_tokens": 163,
+      "full_length_ratios": [
+        0.6207,
+        0.5796
+      ],
+      "full_length_alignments": [
+        0.6207,
+        0.5796
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.6
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-09-r01.md",
+        "json": "public/gather-agentic-coding-09-r01.json",
+        "atif": "public/gather-agentic-coding-09-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-09-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:50:48.042565+00:00",
+      "task_id": "gather-agentic-coding-09",
+      "source_id": "gather-agentic-coding-09",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 392,
+      "extraction_output_tokens": 110,
+      "full_length_ratios": [
+        0.428
+      ],
+      "full_length_alignments": [
+        0.428
+      ],
+      "summary_expansion_ratios": [
+        0.96
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-09-r02.md",
+        "json": "public/gather-agentic-coding-09-r02.json",
+        "atif": "public/gather-agentic-coding-09-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-09-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:51:05.162943+00:00",
+      "task_id": "gather-agentic-coding-09",
+      "source_id": "gather-agentic-coding-09",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 280,
+      "extraction_output_tokens": 183,
+      "full_length_ratios": [
+        0.7521,
+        0.5828
+      ],
+      "full_length_alignments": [
+        0.7521,
+        0.5828
+      ],
+      "summary_expansion_ratios": [
+        0.5,
+        0.5152
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-09-r03.md",
+        "json": "public/gather-agentic-coding-09-r03.json",
+        "atif": "public/gather-agentic-coding-09-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-10-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:51:24.208629+00:00",
+      "task_id": "gather-agentic-coding-10",
+      "source_id": "gather-agentic-coding-10",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 446,
+      "extraction_output_tokens": 211,
+      "full_length_ratios": [
+        0.3948,
+        0.5587
+      ],
+      "full_length_alignments": [
+        0.3948,
+        0.5587
+      ],
+      "summary_expansion_ratios": [
+        0.4583,
+        1.1875
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-10-r01.md",
+        "json": "public/gather-agentic-coding-10-r01.json",
+        "atif": "public/gather-agentic-coding-10-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-10-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:51:41.049790+00:00",
+      "task_id": "gather-agentic-coding-10",
+      "source_id": "gather-agentic-coding-10",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 466,
+      "extraction_output_tokens": 152,
+      "full_length_ratios": [
+        0.3263,
+        0.3259
+      ],
+      "full_length_alignments": [
+        0.3263,
+        0.3259
+      ],
+      "summary_expansion_ratios": [
+        0.5882,
+        0.0625
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-10-r02.md",
+        "json": "public/gather-agentic-coding-10-r02.json",
+        "atif": "public/gather-agentic-coding-10-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-10-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:51:55.235235+00:00",
+      "task_id": "gather-agentic-coding-10",
+      "source_id": "gather-agentic-coding-10",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 196,
+      "extraction_output_tokens": 163,
+      "full_length_ratios": [
+        1.125,
+        0.6894
+      ],
+      "full_length_alignments": [
+        0.8889,
+        0.6894
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.4615
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-10-r03.md",
+        "json": "public/gather-agentic-coding-10-r03.json",
+        "atif": "public/gather-agentic-coding-10-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-11-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:52:02.915403+00:00",
+      "task_id": "gather-agentic-coding-11",
+      "source_id": "gather-agentic-coding-11",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 0,
+      "unsigned_decisions": 2,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 321,
+      "extraction_output_tokens": 0,
+      "full_length_ratios": [],
+      "full_length_alignments": [],
+      "summary_expansion_ratios": [],
+      "summary_ngram_containments": [],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-11-r01.md",
+        "json": "public/gather-agentic-coding-11-r01.json",
+        "atif": "public/gather-agentic-coding-11-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-11-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:52:18.018778+00:00",
+      "task_id": "gather-agentic-coding-11",
+      "source_id": "gather-agentic-coding-11",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 256,
+      "extraction_output_tokens": 175,
+      "full_length_ratios": [
+        0.6612,
+        0.7037
+      ],
+      "full_length_alignments": [
+        0.6612,
+        0.7037
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.6
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-11-r02.md",
+        "json": "public/gather-agentic-coding-11-r02.json",
+        "atif": "public/gather-agentic-coding-11-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-11-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:52:32.468349+00:00",
+      "task_id": "gather-agentic-coding-11",
+      "source_id": "gather-agentic-coding-11",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 292,
+      "extraction_output_tokens": 167,
+      "full_length_ratios": [
+        0.6387,
+        0.526
+      ],
+      "full_length_alignments": [
+        0.6387,
+        0.526
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.6667
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-11-r03.md",
+        "json": "public/gather-agentic-coding-11-r03.json",
+        "atif": "public/gather-agentic-coding-11-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-12-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:52:49.377072+00:00",
+      "task_id": "gather-agentic-coding-12",
+      "source_id": "gather-agentic-coding-12",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 363,
+      "extraction_output_tokens": 221,
+      "full_length_ratios": [
+        0.6325,
+        0.5976
+      ],
+      "full_length_alignments": [
+        0.6325,
+        0.5976
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        1.25
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-12-r01.md",
+        "json": "public/gather-agentic-coding-12-r01.json",
+        "atif": "public/gather-agentic-coding-12-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-12-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:53:07.052641+00:00",
+      "task_id": "gather-agentic-coding-12",
+      "source_id": "gather-agentic-coding-12",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 592,
+      "extraction_output_tokens": 173,
+      "full_length_ratios": [
+        0.2316,
+        0.3911
+      ],
+      "full_length_alignments": [
+        0.2316,
+        0.3911
+      ],
+      "summary_expansion_ratios": [
+        0.5,
+        0.8667
+      ],
+      "summary_ngram_containments": [
+        0.0714,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-12-r02.md",
+        "json": "public/gather-agentic-coding-12-r02.json",
+        "atif": "public/gather-agentic-coding-12-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-12-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:53:22.163630+00:00",
+      "task_id": "gather-agentic-coding-12",
+      "source_id": "gather-agentic-coding-12",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 275,
+      "extraction_output_tokens": 171,
+      "full_length_ratios": [
+        0.7119,
+        0.5541
+      ],
+      "full_length_alignments": [
+        0.7119,
+        0.5541
+      ],
+      "summary_expansion_ratios": [
+        1.0,
+        0.5556
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-12-r03.md",
+        "json": "public/gather-agentic-coding-12-r03.json",
+        "atif": "public/gather-agentic-coding-12-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-13-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:53:39.685557+00:00",
+      "task_id": "gather-agentic-coding-13",
+      "source_id": "gather-agentic-coding-13",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 2,
+      "harvest_output_tokens": 455,
+      "extraction_output_tokens": 146,
+      "full_length_ratios": [
+        0.2345,
+        0.4061
+      ],
+      "full_length_alignments": [
+        0.2345,
+        0.4061
+      ],
+      "summary_expansion_ratios": [
+        0.2059,
+        0.6154
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-13-r01.md",
+        "json": "public/gather-agentic-coding-13-r01.json",
+        "atif": "public/gather-agentic-coding-13-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-13-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:53:55.966651+00:00",
+      "task_id": "gather-agentic-coding-13",
+      "source_id": "gather-agentic-coding-13",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 280,
+      "extraction_output_tokens": 152,
+      "full_length_ratios": [
+        0.6281,
+        0.478
+      ],
+      "full_length_alignments": [
+        0.6281,
+        0.478
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.7692
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-13-r02.md",
+        "json": "public/gather-agentic-coding-13-r02.json",
+        "atif": "public/gather-agentic-coding-13-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-13-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:54:11.327628+00:00",
+      "task_id": "gather-agentic-coding-13",
+      "source_id": "gather-agentic-coding-13",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 420,
+      "extraction_output_tokens": 137,
+      "full_length_ratios": [
+        0.1544,
+        0.6025
+      ],
+      "full_length_alignments": [
+        0.1544,
+        0.6025
+      ],
+      "summary_expansion_ratios": [
+        0.0714,
+        0.5909
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-13-r03.md",
+        "json": "public/gather-agentic-coding-13-r03.json",
+        "atif": "public/gather-agentic-coding-13-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-14-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:54:25.250986+00:00",
+      "task_id": "gather-agentic-coding-14",
+      "source_id": "gather-agentic-coding-14",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 1,
+      "unsigned_decisions": 1,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 489,
+      "extraction_output_tokens": 104,
+      "full_length_ratios": [
+        0.3838
+      ],
+      "full_length_alignments": [
+        0.3838
+      ],
+      "summary_expansion_ratios": [
+        0.5806
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-14-r01.md",
+        "json": "public/gather-agentic-coding-14-r01.json",
+        "atif": "public/gather-agentic-coding-14-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-14-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:54:41.125513+00:00",
+      "task_id": "gather-agentic-coding-14",
+      "source_id": "gather-agentic-coding-14",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 251,
+      "extraction_output_tokens": 170,
+      "full_length_ratios": [
+        0.7304,
+        0.6324
+      ],
+      "full_length_alignments": [
+        0.7304,
+        0.6324
+      ],
+      "summary_expansion_ratios": [
+        0.3571,
+        0.3529
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-14-r02.md",
+        "json": "public/gather-agentic-coding-14-r02.json",
+        "atif": "public/gather-agentic-coding-14-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-14-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:54:55.667089+00:00",
+      "task_id": "gather-agentic-coding-14",
+      "source_id": "gather-agentic-coding-14",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 251,
+      "extraction_output_tokens": 125,
+      "full_length_ratios": [
+        0.322,
+        0.6541
+      ],
+      "full_length_alignments": [
+        0.322,
+        0.6541
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.4545
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-14-r03.md",
+        "json": "public/gather-agentic-coding-14-r03.json",
+        "atif": "public/gather-agentic-coding-14-r03.atif.json"
+      }
+    },
+    "gather-agentic-coding-15-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:55:11.539597+00:00",
+      "task_id": "gather-agentic-coding-15",
+      "source_id": "gather-agentic-coding-15",
+      "scenario": "agentic_coding",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 302,
+      "extraction_output_tokens": 184,
+      "full_length_ratios": [
+        0.5259,
+        0.6613
+      ],
+      "full_length_alignments": [
+        0.5259,
+        0.6613
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        0.5526
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0294
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-15-r01.md",
+        "json": "public/gather-agentic-coding-15-r01.json",
+        "atif": "public/gather-agentic-coding-15-r01.atif.json"
+      }
+    },
+    "gather-agentic-coding-15-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:55:28.329073+00:00",
+      "task_id": "gather-agentic-coding-15",
+      "source_id": "gather-agentic-coding-15",
+      "scenario": "agentic_coding",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 2,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 379,
+      "extraction_output_tokens": 280,
+      "full_length_ratios": [
+        0.7542,
+        0.7318
+      ],
+      "full_length_alignments": [
+        0.7542,
+        0.7318
+      ],
+      "summary_expansion_ratios": [
+        1.25,
+        1.1176
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.0213
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-15-r02.md",
+        "json": "public/gather-agentic-coding-15-r02.json",
+        "atif": "public/gather-agentic-coding-15-r02.atif.json"
+      }
+    },
+    "gather-agentic-coding-15-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-16T18:55:44.995955+00:00",
+      "task_id": "gather-agentic-coding-15",
+      "source_id": "gather-agentic-coding-15",
+      "scenario": "agentic_coding",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": true,
+      "original_decisions": 2,
+      "signed_decisions": 2,
+      "unsigned_decisions": 0,
+      "valid_decisions": 2,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 334,
+      "extraction_output_tokens": 224,
+      "full_length_ratios": [
+        0.6724,
+        0.6697
+      ],
+      "full_length_alignments": [
+        0.6724,
+        0.6697
+      ],
+      "summary_expansion_ratios": [
+        0.0,
+        1.129
+      ],
+      "summary_ngram_containments": [
+        0.0,
+        0.037
+      ],
+      "tool_actions": [
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 0,
+          "name": "read_file",
+          "status": "success"
+        },
+        {
+          "step": 1,
+          "name": "apply_patch",
+          "status": "success"
+        }
+      ],
+      "artifacts": {
+        "markdown": "public/gather-agentic-coding-15-r03.md",
+        "json": "public/gather-agentic-coding-15-r03.json",
+        "atif": "public/gather-agentic-coding-15-r03.atif.json"
+      }
+    }
+  }
+}

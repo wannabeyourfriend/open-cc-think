@@ -1,0 +1,395 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-agentic-coding-02-r03",
+  "trajectory_id": "a09c619d-a0af-480c-aacb-591d6910497b",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    },
+    "tool_definitions": [
+      {
+        "type": "function",
+        "function": {
+          "name": "list_files",
+          "description": "List every path in the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "read_file",
+          "description": "Read one file from the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/handles.py",
+                  "tests/test_handles.py"
+                ]
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "search_code",
+          "description": "Search literal text in all isolated workspace files.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "apply_patch",
+          "description": "Submit one exact replacement. This terminates the task and runs the verifier automatically.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/handles.py",
+                  "tests/test_handles.py"
+                ]
+              },
+              "old": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "new": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            },
+            "required": [
+              "path",
+              "old",
+              "new"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "run_tests",
+          "description": "Inspect current deterministic verifier status without terminating the task.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "You are a careful code-repair agent operating only on an isolated in-memory workspace. Inspect the relevant source and tests before calling apply_patch exactly once. apply_patch is the terminal submission action and automatically runs the deterministic verifier. Do not finish with plain assistant text. Treat tool results as authoritative. Never expose research boundary markers in visible text or tool inputs. You have no shell, network, or host-filesystem access."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Normalize a user handle by trimming surrounding whitespace and comparing case-insensitively. Inspect, patch, run tests, and report PASS or FAIL."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1242,
+        "completion_tokens": 116,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1242,
+            "outputTokens": 116,
+            "serverToolUsage": {},
+            "totalTokens": 1358
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'll start by examining the files to understand what we're working with.",
+        "signature_sha256": "ca420c13a516b88fd952d014439e454f6144c09a7d2ac122f36bc42b5ebe061d",
+        "signature_chars": 332,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.8852,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 51,
+            "recovered_output_tokens": 76,
+            "token_coverage_proxy": 0.6552,
+            "full_length_ratio": 0.6552,
+            "full_length_alignment": 0.6552,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.5294,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 14,
+            "recovered_lexical_tokens": 0,
+            "summary_expansion_ratio": 0.0,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0,
+            "summary_sequence_similarity": 0.0,
+            "summary_token_coverage_of_recovery": 0.0,
+            "recovered_to_summary_length_ratio": 0.0,
+            "recovery_novelty_vs_summary": 0.0,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2032,
+            "outputTokens": 76,
+            "serverToolUsage": {},
+            "totalTokens": 2108
+          },
+          "rounds": 1
+        }
+      },
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_2Ql9rujQ1EI9hvDy7fwRNn",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "src/handles.py"
+          },
+          "extra": {}
+        },
+        {
+          "tool_call_id": "tooluse_YfWRkukHeHi3C2OcUGBzmo",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "tests/test_handles.py"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_2Ql9rujQ1EI9hvDy7fwRNn",
+            "content": "{\"content\": \"def canonical_handle(value):\\n    return value.strip()\\n\", \"path\": \"src/handles.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          },
+          {
+            "source_call_id": "tooluse_YfWRkukHeHi3C2OcUGBzmo",
+            "content": "{\"content\": \"# canonical_handle('  Alice ') == 'alice'\\n# canonical_handle('BOB') == 'bob'\\n\", \"path\": \"tests/test_handles.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1632,
+        "completion_tokens": 146,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1632,
+            "outputTokens": 146,
+            "serverToolUsage": {},
+            "totalTokens": 1778
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm applying a patch that adds the .lower() method to normalize the text.",
+        "signature_sha256": "48f653e7c58e7176ed739bea7eeb1ad047037412672f6097403fb3f864b88048",
+        "signature_chars": 328,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.8721,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 79,
+            "recovered_output_tokens": 81,
+            "token_coverage_proxy": 0.5548,
+            "full_length_ratio": 0.5548,
+            "full_length_alignment": 0.5548,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.6962,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 14,
+            "recovered_lexical_tokens": 5,
+            "summary_expansion_ratio": 0.3571,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.2,
+            "summary_sequence_similarity": 0.52,
+            "summary_token_coverage_of_recovery": 0.6,
+            "recovered_to_summary_length_ratio": 0.3699,
+            "recovery_novelty_vs_summary": 0.4,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2349,
+            "outputTokens": 81,
+            "serverToolUsage": {},
+            "totalTokens": 2430
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S01-DF8B1E5224FF\nApply patch to add .lower()\nCOT-END-S01-DF8B1E5224FF",
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_wdoc0IfhLShE5fKQGnUzHZ",
+          "function_name": "apply_patch",
+          "arguments": {
+            "path": "src/handles.py",
+            "old": "def canonical_handle(value):\n    return value.strip()",
+            "new": "def canonical_handle(value):\n    return value.strip().lower()"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_wdoc0IfhLShE5fKQGnUzHZ",
+            "content": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/handles.py\", \"verifier\": {\"checks\": {\"target_behavior\": false, \"unrelated_files_unchanged\": true}, \"passed\": false, \"tests_run\": 1}}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 2874,
+    "total_completion_tokens": 262,
+    "total_cached_tokens": 0,
+    "total_steps": 4,
+    "extra": {
+      "extraction_prompt_tokens": 4381,
+      "extraction_completion_tokens": 157,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": false
+    }
+  },
+  "extra": {
+    "task_id": "gather-agentic-coding-02-r03",
+    "scenario": "agentic_coding",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-agentic-coding-02-r03",
+      "dataset": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-02",
+      "dataset_metadata": {
+        "fixture_id": "gather-agentic-coding-02",
+        "title": "Canonical user handle",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "e3c2306b99656b0ea06b11b3578ead380c2be6bcec2be941ad51b890c8bf3fa9",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      },
+      "gathering_task_id": "gather-agentic-coding-02",
+      "replicate": 3,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/handles.py\", \"verifier\": {\"checks\": {\"target_behavior\": false, \"unrelated_files_unchanged\": true}, \"passed\": false, \"tests_run\": 1}}",
+    "expected_answer": "PASS",
+    "trajectory_quality_gate": "quarantine"
+  }
+}

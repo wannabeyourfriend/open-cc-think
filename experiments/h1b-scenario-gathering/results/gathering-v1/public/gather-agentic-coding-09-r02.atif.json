@@ -1,0 +1,344 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-agentic-coding-09-r02",
+  "trajectory_id": "c40ad0e6-7d2a-439d-8047-2f5f7ebee988",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    },
+    "tool_definitions": [
+      {
+        "type": "function",
+        "function": {
+          "name": "list_files",
+          "description": "List every path in the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "read_file",
+          "description": "Read one file from the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/paths.py",
+                  "tests/test_paths.py"
+                ]
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "search_code",
+          "description": "Search literal text in all isolated workspace files.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "apply_patch",
+          "description": "Submit one exact replacement. This terminates the task and runs the verifier automatically.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/paths.py",
+                  "tests/test_paths.py"
+                ]
+              },
+              "old": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "new": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            },
+            "required": [
+              "path",
+              "old",
+              "new"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "run_tests",
+          "description": "Inspect current deterministic verifier status without terminating the task.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "You are a careful code-repair agent operating only on an isolated in-memory workspace. Inspect the relevant source and tests before calling apply_patch exactly once. apply_patch is the terminal submission action and automatically runs the deterministic verifier. Do not finish with plain assistant text. Treat tool results as authoritative. Never expose research boundary markers in visible text or tool inputs. You have no shell, network, or host-filesystem access."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Joining a root ending in slash with a child beginning in slash creates a double separator. Inspect, patch the return expression, run tests, and report PASS or FAIL."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-35B65AA19F45\nLet me inspect the source and test files first.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1239,
+        "completion_tokens": 135,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1239,
+            "outputTokens": 135,
+            "serverToolUsage": {},
+            "totalTokens": 1374
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": null
+      },
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_tTv1AImnUFOxnUmlG6CGk3",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "src/paths.py"
+          },
+          "extra": {}
+        },
+        {
+          "tool_call_id": "tooluse_vhHWFEmADTtDsxS70QgAKe",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "tests/test_paths.py"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_tTv1AImnUFOxnUmlG6CGk3",
+            "content": "{\"content\": \"def join_url_path(root, child):\\n    return root + \\\"/\\\" + child\\n\", \"path\": \"src/paths.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          },
+          {
+            "source_call_id": "tooluse_vhHWFEmADTtDsxS70QgAKe",
+            "content": "{\"content\": \"# join_url_path('/api/', '/users') == '/api/users'\\n# join_url_path('/api', 'users') == '/api/users'\\n\", \"path\": \"tests/test_paths.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-D30E15E6DE2C\nNow I'll patch the return expression to strip the trailing slash from root and leading slash from child before joining, preventing double separators.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1658,
+        "completion_tokens": 257,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1658,
+            "outputTokens": 257,
+            "serverToolUsage": {},
+            "totalTokens": 1915
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to fix the path joining logic by stripping trailing slashes from the root and leading slashes from the child before concatenating them together.",
+        "signature_sha256": "636d312836602af5a8b96c060859bb028a8728bcbed885922abbe45545c49389",
+        "signature_chars": 544,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.4456,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 201,
+            "recovered_output_tokens": 110,
+            "token_coverage_proxy": 0.428,
+            "full_length_ratio": 0.428,
+            "full_length_alignment": 0.428,
+            "answer_jaccard": 0.9565,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.8806,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 25,
+            "recovered_lexical_tokens": 24,
+            "summary_expansion_ratio": 0.96,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.3548,
+            "summary_sequence_similarity": 0.6267,
+            "summary_token_coverage_of_recovery": 0.5238,
+            "recovered_to_summary_length_ratio": 0.9868,
+            "recovery_novelty_vs_summary": 0.4762,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2482,
+            "outputTokens": 110,
+            "serverToolUsage": {},
+            "totalTokens": 2592
+          },
+          "rounds": 1
+        }
+      },
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_8VqfQfegmCkn53MrZBpyQx",
+          "function_name": "apply_patch",
+          "arguments": {
+            "path": "src/paths.py",
+            "old": "    return root + \"/\" + child",
+            "new": "    return root.rstrip(\"/\") + \"/\" + child.lstrip(\"/\")"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_8VqfQfegmCkn53MrZBpyQx",
+            "content": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/paths.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 2897,
+    "total_completion_tokens": 392,
+    "total_cached_tokens": 0,
+    "total_steps": 4,
+    "extra": {
+      "extraction_prompt_tokens": 2482,
+      "extraction_completion_tokens": 110,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-agentic-coding-09-r02",
+    "scenario": "agentic_coding",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-agentic-coding-09-r02",
+      "dataset": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-09",
+      "dataset_metadata": {
+        "fixture_id": "gather-agentic-coding-09",
+        "title": "Join URL path segments",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "86601421366d938d6e86e8a4b4193a56caaef5164b817f83505aaabf8c6713a1",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      },
+      "gathering_task_id": "gather-agentic-coding-09",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/paths.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+    "expected_answer": "PASS",
+    "trajectory_quality_gate": "quarantine"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-02-r02",
+  "trajectory_id": "cafd7e34-2a0b-4f4e-b9bb-0789b3aefc7c",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Zane purchases 2 polo shirts from the 40% off rack at the men’s store.  The polo shirts are $50 each at the regular price.  How much did he pay for the shirts?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "60",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 266,
+        "completion_tokens": 3,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 266,
+            "outputTokens": 3,
+            "serverToolUsage": {},
+            "totalTokens": 269
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": null
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 266,
+    "total_completion_tokens": 3,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 0,
+      "extraction_completion_tokens": 0,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-02-r02",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-02-r02",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-03364",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-02",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "60",
+    "expected_answer": "60",
+    "trajectory_quality_gate": "quarantine"
+  }
+}

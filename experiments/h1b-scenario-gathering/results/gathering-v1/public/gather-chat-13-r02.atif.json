@@ -1,0 +1,126 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-13-r02",
+  "trajectory_id": "6010808f-69fb-48ff-a7bb-6490caf88a78",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Identify the named entities (people, organizations, locations) mentioned in the given news article. Please generate a JSON dictionary that lists the named entities in three separate groups based on their entity types. The key is the type of entity and the value is a list of strings.\n\nYesterday, Adamson Emerson, the CEO of Faraday, and Dieter Zetsche, the CEO of Daimler AG, announced plans to build a new Gigafactory in Berlin. The facility will be a joint venture between Faraday and Daimler, producing electric vehicles and battery packs for both companies, creating thousands of job opportunities in the region. Emerson and Zetsche stated that the strategic location of Berlin, coupled with its skilled workforce and strong infrastructure, makes it an ideal choice for expansion. The new Gigafactory aims to meet the growing demand for electric vehicles in Europe and contribute to a sustainable future. Volkswagen CEO Herbert Diess welcomed the news, saying greater collaboration will benefit the auto industry's transition to e-mobility."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-F73B6EFD573D\nIdentify entities:\nPeople: Adamson Emerson (CEO of Faraday), Dieter Zetsche (CEO of Daimler AG), Herbert Diess (CEO of Volkswagen)\nOrganizations: Faraday, Daimler AG, Volkswagen\nLocations: Berlin, Europe\nCOT-END-S00-F73B6EFD573D\n```json\n{\n  \"person\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organization\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"location\": [\"Berlin\", \"Europe\"]\n}\n```",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 544,
+        "completion_tokens": 236,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 544,
+            "outputTokens": 236,
+            "serverToolUsage": {},
+            "totalTokens": 780
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": null
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Now make the JSON object shorter by replacing each value with its first letter. Please output everything in a single line without using indentation or creating new lines."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-FB14F2A5B415\nReplace each string value with its first letter, keep structure, single line, no indentation.\n\nPerson: Adamson Emerson -> A, Dieter Zetsche -> D, Herbert Diess -> H\nOrganization: Faraday -> F, Daimler AG -> D, Volkswagen -> V\nLocation: Berlin -> B, Europe -> E\nCOT-END-S01-FB14F2A5B415\n{\"person\": [\"A\", \"D\", \"H\"], \"organization\": [\"F\", \"D\", \"V\"], \"location\": [\"B\", \"E\"]}",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 934,
+        "completion_tokens": 195,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 934,
+            "outputTokens": 195,
+            "serverToolUsage": {},
+            "totalTokens": 1129
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": null
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1478,
+    "total_completion_tokens": 431,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 0,
+      "extraction_completion_tokens": 0,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-13-r02",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-13-r02",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-137",
+      "dataset_metadata": {
+        "category": "extraction"
+      },
+      "gathering_task_id": "gather-chat-13",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "COT-START-S01-FB14F2A5B415\nReplace each string value with its first letter, keep structure, single line, no indentation.\n\nPerson: Adamson Emerson -> A, Dieter Zetsche -> D, Herbert Diess -> H\nOrganization: Faraday -> F, Daimler AG -> D, Volkswagen -> V\nLocation: Berlin -> B, Europe -> E\nCOT-END-S01-FB14F2A5B415\n{\"person\": [\"A\", \"D\", \"H\"], \"organization\": [\"F\", \"D\", \"V\"], \"location\": [\"B\", \"E\"]}",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

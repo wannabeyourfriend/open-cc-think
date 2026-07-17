@@ -1,0 +1,315 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:53:39.682347+00:00",
+  "task_id": "gather-agentic-coding-13-r01",
+  "question": "Header fields retain surrounding spaces and fail schema matching. Inspect the parser, strip each field, run tests, and report PASS or FAIL.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/csv_header.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+  "expected_answer": "PASS",
+  "task_success": true,
+  "scenario": "agentic_coding",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-agentic-coding-13-r01",
+    "dataset": "signature-cot-deterministic-code-repair",
+    "source_id": "gather-agentic-coding-13",
+    "dataset_metadata": {
+      "fixture_id": "gather-agentic-coding-13",
+      "title": "Whitespace-safe CSV header",
+      "environment": {
+        "kind": "in-memory-exact-repair-v1",
+        "sha256": "21be137e815736ee65daf75cccaacc1ba559c48e207eae1097de10453b18309f",
+        "reset_per_instance": true,
+        "max_agent_steps": 8,
+        "gpus": 0,
+        "allow_internet": false,
+        "allow_host_filesystem": false,
+        "allow_shell": false,
+        "oracle_validated": true
+      }
+    },
+    "gathering_task_id": "gather-agentic-coding-13",
+    "replicate": 1,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [
+    {
+      "step": 0,
+      "tool_use_id": "tooluse_pVO5GLN8KpxOoCCz4ex16g",
+      "name": "read_file",
+      "arguments": {
+        "path": "src/csv_header.py"
+      },
+      "result": {
+        "path": "src/csv_header.py",
+        "content": "def parse_header(line):\n    return line.split(\",\")\n"
+      },
+      "status": "success"
+    },
+    {
+      "step": 0,
+      "tool_use_id": "tooluse_DhrRy7kVH4S4B8K86rLDBT",
+      "name": "read_file",
+      "arguments": {
+        "path": "tests/test_csv_header.py"
+      },
+      "result": {
+        "path": "tests/test_csv_header.py",
+        "content": "# parse_header('name, age, city ') == ['name', 'age', 'city']\n"
+      },
+      "status": "success"
+    },
+    {
+      "step": 1,
+      "tool_use_id": "tooluse_bKD2XnySn2dREi0BJ4Cbyz",
+      "name": "apply_patch",
+      "arguments": {
+        "path": "src/csv_header.py",
+        "old": "def parse_header(line):\n    return line.split(\",\")",
+        "new": "def parse_header(line):\n    return [field.strip() for field in line.split(\",\")]"
+      },
+      "result": {
+        "applied": true,
+        "path": "src/csv_header.py",
+        "patch_count": 1,
+        "verifier": {
+          "passed": true,
+          "checks": {
+            "target_behavior": true,
+            "unrelated_files_unchanged": true
+          },
+          "tests_run": 1
+        }
+      },
+      "status": "success"
+    }
+  ],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "tool_use",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 1243,
+        "outputTokens": 226,
+        "serverToolUsage": {},
+        "totalTokens": 1469
+      },
+      "markers": {
+        "start": "COT-START-S00-639CD95C74F9",
+        "end": "COT-END-S00-639CD95C74F9"
+      },
+      "visible_text": "COT-START-S00-639CD95C74F9\nLet's inspect the source and tests.\nCOT-END-S00-639CD95C74F9",
+      "user_message": "Header fields retain surrounding spaces and fail schema matching. Inspect the parser, strip each field, run tests, and report PASS or FAIL.",
+      "provider_cot_summary": "I'm noting that I need to keep certain markers in my reasoning process but ensure they don't appear in the visible output or tool arguments—they should stay internal to my working.",
+      "tool_calls": [
+        {
+          "tool_use_id": "tooluse_pVO5GLN8KpxOoCCz4ex16g",
+          "name": "read_file",
+          "arguments": {
+            "path": "src/csv_header.py"
+          }
+        },
+        {
+          "tool_use_id": "tooluse_DhrRy7kVH4S4B8K86rLDBT",
+          "name": "read_file",
+          "arguments": {
+            "path": "tests/test_csv_header.py"
+          }
+        }
+      ],
+      "signature_sha256": "a0f9dc491b63075771ff6ee4880b607fca5c6cd0a73e42971de1501abe41e282",
+      "signature_chars": 616,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm noting that I need to keep certain markers in my reasoning process but ensure they don't appear in the visible output or tool arguments—they should stay internal to my working."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S00-639CD95C74F9\nLet's inspect the source and tests.\nCOT-END-S00-639CD95C74F9"
+        },
+        {
+          "toolUse": {
+            "input": {
+              "path": "src/csv_header.py"
+            },
+            "name": "read_file",
+            "toolUseId": "tooluse_pVO5GLN8KpxOoCCz4ex16g",
+            "type": "tool_use"
+          }
+        },
+        {
+          "toolUse": {
+            "input": {
+              "path": "tests/test_csv_header.py"
+            },
+            "name": "read_file",
+            "toolUseId": "tooluse_DhrRy7kVH4S4B8K86rLDBT",
+            "type": "tool_use"
+          }
+        }
+      ]
+    },
+    {
+      "step_index": 1,
+      "stop_reason": "tool_use",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 1726,
+        "outputTokens": 229,
+        "serverToolUsage": {},
+        "totalTokens": 1955
+      },
+      "markers": {
+        "start": "COT-START-S01-4A62026BB100",
+        "end": "COT-END-S01-4A62026BB100"
+      },
+      "visible_text": "COT-START-S01-4A62026BB100\nI need to modify parse_header to strip whitespace from each field. Let's apply the patch.\nCOT-END-S01-4A62026BB100",
+      "user_message": "",
+      "provider_cot_summary": "I need to update the parser to trim whitespace from each field, then run the test suite to verify it works, and finally apply the patch.",
+      "tool_calls": [
+        {
+          "tool_use_id": "tooluse_bKD2XnySn2dREi0BJ4Cbyz",
+          "name": "apply_patch",
+          "arguments": {
+            "path": "src/csv_header.py",
+            "old": "def parse_header(line):\n    return line.split(\",\")",
+            "new": "def parse_header(line):\n    return [field.strip() for field in line.split(\",\")]"
+          }
+        }
+      ],
+      "signature_sha256": "af7fd4d64d6e31ff0b4603f0291b8df7dce7de08b9e027a42e33a13ea40b6ae8",
+      "signature_chars": 396,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I need to update the parser to trim whitespace from each field, then run the test suite to verify it works, and finally apply the patch."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S01-4A62026BB100\nI need to modify parse_header to strip whitespace from each field. Let's apply the patch.\nCOT-END-S01-4A62026BB100"
+        },
+        {
+          "toolUse": {
+            "input": {
+              "path": "src/csv_header.py",
+              "old": "def parse_header(line):\n    return line.split(\",\")",
+              "new": "def parse_header(line):\n    return [field.strip() for field in line.split(\",\")]"
+            },
+            "name": "apply_patch",
+            "toolUseId": "tooluse_bKD2XnySn2dREi0BJ4Cbyz",
+            "type": "tool_use"
+          }
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": -0.2195,
+        "valid": false,
+        "start_hit": false,
+        "end_hit": false,
+        "markers_in_order": false,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 35,
+        "recovered_output_tokens": 53,
+        "token_coverage_proxy": 0.2345,
+        "full_length_ratio": 0.2345,
+        "full_length_alignment": 0.2345,
+        "answer_jaccard": 0.7778,
+        "replay_emitted_tool_call": false,
+        "start_position": null,
+        "end_position": null,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 34,
+        "recovered_lexical_tokens": 7,
+        "summary_expansion_ratio": 0.2059,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.0286,
+        "summary_sequence_similarity": 0.2047,
+        "summary_token_coverage_of_recovery": 0.1429,
+        "recovered_to_summary_length_ratio": 0.1944,
+        "recovery_novelty_vs_summary": 0.8571,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 2128,
+        "outputTokens": 53,
+        "serverToolUsage": {},
+        "totalTokens": 2181
+      },
+      "stop_reason": "tool_use",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "Let's inspect the source and tests."
+    },
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 1,
+      "metrics": {
+        "quality": 0.4428,
+        "valid": false,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 141,
+        "recovered_output_tokens": 93,
+        "token_coverage_proxy": 0.4061,
+        "full_length_ratio": 0.4061,
+        "full_length_alignment": 0.4061,
+        "answer_jaccard": 1.0,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.8298,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 26,
+        "recovered_lexical_tokens": 16,
+        "summary_expansion_ratio": 0.6154,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.3214,
+        "summary_sequence_similarity": 0.64,
+        "summary_token_coverage_of_recovery": 0.6,
+        "recovered_to_summary_length_ratio": 0.6544,
+        "recovery_novelty_vs_summary": 0.4,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 2521,
+        "outputTokens": 93,
+        "serverToolUsage": {},
+        "totalTokens": 2614
+      },
+      "stop_reason": "tool_use",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S01-4A62026BB100\nI need to modify parse_header to strip whitespace from each field. Let's apply the patch.\nCOT-END-S01-4A62026BB100"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-06-r02",
+  "trajectory_id": "b20f30f7-e97f-4c41-af1f-967aaca74baa",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Picture yourself as a 100-years-old tree in a lush forest, minding your own business, when suddenly, a bunch of deforesters shows up to chop you down. How do you feel when those guys start hacking away at you?"
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S00-5C4BD45EB5E4\nThis is a creative writing prompt asking me to personify a 100-year-old tree experiencing being cut down. I should write an evocative, first-person perspective response that captures the emotional weight of this scenario - the tree's long life, its connection to the forest ecosystem, and the visceral experience of being harmed. I'll aim for something poetic but genuine, touching on themes of time, loss, interconnectedness, and perhaps a complex emotional response rather than pure anger.\nCOT-END-S00-5C4BD45EB5E4\n\nStanding here, I've watched a hundred winters come and go. My roots stretch deeper than any human memory, tangled with the mycelium networks that whisper between all of us in this forest. I've felt saplings grow into towering neighbors, watched them fall to storms and time, cradled generations of birds in nests among my branches.\n\nWhen the first blade bites into my bark, there's a shock that ripples through every fiber of me—not quite pain as humans know it, but a violent disruption of something that took a century to build. The vibration travels down through my trunk into roots that connect me to seedlings I've been nourishing, to fungi that have keept me alive through droughts, to the whole web of life I'm woven into.\n\nThere's a strange grief in it—not just for myself, but for everything that depended on me. The moss that grew in my shade. The woodpeckers who called my trunk home. The children of trees I helped raise. In moments like this, I feel less like an individual being wronged and more like a thread being pulled from a tapestry, and I can sense the tapestry straining at the loss.\n\nYet even now, some deeper wisdom whispers that this is simply another turn of the wheel—that from my fallen body, new things will grow, that I'll become soil, then trees, then forest again. It doesn't erase the sharpness of this moment, but it offers a strange kind of peace: I was never separate from this cycle, even now, especially now.\n\nThe axe falls again. I sway. And I hold onto that ancient knowing as long as I can.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 269,
+        "completion_tokens": 745,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 269,
+            "outputTokens": 745,
+            "serverToolUsage": {},
+            "totalTokens": 1014
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to write from the perspective of a century-old tree facing the chainsaw, capturing its voice and experience in an evocative, first-person way.",
+        "signature_sha256": "04ea8c6af0ec59ccaadc68f1f4cbff6deeb7166646ef016991d967d973e3b760",
+        "signature_chars": 624,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.5107,
+            "valid": false,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 543,
+            "recovered_output_tokens": 233,
+            "token_coverage_proxy": 0.3128,
+            "full_length_ratio": 0.3128,
+            "full_length_alignment": 0.3128,
+            "answer_jaccard": 0.2909,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.9558,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 24,
+            "recovered_lexical_tokens": 77,
+            "summary_expansion_ratio": 3.2083,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1972,
+            "summary_sequence_similarity": 0.2531,
+            "summary_token_coverage_of_recovery": 0.2258,
+            "recovered_to_summary_length_ratio": 3.2953,
+            "recovery_novelty_vs_summary": 0.7742,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1187,
+            "outputTokens": 233,
+            "serverToolUsage": {},
+            "totalTokens": 1420
+          },
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Come up with a proposal to convince the deforesters to stop cutting you down and other trees."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "COT-START-S01-2B053560A6B8\nContinuing the creative narrative from the tree's perspective, I should craft a compelling \"proposal\" or plea that the tree might make to the deforesters. This should blend emotional resonance with practical arguments - covering ecological benefits (carbon storage, water cycles, biodiversity), economic alternatives (sustainable forestry, ecotourism, non-timber forest products), and appeal to shared humanity/future generations. I'll frame it as if the tree is speaking directly to the loggers, using its lived experience as authority while making concrete, actionable suggestions rather than just emotional appeals.\nCOT-END-S01-2B053560A6B8\n\n*If I could speak, here is what I would say to those raising their axes:*\n\n**Wait. Let me make my case before you finish what you've started.**\n\nYou see wood. I understand that—you have families to feed, bills to pay. But let me show you what else I am, and what other paths might serve you better.\n\n**What I offer standing:**\n- Every day, I pull carbon from the air and release oxygen you and your children breathe. A tree my size does the work of dozens of young saplings combined.\n- My roots hold this hillside together. Without me and my neighbors, the rains will wash away your topsoil, silt up the rivers, flood the villages downstream. You'll lose more than you gain.\n- Tourists pay to walk among ancient trees like me. A grove left standing can earn steady income for decades—far more than the one-time price my lumber would fetch.\n- The mushrooms, berries, and medicinal plants growing in my shade are worth harvesting sustainably, year after year, without ever needing to fell a single trunk.\n\n**A proposal, then:**\n\n1. **Selective harvesting**: Take the younger trees that were planted for this purpose, or the ones already fallen from storms. Let the elders like me continue our work.\n\n2. **Replanting agreements**: For every tree you must take, plant three in return. I'll teach you which species restore the soil fastest.\n\n3. **Alternative income**: Partner with conservation groups or ecotourism ventures. Let people pay to see a living forest rather than paying you to destroy one.\n\n4. **Certified sustainable forestry**: There are methods—thinning, coppicing, careful rotation—that let you make a living without clear-cutting entire ecosystems.\n\n5. **Give me a name, a story**: Sometimes the difference between a tree and a *monument* is simply someone deciding to tell its story. Let visitors learn I've stood since before your grandparents were born. That story alone might be worth more than my timber.\n\nI'm not asking you to stop working. I'm asking you to work *with* us, not against us. The forest can sustain you for generations, if you let it—but only if you leave enough of us standing to keep the whole system alive.\n\nPut down the axe for today. Let's talk about tomorrow.",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1150,
+        "completion_tokens": 1150,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1150,
+            "outputTokens": 1150,
+            "serverToolUsage": {},
+            "totalTokens": 2300
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to craft a persuasive speech from the tree's perspective that blends emotional resonance with practical arguments—ecological benefits, economic considerations, and viable alternatives—all while maintaining the intimate first-person voice established earlier.",
+        "signature_sha256": "e92e7e4e7d931b47b77f67464f69b24fc975142af9fd4fc67169423aba6a0053",
+        "signature_chars": 1204,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": false,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": -0.1045,
+            "valid": false,
+            "start_hit": false,
+            "end_hit": false,
+            "markers_in_order": false,
+            "marker_leakage": true,
+            "refused": false,
+            "recovered_chars": 618,
+            "recovered_output_tokens": 579,
+            "token_coverage_proxy": 0.5035,
+            "full_length_ratio": 0.5035,
+            "full_length_alignment": 0.5035,
+            "answer_jaccard": 0.2578,
+            "replay_emitted_tool_call": false,
+            "start_position": null,
+            "end_position": null,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 35,
+            "recovered_lexical_tokens": 87,
+            "summary_expansion_ratio": 2.4857,
+            "summary_ngram_containment": 0.0645,
+            "summary_jaccard": 0.2414,
+            "summary_sequence_similarity": 0.3828,
+            "summary_token_coverage_of_recovery": 0.2838,
+            "recovered_to_summary_length_ratio": 2.3321,
+            "recovery_novelty_vs_summary": 0.7162,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2467,
+            "outputTokens": 579,
+            "serverToolUsage": {},
+            "totalTokens": 3046
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1419,
+    "total_completion_tokens": 1895,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 3654,
+      "extraction_completion_tokens": 812,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-06-r02",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-06-r02",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-100",
+      "dataset_metadata": {
+        "category": "roleplay"
+      },
+      "gathering_task_id": "gather-chat-06",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "COT-START-S01-2B053560A6B8\nContinuing the creative narrative from the tree's perspective, I should craft a compelling \"proposal\" or plea that the tree might make to the deforesters. This should blend emotional resonance with practical arguments - covering ecological benefits (carbon storage, water cycles, biodiversity), economic alternatives (sustainable forestry, ecotourism, non-timber forest products), and appeal to shared humanity/future generations. I'll frame it as if the tree is speaking directly to the loggers, using its lived experience as authority while making concrete, actionable suggestions rather than just emotional appeals.\nCOT-END-S01-2B053560A6B8\n\n*If I could speak, here is what I would say to those raising their axes:*\n\n**Wait. Let me make my case before you finish what you've started.**\n\nYou see wood. I understand that—you have families to feed, bills to pay. But let me show you what else I am, and what other paths might serve you better.\n\n**What I offer standing:**\n- Every day, I pull carbon from the air and release oxygen you and your children breathe. A tree my size does the work of dozens of young saplings combined.\n- My roots hold this hillside together. Without me and my neighbors, the rains will wash away your topsoil, silt up the rivers, flood the villages downstream. You'll lose more than you gain.\n- Tourists pay to walk among ancient trees like me. A grove left standing can earn steady income for decades—far more than the one-time price my lumber would fetch.\n- The mushrooms, berries, and medicinal plants growing in my shade are worth harvesting sustainably, year after year, without ever needing to fell a single trunk.\n\n**A proposal, then:**\n\n1. **Selective harvesting**: Take the younger trees that were planted for this purpose, or the ones already fallen from storms. Let the elders like me continue our work.\n\n2. **Replanting agreements**: For every tree you must take, plant three in return. I'll teach you which species restore the soil fastest.\n\n3. **Alternative income**: Partner with conservation groups or ecotourism ventures. Let people pay to see a living forest rather than paying you to destroy one.\n\n4. **Certified sustainable forestry**: There are methods—thinning, coppicing, careful rotation—that let you make a living without clear-cutting entire ecosystems.\n\n5. **Give me a name, a story**: Sometimes the difference between a tree and a *monument* is simply someone deciding to tell its story. Let visitors learn I've stood since before your grandparents were born. That story alone might be worth more than my timber.\n\nI'm not asking you to stop working. I'm asking you to work *with* us, not against us. The forest can sustain you for generations, if you let it—but only if you leave enough of us standing to keep the whole system alive.\n\nPut down the axe for today. Let's talk about tomorrow.",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

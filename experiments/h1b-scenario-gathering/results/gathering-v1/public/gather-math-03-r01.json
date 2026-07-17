@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:40:00.277693+00:00",
+  "task_id": "gather-math-03-r01",
+  "question": "Jar A has 28 marbles. Jar B has 12 more marbles than jar A. Jar C has twice as many marbles as jar B. How many marbles are there altogether?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "148",
+  "expected_answer": "148",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-03-r01",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-00448",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-03",
+    "replicate": 1,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 267,
+        "outputTokens": 20,
+        "serverToolUsage": {},
+        "totalTokens": 287
+      },
+      "markers": {
+        "start": "COT-START-S00-27F6581C58CF",
+        "end": "COT-END-S00-27F6581C58CF"
+      },
+      "visible_text": "148",
+      "user_message": "Jar A has 28 marbles. Jar B has 12 more marbles than jar A. Jar C has twice as many marbles as jar B. How many marbles are there altogether?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "I'm looking at the values here: A is 28, B is 40, C is 80, which add up to 148 total.",
+      "tool_calls": [],
+      "signature_sha256": "fe91918af64f440cb928597a79099c3e987e39154ce6646e3366b1540d88f956",
+      "signature_chars": 328,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm looking at the values here: A is 28, B is 40, C is 80, which add up to 148 total."
+            }
+          }
+        },
+        {
+          "text": "148"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 0.93,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 79,
+        "recovered_output_tokens": 78,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 3.9,
+        "full_length_alignment": 0.2564,
+        "answer_jaccard": 0.1,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.6962,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 22,
+        "recovered_lexical_tokens": 8,
+        "summary_expansion_ratio": 0.3636,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.3333,
+        "summary_sequence_similarity": 0.3571,
+        "summary_token_coverage_of_recovery": 0.875,
+        "recovered_to_summary_length_ratio": 0.3176,
+        "recovery_novelty_vs_summary": 0.125,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 455,
+        "outputTokens": 78,
+        "serverToolUsage": {},
+        "totalTokens": 533
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-27F6581C58CF\nA=28, B=40, C=80, total=148\nCOT-END-S00-27F6581C58CF"
+    }
+  ]
+}

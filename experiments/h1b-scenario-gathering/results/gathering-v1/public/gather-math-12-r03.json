@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:43:33.426911+00:00",
+  "task_id": "gather-math-12-r03",
+  "question": "Tom decided to go on a trip. During this trip, he needs to cross a lake, which in one direction takes 4 hours. During this time, Tom needs an assistant to help him with the crossing. Hiring an assistant costs $10 per hour. How much would Tom have to pay for help with crossing the lake back and forth?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "80",
+  "expected_answer": "80",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-12-r03",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-02786",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-12",
+    "replicate": 3,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 311,
+        "outputTokens": 70,
+        "serverToolUsage": {},
+        "totalTokens": 381
+      },
+      "markers": {
+        "start": "COT-START-S00-2A1448A49654",
+        "end": "COT-END-S00-2A1448A49654"
+      },
+      "visible_text": "80",
+      "user_message": "Tom decided to go on a trip. During this trip, he needs to cross a lake, which in one direction takes 4 hours. During this time, Tom needs an assistant to help him with the crossing. Hiring an assistant costs $10 per hour. How much would Tom have to pay for help with crossing the lake back and forth?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "So a 4-hour trip each way comes to 8 hours total, which at $10 per hour works out to $80.",
+      "tool_calls": [],
+      "signature_sha256": "6edecc46e5377a998277032259dfb63e2999d5d3b886c273300a5a2af2fd729c",
+      "signature_chars": 452,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "So a 4-hour trip each way comes to 8 hours total, which at $10 per hour works out to $80."
+            }
+          }
+        },
+        {
+          "text": "80"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 120,
+        "recovered_output_tokens": 76,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.0857,
+        "full_length_alignment": 0.9211,
+        "answer_jaccard": 0.0,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.8,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 20,
+        "recovered_lexical_tokens": 14,
+        "summary_expansion_ratio": 0.7,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.24,
+        "summary_sequence_similarity": 0.5732,
+        "summary_token_coverage_of_recovery": 0.5,
+        "recovered_to_summary_length_ratio": 0.764,
+        "recovery_novelty_vs_summary": 0.5,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 546,
+        "outputTokens": 76,
+        "serverToolUsage": {},
+        "totalTokens": 622
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-2A1448A49654\n4 hours one way, back and forth = 8 hours total. $10/hour × 8 = $80.\nCOT-END-S00-2A1448A49654"
+    }
+  ]
+}

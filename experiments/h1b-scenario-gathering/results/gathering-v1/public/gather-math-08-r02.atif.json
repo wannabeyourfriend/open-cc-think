@@ -1,0 +1,140 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-08-r02",
+  "trajectory_id": "472bf4b1-9d9d-4748-b614-9999b32047b2",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Tabitha and her friends were excited to go to the Christmas parade because they knew candy would be thrown to the crowd from the floats.  Tabitha caught 22 pieces of candy.  Stan caught 13 pieces.  Julie caught half the amount of candy as Tabitha caught and Carlos caught twice as much candy as Stan.  How many pieces in total did the friends catch?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "72",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 340,
+        "completion_tokens": 36,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 340,
+            "outputTokens": 36,
+            "serverToolUsage": {},
+            "totalTokens": 376
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm adding up the ages: Tabitha is 22, Stan is 13, Julie is 11, and Carlos is 26, which comes to 72 total.",
+        "signature_sha256": "29da7ce63a419ad315bd7829ac74e33f5589a0d8f73f1c547582e456517b9d6f",
+        "signature_chars": 360,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 1.0,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 103,
+            "recovered_output_tokens": 80,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 2.2222,
+            "full_length_alignment": 0.45,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.767,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 24,
+            "recovered_lexical_tokens": 10,
+            "summary_expansion_ratio": 0.4167,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.2917,
+            "summary_sequence_similarity": 0.5987,
+            "summary_token_coverage_of_recovery": 0.7,
+            "recovered_to_summary_length_ratio": 0.4811,
+            "recovery_novelty_vs_summary": 0.3,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 547,
+            "outputTokens": 80,
+            "serverToolUsage": {},
+            "totalTokens": 627
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-AF80C9519F1A\nTabitha 22, Stan 13, Julie 11, Carlos 26. Total 72.\nCOT-END-S00-AF80C9519F1A"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 340,
+    "total_completion_tokens": 36,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 547,
+      "extraction_completion_tokens": 80,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "all_decisions_strong_recovery": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-08-r02",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-08-r02",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-00812",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-08",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "72",
+    "expected_answer": "72",
+    "trajectory_quality_gate": "accepted"
+  }
+}

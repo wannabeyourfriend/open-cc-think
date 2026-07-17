@@ -1,0 +1,140 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-15-r02",
+  "trajectory_id": "e7e38b42-620b-4b34-85de-a9ce46c1214d",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Cheryl ate 7 m&m's after lunch. She ate 5 m&m's after dinner, and she gave some to her sister. If Cheryl had 25 m&m's at the beginning, how many did she give to her sister?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "13",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 284,
+        "completion_tokens": 53,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 284,
+            "outputTokens": 53,
+            "serverToolUsage": {},
+            "totalTokens": 337
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm working through a simple arithmetic problem: 25 minus 7 minus 5 equals 13.",
+        "signature_sha256": "9ef93dd9f3f777af9468534725dfef48239a67bfb097384f8aabb6acb68e78e5",
+        "signature_chars": 380,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.93,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 67,
+            "recovered_output_tokens": 59,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.1132,
+            "full_length_alignment": 0.8983,
+            "answer_jaccard": 0.1429,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.6418,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 15,
+            "recovered_lexical_tokens": 6,
+            "summary_expansion_ratio": 0.4,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1875,
+            "summary_sequence_similarity": 0.2581,
+            "summary_token_coverage_of_recovery": 0.6,
+            "recovered_to_summary_length_ratio": 0.1923,
+            "recovery_novelty_vs_summary": 0.4,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 504,
+            "outputTokens": 59,
+            "serverToolUsage": {},
+            "totalTokens": 563
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-193B335B6DF7\n25 - 7 - 5 = 13\nCOT-END-S00-193B335B6DF7"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 284,
+    "total_completion_tokens": 53,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 504,
+      "extraction_completion_tokens": 59,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "all_decisions_strong_recovery": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-15-r02",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-15-r02",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-04451",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-15",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "13",
+    "expected_answer": "13",
+    "trajectory_quality_gate": "accepted"
+  }
+}

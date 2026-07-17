@@ -1,0 +1,395 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-agentic-coding-11-r03",
+  "trajectory_id": "a4db1acf-fa7f-4e92-ba26-68f2fe58a253",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    },
+    "tool_definitions": [
+      {
+        "type": "function",
+        "function": {
+          "name": "list_files",
+          "description": "List every path in the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "read_file",
+          "description": "Read one file from the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/time_units.py",
+                  "tests/test_time_units.py"
+                ]
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "search_code",
+          "description": "Search literal text in all isolated workspace files.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "apply_patch",
+          "description": "Submit one exact replacement. This terminates the task and runs the verifier automatically.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/time_units.py",
+                  "tests/test_time_units.py"
+                ]
+              },
+              "old": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "new": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            },
+            "required": [
+              "path",
+              "old",
+              "new"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "run_tests",
+          "description": "Inspect current deterministic verifier status without terminating the task.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "You are a careful code-repair agent operating only on an isolated in-memory workspace. Inspect the relevant source and tests before calling apply_patch exactly once. apply_patch is the terminal submission action and automatically runs the deterministic verifier. Do not finish with plain assistant text. Treat tool results as authoritative. Never expose research boundary markers in visible text or tool inputs. You have no shell, network, or host-filesystem access."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "The duration conversion is off by a factor of ten. Inspect the source and tests, patch the multiplier, run tests, and report PASS or FAIL."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1241,
+        "completion_tokens": 119,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1241,
+            "outputTokens": 119,
+            "serverToolUsage": {},
+            "totalTokens": 1360
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'll start by looking at the files to understand what we're working with.",
+        "signature_sha256": "418d331721278312019deabf9cfcd0cc5b4fed25f580c2c8b4e61bfc890ff343",
+        "signature_chars": 332,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": false,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.883,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 51,
+            "recovered_output_tokens": 76,
+            "token_coverage_proxy": 0.6387,
+            "full_length_ratio": 0.6387,
+            "full_length_alignment": 0.6387,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.5294,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 15,
+            "recovered_lexical_tokens": 0,
+            "summary_expansion_ratio": 0.0,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0,
+            "summary_sequence_similarity": 0.0,
+            "summary_token_coverage_of_recovery": 0.0,
+            "recovered_to_summary_length_ratio": 0.0,
+            "recovery_novelty_vs_summary": 0.0,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2044,
+            "outputTokens": 76,
+            "serverToolUsage": {},
+            "totalTokens": 2120
+          },
+          "rounds": 1
+        }
+      },
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_6XuUdqU20H7kGnluTYLeCE",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "src/time_units.py"
+          },
+          "extra": {}
+        },
+        {
+          "tool_call_id": "tooluse_Eg4Eic6BO4JCSY5oZXDS3s",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "tests/test_time_units.py"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_6XuUdqU20H7kGnluTYLeCE",
+            "content": "{\"content\": \"def seconds_to_milliseconds(seconds):\\n    return seconds * 100\\n\", \"path\": \"src/time_units.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          },
+          {
+            "source_call_id": "tooluse_Eg4Eic6BO4JCSY5oZXDS3s",
+            "content": "{\"content\": \"# seconds_to_milliseconds(1) == 1000\\n# seconds_to_milliseconds(0.25) == 250\\n\", \"path\": \"tests/test_time_units.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1645,
+        "completion_tokens": 173,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1645,
+            "outputTokens": 173,
+            "serverToolUsage": {},
+            "totalTokens": 1818
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to correct the multiplier value from 100 to 1000 and apply that fix.",
+        "signature_sha256": "ec21d28c6c2ed98de97f250e5da4528922f0b12b839dda4fc8b5e94f6a2006d7",
+        "signature_chars": 360,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.9384,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 104,
+            "recovered_output_tokens": 91,
+            "token_coverage_proxy": 0.526,
+            "full_length_ratio": 0.526,
+            "full_length_alignment": 0.526,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.7692,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 15,
+            "recovered_lexical_tokens": 10,
+            "summary_expansion_ratio": 0.6667,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1429,
+            "summary_sequence_similarity": 0.4567,
+            "summary_token_coverage_of_recovery": 0.3,
+            "recovered_to_summary_length_ratio": 0.6933,
+            "recovery_novelty_vs_summary": 0.7,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2387,
+            "outputTokens": 91,
+            "serverToolUsage": {},
+            "totalTokens": 2478
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S01-1434B1C0FEE0\nThe multiplier should be 1000, not 100. Let's patch.\nCOT-END-S01-1434B1C0FEE0",
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_4PwGeQGQBbz1jumXGcOXVX",
+          "function_name": "apply_patch",
+          "arguments": {
+            "path": "src/time_units.py",
+            "old": "def seconds_to_milliseconds(seconds):\n    return seconds * 100",
+            "new": "def seconds_to_milliseconds(seconds):\n    return seconds * 1000"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_4PwGeQGQBbz1jumXGcOXVX",
+            "content": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/time_units.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 2886,
+    "total_completion_tokens": 292,
+    "total_cached_tokens": 0,
+    "total_steps": 4,
+    "extra": {
+      "extraction_prompt_tokens": 4431,
+      "extraction_completion_tokens": 167,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-agentic-coding-11-r03",
+    "scenario": "agentic_coding",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-agentic-coding-11-r03",
+      "dataset": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-11",
+      "dataset_metadata": {
+        "fixture_id": "gather-agentic-coding-11",
+        "title": "Milliseconds conversion",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "946cda467cc177199fb61272e46408faee16ffa08ce96b31eba4772dfbf9b9a7",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      },
+      "gathering_task_id": "gather-agentic-coding-11",
+      "replicate": 3,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/time_units.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+    "expected_answer": "PASS",
+    "trajectory_quality_gate": "quarantine"
+  }
+}

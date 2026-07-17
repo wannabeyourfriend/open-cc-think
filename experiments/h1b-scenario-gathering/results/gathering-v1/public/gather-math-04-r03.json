@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:40:34.600063+00:00",
+  "task_id": "gather-math-04-r03",
+  "question": "Frank bakes two trays of cookies per day, for 6 days. Frank eats one cookie each day to make sure they taste good. Ted comes over on the sixth day and eats 4 cookies. If each tray makes 12 cookies, how many cookies are left when Ted leaves?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "134",
+  "expected_answer": "134",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-04-r03",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-00982",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-04",
+    "replicate": 3,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 304,
+        "outputTokens": 94,
+        "serverToolUsage": {},
+        "totalTokens": 398
+      },
+      "markers": {
+        "start": "COT-START-S00-3D6B7FF10146",
+        "end": "COT-END-S00-3D6B7FF10146"
+      },
+      "visible_text": "134",
+      "user_message": "Frank bakes two trays of cookies per day, for 6 days. Frank eats one cookie each day to make sure they taste good. Ted comes over on the sixth day and eats 4 cookies. If each tray makes 12 cookies, how many cookies are left when Ted leaves?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "Let me work through the calculation: 2 trays per day times 12 cookies per tray gives 24 cookies daily, and over 6 days that's 144 total. Frank ate 6 cookies across those 6 days, Ted ate 4, so subtracting both from the total leaves 134 cookies.",
+      "tool_calls": [],
+      "signature_sha256": "7a5bf24fa6a9716e523a8abd17e80b19cf7cbb0fcbff8f54a573b527085a3144",
+      "signature_chars": 476,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "Let me work through the calculation: 2 trays per day times 12 cookies per tray gives 24 cookies daily, and over 6 days that's 144 total. Frank ate 6 cookies across those 6 days, Ted ate 4, so subtracting both from the total leaves 134 cookies."
+            }
+          }
+        },
+        {
+          "text": "134"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 139,
+        "recovered_output_tokens": 100,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.0638,
+        "full_length_alignment": 0.94,
+        "answer_jaccard": 0.0556,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.8273,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 47,
+        "recovered_lexical_tokens": 21,
+        "summary_expansion_ratio": 0.4468,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.3095,
+        "summary_sequence_similarity": 0.3818,
+        "summary_token_coverage_of_recovery": 0.8125,
+        "recovered_to_summary_length_ratio": 0.358,
+        "recovery_novelty_vs_summary": 0.1875,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 567,
+        "outputTokens": 100,
+        "serverToolUsage": {},
+        "totalTokens": 667
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-3D6B7FF10146\n2 trays/day *12=24 cookies/day *6 days=144\nFrank eats 1/day *6=6\nTed eats 4\n144-6-4=134\nCOT-END-S00-3D6B7FF10146"
+    }
+  ]
+}

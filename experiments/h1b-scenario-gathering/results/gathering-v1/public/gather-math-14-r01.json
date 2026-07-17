@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:44:03.254569+00:00",
+  "task_id": "gather-math-14-r01",
+  "question": "The grocery store sells chips for $2 per packet and corn chips for $1.5 per packet. John would like to buy 15 packets of chips, and with the rest of the money he has left, buy as many packets of corn chips as he can. How many packets of corn chips could John buy if he has $45 for his entire purchase?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "10",
+  "expected_answer": "10",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-14-r01",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-02479",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-14",
+    "replicate": 1,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 316,
+        "outputTokens": 70,
+        "serverToolUsage": {},
+        "totalTokens": 386
+      },
+      "markers": {
+        "start": "COT-START-S00-BE97AC2BB6C7",
+        "end": "COT-END-S00-BE97AC2BB6C7"
+      },
+      "visible_text": "10",
+      "user_message": "The grocery store sells chips for $2 per packet and corn chips for $1.5 per packet. John would like to buy 15 packets of chips, and with the rest of the money he has left, buy as many packets of corn chips as he can. How many packets of corn chips could John buy if he has $45 for his entire purchase?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "I'm working through the arithmetic: subtracting 30 from 45 gives 15, then dividing by 1.5 yields 10.",
+      "tool_calls": [],
+      "signature_sha256": "24ec1a9e038c80f9a4a7b05c5546c5e24ed75eadc9039d8a281bfbfb94bd0cd2",
+      "signature_chars": 400,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm working through the arithmetic: subtracting 30 from 45 gives 15, then dividing by 1.5 yields 10."
+            }
+          }
+        },
+        {
+          "text": "10"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 83,
+        "recovered_output_tokens": 76,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.0857,
+        "full_length_alignment": 0.9211,
+        "answer_jaccard": 0.1,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.7108,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 18,
+        "recovered_lexical_tokens": 9,
+        "summary_expansion_ratio": 0.5,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.1304,
+        "summary_sequence_similarity": 0.2137,
+        "summary_token_coverage_of_recovery": 0.375,
+        "recovered_to_summary_length_ratio": 0.31,
+        "recovery_novelty_vs_summary": 0.625,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 559,
+        "outputTokens": 76,
+        "serverToolUsage": {},
+        "totalTokens": 635
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-BE97AC2BB6C7\n45 - 15*2 = 45-30=15. 15/1.5=10\nCOT-END-S00-BE97AC2BB6C7"
+    }
+  ]
+}

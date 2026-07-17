@@ -1,0 +1,140 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-10-r02",
+  "trajectory_id": "25d56066-c024-4832-8eb9-754b1bf19d14",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "A man used to have 39 cows but last year 25 of them died and he sold 6 of them. This year the number of the cows increased by 24 and the man bought 43 more. His friend gave him 8 cows as a gift. How many cows does the man have now?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "83",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 289,
+        "completion_tokens": 89,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 289,
+            "outputTokens": 89,
+            "serverToolUsage": {},
+            "totalTokens": 378
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "Working through a series of arithmetic operations: starting with 39, subtracting 25 to get 14, then subtracting 6 to get 8, and building up from there by adding 24, then 43, then 8 to reach a final result of 83.",
+        "signature_sha256": "aa7515c1dce7b8eaff059cd5c49212b6a77ae8ce44b8b413a8fb4054b2bac642",
+        "signature_chars": 440,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 1.0,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 112,
+            "recovered_output_tokens": 95,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.0674,
+            "full_length_alignment": 0.9368,
+            "answer_jaccard": 0.0769,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.7857,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 40,
+            "recovered_lexical_tokens": 17,
+            "summary_expansion_ratio": 0.425,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.2,
+            "summary_sequence_similarity": 0.2435,
+            "summary_token_coverage_of_recovery": 0.6364,
+            "recovered_to_summary_length_ratio": 0.2844,
+            "recovery_novelty_vs_summary": 0.3636,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 545,
+            "outputTokens": 95,
+            "serverToolUsage": {},
+            "totalTokens": 640
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-13C89DB06F05\n39 - 25 = 14\n14 - 6 = 8\n8 + 24 = 32\n32 + 43 = 75\n75 + 8 = 83\nCOT-END-S00-13C89DB06F05"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 289,
+    "total_completion_tokens": 89,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 545,
+      "extraction_completion_tokens": 95,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "all_decisions_strong_recovery": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-10-r02",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-10-r02",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-05156",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-10",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "83",
+    "expected_answer": "83",
+    "trajectory_quality_gate": "accepted"
+  }
+}

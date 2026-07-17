@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:40:55.212561+00:00",
+  "task_id": "gather-math-05-r03",
+  "question": "Micah has 7 fish in his aquarium. Kenneth has three times as many fish in his aquarium and Matthias has 15 less fish than Kenneth in his aquarium. How many fish do the boys have in total?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "34",
+  "expected_answer": "34",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-05-r03",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-01494",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-05",
+    "replicate": 3,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 277,
+        "outputTokens": 39,
+        "serverToolUsage": {},
+        "totalTokens": 316
+      },
+      "markers": {
+        "start": "COT-START-S00-63383E59761D",
+        "end": "COT-END-S00-63383E59761D"
+      },
+      "visible_text": "34",
+      "user_message": "Micah has 7 fish in his aquarium. Kenneth has three times as many fish in his aquarium and Matthias has 15 less fish than Kenneth in his aquarium. How many fish do the boys have in total?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "I'm calculating the total by adding up Micah's 7, Kenneth's 21, and Matthias's 6, which gives me 34.",
+      "tool_calls": [],
+      "signature_sha256": "66db3d4f42233d5415fc8a5d018e1fae2500bf00db0d3f90b6c3412dc79352e4",
+      "signature_chars": 364,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm calculating the total by adding up Micah's 7, Kenneth's 21, and Matthias's 6, which gives me 34."
+            }
+          }
+        },
+        {
+          "text": "34"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 106,
+        "recovered_output_tokens": 112,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 2.8718,
+        "full_length_alignment": 0.3482,
+        "answer_jaccard": 0.0909,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.7736,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 22,
+        "recovered_lexical_tokens": 12,
+        "summary_expansion_ratio": 0.5455,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.3182,
+        "summary_sequence_similarity": 0.4156,
+        "summary_token_coverage_of_recovery": 0.7778,
+        "recovered_to_summary_length_ratio": 0.54,
+        "recovery_novelty_vs_summary": 0.2222,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 480,
+        "outputTokens": 112,
+        "serverToolUsage": {},
+        "totalTokens": 592
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-63383E59761D\nMicah=7, Kenneth=21, Matthias=21-15=6, total=7+21+6=34\nCOT-END-S00-63383E59761D"
+    }
+  ]
+}

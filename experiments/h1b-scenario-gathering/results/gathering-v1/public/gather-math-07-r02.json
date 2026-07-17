@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:41:35.457584+00:00",
+  "task_id": "gather-math-07-r02",
+  "question": "Beth went shopping. She bought 15 more cans of peas than twice the number of cans of corn that she bought. If she bought 35 cans of peas, how many cans of corn did she buy?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "10",
+  "expected_answer": "10",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-07-r02",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-02096",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-07",
+    "replicate": 2,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 267,
+        "outputTokens": 59,
+        "serverToolUsage": {},
+        "totalTokens": 326
+      },
+      "markers": {
+        "start": "COT-START-S00-830A65389F51",
+        "end": "COT-END-S00-830A65389F51"
+      },
+      "visible_text": "10",
+      "user_message": "Beth went shopping. She bought 15 more cans of peas than twice the number of cans of corn that she bought. If she bought 35 cans of peas, how many cans of corn did she buy?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "I'm solving for c by isolating it: starting with 35 equals 2c plus 15, I subtract 15 from both sides to get 20 equals 2c, then divide by 2 to find c equals 10.",
+      "tool_calls": [],
+      "signature_sha256": "bd6c7e75841fab9fcd15e472c6a5e4fe79a5483df1995d28b61c08c1a193a73f",
+      "signature_chars": 408,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I'm solving for c by isolating it: starting with 35 equals 2c plus 15, I subtract 15 from both sides to get 20 equals 2c, then divide by 2 to find c equals 10."
+            }
+          }
+        },
+        {
+          "text": "10"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 83,
+        "recovered_output_tokens": 65,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.1017,
+        "full_length_alignment": 0.9077,
+        "answer_jaccard": 0.125,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.7108,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 35,
+        "recovered_lexical_tokens": 7,
+        "summary_expansion_ratio": 0.2,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.1786,
+        "summary_sequence_similarity": 0.2421,
+        "summary_token_coverage_of_recovery": 0.8333,
+        "recovered_to_summary_length_ratio": 0.195,
+        "recovery_novelty_vs_summary": 0.1667,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 489,
+        "outputTokens": 65,
+        "serverToolUsage": {},
+        "totalTokens": 554
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-830A65389F51\n35 = 2c + 15 → 2c = 20 → c = 10\nCOT-END-S00-830A65389F51"
+    }
+  ]
+}

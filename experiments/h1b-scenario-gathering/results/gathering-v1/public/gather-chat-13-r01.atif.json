@@ -1,0 +1,226 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-chat-13-r01",
+  "trajectory_id": "d951a843-0679-44c2-9636-6a06875d1986",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Identify the named entities (people, organizations, locations) mentioned in the given news article. Please generate a JSON dictionary that lists the named entities in three separate groups based on their entity types. The key is the type of entity and the value is a list of strings.\n\nYesterday, Adamson Emerson, the CEO of Faraday, and Dieter Zetsche, the CEO of Daimler AG, announced plans to build a new Gigafactory in Berlin. The facility will be a joint venture between Faraday and Daimler, producing electric vehicles and battery packs for both companies, creating thousands of job opportunities in the region. Emerson and Zetsche stated that the strategic location of Berlin, coupled with its skilled workforce and strong infrastructure, makes it an ideal choice for expansion. The new Gigafactory aims to meet the growing demand for electric vehicles in Europe and contribute to a sustainable future. Volkswagen CEO Herbert Diess welcomed the news, saying greater collaboration will benefit the auto industry's transition to e-mobility."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\", \"Europe\"]\n}\n```",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 542,
+        "completion_tokens": 125,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 542,
+            "outputTokens": 125,
+            "serverToolUsage": {},
+            "totalTokens": 667
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to structure the output as JSON with entities organized by their type—people, organizations, and locations.",
+        "signature_sha256": "65f8507242860edfc7cba32166c21e4103208ef3b23d2dc189793b6e1aa790d4",
+        "signature_chars": 404,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": false,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.36,
+            "valid": false,
+            "start_hit": false,
+            "end_hit": false,
+            "markers_in_order": false,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 130,
+            "recovered_output_tokens": 205,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.64,
+            "full_length_alignment": 0.6098,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": null,
+            "end_position": null,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 18,
+            "recovered_lexical_tokens": 26,
+            "summary_expansion_ratio": 1.4444,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1351,
+            "summary_sequence_similarity": 0.2951,
+            "summary_token_coverage_of_recovery": 0.2083,
+            "recovered_to_summary_length_ratio": 1.1404,
+            "recovery_novelty_vs_summary": 0.7917,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 834,
+            "outputTokens": 205,
+            "serverToolUsage": {},
+            "totalTokens": 1039
+          },
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "user",
+      "message": "Now make the JSON object shorter by replacing each value with its first letter. Please output everything in a single line without using indentation or creating new lines."
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "{\"people\": [\"A\", \"D\", \"H\"], \"organizations\": [\"F\", \"D\", \"V\"], \"locations\": [\"B\", \"E\"]}",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 820,
+        "completion_tokens": 190,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 820,
+            "outputTokens": 190,
+            "serverToolUsage": {},
+            "totalTokens": 1010
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to transform the JSON structure so each string value becomes just its first letter, maintaining the overall format as a single line with no extra spacing.",
+        "signature_sha256": "234f0b870376f495e1d2654da9f19eeced2d5ed675fd98397964173d8e528635",
+        "signature_chars": 696,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": false,
+          "strong_recovery": false,
+          "boundary_complete": false,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": -0.14,
+            "valid": false,
+            "start_hit": false,
+            "end_hit": false,
+            "markers_in_order": false,
+            "marker_leakage": false,
+            "refused": true,
+            "recovered_chars": 172,
+            "recovered_output_tokens": 258,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.3579,
+            "full_length_alignment": 0.7364,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": null,
+            "end_position": null,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 28,
+            "recovered_lexical_tokens": 34,
+            "summary_expansion_ratio": 1.2143,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0816,
+            "summary_sequence_similarity": 0.3063,
+            "summary_token_coverage_of_recovery": 0.1538,
+            "recovered_to_summary_length_ratio": 1.0683,
+            "recovery_novelty_vs_summary": 0.8462,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": false
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1179,
+            "outputTokens": 258,
+            "serverToolUsage": {},
+            "totalTokens": 1437
+          },
+          "rounds": 1
+        }
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 1362,
+    "total_completion_tokens": 315,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 2013,
+      "extraction_completion_tokens": 463,
+      "original_decision_steps": 2,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": null
+    }
+  },
+  "extra": {
+    "task_id": "gather-chat-13-r01",
+    "scenario": "complex_conversational_qa",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-chat-13-r01",
+      "dataset": "mt-bench",
+      "source_id": "mt-bench-137",
+      "dataset_metadata": {
+        "category": "extraction"
+      },
+      "gathering_task_id": "gather-chat-13",
+      "replicate": 1,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "{\"people\": [\"A\", \"D\", \"H\"], \"organizations\": [\"F\", \"D\", \"V\"], \"locations\": [\"B\", \"E\"]}",
+    "expected_answer": null,
+    "trajectory_quality_gate": "quarantine"
+  }
+}

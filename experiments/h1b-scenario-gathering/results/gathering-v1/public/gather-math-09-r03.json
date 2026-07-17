@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:42:35.368510+00:00",
+  "task_id": "gather-math-09-r03",
+  "question": "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "11",
+  "expected_answer": "11",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-09-r03",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-05019",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-09",
+    "replicate": 3,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 316,
+        "outputTokens": 142,
+        "serverToolUsage": {},
+        "totalTokens": 458
+      },
+      "markers": {
+        "start": "COT-START-S00-955BD679D43F",
+        "end": "COT-END-S00-955BD679D43F"
+      },
+      "visible_text": "11",
+      "user_message": "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "Working backwards through the distribution: Jen started with 22 candies, ate half (11), and gave the rest to Molly. Molly received those 11, ate 2 of her own, and passed everything to Harmony. Harmony kept 3 and passed the remaining 9 to Taylor, who ate 1 and gave 5 to Callie.",
+      "tool_calls": [],
+      "signature_sha256": "6ea01581fdcdf9cf5f696dcd60aa705ff8aa48da50fa6a41509efc143a8c1d85",
+      "signature_chars": 664,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "Working backwards through the distribution: Jen started with 22 candies, ate half (11), and gave the rest to Molly. Molly received those 11, ate 2 of her own, and passed everything to Harmony. Harmony kept 3 and passed the remaining 9 to Taylor, who ate 1 and gave 5 to Callie."
+            }
+          }
+        },
+        {
+          "text": "11"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 330,
+        "recovered_output_tokens": 181,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.2746,
+        "full_length_alignment": 0.7845,
+        "answer_jaccard": 0.0286,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9273,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 51,
+        "recovered_lexical_tokens": 61,
+        "summary_expansion_ratio": 1.1961,
+        "summary_ngram_containment": 0.0213,
+        "summary_jaccard": 0.3922,
+        "summary_sequence_similarity": 0.3784,
+        "summary_token_coverage_of_recovery": 0.6061,
+        "recovered_to_summary_length_ratio": 1.0036,
+        "recovery_novelty_vs_summary": 0.3939,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 624,
+        "outputTokens": 181,
+        "serverToolUsage": {},
+        "totalTokens": 805
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-955BD679D43F\nTaylor gave 5 to Callie after eating 1, so Taylor had 6.\nHarmony kept 3 and passed remainder to Taylor, so Harmony had 3+6=9.\nMolly ate 2 and gave rest to Harmony, so Molly had 2+9=11.\nJen ate half and gave rest to Molly - the rest equals 11, so Jen had 22 total, ate half = 11.\nCOT-END-S00-955BD679D43F"
+    }
+  ]
+}

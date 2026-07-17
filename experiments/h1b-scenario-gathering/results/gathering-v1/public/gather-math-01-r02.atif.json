@@ -1,0 +1,89 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-01-r02",
+  "trajectory_id": "ab5648c9-3604-4877-988d-ed9780b1d4b3",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Anna sold 36 glasses of plain lemonade for $0.75 each. If she made $16 total from selling strawberry lemonade, how much more did she make from plain lemonade than strawberry?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "11",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 276,
+        "completion_tokens": 3,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 276,
+            "outputTokens": 3,
+            "serverToolUsage": {},
+            "totalTokens": 279
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "",
+        "signature_sha256": "",
+        "signature_chars": 0,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": null
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 276,
+    "total_completion_tokens": 3,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 0,
+      "extraction_completion_tokens": 0,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": false,
+      "all_decisions_strong_recovery": false,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-01-r02",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-01-r02",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-02951",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-01",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "11",
+    "expected_answer": "11",
+    "trajectory_quality_gate": "quarantine"
+  }
+}

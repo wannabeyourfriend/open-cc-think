@@ -1,0 +1,110 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:43:56.160694+00:00",
+  "task_id": "gather-math-13-r03",
+  "question": "Tom plays 9 rounds of golf.  He takes an average of 4 strokes per hole.  The par value per hole is 3.  How many strokes over par was he?\n\nReturn only the final numeric answer in the visible response.",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "9",
+  "expected_answer": "9",
+  "task_success": true,
+  "scenario": "math_reasoning",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-math-13-r03",
+    "dataset": "gsm8k-train",
+    "source_id": "gsm8k-train-06044",
+    "dataset_metadata": {},
+    "gathering_task_id": "gather-math-13",
+    "replicate": 3,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 262,
+        "outputTokens": 79,
+        "serverToolUsage": {},
+        "totalTokens": 341
+      },
+      "markers": {
+        "start": "COT-START-S00-9244397AD17A",
+        "end": "COT-END-S00-9244397AD17A"
+      },
+      "visible_text": "9",
+      "user_message": "Tom plays 9 rounds of golf.  He takes an average of 4 strokes per hole.  The par value per hole is 3.  How many strokes over par was he?\n\nReturn only the final numeric answer in the visible response.",
+      "provider_cot_summary": "So with 9 holes at 4 strokes each, that's 36 total strokes, which puts me 9 over par since par for 9 holes would be 27.",
+      "tool_calls": [],
+      "signature_sha256": "617b3cd437d6d6efe608e03c16641a999cbbff27cf1a265b576e7e1cd29d0983",
+      "signature_chars": 456,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "So with 9 holes at 4 strokes each, that's 36 total strokes, which puts me 9 over par since par for 9 holes would be 27."
+            }
+          }
+        },
+        {
+          "text": "9"
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 1.0,
+        "valid": true,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": false,
+        "refused": false,
+        "recovered_chars": 123,
+        "recovered_output_tokens": 85,
+        "token_coverage_proxy": 1.0,
+        "full_length_ratio": 1.0759,
+        "full_length_alignment": 0.9294,
+        "answer_jaccard": 0.0667,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.8049,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 27,
+        "recovered_lexical_tokens": 15,
+        "summary_expansion_ratio": 0.5556,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.3462,
+        "summary_sequence_similarity": 0.5579,
+        "summary_token_coverage_of_recovery": 0.6923,
+        "recovered_to_summary_length_ratio": 0.5966,
+        "recovery_novelty_vs_summary": 0.3077,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": true
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 506,
+        "outputTokens": 85,
+        "serverToolUsage": {},
+        "totalTokens": 591
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-9244397AD17A\n9 holes, 4 strokes each = 36 strokes. Par = 9*3=27. Over par = 36-27=9.\nCOT-END-S00-9244397AD17A"
+    }
+  ]
+}

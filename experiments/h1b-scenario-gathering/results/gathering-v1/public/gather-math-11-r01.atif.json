@@ -1,0 +1,140 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-11-r01",
+  "trajectory_id": "ba2e245f-4b72-471d-bf91-953ab17d122e",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "At the height of cranberry season, there are 60000 cranberries in a bog. 40% are harvested by humans and another 20000 are eaten by elk. How many cranberries are left?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "16000",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 276,
+        "completion_tokens": 96,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 276,
+            "outputTokens": 96,
+            "serverToolUsage": {},
+            "totalTokens": 372
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm working through the math: 40% of 60,000 is 24,000 harvested, leaving 36,000, then subtracting another 20,000 gives 16,000 remaining.",
+        "signature_sha256": "fcdd093246b7b3e5cd1c7fe63394a4c3471bd202ea6b2e418739123e12cffec2",
+        "signature_chars": 472,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 1.0,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 135,
+            "recovered_output_tokens": 101,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.0521,
+            "full_length_alignment": 0.9505,
+            "answer_jaccard": 0.0909,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.8222,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 26,
+            "recovered_lexical_tokens": 13,
+            "summary_expansion_ratio": 0.5,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0333,
+            "summary_sequence_similarity": 0.4018,
+            "summary_token_coverage_of_recovery": 0.1111,
+            "recovered_to_summary_length_ratio": 0.6103,
+            "recovery_novelty_vs_summary": 0.8889,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 547,
+            "outputTokens": 101,
+            "serverToolUsage": {},
+            "totalTokens": 648
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-AFF5AF2B8D5E\n60000 * 0.4 = 24000 harvested\n60000 - 24000 = 36000 remaining\n36000 - 20000 = 16000\nCOT-END-S00-AFF5AF2B8D5E"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 276,
+    "total_completion_tokens": 96,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 547,
+      "extraction_completion_tokens": 101,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "all_decisions_strong_recovery": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-11-r01",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-11-r01",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-06827",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-11",
+      "replicate": 1,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "16000",
+    "expected_answer": "16000",
+    "trajectory_quality_gate": "accepted"
+  }
+}

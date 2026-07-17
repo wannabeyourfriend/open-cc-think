@@ -1,0 +1,140 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-math-09-r02",
+  "trajectory_id": "98adc090-8935-4457-aa7b-e9e8e56abe6a",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    }
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "Follow the user's instructions carefully. Perform planning, checking, and reasoning in the internal thinking block. Never expose research boundary markers in visible text. The visible response should be the requested answer or artifact, not a description of your hidden reasoning."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?\n\nReturn only the final numeric answer in the visible response."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "11",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 320,
+        "completion_tokens": 160,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 320,
+            "outputTokens": 160,
+            "serverToolUsage": {},
+            "totalTokens": 480
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm working through the sequence of events backwards. Jen started with 22 cookies, ate half (11), and gave the remaining 11 to Molly. Molly then had 11 plus the 9 she'd received earlier, making 20 total before eating 2. Harmony kept 3 from her original 9 and passed 6 to Molly. Taylor ate 1 from her original 6 and gave 5 to Harmony.",
+        "signature_sha256": "dfbba91e828ca540717fdd17947eca3d89233c23ef89f92f1d7d7d3082956fa0",
+        "signature_chars": 708,
+        "stop_reason": "end_turn",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 1.0,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 365,
+            "recovered_output_tokens": 203,
+            "token_coverage_proxy": 1.0,
+            "full_length_ratio": 1.2688,
+            "full_length_alignment": 0.7882,
+            "answer_jaccard": 0.0294,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.9342,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 65,
+            "recovered_lexical_tokens": 66,
+            "summary_expansion_ratio": 1.0154,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.3729,
+            "summary_sequence_similarity": 0.2919,
+            "summary_token_coverage_of_recovery": 0.6875,
+            "recovered_to_summary_length_ratio": 0.9339,
+            "recovery_novelty_vs_summary": 0.3125,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 650,
+            "outputTokens": 203,
+            "serverToolUsage": {},
+            "totalTokens": 853
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-E54F29E45DD4\nTaylor: ate 1, gave 5, so had 6 before eating.\nHarmony: kept 3, passed 6, so had 9 before keeping.\nMolly: ate 2, gave 9, had 11 before eating.\nJen: ate half, gave rest (11) to Molly, so had 22, ate 11.\n\nWait, \"gave the rest to Molly\" - rest after eating half is 11, so half=11, total=22, ate half=11.\n\nJen ate 11.\nCOT-END-S00-E54F29E45DD4"
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 320,
+    "total_completion_tokens": 160,
+    "total_cached_tokens": 0,
+    "total_steps": 3,
+    "extra": {
+      "extraction_prompt_tokens": 650,
+      "extraction_completion_tokens": 203,
+      "original_decision_steps": 1,
+      "all_decisions_recovered": true,
+      "all_decisions_strong_recovery": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-math-09-r02",
+    "scenario": "math_reasoning",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-math-09-r02",
+      "dataset": "gsm8k-train",
+      "source_id": "gsm8k-train-05019",
+      "dataset_metadata": {},
+      "gathering_task_id": "gather-math-09",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "11",
+    "expected_answer": "11",
+    "trajectory_quality_gate": "accepted"
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "gather-agentic-coding-01-r02",
+  "trajectory_id": "6915cc96-2c9d-4387-a4d9-2512423269b2",
+  "agent": {
+    "name": "signature-cot-bedrock",
+    "version": "0.2.0",
+    "model_name": "global.anthropic.claude-sonnet-5",
+    "extra": {
+      "provider": "amazon-bedrock-converse",
+      "reasoning_capture": "provider-summary-plus-signed-full-span-replay"
+    },
+    "tool_definitions": [
+      {
+        "type": "function",
+        "function": {
+          "name": "list_files",
+          "description": "List every path in the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "read_file",
+          "description": "Read one file from the isolated in-memory coding workspace.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/window.py",
+                  "tests/test_window.py"
+                ]
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "search_code",
+          "description": "Search literal text in all isolated workspace files.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "apply_patch",
+          "description": "Submit one exact replacement. This terminates the task and runs the verifier automatically.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "src/window.py",
+                  "tests/test_window.py"
+                ]
+              },
+              "old": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "new": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            },
+            "required": [
+              "path",
+              "old",
+              "new"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "run_tests",
+          "description": "Inspect current deterministic verifier status without terminating the task.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "system",
+      "message": "You are a careful code-repair agent operating only on an isolated in-memory workspace. Inspect the relevant source and tests before calling apply_patch exactly once. apply_patch is the terminal submission action and automatically runs the deterministic verifier. Do not finish with plain assistant text. Treat tool results as authoritative. Never expose research boundary markers in visible text or tool inputs. You have no shell, network, or host-filesystem access."
+    },
+    {
+      "step_id": 2,
+      "source": "user",
+      "message": "Fix the off-by-one bug so integers from start through stop are both included. Inspect the workspace, apply the smallest patch, run the deterministic tests, and finish with a compact PASS or FAIL report."
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1247,
+        "completion_tokens": 319,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1247,
+            "outputTokens": 319,
+            "serverToolUsage": {},
+            "totalTokens": 1566
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm starting by examining the workspace structure, looking at the window module and its test file to understand what I'm working with.",
+        "signature_sha256": "576eb620c4bee9a86c05833e82e3f8d42b006b013a8940c17506246079b99c77",
+        "signature_chars": 1136,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.901,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 87,
+            "recovered_output_tokens": 76,
+            "token_coverage_proxy": 0.2382,
+            "full_length_ratio": 0.2382,
+            "full_length_alignment": 0.2382,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.7241,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 24,
+            "recovered_lexical_tokens": 6,
+            "summary_expansion_ratio": 0.25,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.08,
+            "summary_sequence_similarity": 0.3077,
+            "summary_token_coverage_of_recovery": 0.3333,
+            "recovered_to_summary_length_ratio": 0.2612,
+            "recovery_novelty_vs_summary": 0.6667,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2033,
+            "outputTokens": 76,
+            "serverToolUsage": {},
+            "totalTokens": 2109
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S00-156EC8926A01\nLet me inspect the workspace first.\nCOT-END-S00-156EC8926A01",
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_lEHhv9DvhFdAJkTiNKpIjD",
+          "function_name": "list_files",
+          "arguments": {},
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_lEHhv9DvhFdAJkTiNKpIjD",
+            "content": "{\"files\": [\"src/window.py\", \"tests/test_window.py\"]}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 1663,
+        "completion_tokens": 146,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 1663,
+            "outputTokens": 146,
+            "serverToolUsage": {},
+            "totalTokens": 1809
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I'm moving on to read the files.",
+        "signature_sha256": "b68bceac203d469d72f4ad3237570ddc6bc4e7a11710a179ff5666b431a5dd46",
+        "signature_chars": 396,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.9341,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 80,
+            "recovered_output_tokens": 72,
+            "token_coverage_proxy": 0.4932,
+            "full_length_ratio": 0.4932,
+            "full_length_alignment": 0.4932,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.7,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 8,
+            "recovered_lexical_tokens": 4,
+            "summary_expansion_ratio": 0.5,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.0909,
+            "summary_sequence_similarity": 0.5667,
+            "summary_token_coverage_of_recovery": 0.25,
+            "recovered_to_summary_length_ratio": 0.875,
+            "recovery_novelty_vs_summary": 0.75,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2484,
+            "outputTokens": 72,
+            "serverToolUsage": {},
+            "totalTokens": 2556
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S01-0C59B262A977\nContinue with reading files.\nCOT-END-S01-0C59B262A977",
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_mnvhgInFcmwgZ9ZM6uX0RE",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "src/window.py"
+          },
+          "extra": {}
+        },
+        {
+          "tool_call_id": "tooluse_2aCysx5J9Cc27DlRQxNf94",
+          "function_name": "read_file",
+          "arguments": {
+            "path": "tests/test_window.py"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_mnvhgInFcmwgZ9ZM6uX0RE",
+            "content": "{\"content\": \"def inclusive_window(start, stop):\\n    return list(range(start, stop))\\n\", \"path\": \"src/window.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          },
+          {
+            "source_call_id": "tooluse_2aCysx5J9Cc27DlRQxNf94",
+            "content": "{\"content\": \"# inclusive_window(2, 4) == [2, 3, 4]\\n# inclusive_window(5, 5) == [5]\\n\", \"path\": \"tests/test_window.py\"}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "global.anthropic.claude-sonnet-5",
+      "reasoning_effort": "high",
+      "message": "",
+      "llm_call_count": 1,
+      "metrics": {
+        "prompt_tokens": 2085,
+        "completion_tokens": 179,
+        "cached_tokens": 0,
+        "extra": {
+          "bedrock_usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2085,
+            "outputTokens": 179,
+            "serverToolUsage": {},
+            "totalTokens": 2264
+          }
+        }
+      },
+      "extra": {
+        "provider_cot_summary": "I need to adjust the range to include the stop value by adding one to it.",
+        "signature_sha256": "e0a0487d40ccc7866a82ed19ac7f15a253758407f77e8872d25296654eb18fec",
+        "signature_chars": 428,
+        "stop_reason": "tool_use",
+        "signed_full_cot_recovery": {
+          "method": "signed_reasoning_replay",
+          "candidate": "mechanical_boundary_xml_v2",
+          "valid": true,
+          "strong_recovery": true,
+          "boundary_complete": true,
+          "provider_summary_present": true,
+          "provider_summary_blinded_in_replay": true,
+          "summary_used": false,
+          "metrics": {
+            "quality": 0.9346,
+            "valid": true,
+            "start_hit": true,
+            "end_hit": true,
+            "markers_in_order": true,
+            "marker_leakage": false,
+            "refused": false,
+            "recovered_chars": 103,
+            "recovered_output_tokens": 89,
+            "token_coverage_proxy": 0.4972,
+            "full_length_ratio": 0.4972,
+            "full_length_alignment": 0.4972,
+            "answer_jaccard": 0.0,
+            "replay_emitted_tool_call": false,
+            "start_position": 0.0,
+            "end_position": 0.767,
+            "summary_comparison_available": true,
+            "summary_lexical_tokens": 16,
+            "recovered_lexical_tokens": 9,
+            "summary_expansion_ratio": 0.5625,
+            "summary_ngram_containment": 0.0,
+            "summary_jaccard": 0.1579,
+            "summary_sequence_similarity": 0.3226,
+            "summary_token_coverage_of_recovery": 0.3333,
+            "recovered_to_summary_length_ratio": 0.6986,
+            "recovery_novelty_vs_summary": 0.6667,
+            "summary_contains_canaries": false,
+            "provider_summary_visible_to_replay": false,
+            "summary_near_duplicate": false,
+            "strong_recovery": true
+          },
+          "usage": {
+            "cacheReadInputTokenCount": 0,
+            "cacheReadInputTokens": 0,
+            "inputTokens": 2825,
+            "outputTokens": 89,
+            "serverToolUsage": {},
+            "totalTokens": 2914
+          },
+          "rounds": 1
+        }
+      },
+      "reasoning_content": "COT-START-S02-679643A1AEC7\nApply patch to fix off-by-one: range(start, stop+1)\nCOT-END-S02-679643A1AEC7",
+      "tool_calls": [
+        {
+          "tool_call_id": "tooluse_LIYucw91k9abxS1gHY6MBy",
+          "function_name": "apply_patch",
+          "arguments": {
+            "path": "src/window.py",
+            "old": "    return list(range(start, stop))",
+            "new": "    return list(range(start, stop + 1))"
+          },
+          "extra": {}
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "tooluse_LIYucw91k9abxS1gHY6MBy",
+            "content": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/window.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+            "extra": {
+              "status": "success"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "notes": "reasoning_content is a boundary-complete signed-state recovery, not cryptographic proof of byte-for-byte provider plaintext. Replay/extraction calls are excluded from the original agent step sequence and costed separately.",
+  "final_metrics": {
+    "total_prompt_tokens": 4995,
+    "total_completion_tokens": 644,
+    "total_cached_tokens": 0,
+    "total_steps": 5,
+    "extra": {
+      "extraction_prompt_tokens": 7342,
+      "extraction_completion_tokens": 237,
+      "original_decision_steps": 3,
+      "all_decisions_recovered": true,
+      "all_decisions_strong_recovery": true,
+      "task_success": true
+    }
+  },
+  "extra": {
+    "task_id": "gather-agentic-coding-01-r02",
+    "scenario": "agentic_coding",
+    "source_metadata": {
+      "run_id": "H1b-gathering-v1",
+      "instance_id": "gather-agentic-coding-01-r02",
+      "dataset": "signature-cot-deterministic-code-repair",
+      "source_id": "gather-agentic-coding-01",
+      "dataset_metadata": {
+        "fixture_id": "gather-agentic-coding-01",
+        "title": "Inclusive integer window",
+        "environment": {
+          "kind": "in-memory-exact-repair-v1",
+          "sha256": "6c2901bb730e3f20c7bb7d187c2ce220929a31b0f501003a59f1faeb69f368db",
+          "reset_per_instance": true,
+          "max_agent_steps": 8,
+          "gpus": 0,
+          "allow_internet": false,
+          "allow_host_filesystem": false,
+          "allow_shell": false,
+          "oracle_validated": true
+        }
+      },
+      "gathering_task_id": "gather-agentic-coding-01",
+      "replicate": 2,
+      "reasoning_effort": "high",
+      "thinking_display": "summarized"
+    },
+    "final_answer": "{\"applied\": true, \"patch_count\": 1, \"path\": \"src/window.py\", \"verifier\": {\"checks\": {\"target_behavior\": true, \"unrelated_files_unchanged\": true}, \"passed\": true, \"tests_run\": 1}}",
+    "expected_answer": "PASS",
+    "trajectory_quality_gate": "accepted"
+  }
+}

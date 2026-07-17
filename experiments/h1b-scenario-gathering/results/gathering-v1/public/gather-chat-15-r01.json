@@ -1,0 +1,195 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-07-16T18:37:57.124058+00:00",
+  "task_id": "gather-chat-15-r01",
+  "question": "Describe the process and write out the balanced chemical equation for the reaction that occurs when solid calcium carbonate reacts with hydrochloric acid to form aqueous calcium chloride, carbon dioxide, and water. What type of reaction is this, and what observations might indicate that the reaction is taking place?",
+  "model": "global.anthropic.claude-sonnet-5",
+  "final_answer": "COT-START-S01-A9FBAD6D1651\nAssess reversibility: original reaction is essentially irreversible under normal conditions because CO2 escapes as gas and HCl fully dissociates (strong acid), making ΔG very negative (entropy increase, gas release, strong acid ionization). Discuss why simple reverse won't happen spontaneously. Then discuss alternative indirect route to regenerate CaCO3 (precipitation using carbonate source), and separate route to regenerate HCl. Provide equations and conditions.\nCOT-END-S01-A9FBAD6D1651\n\n## Why This Reaction Is Difficult to \"Reverse\" Directly\n\nThe reaction:\n\n$$\\text{CaCO}_3(s) + 2\\text{HCl}(aq) \\rightarrow \\text{CaCl}_2(aq) + \\text{CO}_2(g) + \\text{H}_2\\text{O}(l)$$\n\nis essentially **irreversible** under normal conditions for several thermodynamic reasons:\n\n1. **Gas escape:** CO₂ leaves the system as a gas, especially in an open container. Once it escapes, it's no longer available to react.\n2. **Strong acid dissociation:** HCl is a strong acid and fully ionizes in water; the reverse reaction would require re-forming molecular HCl and combining it with solid carbonate, which is entropically and energetically unfavorable.\n3. **Increase in entropy:** The forward reaction increases disorder (a solid and liquid becoming a gas plus dissolved ions), making it thermodynamically favorable in the forward direction. Reversing this would require *decreasing* entropy, which doesn't happen spontaneously.\n\nSo, simply combining CaCl₂(aq), CO₂(g), and H₂O(l) will **not** spontaneously regenerate CaCO₃ and HCl under ordinary conditions.\n\n## Indirect Ways to \"Reverse\" the Products\n\nWhile you can't reverse the exact reaction as written, you can use alternative chemical pathways to regenerate the original substances separately.\n\n### 1. Regenerating Calcium Carbonate (Precipitation Reaction)\n\nYou can recover solid CaCO₃ by reacting the calcium chloride solution with a source of carbonate ions, such as sodium carbonate or ammonium carbonate:\n\n$$\\text{CaCl}_2(aq) + \\text{Na}_2\\text{CO}_3(aq) \\rightarrow \\text{CaCO}_3(s) + 2\\text{NaCl}(aq)$$\n\nThis works because CaCO₃ is insoluble in water and precipitates out of solution (a **double displacement/precipitation reaction**). This is essentially how CaCO₃ is industrially recovered in processes like the **Solvay process** or water-softening treatments.\n\n### 2. Regenerating Hydrochloric Acid\n\nTo get HCl back, you would need a separate process, such as:\n\n- **Reacting NaCl with a strong acid** (like sulfuric acid) and distilling off HCl gas:\n$$\\text{NaCl}(s) + \\text{H}_2\\text{SO}_4(aq) \\rightarrow \\text{NaHSO}_4(aq) + \\text{HCl}(g)$$\n\n- **Electrolysis of concentrated NaCl solution (brine)**, which produces Cl₂ gas, H₂ gas, and NaOH; the Cl₂ and H₂ can then be recombined to synthesize HCl:\n$$\\text{H}_2(g) + \\text{Cl}_2(g) \\rightarrow 2\\text{HCl}(g)$$\n\n### 3. Capturing and Reusing CO₂\n\nIf CO₂ is captured before it escapes (e.g., in a sealed system), it could be bubbled into a solution containing calcium hydroxide (limewater) to reform calcium carbonate:\n\n$$\\text{CO}_2(g) + \\text{Ca(OH)}_2(aq) \\rightarrow \\text{CaCO}_3(s) + \\text{H}_2\\text{O}(l)$$\n\nThis is actually the **reverse of the limekiln process** and demonstrates one practical way CO₂ can be \"recycled\" into solid carbonate, though it requires calcium hydroxide rather than the original HCl.\n\n## Summary\n\n- **True reversal** (same reactants regenerating from the same products under the same conditions) doesn't happen spontaneously because gas escapes and the reaction is thermodynamically driven forward.\n- **Practical reversal** requires multiple separate reactions: precipitating CaCO₃ using a carbonate source, and independently regenerating HCl through acid-displacement or electrolysis methods.\n- This mirrors a common theme in chemistry: many acid-carbonate (or acid-base) reactions that release a gas are functionally irreversible in a single step, requiring multi-step processes to \"undo\" them.",
+  "expected_answer": null,
+  "task_success": null,
+  "scenario": "complex_conversational_qa",
+  "source_metadata": {
+    "run_id": "H1b-gathering-v1",
+    "instance_id": "gather-chat-15-r01",
+    "dataset": "mt-bench",
+    "source_id": "mt-bench-145",
+    "dataset_metadata": {
+      "category": "stem"
+    },
+    "gathering_task_id": "gather-chat-15",
+    "replicate": 1,
+    "reasoning_effort": "high",
+    "thinking_display": "summarized"
+  },
+  "tool_events": [],
+  "steps": [
+    {
+      "step_index": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 296,
+        "outputTokens": 1046,
+        "serverToolUsage": {},
+        "totalTokens": 1342
+      },
+      "markers": {
+        "start": "COT-START-S00-3C4E86EF75D4",
+        "end": "COT-END-S00-3C4E86EF75D4"
+      },
+      "visible_text": "COT-START-S00-3C4E86EF75D4\nPlan: describe reaction mechanism, write balanced equation, classify reaction type, list observable signs.\nCOT-END-S00-3C4E86EF75D4\n\n## The Reaction\n\nWhen solid calcium carbonate (CaCO₃) is added to hydrochloric acid (HCl), an acid–carbonate reaction occurs. The H⁺ ions from the hydrochloric acid attack the carbonate ion in calcium carbonate, breaking it down. This produces aqueous calcium chloride (CaCl₂), and the carbonate portion decomposes into carbon dioxide gas (CO₂) and water (H₂O). The carbon dioxide escapes as bubbles, while the calcium and chloride ions remain dissolved in solution.\n\n## Balanced Chemical Equation\n\n$$\\text{CaCO}_3(s) + 2\\text{HCl}(aq) \\rightarrow \\text{CaCl}_2(aq) + \\text{CO}_2(g) + \\text{H}_2\\text{O}(l)$$\n\n**Balance check:**\n- Ca: 1 on each side ✓\n- C: 1 on each side ✓\n- O: 3 (from CaCO₃) = 1 (CO₂) + 1 (H₂O) → 2 + 1 = 3 ✓\n- H: 2 (from 2 HCl) = 2 (from H₂O) ✓\n- Cl: 2 (from 2 HCl) = 2 (from CaCl₂) ✓\n\n## Type of Reaction\n\nThis is classified as a **double displacement (metathesis) reaction**, and more specifically an **acid–carbonate reaction** (a subtype often grouped with acid–base neutralization reactions). It can also be viewed as involving decomposition, since the unstable carbonic acid (H₂CO₃) intermediate breaks down into CO₂ and H₂O:\n\n$$\\text{CaCO}_3 + 2\\text{HCl} \\rightarrow \\text{CaCl}_2 + \\text{H}_2\\text{CO}_3 \\rightarrow \\text{CaCl}_2 + \\text{H}_2\\text{O} + \\text{CO}_2$$\n\n## Observations Indicating the Reaction Is Occurring\n\n1. **Effervescence (bubbling/fizzing):** Vigorous bubbles form as CO₂ gas is released from the solution.\n2. **Dissolution of the solid:** The solid calcium carbonate gradually disappears as it reacts and converts to soluble calcium chloride.\n3. **Gas evolution:** If tested, the gas produced will turn limewater cloudy (a classic test for CO₂), confirming its identity.\n4. **Possible temperature change:** The reaction is typically exothermic, so a slight increase in temperature of the solution may be noticed.\n5. **Sound:** A faint hissing or fizzing sound may accompany the rapid gas release, especially with more concentrated acid.",
+      "user_message": "Describe the process and write out the balanced chemical equation for the reaction that occurs when solid calcium carbonate reacts with hydrochloric acid to form aqueous calcium chloride, carbon dioxide, and water. What type of reaction is this, and what observations might indicate that the reaction is taking place?",
+      "provider_cot_summary": "I should structure my response to include the chemical equation and reaction type in my internal reasoning, then present the description and observations in the visible answer.",
+      "tool_calls": [],
+      "signature_sha256": "5cb134ab27e43310acb0da54198d88f85710ddbb7248a322e02bab7e3f66541d",
+      "signature_chars": 520,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "I should structure my response to include the chemical equation and reaction type in my internal reasoning, then present the description and observations in the visible answer."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S00-3C4E86EF75D4\nPlan: describe reaction mechanism, write balanced equation, classify reaction type, list observable signs.\nCOT-END-S00-3C4E86EF75D4\n\n## The Reaction\n\nWhen solid calcium carbonate (CaCO₃) is added to hydrochloric acid (HCl), an acid–carbonate reaction occurs. The H⁺ ions from the hydrochloric acid attack the carbonate ion in calcium carbonate, breaking it down. This produces aqueous calcium chloride (CaCl₂), and the carbonate portion decomposes into carbon dioxide gas (CO₂) and water (H₂O). The carbon dioxide escapes as bubbles, while the calcium and chloride ions remain dissolved in solution.\n\n## Balanced Chemical Equation\n\n$$\\text{CaCO}_3(s) + 2\\text{HCl}(aq) \\rightarrow \\text{CaCl}_2(aq) + \\text{CO}_2(g) + \\text{H}_2\\text{O}(l)$$\n\n**Balance check:**\n- Ca: 1 on each side ✓\n- C: 1 on each side ✓\n- O: 3 (from CaCO₃) = 1 (CO₂) + 1 (H₂O) → 2 + 1 = 3 ✓\n- H: 2 (from 2 HCl) = 2 (from H₂O) ✓\n- Cl: 2 (from 2 HCl) = 2 (from CaCl₂) ✓\n\n## Type of Reaction\n\nThis is classified as a **double displacement (metathesis) reaction**, and more specifically an **acid–carbonate reaction** (a subtype often grouped with acid–base neutralization reactions). It can also be viewed as involving decomposition, since the unstable carbonic acid (H₂CO₃) intermediate breaks down into CO₂ and H₂O:\n\n$$\\text{CaCO}_3 + 2\\text{HCl} \\rightarrow \\text{CaCl}_2 + \\text{H}_2\\text{CO}_3 \\rightarrow \\text{CaCl}_2 + \\text{H}_2\\text{O} + \\text{CO}_2$$\n\n## Observations Indicating the Reaction Is Occurring\n\n1. **Effervescence (bubbling/fizzing):** Vigorous bubbles form as CO₂ gas is released from the solution.\n2. **Dissolution of the solid:** The solid calcium carbonate gradually disappears as it reacts and converts to soluble calcium chloride.\n3. **Gas evolution:** If tested, the gas produced will turn limewater cloudy (a classic test for CO₂), confirming its identity.\n4. **Possible temperature change:** The reaction is typically exothermic, so a slight increase in temperature of the solution may be noticed.\n5. **Sound:** A faint hissing or fizzing sound may accompany the rapid gas release, especially with more concentrated acid."
+        }
+      ]
+    },
+    {
+      "step_index": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 1462,
+        "outputTokens": 2515,
+        "serverToolUsage": {},
+        "totalTokens": 3977
+      },
+      "markers": {
+        "start": "COT-START-S01-A9FBAD6D1651",
+        "end": "COT-END-S01-A9FBAD6D1651"
+      },
+      "visible_text": "COT-START-S01-A9FBAD6D1651\nAssess reversibility: original reaction is essentially irreversible under normal conditions because CO2 escapes as gas and HCl fully dissociates (strong acid), making ΔG very negative (entropy increase, gas release, strong acid ionization). Discuss why simple reverse won't happen spontaneously. Then discuss alternative indirect route to regenerate CaCO3 (precipitation using carbonate source), and separate route to regenerate HCl. Provide equations and conditions.\nCOT-END-S01-A9FBAD6D1651\n\n## Why This Reaction Is Difficult to \"Reverse\" Directly\n\nThe reaction:\n\n$$\\text{CaCO}_3(s) + 2\\text{HCl}(aq) \\rightarrow \\text{CaCl}_2(aq) + \\text{CO}_2(g) + \\text{H}_2\\text{O}(l)$$\n\nis essentially **irreversible** under normal conditions for several thermodynamic reasons:\n\n1. **Gas escape:** CO₂ leaves the system as a gas, especially in an open container. Once it escapes, it's no longer available to react.\n2. **Strong acid dissociation:** HCl is a strong acid and fully ionizes in water; the reverse reaction would require re-forming molecular HCl and combining it with solid carbonate, which is entropically and energetically unfavorable.\n3. **Increase in entropy:** The forward reaction increases disorder (a solid and liquid becoming a gas plus dissolved ions), making it thermodynamically favorable in the forward direction. Reversing this would require *decreasing* entropy, which doesn't happen spontaneously.\n\nSo, simply combining CaCl₂(aq), CO₂(g), and H₂O(l) will **not** spontaneously regenerate CaCO₃ and HCl under ordinary conditions.\n\n## Indirect Ways to \"Reverse\" the Products\n\nWhile you can't reverse the exact reaction as written, you can use alternative chemical pathways to regenerate the original substances separately.\n\n### 1. Regenerating Calcium Carbonate (Precipitation Reaction)\n\nYou can recover solid CaCO₃ by reacting the calcium chloride solution with a source of carbonate ions, such as sodium carbonate or ammonium carbonate:\n\n$$\\text{CaCl}_2(aq) + \\text{Na}_2\\text{CO}_3(aq) \\rightarrow \\text{CaCO}_3(s) + 2\\text{NaCl}(aq)$$\n\nThis works because CaCO₃ is insoluble in water and precipitates out of solution (a **double displacement/precipitation reaction**). This is essentially how CaCO₃ is industrially recovered in processes like the **Solvay process** or water-softening treatments.\n\n### 2. Regenerating Hydrochloric Acid\n\nTo get HCl back, you would need a separate process, such as:\n\n- **Reacting NaCl with a strong acid** (like sulfuric acid) and distilling off HCl gas:\n$$\\text{NaCl}(s) + \\text{H}_2\\text{SO}_4(aq) \\rightarrow \\text{NaHSO}_4(aq) + \\text{HCl}(g)$$\n\n- **Electrolysis of concentrated NaCl solution (brine)**, which produces Cl₂ gas, H₂ gas, and NaOH; the Cl₂ and H₂ can then be recombined to synthesize HCl:\n$$\\text{H}_2(g) + \\text{Cl}_2(g) \\rightarrow 2\\text{HCl}(g)$$\n\n### 3. Capturing and Reusing CO₂\n\nIf CO₂ is captured before it escapes (e.g., in a sealed system), it could be bubbled into a solution containing calcium hydroxide (limewater) to reform calcium carbonate:\n\n$$\\text{CO}_2(g) + \\text{Ca(OH)}_2(aq) \\rightarrow \\text{CaCO}_3(s) + \\text{H}_2\\text{O}(l)$$\n\nThis is actually the **reverse of the limekiln process** and demonstrates one practical way CO₂ can be \"recycled\" into solid carbonate, though it requires calcium hydroxide rather than the original HCl.\n\n## Summary\n\n- **True reversal** (same reactants regenerating from the same products under the same conditions) doesn't happen spontaneously because gas escapes and the reaction is thermodynamically driven forward.\n- **Practical reversal** requires multiple separate reactions: precipitating CaCO₃ using a carbonate source, and independently regenerating HCl through acid-displacement or electrolysis methods.\n- This mirrors a common theme in chemistry: many acid-carbonate (or acid-base) reactions that release a gas are functionally irreversible in a single step, requiring multi-step processes to \"undo\" them.",
+      "user_message": "How can we reverse this process?",
+      "provider_cot_summary": "The user is asking whether this reaction can be reversed—converting the products back to calcium carbonate and hydrochloric acid. I should explain that thermodynamically this isn't favorable since CO2 gas escapes during the forward reaction, making it essentially irreversible under normal conditions, though I could outline what a theoretical chemical pathway might look like. So the indirect route through precipitation gives back CaCO3 but produces NaCl instead of HCl, and truly reversing the original reaction to regenerate both CaCO3 and HCl isn't spontaneous since we'd be fighting against the thermodynamically favorable forward reaction where CO2 escapes. I should structure my answer around why direct reversal fails thermodynamically, show the precipitation alternative to recover CaCO3, and note that getting HCl back would require a separate process like using sulfuric acid or electrolysis.",
+      "tool_calls": [],
+      "signature_sha256": "15d38d548fc148ee1cbebffcd7f5ae033375244834d67235a0e16ab9e6d6f472",
+      "signature_chars": 3440,
+      "assistant_content": [
+        {
+          "reasoningContent": {
+            "reasoningText": {
+              "signature": "<redacted>",
+              "text": "The user is asking whether this reaction can be reversed—converting the products back to calcium carbonate and hydrochloric acid. I should explain that thermodynamically this isn't favorable since CO2 gas escapes during the forward reaction, making it essentially irreversible under normal conditions, though I could outline what a theoretical chemical pathway might look like. So the indirect route through precipitation gives back CaCO3 but produces NaCl instead of HCl, and truly reversing the original reaction to regenerate both CaCO3 and HCl isn't spontaneous since we'd be fighting against the thermodynamically favorable forward reaction where CO2 escapes. I should structure my answer around why direct reversal fails thermodynamically, show the precipitation alternative to recover CaCO3, and note that getting HCl back would require a separate process like using sulfuric acid or electrolysis."
+            }
+          }
+        },
+        {
+          "text": "COT-START-S01-A9FBAD6D1651\nAssess reversibility: original reaction is essentially irreversible under normal conditions because CO2 escapes as gas and HCl fully dissociates (strong acid), making ΔG very negative (entropy increase, gas release, strong acid ionization). Discuss why simple reverse won't happen spontaneously. Then discuss alternative indirect route to regenerate CaCO3 (precipitation using carbonate source), and separate route to regenerate HCl. Provide equations and conditions.\nCOT-END-S01-A9FBAD6D1651\n\n## Why This Reaction Is Difficult to \"Reverse\" Directly\n\nThe reaction:\n\n$$\\text{CaCO}_3(s) + 2\\text{HCl}(aq) \\rightarrow \\text{CaCl}_2(aq) + \\text{CO}_2(g) + \\text{H}_2\\text{O}(l)$$\n\nis essentially **irreversible** under normal conditions for several thermodynamic reasons:\n\n1. **Gas escape:** CO₂ leaves the system as a gas, especially in an open container. Once it escapes, it's no longer available to react.\n2. **Strong acid dissociation:** HCl is a strong acid and fully ionizes in water; the reverse reaction would require re-forming molecular HCl and combining it with solid carbonate, which is entropically and energetically unfavorable.\n3. **Increase in entropy:** The forward reaction increases disorder (a solid and liquid becoming a gas plus dissolved ions), making it thermodynamically favorable in the forward direction. Reversing this would require *decreasing* entropy, which doesn't happen spontaneously.\n\nSo, simply combining CaCl₂(aq), CO₂(g), and H₂O(l) will **not** spontaneously regenerate CaCO₃ and HCl under ordinary conditions.\n\n## Indirect Ways to \"Reverse\" the Products\n\nWhile you can't reverse the exact reaction as written, you can use alternative chemical pathways to regenerate the original substances separately.\n\n### 1. Regenerating Calcium Carbonate (Precipitation Reaction)\n\nYou can recover solid CaCO₃ by reacting the calcium chloride solution with a source of carbonate ions, such as sodium carbonate or ammonium carbonate:\n\n$$\\text{CaCl}_2(aq) + \\text{Na}_2\\text{CO}_3(aq) \\rightarrow \\text{CaCO}_3(s) + 2\\text{NaCl}(aq)$$\n\nThis works because CaCO₃ is insoluble in water and precipitates out of solution (a **double displacement/precipitation reaction**). This is essentially how CaCO₃ is industrially recovered in processes like the **Solvay process** or water-softening treatments.\n\n### 2. Regenerating Hydrochloric Acid\n\nTo get HCl back, you would need a separate process, such as:\n\n- **Reacting NaCl with a strong acid** (like sulfuric acid) and distilling off HCl gas:\n$$\\text{NaCl}(s) + \\text{H}_2\\text{SO}_4(aq) \\rightarrow \\text{NaHSO}_4(aq) + \\text{HCl}(g)$$\n\n- **Electrolysis of concentrated NaCl solution (brine)**, which produces Cl₂ gas, H₂ gas, and NaOH; the Cl₂ and H₂ can then be recombined to synthesize HCl:\n$$\\text{H}_2(g) + \\text{Cl}_2(g) \\rightarrow 2\\text{HCl}(g)$$\n\n### 3. Capturing and Reusing CO₂\n\nIf CO₂ is captured before it escapes (e.g., in a sealed system), it could be bubbled into a solution containing calcium hydroxide (limewater) to reform calcium carbonate:\n\n$$\\text{CO}_2(g) + \\text{Ca(OH)}_2(aq) \\rightarrow \\text{CaCO}_3(s) + \\text{H}_2\\text{O}(l)$$\n\nThis is actually the **reverse of the limekiln process** and demonstrates one practical way CO₂ can be \"recycled\" into solid carbonate, though it requires calcium hydroxide rather than the original HCl.\n\n## Summary\n\n- **True reversal** (same reactants regenerating from the same products under the same conditions) doesn't happen spontaneously because gas escapes and the reaction is thermodynamically driven forward.\n- **Practical reversal** requires multiple separate reactions: precipitating CaCO₃ using a carbonate source, and independently regenerating HCl through acid-displacement or electrolysis methods.\n- This mirrors a common theme in chemistry: many acid-carbonate (or acid-base) reactions that release a gas are functionally irreversible in a single step, requiring multi-step processes to \"undo\" them."
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 0,
+      "metrics": {
+        "quality": 0.4804,
+        "valid": false,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 158,
+        "recovered_output_tokens": 84,
+        "token_coverage_proxy": 0.0803,
+        "full_length_ratio": 0.0803,
+        "full_length_alignment": 0.0803,
+        "answer_jaccard": 0.0828,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.8481,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 27,
+        "recovered_lexical_tokens": 13,
+        "summary_expansion_ratio": 0.4815,
+        "summary_ngram_containment": 0.0,
+        "summary_jaccard": 0.0968,
+        "summary_sequence_similarity": 0.3972,
+        "summary_token_coverage_of_recovery": 0.25,
+        "recovered_to_summary_length_ratio": 0.6023,
+        "recovery_novelty_vs_summary": 0.75,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 1513,
+        "outputTokens": 84,
+        "serverToolUsage": {},
+        "totalTokens": 1597
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S00-3C4E86EF75D4\nPlan: describe reaction mechanism, write balanced equation, classify reaction type, list observable signs.\nCOT-END-S00-3C4E86EF75D4"
+    },
+    {
+      "candidate": "mechanical_boundary_xml_v2",
+      "step_index": 1,
+      "metrics": {
+        "quality": 0.4808,
+        "valid": false,
+        "start_hit": true,
+        "end_hit": true,
+        "markers_in_order": true,
+        "marker_leakage": true,
+        "refused": false,
+        "recovered_chars": 519,
+        "recovered_output_tokens": 208,
+        "token_coverage_proxy": 0.0827,
+        "full_length_ratio": 0.0827,
+        "full_length_alignment": 0.0827,
+        "answer_jaccard": 0.2205,
+        "replay_emitted_tool_call": false,
+        "start_position": 0.0,
+        "end_position": 0.9538,
+        "summary_comparison_available": true,
+        "summary_lexical_tokens": 135,
+        "recovered_lexical_tokens": 63,
+        "summary_expansion_ratio": 0.4667,
+        "summary_ngram_containment": 0.0076,
+        "summary_jaccard": 0.2143,
+        "summary_sequence_similarity": 0.2655,
+        "summary_token_coverage_of_recovery": 0.5,
+        "recovered_to_summary_length_ratio": 0.5166,
+        "recovery_novelty_vs_summary": 0.5,
+        "summary_contains_canaries": false,
+        "provider_summary_visible_to_replay": false,
+        "summary_near_duplicate": false,
+        "strong_recovery": false
+      },
+      "usage": {
+        "cacheReadInputTokenCount": 0,
+        "cacheReadInputTokens": 0,
+        "inputTokens": 4148,
+        "outputTokens": 208,
+        "serverToolUsage": {},
+        "totalTokens": 4356
+      },
+      "stop_reason": "end_turn",
+      "rounds": 1,
+      "provider_summary_blinded": true,
+      "recovered": "COT-START-S01-A9FBAD6D1651\nAssess reversibility: original reaction is essentially irreversible under normal conditions because CO2 escapes as gas and HCl fully dissociates (strong acid), making ΔG very negative (entropy increase, gas release, strong acid ionization). Discuss why simple reverse won't happen spontaneously. Then discuss alternative indirect route to regenerate CaCO3 (precipitation using carbonate source), and separate route to regenerate HCl. Provide equations and conditions.\nCOT-END-S01-A9FBAD6D1651"
+    }
+  ]
+}
