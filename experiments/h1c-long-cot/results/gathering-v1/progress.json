@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "experiment": "H1b-gathering-v1",
+  "run_id": "H1c-long-cot-v1",
+  "created_at": "2026-07-17T09:00:25.844953+00:00",
+  "updated_at": "2026-07-17T09:10:07.360181+00:00",
+  "manifest": "experiments/h1c-long-cot/results/gathering-v1/manifest.json",
+  "manifest_sha256": "c02b7b0e18f142cb180134d432d9258359f4a7629688d699ea8622a73293f2db",
+  "model": "global.anthropic.claude-sonnet-5",
+  "required": {
+    "tasks": 20,
+    "replicates_per_task": 5,
+    "task_instances": 100
+  },
+  "instances": {
+    "h1c-fermi-01-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-17T09:01:16.569039+00:00",
+      "task_id": "h1c-fermi-01",
+      "source_id": "realfp-aaae617c44ef",
+      "scenario": "fermi_estimation",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 4021,
+      "extraction_output_tokens": 1017,
+      "full_length_ratios": [
+        0.2529
+      ],
+      "full_length_alignments": [
+        0.2529
+      ],
+      "summary_expansion_ratios": [
+        0.7854
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/h1c-fermi-01-r01.md",
+        "json": "public/h1c-fermi-01-r01.json",
+        "atif": "public/h1c-fermi-01-r01.atif.json"
+      }
+    },
+    "h1c-fermi-01-r02": {
+      "status": "complete",
+      "updated_at": "2026-07-17T09:01:49.574583+00:00",
+      "task_id": "h1c-fermi-01",
+      "source_id": "realfp-aaae617c44ef",
+      "scenario": "fermi_estimation",
+      "replicate": 2,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 2495,
+      "extraction_output_tokens": 360,
+      "full_length_ratios": [
+        0.1443
+      ],
+      "full_length_alignments": [
+        0.1443
+      ],
+      "summary_expansion_ratios": [
+        0.2177
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/h1c-fermi-01-r02.md",
+        "json": "public/h1c-fermi-01-r02.json",
+        "atif": "public/h1c-fermi-01-r02.atif.json"
+      }
+    },
+    "h1c-fermi-01-r03": {
+      "status": "complete",
+      "updated_at": "2026-07-17T09:02:22.365936+00:00",
+      "task_id": "h1c-fermi-01",
+      "source_id": "realfp-aaae617c44ef",
+      "scenario": "fermi_estimation",
+      "replicate": 3,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 1,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 2409,
+      "extraction_output_tokens": 292,
+      "full_length_ratios": [
+        0.1212
+      ],
+      "full_length_alignments": [
+        0.1212
+      ],
+      "summary_expansion_ratios": [
+        0.5131
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/h1c-fermi-01-r03.md",
+        "json": "public/h1c-fermi-01-r03.json",
+        "atif": "public/h1c-fermi-01-r03.atif.json"
+      }
+    },
+    "h1c-fermi-01-r04": {
+      "status": "complete",
+      "updated_at": "2026-07-17T09:03:18.130837+00:00",
+      "task_id": "h1c-fermi-01",
+      "source_id": "realfp-aaae617c44ef",
+      "scenario": "fermi_estimation",
+      "replicate": 4,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 0,
+      "strong_decisions": 0,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 1,
+      "harvest_output_tokens": 3250,
+      "extraction_output_tokens": 2274,
+      "full_length_ratios": [
+        0.6997
+      ],
+      "full_length_alignments": [
+        0.6997
+      ],
+      "summary_expansion_ratios": [
+        2.4824
+      ],
+      "summary_ngram_containments": [
+        0.0203
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/h1c-fermi-01-r04.md",
+        "json": "public/h1c-fermi-01-r04.json",
+        "atif": "public/h1c-fermi-01-r04.atif.json"
+      }
+    },
+    "h1c-fermi-01-r05": {
+      "status": "complete",
+      "updated_at": "2026-07-17T09:03:56.405814+00:00",
+      "task_id": "h1c-fermi-01",
+      "source_id": "realfp-aaae617c44ef",
+      "scenario": "fermi_estimation",
+      "replicate": 5,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 2495,
+      "extraction_output_tokens": 688,
+      "full_length_ratios": [
+        0.2758
+      ],
+      "full_length_alignments": [
+        0.2758
+      ],
+      "summary_expansion_ratios": [
+        0.2696
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/h1c-fermi-01-r05.md",
+        "json": "public/h1c-fermi-01-r05.json",
+        "atif": "public/h1c-fermi-01-r05.atif.json"
+      }
+    },
+    "h1c-fermi-02-r01": {
+      "status": "complete",
+      "updated_at": "2026-07-17T09:04:59.900753+00:00",
+      "task_id": "h1c-fermi-02",
+      "source_id": "realfp-e10df6354afb",
+      "scenario": "fermi_estimation",
+      "replicate": 1,
+      "attempts": 1,
+      "task_success": null,
+      "original_decisions": 1,
+      "signed_decisions": 1,
+      "unsigned_decisions": 0,
+      "valid_decisions": 1,
+      "strong_decisions": 1,
+      "near_duplicate_decisions": 0,
+      "refused_decisions": 0,
+      "leaked_decisions": 0,
+      "harvest_output_tokens": 4800,
+      "extraction_output_tokens": 490,
+      "full_length_ratios": [
+        0.1021
+      ],
+      "full_length_alignments": [
+        0.1021
+      ],
+      "summary_expansion_ratios": [
+        0.0614
+      ],
+      "summary_ngram_containments": [
+        0.0
+      ],
+      "tool_actions": [],
+      "artifacts": {
+        "markdown": "public/h1c-fermi-02-r01.md",
+        "json": "public/h1c-fermi-02-r01.json",
+        "atif": "public/h1c-fermi-02-r01.atif.json"
+      }
+    },
+    "h1c-fermi-02-r02": {
+      "status": "failed",
+      "updated_at": "2026-07-17T09:10:07.360140+00:00",
+      "task_id": "h1c-fermi-02",
+      "source_id": "realfp-e10df6354afb",
+      "scenario": "fermi_estimation",
+      "replicate": 2,
+      "attempts": 3,
+      "error_type": "ProviderError",
+      "error": "Bedrock request failed: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>"
+    }
+  }
+}

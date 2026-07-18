@@ -1,0 +1,19 @@
+2026-07-17T09:00:25.845349+00:00 start model=global.anthropic.claude-sonnet-5 tasks=20 replicates=5 credential_configured=true
+2026-07-17T09:00:25.845731+00:00 instance start id=h1c-fermi-01-r01 scenario=fermi_estimation attempt=1
+2026-07-17T09:01:16.569521+00:00 instance complete id=h1c-fermi-01-r01 decisions=1 task_success=None
+2026-07-17T09:01:16.570029+00:00 instance start id=h1c-fermi-01-r02 scenario=fermi_estimation attempt=1
+2026-07-17T09:01:49.575413+00:00 instance complete id=h1c-fermi-01-r02 decisions=1 task_success=None
+2026-07-17T09:01:49.576162+00:00 instance start id=h1c-fermi-01-r03 scenario=fermi_estimation attempt=1
+2026-07-17T09:02:22.367007+00:00 instance complete id=h1c-fermi-01-r03 decisions=1 task_success=None
+2026-07-17T09:02:22.367810+00:00 instance start id=h1c-fermi-01-r04 scenario=fermi_estimation attempt=1
+2026-07-17T09:03:18.131276+00:00 instance complete id=h1c-fermi-01-r04 decisions=1 task_success=None
+2026-07-17T09:03:18.131762+00:00 instance start id=h1c-fermi-01-r05 scenario=fermi_estimation attempt=1
+2026-07-17T09:03:56.406724+00:00 instance complete id=h1c-fermi-01-r05 decisions=1 task_success=None
+2026-07-17T09:03:56.407341+00:00 instance start id=h1c-fermi-02-r01 scenario=fermi_estimation attempt=1
+2026-07-17T09:04:59.901911+00:00 instance complete id=h1c-fermi-02-r01 decisions=1 task_success=None
+2026-07-17T09:04:59.902802+00:00 instance start id=h1c-fermi-02-r02 scenario=fermi_estimation attempt=1
+2026-07-17T09:10:00.759149+00:00 instance failed id=h1c-fermi-02-r02 error=ProviderError: Bedrock request failed: The read operation timed out
+2026-07-17T09:10:00.761074+00:00 instance start id=h1c-fermi-02-r02 scenario=fermi_estimation attempt=2
+2026-07-17T09:10:03.767773+00:00 instance failed id=h1c-fermi-02-r02 error=ProviderError: Bedrock request failed: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+2026-07-17T09:10:03.769213+00:00 instance start id=h1c-fermi-02-r02 scenario=fermi_estimation attempt=3
+2026-07-17T09:10:07.363574+00:00 instance failed id=h1c-fermi-02-r02 error=ProviderError: Bedrock request failed: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
