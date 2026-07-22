@@ -1,0 +1,4 @@
+extends: base.yaml
+experiment: probe
+prompts: prompts/probe.yaml
+output: experiments/local/probe

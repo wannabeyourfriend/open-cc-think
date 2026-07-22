@@ -1,7 +1,0 @@
-[submodule "open-reasoning"]
-	path = open-reasoning
-	url = git@github.com:wannabeyourfriend/open-reasoning.git
-[submodule "open-open-reasoning"]
-	path = open-open-reasoning
-	url = git@github.com:YangWang92/open-open-reasoning.git
-	branch = main

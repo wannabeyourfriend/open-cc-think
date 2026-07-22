@@ -1,46 +1,37 @@
-# Secrets and credentials
 .env
 .env.*
 !.env.example
 secrets/
 .claude*
-
-# Raw replayable signatures. Unanchored on purpose: an --output dir outside
-# src/artifacts/ must not escape these rules.
 .checkpoints/
 private/
-
-# Python
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
-
-# Packaging / build
 build/
 dist/
 .eggs/
 *.egg-info/
-
-# Test, type, and lint caches
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
 htmlcov/
-
-# Virtual environments
 .venv/
 venv/
-
-# macOS
 .DS_Store
 ._*
-
-# Editors
 .vscode/
 .idea/
 *.swp
-
-# H1c launcher/runtime output (regenerated per run; progress.json is the resume state)
-experiments/h1c-long-cot/results/*/launcher.out
+data/
+experiments/
+src/
+blog/
+to_human/
+literature/
+paper/
+scripts/
+tools/
+open-reasoning/
+open-open-reasoning/

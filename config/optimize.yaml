@@ -1,0 +1,6 @@
+extends: base.yaml
+experiment: optimize
+prompts: prompts/optimize.yaml
+output: experiments/local/optimize
+task: walking-rates
+optimizer_rounds: 3

@@ -1,0 +1,7 @@
+extends: base.yaml
+experiment: reproduce
+prompts: prompts/reproduce.yaml
+output: experiments/local/reproduce
+tasks: [walking-rates, cubic-roots]
+optimize: false
+optimizer_rounds: 3

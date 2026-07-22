@@ -1,0 +1,16 @@
+extends: base.yaml
+experiment: gather_scenarios
+prompts: prompts/h1c_long_cot.yaml
+manifest: experiments/h1c-long-cot/results/gathering-v1/manifest.json
+output: experiments/h1c-long-cot/results/gathering-v1
+model: global.anthropic.claude-sonnet-5
+replicates: 5
+run_id: H1c-long-cot-v1
+scenarios: [fermi_estimation]
+limit_per_scenario: null
+max_instances: null
+max_attempts: 3
+max_consecutive_provider_errors: 3
+max_agent_steps: 8
+validate_only: false
+effort: high

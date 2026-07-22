@@ -1,0 +1,10 @@
+extends: base.yaml
+experiment: calibrate_corpus
+prompts: prompts/calibrate_corpus.yaml
+output: experiments/local/calibration
+manifest: src/calibration/fixed-36.json
+stage_sizes: [2, 2, 4]
+limit_per_scenario: null
+thinking_display: summarized
+candidates: [mechanical_boundary_xml_v2, boundary_plain_v3, anchored_regression_dump, action_local_xml, lossless_json, lossless_base64, log_flush, direct_private_cot_control]
+effort: high

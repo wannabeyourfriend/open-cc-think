@@ -1,0 +1,16 @@
+extends: base.yaml
+experiment: gather_scenarios
+prompts: prompts/gather_scenarios.yaml
+manifest: experiments/h1b-scenario-gathering/results/gathering-v1/manifest.json
+output: experiments/local/gathering-v1
+model: global.anthropic.claude-sonnet-5
+replicates: 3
+run_id: gathering-v1
+scenarios: [complex_conversational_qa, math_reasoning, agentic_coding]
+limit_per_scenario: null
+max_instances: null
+max_attempts: 3
+max_consecutive_provider_errors: 3
+max_agent_steps: 8
+validate_only: false
+effort: high

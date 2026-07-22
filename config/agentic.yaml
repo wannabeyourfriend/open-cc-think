@@ -1,0 +1,6 @@
+extends: base.yaml
+experiment: agentic
+prompts: prompts/agentic.yaml
+output: experiments/local/agentic
+optimize: true
+optimizer_rounds: 3

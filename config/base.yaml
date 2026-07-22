@@ -1,0 +1,9 @@
+env_file: .env.aws
+model: null
+region: null
+effort: medium
+harvest_max_tokens: 16000
+extraction_max_tokens: 12000
+continuations: 2
+save_signatures: false
+candidate: mechanical_boundary_xml_v2
