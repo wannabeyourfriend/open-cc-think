@@ -1,0 +1,6 @@
+extends: live_fermi_smoke.yaml
+experiment: cross_session_replay
+conditioned_r2: >-
+  Re-estimate the same quantity from a materially different quantitative route. Check the first estimate for hidden assumptions or unit mistakes. Keep all derivation internal and output only the revised numerical estimate and unit on one line.
+conditioned_r3: >-
+  Reconcile the two preceding estimates into one final estimate. Resolve the largest disagreement, include an uncertainty range in the internal work, and sanity-check the order of magnitude. Output only the final numerical estimate and unit on one line.

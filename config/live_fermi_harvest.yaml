@@ -1,9 +1,10 @@
 extends: base.yaml
 experiment: cross_session_harvest
-prompts: prompts/live_fermi_smoke.yaml
+prompts: prompts/live_fermi_harvest.yaml
 output: experiments/local/live-fermi-smoke
 model: global.anthropic.claude-sonnet-4-6
 effort: high
+conditioned_lineage: true
 tasks:
   - tree-lifetime-photosynthesis-energy
   - family-house-yard-land
