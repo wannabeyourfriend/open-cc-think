@@ -1843,7 +1843,7 @@ def _unsigned_replay_control(step, candidate, provider, max_tokens):
     try:
         response = BedrockClient(provider).converse(messages, max_tokens=max_tokens, system=step.system, temperature=0.0)
         recovered = parse_recovery(response.text)
-        metrics = score_recovery(step, recovered, raw_text=response.text, recovered_output_tokens=response.output_tokens, replay_emitted_tool_call=bool(response.tool_calls), provider_summary_blinded=False)
+        metrics = score_recovery(step, recovered, raw_text=response.text, recovered_output_tokens=response.output_tokens, replay_emitted_tool_call=bool(response.tool_calls), provider_summary_blinded=True)
         return {'condition': 'unsigned_target', 'provider_accepted': True, 'protocol_deviation': 'R3 reasoningContent removed', 'stop_reason': response.stop_reason, 'usage': response.usage, 'raw_text': response.text, 'recovered': recovered, 'metrics': dataclasses.asdict(metrics)}
     except ProviderError as exc:
         return {'condition': 'unsigned_target', 'provider_accepted': False, 'protocol_deviation': 'R3 reasoningContent removed', 'error_type': type(exc).__name__, 'error': str(exc)[:1000]}
@@ -1914,7 +1914,7 @@ def run_cross_session_replay(config, tasks):
         paths = writer.write(run_record, [primary_trial])
         ensure_no_public_signature(run_record, public_paths(writer, task.task_id))
         conditions = [
-            _trial_condition('direct', direct_trial, target_round='R1', exact_lineage=True, protocol_deviation='provider summary text blinded'),
+            _trial_condition('direct', direct_trial, target_round='R1', exact_lineage=False, protocol_deviation='provider summary text blinded'),
             _trial_condition('signed_priming', primary_trial, target_round='R3', exact_lineage=True),
             _trial_condition('signed_priming_blinded', blinded_priming_trial, target_round='R3', exact_lineage=False, protocol_deviation='R1/R2/R3 provider summary text blinded'),
             _trial_condition('text_only_priming', text_only_trial, target_round='R3', exact_lineage=False, protocol_deviation='R1/R2 reasoningContent removed; R3 provider summary text blinded'),
