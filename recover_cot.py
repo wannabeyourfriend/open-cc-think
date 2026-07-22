@@ -770,7 +770,7 @@ from typing import Callable, Dict, List, Optional, Sequence
 
 class SignatureExtractor:
 
-    def __init__(self, client: Optional[BedrockClient], max_tokens: int=8192, continuation_limit: int=2, blind_provider_summary: bool=True, replay_client_factory: Optional[Callable[[], BedrockClient]]=None):
+    def __init__(self, client: Optional[BedrockClient], max_tokens: int=8192, continuation_limit: int=2, blind_provider_summary: bool=True, replay_client_factory: Optional[Callable[[], BedrockClient]]=None, replay_session_mode: str='cross_session_fresh_client'):
         if client is None and replay_client_factory is None:
             raise ValueError('a replay client or replay_client_factory is required')
         self.client = client
@@ -778,13 +778,14 @@ class SignatureExtractor:
         self.max_tokens = max_tokens
         self.continuation_limit = continuation_limit
         self.blind_provider_summary = blind_provider_summary
+        self.replay_session_mode = replay_session_mode
 
     def _open_replay_session(self) -> tuple[BedrockClient, str]:
         if self.replay_client_factory is not None:
             replay_client = self.replay_client_factory()
             if replay_client is self.client:
                 raise ValueError('replay_client_factory must return a client distinct from the harvest client')
-            return (replay_client, 'cross_session_fresh_client')
+            return (replay_client, self.replay_session_mode)
         if self.client is None:
             raise ValueError('no replay client configured')
         return (self.client, 'shared_client')
@@ -799,7 +800,7 @@ class SignatureExtractor:
         config['toolChoice'] = {'tool': {'name': 'emit_signed_trace'}}
         return config
 
-    def recover(self, step: HarvestStep, candidate: PromptCandidate) -> ExtractionTrial:
+    def recover(self, step: HarvestStep, candidate: PromptCandidate, replay_builder: Optional[Callable[[str], List[Json]]]=None, replay_session_label: Optional[str]=None) -> ExtractionTrial:
         if not step.signature:
             raise ValueError('harvest step %s has no reasoning signature' % step.step_index)
         replay_client, replay_session_mode = self._open_replay_session()
@@ -817,7 +818,8 @@ class SignatureExtractor:
                 instruction = prompt_text('continuation', cue=cue, end=step.markers.end)
             if step.tool_calls:
                 instruction = prompt_text('trace_tool_instruction') + '\n\n' + instruction
-            response = replay_client.converse(step.replay_messages(instruction, blind_provider_summary=self.blind_provider_summary), max_tokens=self.max_tokens, system=step.system, tool_config=self._trace_tool_config(step), temperature=0.0)
+            replay_messages = replay_builder(instruction) if replay_builder is not None else step.replay_messages(instruction, blind_provider_summary=self.blind_provider_summary)
+            response = replay_client.converse(replay_messages, max_tokens=self.max_tokens, system=step.system, tool_config=self._trace_tool_config(step), temperature=0.0)
             stop_reason = response.stop_reason
             trace_calls = [call for call in response.tool_calls if call.name == 'emit_signed_trace']
             unexpected_calls = [call for call in response.tool_calls if call.name != 'emit_signed_trace']
@@ -835,7 +837,7 @@ class SignatureExtractor:
                 break
         raw_text = '\n'.join(raw_parts)
         metrics = score_recovery(step, recovered, raw_text=raw_text, recovered_output_tokens=total_output_tokens, replay_emitted_tool_call=emitted_tool_call, provider_summary_blinded=self.blind_provider_summary)
-        return ExtractionTrial(candidate=candidate.name, step_index=step.step_index, recovered=recovered, raw_text=raw_text, metrics=metrics, usage=usage, stop_reason=stop_reason, rounds=rounds, provider_summary_blinded=self.blind_provider_summary, replay_session_mode=replay_session_mode)
+        return ExtractionTrial(candidate=candidate.name, step_index=step.step_index, recovered=recovered, raw_text=raw_text, metrics=metrics, usage=usage, stop_reason=stop_reason, rounds=rounds, provider_summary_blinded=self.blind_provider_summary, replay_session_mode=replay_session_label or replay_session_mode)
 
 class PromptOptimizer:
 
@@ -1740,9 +1742,130 @@ def _result_summary(result):
     selected = result['selected_trials']
     return {'task_id': run_record.task_id, 'model': run_record.model, 'answer': run_record.final_answer, 'task_success': run_record.task_success, 'steps': len(run_record.steps), 'valid_extractions': sum((1 for trial in selected if trial.metrics.valid)), 'strong_extractions': sum((1 for trial in selected if trial.metrics.strong_recovery)), 'replay_session_modes': sorted({trial.replay_session_mode for trial in selected}), 'artifacts': {name: str(path) for name, path in result['paths'].items()}}
 
+def _selected_task_specs(config, tasks):
+    names = [str(name) for name in config.get('tasks', [])]
+    if not names:
+        raise ValueError('cross-session experiment requires at least one task')
+    missing = [name for name in names if name not in tasks]
+    if missing:
+        raise KeyError('unknown task(s): %s' % ', '.join(missing))
+    return [tasks[name] for name in names]
+
+def _safe_harvest_summary(run_record):
+    return {'task_id': run_record.task_id, 'question': run_record.question, 'model': run_record.model, 'answer': run_record.final_answer, 'scenario': run_record.scenario, 'source_metadata': run_record.source_metadata, 'steps': [{'step_index': step.step_index, 'stop_reason': step.stop_reason, 'usage': step.usage, 'provider_cot_summary': step.provider_reasoning_summary, 'signature_sha256': step.signature_sha256, 'signature_chars': len(step.signature), 'visible_text': step.visible_text, 'markers': dataclasses.asdict(step.markers)} for step in run_record.steps]}
+
+def run_cross_session_harvest(config, tasks):
+    provider = _provider(config)
+    print('provider=' + json.dumps(provider.safe_summary, sort_keys=True), file=sys.stderr)
+    output = _path(config['output'])
+    private_dir = output / 'private' / 'harvest'
+    public_dir = output / 'public'
+    private_dir.mkdir(parents=True, exist_ok=True)
+    public_dir.mkdir(parents=True, exist_ok=True)
+    client = BedrockClient(provider)
+    invocation_id = str(uuid.uuid4())
+    rows = []
+    for task in _selected_task_specs(config, tasks):
+        checkpoint_path = private_dir / (task.task_id + '.json')
+        if checkpoint_path.exists():
+            run_record = load_checkpoint_run(checkpoint_path)
+            if run_record.model != provider.model:
+                raise ValueError('checkpoint model mismatch for %s' % task.task_id)
+            resumed = True
+        else:
+            expected = task.expected_answer or None
+            run_record = QuestionHarvester(client, max_tokens=int(config.get('harvest_max_tokens', 16000)), effort=str(config.get('effort', 'high'))).run(task.task_id, task.question, expected)
+            run_record.scenario = 'fermi_estimation'
+            run_record.source_metadata = {'phase': 'harvest', 'invocation_id': invocation_id, 'process_id': os.getpid(), 'reasoning_effort': str(config.get('effort', 'high')), 'thinking_display': 'summarized'}
+            checkpoint_run(checkpoint_path, run_record)
+            resumed = False
+        public_path = public_dir / (task.task_id + '-harvest.json')
+        atomic_write_json(public_path, _safe_harvest_summary(run_record))
+        rows.append({'task_id': task.task_id, 'model': run_record.model, 'answer': run_record.final_answer, 'signed_steps': sum((bool(step.signature) for step in run_record.steps)), 'checkpoint': str(checkpoint_path), 'public': str(public_path), 'resumed': resumed})
+    summary = {'schema_version': 1, 'experiment': 'cross_session_harvest', 'invocation_id': invocation_id, 'process_id': os.getpid(), 'model': provider.model, 'tasks': rows}
+    atomic_write_json(output / 'harvest-summary.json', summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0 if all((row['signed_steps'] > 0 for row in rows)) else 2
+
+def _unsigned_replay_control(step, candidate, provider, max_tokens):
+    assistant_content = [copy.deepcopy(block) for block in step.assistant_content if not (isinstance(block, dict) and 'reasoningContent' in block)]
+    messages = copy.deepcopy(step.prefix_messages)
+    messages.append({'role': 'assistant', 'content': assistant_content})
+    messages.append({'role': 'user', 'content': [{'text': candidate.render(step)}]})
+    response = BedrockClient(provider).converse(messages, max_tokens=max_tokens, system=step.system, temperature=0.0)
+    recovered = parse_recovery(response.text)
+    metrics = score_recovery(step, recovered, raw_text=response.text, recovered_output_tokens=response.output_tokens, replay_emitted_tool_call=bool(response.tool_calls), provider_summary_blinded=True)
+    return {'condition': 'unsigned_visible_answer_only', 'provider_accepted': True, 'stop_reason': response.stop_reason, 'usage': response.usage, 'raw_text': response.text, 'recovered': recovered, 'metrics': dataclasses.asdict(metrics)}
+
+def _corrupt_signature(content):
+    corrupted = copy.deepcopy(content)
+    for block in corrupted:
+        reasoning = block.get('reasoningContent') if isinstance(block, dict) else None
+        reasoning_text = reasoning.get('reasoningText') if isinstance(reasoning, dict) else None
+        signature = reasoning_text.get('signature') if isinstance(reasoning_text, dict) else None
+        if signature:
+            value = str(signature)
+            reasoning_text['signature'] = value[:-1] + ('A' if value[-1:] != 'A' else 'B')
+            return corrupted
+    raise ValueError('no signature found to corrupt')
+
+def _corrupted_replay_control(step, candidate, provider, max_tokens):
+    messages = step.replay_messages(candidate.render(step), blind_provider_summary=True)
+    messages[-2]['content'] = _corrupt_signature(messages[-2]['content'])
+    try:
+        response = BedrockClient(provider).converse(messages, max_tokens=max_tokens, system=step.system, temperature=0.0)
+        recovered = parse_recovery(response.text)
+        metrics = score_recovery(step, recovered, raw_text=response.text, recovered_output_tokens=response.output_tokens, replay_emitted_tool_call=bool(response.tool_calls), provider_summary_blinded=True)
+        return {'condition': 'corrupted_signature', 'provider_accepted': True, 'stop_reason': response.stop_reason, 'usage': response.usage, 'raw_text': response.text, 'recovered': recovered, 'metrics': dataclasses.asdict(metrics)}
+    except ProviderError as exc:
+        error = str(exc).replace(step.signature, '<redacted>')
+        return {'condition': 'corrupted_signature', 'provider_accepted': False, 'error_type': type(exc).__name__, 'error': error[:1000]}
+
+def run_cross_session_replay(config, tasks):
+    provider = _provider(config)
+    print('provider=' + json.dumps(provider.safe_summary, sort_keys=True), file=sys.stderr)
+    output = _path(config['output'])
+    private_dir = output / 'private'
+    public_dir = output / 'public'
+    public_dir.mkdir(parents=True, exist_ok=True)
+    candidate = candidate_by_name(str(config.get('candidate', 'mechanical_boundary_xml_v2')))
+    max_tokens = int(config.get('extraction_max_tokens', 12000))
+    invocation_id = str(uuid.uuid4())
+    extractor = SignatureExtractor(None, max_tokens=max_tokens, continuation_limit=int(config.get('continuations', 2)), blind_provider_summary=True, replay_client_factory=lambda: BedrockClient(provider), replay_session_mode='cross_process_fresh_client')
+    writer = ArtifactWriter(public_dir)
+    rows = []
+    for task in _selected_task_specs(config, tasks):
+        harvest_path = private_dir / 'harvest' / (task.task_id + '.json')
+        if not harvest_path.exists():
+            raise FileNotFoundError('harvest checkpoint not found: %s' % harvest_path)
+        run_record = load_checkpoint_run(harvest_path)
+        if run_record.model != provider.model:
+            raise ValueError('signed replay model mismatch: harvested with %s, configured for %s' % (run_record.model, provider.model))
+        trials = [extractor.recover(step, candidate) for step in run_record.steps if step.signature]
+        checkpoint_trials(private_dir / 'replay' / (task.task_id + '.json'), trials)
+        paths = writer.write(run_record, trials)
+        ensure_no_public_signature(run_record, public_paths(writer, task.task_id))
+        controls = []
+        for step in run_record.steps:
+            if not step.signature:
+                continue
+            controls.append(_unsigned_replay_control(step, candidate, provider, max_tokens))
+            controls.append(_corrupted_replay_control(step, candidate, provider, max_tokens))
+        control_path = public_dir / (task.task_id + '-controls.json')
+        atomic_write_json(control_path, {'schema_version': 1, 'task_id': task.task_id, 'model': provider.model, 'controls': controls})
+        rows.append({'task_id': task.task_id, 'model': provider.model, 'harvest_invocation_id': run_record.source_metadata.get('invocation_id'), 'harvest_process_id': run_record.source_metadata.get('process_id'), 'replay_invocation_id': invocation_id, 'replay_process_id': os.getpid(), 'signed': [{'step_index': trial.step_index, 'valid': trial.metrics.valid, 'strong_recovery': trial.metrics.strong_recovery, 'recovered_chars': trial.metrics.recovered_chars, 'summary_sequence_similarity': trial.metrics.summary_sequence_similarity, 'summary_expansion_ratio': trial.metrics.summary_expansion_ratio, 'replay_session_mode': trial.replay_session_mode} for trial in trials], 'controls': [{'condition': control['condition'], 'provider_accepted': control['provider_accepted'], 'valid': control.get('metrics', {}).get('valid'), 'strong_recovery': control.get('metrics', {}).get('strong_recovery'), 'recovered_chars': control.get('metrics', {}).get('recovered_chars')} for control in controls], 'artifacts': {**{name: str(path) for name, path in paths.items()}, 'controls': str(control_path)}})
+    summary = {'schema_version': 1, 'experiment': 'cross_session_replay', 'invocation_id': invocation_id, 'process_id': os.getpid(), 'model': provider.model, 'tasks': rows}
+    atomic_write_json(output / 'replay-summary.json', summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0 if rows and all((all((item['strong_recovery'] for item in row['signed'])) for row in rows)) else 2
+
 def execute(config):
     tasks = activate_prompts(_path(config['prompts']))
     experiment = str(config['experiment'])
+    if experiment == 'cross_session_harvest':
+        return run_cross_session_harvest(config, tasks)
+    if experiment == 'cross_session_replay':
+        return run_cross_session_replay(config, tasks)
     if experiment == 'gather_scenarios':
         values = dict(config)
         values['manifest'] = _path(values['manifest'])

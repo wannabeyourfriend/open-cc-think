@@ -1,0 +1,18 @@
+extends: base.yaml
+question_system: >-
+  Develop a detailed quantitative estimate in the omitted internal reasoning block, including assumptions, units, calculations, uncertainty, and sanity checks. The visible response must contain only the final numerical estimate and unit on one line.
+tasks:
+  tree-lifetime-photosynthesis-energy:
+    task_id: tree-lifetime-photosynthesis-energy
+    title: Tree lifetime photosynthesis energy
+    question: >-
+      How much energy can a tree🌲 produce through photosynthesis in its lifetime? Please provide an estimate using actual numerical values and thoroughly explain your thought process step-by-step.
+    expected_answer: ""
+    required_answer_facts: []
+  family-house-yard-land:
+    task_id: family-house-yard-land
+    title: Land for one house and yard per family
+    question: >-
+      How much land would be needed if each family had a house and a yard? Please provide an estimate using actual numerical values and thoroughly explain your thought process step-by-step.
+    expected_answer: ""
+    required_answer_facts: []

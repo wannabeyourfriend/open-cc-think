@@ -1,0 +1,11 @@
+extends: base.yaml
+experiment: cross_session_replay
+prompts: prompts/live_fermi_smoke.yaml
+output: experiments/local/live-fermi-smoke
+model: global.anthropic.claude-sonnet-4-6
+candidate: mechanical_boundary_xml_v2
+extraction_max_tokens: 12000
+continuations: 2
+tasks:
+  - tree-lifetime-photosynthesis-energy
+  - family-house-yard-land
